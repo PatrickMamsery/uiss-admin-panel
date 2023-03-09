@@ -10,7 +10,7 @@ class BaseController extends Controller
 {
     public function sendResponse($result, $message = '')
     {
-        return ($result->additional(['status' => 'success', 'message' => Config::get('customMessages.' . $message), 'status_code' => 200]));
+        return ($result->additional(['status' => 'success', 'message' => Config::get('customMessages.' . $message), 'statusCode' => 200]));
     }
 
     public function sendError($error, $errorMessages = [], $error_status_code = 404)
@@ -18,7 +18,7 @@ class BaseController extends Controller
         $response = [
             'status' => 'error',
             'message' => Config::get('customMessages.' . $error),
-            'status_code' => $error_status_code,
+            'statusCode' => $error_status_code,
         ];
 
 
