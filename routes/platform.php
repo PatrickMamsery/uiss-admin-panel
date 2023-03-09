@@ -2,27 +2,31 @@
 
 declare(strict_types=1);
 
-use App\Orchid\Screens\Examples\ExampleCardsScreen;
-use App\Orchid\Screens\Examples\ExampleChartsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsScreen;
-use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
-use App\Orchid\Screens\Examples\ExampleScreen;
-use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use Tabuna\Breadcrumbs\Trail;
+use Illuminate\Support\Facades\Route;
+use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\FAQs\FAQsEditScreen;
 use App\Orchid\Screens\FAQs\FAQsListScreen;
 use App\Orchid\Screens\News\NewsEditScreen;
 use App\Orchid\Screens\News\NewsListScreen;
-use App\Orchid\Screens\Program\ProgramListScreen;
-use App\Orchid\Screens\Program\ProgramEditScreen;
-use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Orchid\Screens\Event\EventEditScreen;
+use App\Orchid\Screens\Event\EventListScreen;
+use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
-use Illuminate\Support\Facades\Route;
-use Tabuna\Breadcrumbs\Trail;
+use App\Orchid\Screens\Program\ProgramEditScreen;
+use App\Orchid\Screens\Program\ProgramListScreen;
+use App\Orchid\Screens\Project\ProjectEditScreen;
+use App\Orchid\Screens\Project\ProjectListScreen;
+use App\Orchid\Screens\Examples\ExampleCardsScreen;
+use App\Orchid\Screens\Examples\ExampleChartsScreen;
+use App\Orchid\Screens\Examples\ExampleFieldsScreen;
+use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
+use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
+use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,7 +112,7 @@ Route::screen('news',NewsListScreen::class)
             ->push(_('News'),route('platform.news'));
     });
 
-// Home > news > edit 
+// Home > news > edit
 Route::screen('news-edit/{news?}',NewsEditScreen::class)
     ->name('platform.news.edit')
     ->breadcrumbs(function(Trail $trail){
@@ -157,3 +161,15 @@ Route::screen('program-edit/{program?}', ProgramEditScreen::class)
             ->push(_('Edit'), route('platform.program.edit'));
     });
 
+
+Route::screen('event/{event?}', EventEditScreen::class)
+    ->name('platform.event.edit');
+
+Route::screen('events', EventListScreen::class)
+    ->name('platform.events');
+
+Route::screen('proect/{project?}', ProjectEditScreen::class)
+    ->name('platform.project.edit');
+
+Route::screen('project', ProjectListScreen::class)
+    ->name('platform.projects');

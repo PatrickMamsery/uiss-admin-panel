@@ -50,7 +50,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->list([
                     Menu::make(__('Projects'))
                         ->icon('wrench')
-                        ->route('platform.index'),
+                        ->route('platform.projects'),
                     Menu::make(__('Owners'))
                         ->icon('people')
                         ->route('platform.index'),
@@ -61,7 +61,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->list([
                     Menu::make(__('Events'))
                         ->icon('task')
-                        ->route('platform.index'),
+                        ->route('platform.events'),
                     Menu::make(__('Organizers'))
                         ->icon('people')
                         ->route('platform.index'),
@@ -74,7 +74,7 @@ class PlatformProvider extends OrchidServiceProvider
             // Menu::make('Faqs')
             //     ->icon('question')
             //     ->route('platform.faqs'),
-                
+
             Menu::make(__('Users'))
                 ->icon('user')
                 ->route('platform.systems.users')
