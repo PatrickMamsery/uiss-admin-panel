@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-use App\Http\Resources\UserResource;
-use App\Models\User;
+use App\Http\Resources\ProgramResource;
+use App\Models\Program;
+use App\Models\ProgramCategory;
 
-class UserController extends BaseController
+class ProgramController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class UserController extends BaseController
      */
     public function index()
     {
-        return $this->sendResponse(UserResource::collection(User::paginate()), 'RETRIEVE_SUCCESS');
+        return $this->sendResponse(ProgramResource::collection(Program::paginate()), 'RETRIEVE_SUCCESS');
     }
 
     /**
@@ -31,25 +32,27 @@ class UserController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'nullable|unique:users',
+            'description' => 'required',
+            'category' => 'required'
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
 
-        $user = User::create([
+        // check if category exists, if not create a new one
+        $category = ProgramCategory::firstOrCreate(['name' => $request->category]);
+
+        $program = Program::create([
             'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => $request->phone ? bcrypt($request->phone) : bcrypt($request->email),
+            'description' => $request->description,
+            'category_id' => $category->id,
         ]);
 
-        if (is_null($user)) {
+        if (is_null($program)) {
             return $this->sendError('CREATE_FAILED');
         } else {
-            return $this->sendResponse(new UserResource($user), 'CREATE_SUCCESS');
+            return $this->sendResponse(new ProgramResource($program), 'CREATE_SUCCESS');
         }
     }
 
@@ -61,13 +64,13 @@ class UserController extends BaseController
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $program = Program::find($id);
 
-        if (is_null($user)) {
-            return $this->sendError('NOT_FOUND');
+        if (is_null($program)) {
+            return $this->sendError('RETRIEVE_FAILED');
+        } else {
+            return $this->sendResponse(new ProgramResource($program), 'RETRIEVE_SUCCESS');
         }
-
-        return $this->sendResponse(new UserResource($user), 'RETRIEVE_SUCCESS');
     }
 
     /**
@@ -79,30 +82,30 @@ class UserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-
-        if (is_null($user)) {
-            return $this->sendError('NOT_FOUND');
-        }
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'phone' => 'nullable|unique:users,phone,' . $user->id,
+            'description' => 'required',
+            'category' => 'required'
         ]);
 
         if ($validator->fails()) {
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
+        // check if category exists, if not create a new one
+        $category = ProgramCategory::firstOrCreate(['name' => $request->category]);
 
-        if ($user->save()) {
-            return $this->sendResponse(new UserResource($user), 'UPDATE_SUCCESS');
-        } else {
+        $program = Program::find($id);
+
+        if (is_null($program)) {
             return $this->sendError('UPDATE_FAILED');
+        } else {
+            $program->name = $request->name;
+            $program->description = $request->description;
+            $program->category_id = $category->id;
+            $program->save();
+
+            return $this->sendResponse(new ProgramResource($program), 'UPDATE_SUCCESS');
         }
     }
 
@@ -114,14 +117,14 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $program = Program::find($id);
 
-        if (is_null($user)) {
+        if (is_null($program)) {
             return $this->sendError('NOT_FOUND');
         }
 
-        if ($user->delete()) {
-            return $this->sendResponse(new UserResource($user), 'DELETE_SUCCESS', 204);
+        if ($program->delete()) {
+            return $this->sendResponse(new ProgramResource($program), 'DELETE_SUCCESS', 204);
         } else {
             return $this->sendError('DELETE_FAILED');
         }
