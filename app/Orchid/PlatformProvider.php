@@ -35,16 +35,37 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.index'),
 
             Menu::make(__('Programs'))
-                ->icon('layers')
-                ->route('platform.programs'),
+                ->icon('modules')
+                ->list([
+                    Menu::make(__('Programs'))
+                        ->icon('screen-desktop')
+                        ->route('platform.programs'),
+                    Menu::make(__('Categories'))
+                        ->icon('layers')
+                        ->route('platform.programs'),
+                ]),
 
             Menu::make(__('Projects'))
-                ->icon('wrench')
-                ->route('platform.index'),
+                ->icon('rocket')
+                ->list([
+                    Menu::make(__('Projects'))
+                        ->icon('wrench')
+                        ->route('platform.index'),
+                    Menu::make(__('Owners'))
+                        ->icon('people')
+                        ->route('platform.index'),
+                ]),
 
             Menu::make(__('Events'))
                 ->icon('calendar')
-                ->route('platform.index'),
+                ->list([
+                    Menu::make(__('Events'))
+                        ->icon('task')
+                        ->route('platform.index'),
+                    Menu::make(__('Organizers'))
+                        ->icon('people')
+                        ->route('platform.index'),
+                ]),
 
             // Menu::make('News')
             //     ->icon('docs')
