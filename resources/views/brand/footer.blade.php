@@ -1,3 +1,3 @@
 <p class="small m-n">
-    Powered by  <a href="hype.co.tz" target="_blank"><b>HYPE Interactive</b></a>
+    Powered by  <a href="https://admin.uiss.patrickmamsery.works" target="_blank"><b>UISS Developers</b></a>
 </p>

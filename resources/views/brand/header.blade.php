@@ -10,7 +10,7 @@
     {{-- <x-orchid-icon path="database"/> --}}
 
     <span class="m-l d-none d-sm-block">
-        HYPE
-        <small class="v-top opacity">Interactive</small>
+        UISS
+        <small class="v-top opacity">Admin Panel</small>
     </span>
 </p>
