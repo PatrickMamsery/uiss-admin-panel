@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Orchid\Platform\Models\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
@@ -13,6 +15,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
         'email',
         'password',
         'permissions',
@@ -47,6 +50,7 @@ class User extends Authenticatable
     protected $allowedFilters = [
         'id',
         'name',
+        'phone',
         'email',
         'permissions',
     ];
@@ -59,6 +63,7 @@ class User extends Authenticatable
     protected $allowedSorts = [
         'id',
         'name',
+        'phone',
         'email',
         'updated_at',
         'created_at',

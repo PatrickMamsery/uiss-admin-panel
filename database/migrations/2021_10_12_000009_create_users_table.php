@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('phone')->nullable();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable()->default(null);
             $table->string('password');
@@ -31,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->json('permissions')->nullable()->default(null);
 
             $table->unique(["email"], 'users_email_unique');
+            $table->unique(["phone"], 'users_phone_unique');
             $table->nullableTimestamps();
         });
     }
@@ -40,8 +42,8 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-     public function down()
-     {
-       Schema::dropIfExists($this->tableName);
-     }
+    public function down()
+    {
+        Schema::dropIfExists($this->tableName);
+    }
 }

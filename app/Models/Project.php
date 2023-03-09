@@ -19,6 +19,11 @@ class Project extends Model
 
     public function category()
     {
-        return $this->belongsTo(ProjectCategory::class);
+        return $this->belongsTo(ProjectCategory::class, 'category_id', 'id');
+    }
+
+    public function owners()
+    {
+        return $this->hasMany(ProjectOwner::class);
     }
 }
