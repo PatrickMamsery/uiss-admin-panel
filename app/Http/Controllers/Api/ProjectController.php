@@ -179,8 +179,14 @@ class ProjectController extends BaseController
 
         if (is_null($project)) {
             return $this->sendError('NOT_FOUND');
-        } 
-
+        }
+        
+        if ($project->owners->count() > 0) {
+            foreach ($project->owners as $owner) {
+                $owner->delete();
+            }
+        }
+        
         if ($project->delete()) {
             return $this->sendResponse(new ProjectResource($project), 'DELETE_SUCCESS', 204);
         } else {
