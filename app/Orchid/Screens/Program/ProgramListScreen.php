@@ -2,11 +2,13 @@
 
 namespace App\Orchid\Screens\Program;
 
+use Illuminate\Http\Request;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Link;
 
 use App\Models\Program;
 use App\Orchid\Layouts\Program\ProgramListLayout;
+use Orchid\Support\Facades\Toast;
 
 class ProgramListScreen extends Screen
 {
@@ -54,5 +56,13 @@ class ProgramListScreen extends Screen
         return [
             ProgramListLayout::class
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        Program::findOrFail($request->get('id'))
+            ->delete();
+
+        Toast::info(__('Program was deleted'));
     }
 }

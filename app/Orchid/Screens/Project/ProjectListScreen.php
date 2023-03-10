@@ -2,10 +2,12 @@
 
 namespace App\Orchid\Screens\Project;
 
+use Illuminate\Http\Request;
 use App\Models\Project;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Link;
 use App\Orchid\Layouts\Project\ProjectListLayout;
+use Orchid\Support\Facades\Toast;
 
 class ProjectListScreen extends Screen
 {
@@ -51,7 +53,24 @@ class ProjectListScreen extends Screen
     public function layout(): array
     {
         return [
-           ProjectListLayout::class
+            ProjectListLayout::class
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        $project = Project::findOrFail($request->get('id'));
+
+        if ($project->owners->count() > 0) {
+            foreach ($project->owners as $owner) {
+                $owner->delete();
+            }
+
+            $project->delete();
+        } else {
+            $project->delete();
+        }
+
+        Toast::info(__('Project was deleted'));
     }
 }

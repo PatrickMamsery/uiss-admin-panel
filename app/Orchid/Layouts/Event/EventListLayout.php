@@ -2,12 +2,14 @@
 
 namespace App\Orchid\Layouts\Event;
 
-use App\Models\Event;
+use App\Models\Event as CustomEvent;
 use Orchid\Screen\TD;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
+
+use Illuminate\Support\Str;
 
 class EventListLayout extends Table
 {
@@ -32,47 +34,41 @@ class EventListLayout extends Table
             TD::make('id','ID')
                 ->sort()
                 ->filter(TD::FILTER_TEXT)
-                ->render(function(Event $event){
+                ->render(function(CustomEvent $event){
                     return Link::make($event->id)
                     ->route('platform.event.edit',$event);
                 }),
 
             TD::make('name','Name')
-                ->render(function(Event $event){
+                ->render(function(CustomEvent $event){
                     return Link::make($event->name)
                     ->route('platform.event.edit',$event);
                 }),
 
-            TD::make('description','Description'),
+            TD::make('description','Description')
+                ->render(function(CustomEvent $event) {
+                    return Str::limit($event->description, 50);
+                }),
 
             TD::make('venue','Venue')
-                ->render(function(Event $event){
-                    return Link::make($event->venue)
-                    ->route('platform.event.edit', $event->venue);
+                ->render(function(CustomEvent $event){
+                    return $event->venue;
                 }),
 
             TD::make('image','Image')
-                ->render(function(Event $event){
-                    return Link::make($event->image)
-                    ->route('platform.event.edit', $event->image);
+                ->render(function(CustomEvent $event){
+                    return '<img style=" width: 100px;" src='.$event->image.' alt="preview"></img>';
                 }),
 
-            TD::make('start_date','start_date')
-                ->render(function(Event $event){
-                    return Link::make($event->start_date)
-                    ->route('platform.event.edit', $event->start_date);
-                }),
-
-            TD::make('end_date','end_date')
-                ->render(function(Event $event){
-                    return Link::make($event->end_date)
-                    ->route('platform.event.edit', $event->end_date);
+            TD::make('Duration')
+                ->render(function(CustomEvent $event){
+                    return $event->start_date->toDateString().' - '.$event->end_date->toDateString();
                 }),
 
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(function (Event $event) {
+                ->render(function (CustomEvent $event) {
                     return DropDown::make()
                         ->icon('options-vertical')
                         ->list([

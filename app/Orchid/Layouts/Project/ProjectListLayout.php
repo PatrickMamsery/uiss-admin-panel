@@ -9,6 +9,8 @@ use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 
+use Illuminate\Support\Str;
+
 class ProjectListLayout extends Table
 {
     /**
@@ -43,18 +45,19 @@ class ProjectListLayout extends Table
                     ->route('platform.project.edit',$project);
                 }),
 
-            TD::make('description','Description'),
+            TD::make('description','Description')
+                ->render(function(Project $project) {
+                    return Str::limit($project->description, 50);
+                }),
 
             TD::make('category','Category')
                 ->render(function(Project $project){
-                    return Link::make($project->category_id)
-                    ->route('platform.project.edit', $project->category);
+                    return $project->category->name;
                 }),
 
             TD::make('image','Image')
                 ->render(function(Project $project){
-                    return Link::make($project->image)
-                    ->route('platform.project.edit', $project->image);
+                    return '<img style=" width: 100px;" src='.$project->image.' alt="preview"></img>';
                 }),
 
             TD::make(__('Actions'))

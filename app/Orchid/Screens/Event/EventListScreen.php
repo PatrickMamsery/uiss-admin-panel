@@ -2,10 +2,12 @@
 
 namespace App\Orchid\Screens\Event;
 
-use App\Models\Event;
+use Illuminate\Http\Request;
+use App\Models\Event as CustomEvent;
 use Orchid\Screen\Screen;
 use Orchid\Screen\Actions\Link;
 use App\Orchid\Layouts\Event\EventListLayout;
+use Orchid\Support\Facades\Toast;
 
 class EventListScreen extends Screen
 {
@@ -25,7 +27,7 @@ class EventListScreen extends Screen
     public function query(): array
     {
         return [
-            'events' => Event::paginate()
+            'events' => CustomEvent::paginate()
         ];
     }
 
@@ -53,5 +55,21 @@ class EventListScreen extends Screen
         return [
             EventListLayout::class
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        $event = CustomEvent::findOrFail($request->get('id'));
+
+        if ($event->eventHosts->count() > 0) {
+            foreach ($event->eventHosts as $eventHost) {
+                $eventHost->delete();
+            }
+            $event->delete();
+        } else {
+            $event->delete();
+        }
+        
+        Toast::info(__('Event was deleted'));
     }
 }
