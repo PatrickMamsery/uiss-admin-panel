@@ -5,9 +5,12 @@ namespace App\Orchid\Screens\Project;
 use App\Models\Project;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
+use App\Models\ProjectCategory;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
 use Orchid\Support\Facades\Alert;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Support\Facades\Layout;
 
@@ -76,16 +79,25 @@ class ProjectEditScreen extends Screen
                 Input::make('project.name')
                     ->title('Name')
                     ->required()
-                    ->placeholder('Enter project name')
-                    ->help('Enter project name'),
+                    ->placeholder('Enter project name'),
 
                 TextArea::make('project.description')
                     ->title('Description')
                     ->rows(5)
                     ->required()
                     ->placeholder('Enter project description')
-                    ->help('Enter project description')
-                    ->help('What is the project about?'),
+                    ->help('Enter project description'),
+
+                Relation::make('project.category_id')
+                    ->title('Category Id')
+                    ->fromModel(ProjectCategory::class, 'id'),
+
+                Cropper::make('project.image')
+                    ->targetId()
+                    ->title('Project Image')
+                    ->width(1000)
+                    ->height(500),
+
             ])
         ];
     }

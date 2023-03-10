@@ -161,15 +161,26 @@ Route::screen('program-edit/{program?}', ProgramEditScreen::class)
             ->push(_('Edit'), route('platform.program.edit'));
     });
 
+// Events
 
-Route::screen('event/{event?}', EventEditScreen::class)
-    ->name('platform.event.edit');
-
+// Home > Events
 Route::screen('events', EventListScreen::class)
     ->name('platform.events');
 
+// Home > Events > Edit
+Route::screen('event/{event?}', EventEditScreen::class)
+    ->name('platform.event.edit');
+
+
+
+//Projects
+
+// Home > Projects
+Route::screen('project', ProjectListScreen::class)
+    ->name('platform.projects');
+
+// Home > Projects > Edit
 Route::screen('proect/{project?}', ProjectEditScreen::class)
     ->name('platform.project.edit');
 
-Route::screen('project', ProjectListScreen::class)
-    ->name('platform.projects');
+

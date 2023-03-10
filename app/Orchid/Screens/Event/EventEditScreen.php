@@ -6,7 +6,9 @@ use App\Models\Event;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
 use Orchid\Support\Facades\Alert;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Support\Facades\Layout;
@@ -77,16 +79,34 @@ class EventEditScreen extends Screen
                 Input::make('event.name')
                     ->title('Name')
                     ->required()
-                    ->placeholder('Enter event name')
-                    ->help('Enter event name'),
+                    ->placeholder('Enter event name'),
 
                 TextArea::make('event.description')
                     ->title('Description')
                     ->rows(5)
                     ->required()
-                    ->placeholder('Enter event description')
-                    ->help('Enter event description')
-                    ->help('What is the event about?'),
+                    ->placeholder('Enter event description'),
+
+                Input::make('event.venue')
+                    ->title('Venue')
+                    ->required()
+                    ->placeholder('Enter event venue'),
+
+                Input::make('event.start_date')
+                    ->title('Start date')
+                    ->required()
+                    ->placeholder('Enter event start_date'),
+
+                Input::make('event.end_date')
+                    ->title('End date')
+                    ->required()
+                    ->placeholder('Enter event end_date'),
+
+                Cropper::make('event.image')
+                    ->targetId()
+                    ->title('Event Image')
+                    ->width(500)
+                    ->height(500),
             ])
         ];
     }
