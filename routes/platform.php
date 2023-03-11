@@ -109,7 +109,7 @@ Route::screen('news',NewsListScreen::class)
     ->breadcrumbs(function(Trail $trail){
         return $trail
             ->parent('platform.index')
-            ->push(_('News'),route('platform.news'));
+            ->push(__('News'),route('platform.news'));
     });
 
 // Home > news > edit
@@ -118,7 +118,7 @@ Route::screen('news-edit/{news?}',NewsEditScreen::class)
     ->breadcrumbs(function(Trail $trail){
         return $trail
             ->parent('platform.news')
-            ->push(_('Edit'),route('platform.news.edit'));
+            ->push(__('Edit'),route('platform.news.edit'));
     });
 
 // FAQ
@@ -129,7 +129,7 @@ Route::screen('faqs',FAQsListScreen::class)
     ->breadcrumbs(function (Trail $trail){
         return $trail
             ->parent('platform.index')
-            ->push(_('Faqs'),route('platform.faqs'));
+            ->push(__('Faqs'),route('platform.faqs'));
     });
 
 // Home > Faqs > Edit
@@ -138,7 +138,7 @@ Route::screen('faq/{faq?}',FAQsEditScreen::class)
     ->breadcrumbs(function (Trail $trail){
         return $trail
             ->parent('platform.faqs')
-            ->push(_('Edit'),route('platform.faqs.faq'));
+            ->push(__('Edit'),route('platform.faqs.faq'));
     });
 
 // Programs
@@ -149,7 +149,7 @@ Route::screen('programs', ProgramListScreen::class)
     ->breadcrumbs(function (Trail $trail){
         return $trail
             ->parent('platform.index')
-            ->push(_('Programs'), route('platform.programs'));
+            ->push(__('Programs'), route('platform.programs'));
     });
 
 // Home > Programs > Edit
@@ -158,7 +158,7 @@ Route::screen('program-edit/{program?}', ProgramEditScreen::class)
     ->breadcrumbs(function (Trail $trail){
         return $trail
             ->parent('platform.programs')
-            ->push(_('Edit'), route('platform.program.edit'));
+            ->push(__('Edit'), route('platform.program.edit'));
     });
 
 // Events
