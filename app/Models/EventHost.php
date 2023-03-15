@@ -20,7 +20,7 @@ class EventHost extends Model
         return $this->belongsTo(App\Models\Event::class);
     }
 
-    public function host()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
