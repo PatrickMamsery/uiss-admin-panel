@@ -21,6 +21,12 @@ use App\Orchid\Screens\Program\ProgramEditScreen;
 use App\Orchid\Screens\Program\ProgramListScreen;
 use App\Orchid\Screens\Project\ProjectEditScreen;
 use App\Orchid\Screens\Project\ProjectListScreen;
+use App\Orchid\Screens\Admin\AdminListScreen;
+use App\Orchid\Screens\Admin\AdminEditScreen;
+use App\Orchid\Screens\Members\RegisteredListScreen;
+use App\Orchid\Screens\Members\RegisteredEditScreen;
+use App\Orchid\Screens\Members\LeadersListScreen;
+use App\Orchid\Screens\Members\LeadersEditScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
 use App\Orchid\Screens\Examples\ExampleFieldsScreen;
@@ -165,11 +171,21 @@ Route::screen('program-edit/{program?}', ProgramEditScreen::class)
 
 // Home > Events
 Route::screen('events', EventListScreen::class)
-    ->name('platform.events');
+    ->name('platform.events')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Events'), route('platform.events'));
+    });
 
 // Home > Events > Edit
 Route::screen('event/{event?}', EventEditScreen::class)
-    ->name('platform.event.edit');
+    ->name('platform.event.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.events')
+            ->push(__('Edit'), route('platform.event.edit'));
+    });
 
 
 
@@ -177,10 +193,74 @@ Route::screen('event/{event?}', EventEditScreen::class)
 
 // Home > Projects
 Route::screen('project', ProjectListScreen::class)
-    ->name('platform.projects');
+    ->name('platform.projects')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Projects'), route('platform.projects'));
+    });
 
 // Home > Projects > Edit
 Route::screen('proect/{project?}', ProjectEditScreen::class)
-    ->name('platform.project.edit');
+    ->name('platform.project.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.projects')
+            ->push(__('Edit'), route('platform.project.edit'));
+    });
+
+// Home > Members
+Route::screen('members', RegisteredListScreen::class)
+    ->name('platform.members')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Members'), route('platform.members'));
+    });
+
+// Home > Members > Edit
+Route::screen('member/{member?}', RegisteredEditScreen::class)
+    ->name('platform.members.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.members')
+            ->push(__('Edit'), route('platform.members.edit'));
+    });
+
+// Home > Leaders
+Route::screen('leaders', LeadersListScreen::class)
+    ->name('platform.leaders')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Leaders'), route('platform.leaders'));
+    });
+
+// Home > Leaders > Edit
+Route::screen('leader/{leader?}', LeadersEditScreen::class)
+    ->name('platform.leaders.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.leaders')
+            ->push(__('Edit'), route('platform.leaders.edit'));
+    });
+
+// Home > Admin Users
+Route::screen('admin-users', AdminListScreen::class)
+    ->name('platform.admin-users')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Admin Users'), route('platform.admin-users'));
+    });
+
+// Home > Admin Users > Edit
+Route::screen('admin-user/{admin?}', AdminEditScreen::class)
+    ->name('platform.admin-user.edit')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.admin-users')
+            ->push(__('Edit'), route('platform.admin-user.edit'));
+    });
 
 

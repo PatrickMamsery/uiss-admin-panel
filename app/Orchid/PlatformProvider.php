@@ -32,7 +32,14 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('Members'))
                 ->icon('people')
-                ->route('platform.index'),
+                ->list([
+                    Menu::make(__('Leaders'))
+                        ->icon('people')
+                        ->route('platform.leaders'),
+                    Menu::make(__('Members'))
+                        ->icon('people')
+                        ->route('platform.members'),
+                ]),
 
             Menu::make(__('Programs'))
                 ->icon('modules')

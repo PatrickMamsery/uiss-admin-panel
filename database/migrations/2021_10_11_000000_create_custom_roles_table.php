@@ -25,6 +25,7 @@ class CreateCustomRolesTable extends Migration
             ["name" => "developer"],
             ["name" => "leader"],
             ["name" => "member"],
+            ["name" => "guest"]
         ]);
     }
 
