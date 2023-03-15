@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventsTable extends Migration
+class CreateCustomRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('custom_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
-            $table->string('venue');
-            $table->string('image')->nullable();
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->string('name', 45)->nullable();
             $table->nullableTimestamps();
         });
+
+        DB::table('custom_roles')->insert([
+            ["name" => "root"],
+            ["name" => "admin"],
+            ["name" => "developer"],
+            ["name" => "leader"],
+            ["name" => "member"],
+        ]);
     }
 
     /**
@@ -32,6 +35,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('custom_roles');
     }
 }
