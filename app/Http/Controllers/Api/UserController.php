@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\CustomRole;
 
 class UserController extends BaseController
 {
@@ -29,20 +30,39 @@ class UserController extends BaseController
      */
     public function store(Request $request)
     {
+        // var_dump($request->all()); die;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'nullable|unique:users',
+            'role' => 'nullable'
         ]);
 
+        
         if ($validator->fails()) {
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
+
+        if ($request->role) {
+            // check if the role exists
+            // clean the role input to small letters
+            $inputRole = strtolower($request->role);
+
+            $role = CustomRole::where('name', $inputRole)->first();
+            
+            if (is_null($role)) {
+                $role = new CustomRole;
+                $role->name = $inputRole;
+                $role->save();
+            }
+        }
+
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'role_id' => $role->id,
             'password' => $request->phone ? bcrypt($request->phone) : bcrypt($request->email),
         ]);
 

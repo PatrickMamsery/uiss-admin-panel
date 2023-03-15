@@ -29,8 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [PassportAuthController::class, 'register']);
 Route::post('/login', [PassportAuthController::class, 'login']);
 
-Route::middleware(['auth:api'])->group(function () {
+Route::middleware(['auth.api'])->group(function () {
     Route::apiResource('users', UserController::class)->middleware('withoutlink');
+    // Route::apiResource('users', UserController::class);
     Route::apiResource('programs', ProgramController::class)->middleware('withoutlink');
     Route::apiResource('projects', ProjectController::class)->middleware('withoutlink');
     Route::apiResource('events', EventController::class)->middleware('withoutlink');

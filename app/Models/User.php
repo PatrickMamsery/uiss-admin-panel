@@ -17,6 +17,7 @@ class User extends Authenticatable
         'name',
         'phone',
         'email',
+        'role_id',
         'password',
         'permissions',
     ];
@@ -68,4 +69,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function customRole()
+    {
+        return $this->belongsTo(CustomRole::class, 'role_id', 'id');
+    }
 }
