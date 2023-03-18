@@ -49,10 +49,17 @@ class ProjectController extends BaseController
         // check if owner exists, if not create a new one
         $user = User::where('name', $request->owner)->first();
         if (is_null($user)) {
-            User::create([
+            // overwrite user
+            $user = User::create([
                 'name' => $request->owner,
                 'email' => $request->owner . '@example.com',
                 'password' => bcrypt($request->owner),
+                'role_id' => 5,
+                'isProjectOwner' => 1
+            ]);
+        } else {
+            $user->update([
+                'isProjectOwner' => 1
             ]);
         }
         

@@ -192,7 +192,7 @@ Route::screen('event/{event?}', EventEditScreen::class)
 //Projects
 
 // Home > Projects
-Route::screen('project', ProjectListScreen::class)
+Route::screen('projects', ProjectListScreen::class)
     ->name('platform.projects')
     ->breadcrumbs(function (Trail $trail) {
         return $trail
@@ -201,7 +201,7 @@ Route::screen('project', ProjectListScreen::class)
     });
 
 // Home > Projects > Edit
-Route::screen('proect/{project?}', ProjectEditScreen::class)
+Route::screen('project/{project?}', ProjectEditScreen::class)
     ->name('platform.project.edit')
     ->breadcrumbs(function (Trail $trail) {
         return $trail

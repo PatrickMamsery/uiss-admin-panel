@@ -18,6 +18,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'role_id',
+        'isProjectOwner',
         'password',
         'permissions',
     ];
@@ -52,6 +53,7 @@ class User extends Authenticatable
         'id',
         'name',
         'phone',
+        'isProjectOwner',
         'email',
         'permissions',
     ];

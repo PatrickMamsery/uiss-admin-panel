@@ -36,18 +36,18 @@ class ProjectListLayout extends Table
                 ->filter(TD::FILTER_TEXT)
                 ->render(function(Project $project){
                     return Link::make($project->id)
-                    ->route('platform.project.edit',$project);
+                    ->route('platform.project.edit', $project);
                 }),
 
             TD::make('title','Title')
                 ->render(function(Project $project){
                     return Link::make($project->title)
-                    ->route('platform.project.edit',$project);
+                    ->route('platform.project.edit', $project);
                 }),
 
             TD::make('description','Description')
                 ->render(function(Project $project) {
-                    return Str::limit($project->description, 50);
+                    return Str::limit(strip_tags($project->description), 50);
                 }),
 
             TD::make('category','Category')
