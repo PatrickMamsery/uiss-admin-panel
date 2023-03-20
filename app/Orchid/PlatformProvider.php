@@ -49,7 +49,7 @@ class PlatformProvider extends OrchidServiceProvider
                         ->route('platform.programs'),
                     Menu::make(__('Categories'))
                         ->icon('layers')
-                        ->route('platform.programs'),
+                        ->route('platform.program-categories'),
                 ]),
 
             Menu::make(__('Projects'))

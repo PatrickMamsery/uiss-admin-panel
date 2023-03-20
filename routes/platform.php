@@ -19,6 +19,7 @@ use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\Program\ProgramEditScreen;
 use App\Orchid\Screens\Program\ProgramListScreen;
+use App\Orchid\Screens\Program\CategoryListScreen;
 use App\Orchid\Screens\Project\ProjectEditScreen;
 use App\Orchid\Screens\Project\ProjectListScreen;
 use App\Orchid\Screens\Admin\AdminListScreen;
@@ -165,6 +166,16 @@ Route::screen('program-edit/{program?}', ProgramEditScreen::class)
         return $trail
             ->parent('platform.programs')
             ->push(__('Edit'), route('platform.program.edit'));
+    });
+
+
+// Home > Program Categories
+Route::screen('program-categories', CategoryListScreen::class)
+    ->name('platform.program-categories')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Edit'), route('platform.program-categories'));
     });
 
 // Events
