@@ -27,4 +27,8 @@ return [
     'NOT_LOGGED_IN' => 'User not logged in',
     'WRONG_CREDENTIALS' => 'Credentials do not match our records',
     'PASSWORD_MISMATCH'=> 'Current password entered does not match records',
+
+    'ROLE_NOT_FOUND' => 'Role provided does not match our records',
+    'ROLE_NOT_ALLOWED' => 'Role not allowed',
+    'MISSING_ADDITIONAL_INFO' => 'Additional info for role missing',
 ];

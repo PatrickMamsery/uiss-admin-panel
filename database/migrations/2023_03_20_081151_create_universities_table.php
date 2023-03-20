@@ -18,6 +18,11 @@ class CreateUniversitiesTable extends Migration
             $table->string('name')->nullable();
             $table->nullableTimestamps();
         });
+
+        // insert some data
+        DB::table('universities')->insert([
+            'name' => 'University of Dar es Salaam',
+        ]);
     }
 
     /**

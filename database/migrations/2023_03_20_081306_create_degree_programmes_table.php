@@ -26,6 +26,18 @@ class CreateDegreeProgrammesTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });
+
+        // insert some data
+        DB::table('degree_programmes')->insert([
+            [
+                'name' => 'Bachelor of Science in Computer Engineering and IT',
+                'department_id' => 1,
+            ],
+            [
+                'name' => 'Bachelor of Science in Computer Science',
+                'department_id' => 1,
+            ]
+        ]);
     }
 
     /**

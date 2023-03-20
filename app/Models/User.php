@@ -76,4 +76,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(CustomRole::class, 'role_id', 'id');
     }
+
+    // public function projects()
+    // {
+    //     return $this->hasMany(Project::class);
+    // }
+
+    public function memberDetails()
+    {
+        return $this->hasOne(MemberDetail::class);
+    }
+
+    public function leaderDetails()
+    {
+        return $this->hasOne(LeaderDetail::class);
+    }
 }

@@ -27,6 +27,12 @@ class CreateDepartmentsTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });
+
+        // insert some data
+        DB::table('departments')->insert([
+            'name' => 'Department of Computer Science and Engineering',
+            'college_id' => 2,
+        ]);
     }
 
     /**

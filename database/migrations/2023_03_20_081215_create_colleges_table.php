@@ -27,6 +27,18 @@ class CreateCollegesTable extends Migration
                 ->onUpdate('no action')
                 ->onDelete('no action');
         });
+
+        // insert some data
+        DB::table('colleges')->insert([
+            [
+                'name' => 'College of Education',
+                'university_id' => 1,
+            ], 
+            [
+                'name' => 'College of Information and Communication Technologies',
+                'university_id' => 1,
+            ]
+        ]);
     }
 
     /**
