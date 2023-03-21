@@ -30,7 +30,8 @@ class UserController extends BaseController
      */
     public function index()
     {
-        return $this->sendResponse(UserResource::collection(User::paginate()), 'RETRIEVE_SUCCESS');
+        $per_page = 100;
+        return $this->sendResponse(UserResource::collection(User::paginate($per_page)), 'RETRIEVE_SUCCESS');
     }
 
     /**
