@@ -85,7 +85,7 @@ class UserController extends BaseController
                 $role = CustomRole::where('name', 'member')->first();
                 
                 // check if there are additional info
-                if (!$request->additionalInfo) {
+                if ($role && !$request->additionalInfo) {
                     return $this->sendError('MISSING_ADDITIONAL_INFO');
                 } else {
                     // check if the member already exists
@@ -160,7 +160,7 @@ class UserController extends BaseController
 
                 
                 // check if there are additional info
-                if (!$request->additionalInfo) {
+                if ($role && !$request->additionalInfo) {
                     return $this->sendError('MISSING_ADDITIONAL_INFO');
                 } else {
                     // check if the member already exists
