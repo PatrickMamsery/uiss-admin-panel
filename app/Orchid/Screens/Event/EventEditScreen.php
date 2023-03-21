@@ -6,6 +6,7 @@ use App\Models\Event;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Cropper;
@@ -92,15 +93,13 @@ class EventEditScreen extends Screen
                     ->required()
                     ->placeholder('Enter event venue'),
 
-                Input::make('event.start_date')
+                DateTimer::make('event.start_date')
                     ->title('Start date')
-                    ->required()
-                    ->placeholder('Enter event start_date'),
+                    ->required(),
 
-                Input::make('event.end_date')
+                DateTimer::make('event.end_date')
                     ->title('End date')
-                    ->required()
-                    ->placeholder('Enter event end_date'),
+                    ->required(),
 
                 Cropper::make('event.image')
                     ->targetId()

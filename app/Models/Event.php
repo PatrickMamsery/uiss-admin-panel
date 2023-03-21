@@ -19,6 +19,11 @@ class Event extends Model
         'end_date',
     ];
 
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
+
     public function eventHosts()
     {
         return $this->hasMany(EventHost::class);
