@@ -62,7 +62,7 @@ class EventListLayout extends Table
 
             TD::make('Duration')
                 ->render(function(CustomEvent $event){
-                    return $event->start_date->toDateString().' - '.$event->end_date->toDateString();
+                    return $event->start_date.' - '.$event->end_date;
                 }),
 
             TD::make(__('Actions'))

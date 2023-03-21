@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\College;
+use App\Models\Position;
+
+use App\Models\CustomRole;
+use App\Models\Department;
+use App\Models\University;
+use App\Models\LeaderDetail;
+use App\Models\MemberDetail;
 use Illuminate\Http\Request;
+use App\Models\DegreeProgramme;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 use App\Http\Resources\UserResource;
-use App\Models\User;
-use App\Models\CustomRole;
-use App\Models\MemberDetail;
-use App\Models\LeaderDetail;
-use App\Models\University;
-use App\Models\College;
-use App\Models\Department;
-use App\Models\DegreeProgramme;
-use App\Models\Position;
+use App\Http\Resources\MemberResource;
+use App\Http\Resources\LeaderResource;
 
 class UserController extends BaseController
 {
@@ -79,8 +83,6 @@ class UserController extends BaseController
         switch ($request->role) {
             case('member'):
                 $role = CustomRole::where('name', 'member')->first();
-
-                // var_dump($request->additionalInfo['regNo']); die;
                 
                 // check if there are additional info
                 if (!$request->additionalInfo) {
@@ -91,15 +93,64 @@ class UserController extends BaseController
                     if (!is_null($member)) {
                         return $this->sendError('DUPLICATE_ENTRY');
                     } else {
-                        $member = new MemberDetail;
-                        $member->user_id = $user->id;
-                        $member->reg_no = $request->additionalInfo['regNo'];
-                        $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
-                        $member->university_id = University::where('name', $request->additionalInfo['university'])->first()->id;
-                        $member->department_id = Department::where('name', $request->additionalInfo['department'])->first()->id;
-                        $member->college_id = College::where('name', $request->additionalInfo['college'])->first()->id;
-                        $member->degree_programme_id = DegreeProgramme::where('name', $request->additionalInfo['degreeProgramme'])->first()->id;
-                        $member->save();
+                        // implement a try catch block to handle errors and create new instances of university, college, department and degree programme
+
+                        try {
+                            $university = University::where('name', $request->additionalInfo['university'])->first();
+                            if (is_null($university)) {
+                                $university = new University;
+                                $university->name = $request->additionalInfo['university'];
+                                $university->save();
+                            }
+                            
+                            $college = College::where('name', $request->additionalInfo['college'])->where('university_id', $university->id)->first();
+                            // var_dump($college); die;
+
+                            if (is_null($college)) {
+                                $college = new College;
+                                $college->name = $request->additionalInfo['college'];
+                                $college->university_id = $university->id;
+                                $college->save();
+                            }
+
+                            $department = Department::where('name', $request->additionalInfo['department'])->where('college_id', $college->id)->first();
+
+                            if (is_null($department)) {
+                                $department = new Department;
+                                $department->name = $request->additionalInfo['department'];
+                                $department->college_id = $college->id;
+                                $department->save();
+                            }
+
+                            $degreeProgramme = DegreeProgramme::where('name', $request->additionalInfo['degreeProgramme'])->where('department_id', $department->id)->first();
+
+                            if (is_null($degreeProgramme)) {
+                                $degreeProgramme = new DegreeProgramme;
+                                $degreeProgramme->name = $request->additionalInfo['degreeProgramme'];
+                                $degreeProgramme->department_id = $department->id;
+                                $degreeProgramme->save();
+                            }
+                        } catch (\Exception $error) {
+                            return $this->sendError('CREATE_FAILED', $error);
+                        }
+
+                        try {
+                            // to do db transaction here
+                            DB::transaction(function () use ($user, $request, $member, $university, $college, $department, $degreeProgramme) {
+                                
+                                $member = new MemberDetail;
+                                $member->user_id = $user->id;
+                                $member->reg_no = $request->additionalInfo['regNo'];
+                                $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
+                                $member->university_id = $university->id;
+                                $member->department_id = $department->id;
+                                $member->college_id = $college->id;
+                                $member->degree_programme_id = $degreeProgramme->id;
+                                $member->save();
+                            });
+                        } catch (\Exception $error) {
+                            return $this->sendError('CREATE_FAILED', $error);
+                        }
                     }
                 }
             break;
@@ -160,10 +211,26 @@ class UserController extends BaseController
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::with('customRole')->find($id);
 
         if (is_null($user)) {
             return $this->sendError('NOT_FOUND');
+        }
+
+        
+        // display different user details based on the role
+        switch ($user->customRole->name) {
+            case('member'):
+                $user = User::with('memberDetails')->find($id);
+
+                return $this->sendResponse(new MemberResource($user), 'RETRIEVE_SUCCESS');
+            break;
+
+            case('leader'):
+                $user = User::with('leaderDetails')->find($id);
+
+                return $this->sendResponse(new LeaderResource($user), 'RETRIEVE_SUCCESS');
+            break;
         }
 
         return $this->sendResponse(new UserResource($user), 'RETRIEVE_SUCCESS');
@@ -217,6 +284,25 @@ class UserController extends BaseController
 
         if (is_null($user)) {
             return $this->sendError('NOT_FOUND');
+        }
+
+        // check if user has relations then delete them
+        if ($user->customRole->name == 'member') {
+            $member = MemberDetail::where('user_id', $user->id)->first();
+            $member->delete();
+        } else if ($user->customRole->name == 'leader') {
+            $leader = LeaderDetail::where('user_id', $user->id)->first();
+            $leader->delete();
+        }
+
+        if (count($user->hosts) > 0) {
+            foreach ($user->hosts as $host) {
+                $host->delete();
+            }
+        } else if (count($user->owns) > 0) {
+            foreach ($user->owns as $own) {
+                $own->delete();
+            }
         }
 
         if ($user->delete()) {

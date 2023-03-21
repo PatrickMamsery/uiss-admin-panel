@@ -77,10 +77,15 @@ class User extends Authenticatable
         return $this->belongsTo(CustomRole::class, 'role_id', 'id');
     }
 
-    // public function projects()
-    // {
-    //     return $this->hasMany(Project::class);
-    // }
+    public function owns()
+    {
+        return $this->hasMany(ProjectOwner::class);
+    }
+
+    public function hosts()
+    {
+        return $this->hasMany(EventHost::class);
+    }
 
     public function memberDetails()
     {
