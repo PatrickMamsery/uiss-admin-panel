@@ -36,8 +36,8 @@ class EventController extends BaseController
             'description' => 'required|max:2000',
             'venue' => 'required',
             'image' => 'nullable',
-            'start_date' => 'required',
-            'end_date' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
             'hosts' => 'required',
         ]);
 
@@ -56,7 +56,8 @@ class EventController extends BaseController
             if (is_null($user)) {
                 User::create([
                     'name' => $host,
-                    'email' => $host . '@example.com',
+                    'email' => strtolower(preg_replace('/\s+/', '', $host)) . '@example.com',
+                    'role_id' => 5, // member
                     'password' => bcrypt($host),
                 ]);
             }
@@ -78,8 +79,8 @@ class EventController extends BaseController
             'description' => $request->description,
             'venue' => $request->venue,
             'image' => $image_path ? $image_path : NULL,
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
+            'start_date' => $request->startDate,
+            'end_date' => $request->endDate,
         ]);
         // var_dump($event); die;
 
@@ -131,9 +132,9 @@ class EventController extends BaseController
             'description' => 'nullable|max:2000',
             'venue' => 'nullable',
             'image' => 'nullable',
-            'start_date' => 'nullable',
-            'end_date' => 'nullable',
-            'hosts' => 'required',
+            'startDate' => 'nullable',
+            'endDate' => 'nullable',
+            'hosts' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -152,7 +153,8 @@ class EventController extends BaseController
                 if (is_null($user)) {
                     User::create([
                         'name' => $host,
-                        'email' => $host . '@example.com',
+                        'email' => strtolower(preg_replace('/\s+/', '', $host)) . '@example.com',
+                        'role_id' => 5, // member
                         'password' => bcrypt($host),
                     ]);
                 }
@@ -179,8 +181,8 @@ class EventController extends BaseController
                     'description' => $request->description ? $request->description : $event->description,
                     'venue' => $request->venue ? $request->venue : $event->venue,
                     'image' => $image_path ? $image_path : $event->image,
-                    'start_date' => $request->start_date ? $request->start_date : $event->start_date,
-                    'end_date' => $request->end_date ? $request->end_date : $event->end_date,
+                    'start_date' => $request->startDate ? $request->startDate : $event->start_date,
+                    'end_date' => $request->endDate ? $request->endDate : $event->end_date,
                 ]);
 
                 for ($i = 0; $i < count($host_array); $i++) {
