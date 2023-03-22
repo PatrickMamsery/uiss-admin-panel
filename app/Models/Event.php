@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Screen\AsSource;
 
-class Event extends Model
+class Event extends BaseModel
 {
     use HasFactory, AsSource;
 

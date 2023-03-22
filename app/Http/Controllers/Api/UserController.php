@@ -254,7 +254,7 @@ class UserController extends BaseController
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'nullable|email|unique:users,email,' . $user->id,
             'phone' => 'nullable|unique:users,phone,' . $user->id,
         ]);
 

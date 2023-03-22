@@ -20,7 +20,8 @@ class EventController extends BaseController
      */
     public function index()
     {
-        return $this->sendResponse(EventResource::collection(CustomEvent::paginate()), 'RETRIEVE_SUCCESS');
+        $per_page = 100;
+        return $this->sendResponse(EventResource::collection(CustomEvent::latest('updated_at')->paginate($per_page)), 'RETRIEVE_SUCCESS');
     }
 
     /**
@@ -45,59 +46,65 @@ class EventController extends BaseController
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
 
-        // check if hosts exist, if not create new entries
-        $hosts = [];
-        $hosts = explode(',', $request->hosts);
-        
-        $host_array = []; // this is to receive new created models
-        
-        foreach($hosts as $host) {
-            $user = User::where('name', $host)->first();
-            if (is_null($user)) {
-                User::create([
-                    'name' => $host,
-                    'email' => strtolower(preg_replace('/\s+/', '', $host)) . '@example.com',
-                    'role_id' => 5, // member
-                    'password' => bcrypt($host),
+        try {
+            // check if hosts exist, if not create new entries
+            $hosts = [];
+            $hosts = explode(', ', $request->hosts);
+            
+            $host_array = []; // this is to receive new created models
+            
+            foreach($hosts as $host) {
+                $user = User::where('name', $host)->first();
+                if (is_null($user)) {
+                    $user = User::create([
+                        'name' => $host,
+                        'email' => strtolower(preg_replace('/\s+/', '', $host)) . '@example.com',
+                        'role_id' => 5, // member
+                        'password' => bcrypt($host),
+                    ]);
+                }
+                
+                array_push($host_array, $user->id);
+            }
+            // var_dump($host_array); die;
+
+            // manipulate image storage
+            // $image_path = '';
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $image_new_name = time() . $image->getClientOriginalExtension();
+            //     $image->storeAs('uploads/events', $image_new_name);
+            // }
+            
+            $event = CustomEvent::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'venue' => $request->venue,
+                // 'image' => $image_path ? $image_path : $event->image, // made way for cloudinary image management from frontend
+                'image' => $request->image ? $request->image : $event->image,
+                'start_date' => $request->startDate,
+                'end_date' => $request->endDate,
+            ]);
+            // var_dump($event); die;
+
+
+            // save the new event hosts
+            // $event->hosts()->saveMany($host_array);
+            for ($i = 0; $i < count($host_array); $i++) {
+                Host::firstOrCreate([
+                    'event_id' => $event->id,
+                    'user_id' => $host_array[$i],
                 ]);
             }
-            
-            array_push($host_array, $user->id);
-        }
-        // var_dump($host_array); die;
 
-        // manipulate image storage
-        $image_path = '';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image_new_name = time() . $image->getClientOriginalExtension();
-            $image->storeAs('uploads/events', $image_new_name);
-        }
-        
-        $event = CustomEvent::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'venue' => $request->venue,
-            'image' => $image_path ? $image_path : NULL,
-            'start_date' => $request->startDate,
-            'end_date' => $request->endDate,
-        ]);
-        // var_dump($event); die;
+            if (is_null($event)) {
+                return $this->sendError('CREATE_FAILED');
+            } else {
+                return $this->sendResponse(new EventResource($event), 'CREATE_SUCCESS');
+            }
 
-
-        // save the new event hosts
-        // $event->hosts()->saveMany($host_array);
-        for ($i = 0; $i < count($host_array); $i++) {
-            Host::firstOrCreate([
-                'event_id' => $event->id,
-                'user_id' => $host_array[$i],
-            ]);
-        }
-
-        if (is_null($event)) {
-            return $this->sendError('CREATE_FAILED');
-        } else {
-            return $this->sendResponse(new EventResource($event), 'CREATE_SUCCESS');
+        } catch (\Throwable $th) {
+            return $this->sendError('CREATE_FAILED', $th->getMessage());
         }
     }
 
@@ -144,14 +151,14 @@ class EventController extends BaseController
         try {
             // check if hosts exist, if not create new entries
             $hosts = [];
-            $hosts = explode(',', $request->hosts);
+            $hosts = explode(', ', $request->hosts);
             
             $host_array = []; // this is to receive new created models
             
             foreach($hosts as $host) {
                 $user = User::where('name', $host)->first();
                 if (is_null($user)) {
-                    User::create([
+                    $user = User::create([
                         'name' => $host,
                         'email' => strtolower(preg_replace('/\s+/', '', $host)) . '@example.com',
                         'role_id' => 5, // member
@@ -164,14 +171,15 @@ class EventController extends BaseController
             // var_dump($host_array); die;
 
             // manipulate image storage
-            $image_path = '';
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $image_new_name = time() . $image->getClientOriginalExtension();
-                $image->storeAs('uploads/events', $image_new_name);
-            }
+            // $image_path = '';
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $image_new_name = time() . $image->getClientOriginalExtension();
+            //     $image->storeAs('uploads/events', $image_new_name);
+            // }
             
             $event = CustomEvent::find($id);
+            $event->flushCache();
 
             if (is_null($event)) {
                 return $this->sendError('UPDATE_FAILED');
@@ -180,11 +188,22 @@ class EventController extends BaseController
                     'name' => $request->name ? $request->name : $event->name,
                     'description' => $request->description ? $request->description : $event->description,
                     'venue' => $request->venue ? $request->venue : $event->venue,
-                    'image' => $image_path ? $image_path : $event->image,
+                    // 'image' => $image_path ? $image_path : $event->image, // made way for cloudinary image management from frontend
+                    'image' => $request->image ? $request->image : $event->image,
                     'start_date' => $request->startDate ? $request->startDate : $event->start_date,
                     'end_date' => $request->endDate ? $request->endDate : $event->end_date,
                 ]);
 
+                // var_dump($event->eventHosts->count()); die;
+
+                // remove current hosts from the db
+                if ($event->eventHosts->count() > 0 && $request->has('hosts')) {
+                    foreach ($event->eventHosts as $host) {
+                        $host->delete();
+                    }
+                }
+
+                // save the new event hosts
                 for ($i = 0; $i < count($host_array); $i++) {
                     Host::firstOrCreate([
                         'event_id' => $event->id,

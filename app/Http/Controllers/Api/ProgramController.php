@@ -83,9 +83,9 @@ class ProgramController extends BaseController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
-            'category' => 'required'
+            'name' => 'nullable',
+            'description' => 'nullable',
+            'category' => 'nullable'
         ]);
 
         if ($validator->fails()) {

@@ -43,48 +43,54 @@ class ProjectController extends BaseController
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
 
-        // check if category exists, if not create a new one
-        $category = ProjectCategory::firstOrCreate(['name' => $request->category]);
+        try {
+            // check if category exists, if not create a new one
+            $category = ProjectCategory::firstOrCreate(['name' => $request->category]);
 
-        // check if owner exists, if not create a new one
-        $user = User::where('name', $request->owner)->first();
-        if (is_null($user)) {
-            // overwrite user
-            $user = User::create([
-                'name' => $request->owner,
-                'email' => $request->owner . '@example.com',
-                'password' => bcrypt($request->owner),
-                'role_id' => 5,
-                'isProjectOwner' => 1
+            // check if owner exists, if not create a new one
+            $user = User::where('name', $request->owner)->first();
+            if (is_null($user)) {
+                // overwrite user
+                $user = User::create([
+                    'name' => $request->owner,
+                    'email' => strtolower(preg_replace('/\s+/', '', $request->owner)) . '@example.com',
+                    'password' => bcrypt($request->owner),
+                    'role_id' => 5,
+                    'isProjectOwner' => 1
+                ]);
+            } else {
+                $user->update([
+                    'isProjectOwner' => 1
+                ]);
+            }
+            
+            // manipulate image storage
+            // $image_path = '';
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $image_new_name = time() . $image->getClientOriginalExtension();
+            //     $image->storeAs('uploads/projects', $image_new_name);
+            // }
+
+            $project = Project::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'category_id' => $category->id,
+                // 'image' => $image_path ? $image_path : $event->image, // made way for cloudinary image management from frontend
+                'image' => $request->image ? $request->image : $event->image,
             ]);
-        } else {
-            $user->update([
-                'isProjectOwner' => 1
-            ]);
+
+            // var_dump($user->id, $project->id); die;
+            $owner = ProjectOwner::firstOrCreate(
+                [
+                    'project_id' => $project->id,
+                    'user_id' => $user->id,
+                ],
+            );
+        } catch (\Throwable $th) {
+            return $this->sendError('UPDATE_FAILED', $th->getMessage());
         }
         
-        // manipulate image storage
-        $image_path = '';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image_new_name = time() . $image->getClientOriginalExtension();
-            $image->storeAs('uploads/projects', $image_new_name);
-        }
-
-        $project = Project::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $category->id,
-            'image' => $image_path ? $image_path : NULL,
-        ]);
-
-        // var_dump($user->id, $project->id); die;
-        $owner = ProjectOwner::firstOrCreate(
-            [
-                'project_id' => $project->id,
-                'user_id' => $user->id,
-            ],
-        );
 
         // var_dump($owner); die;
         
@@ -122,10 +128,11 @@ class ProjectController extends BaseController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-            'owner' => 'required',
+            'title' => 'nullable',
+            'description' => 'nullable',
+            'category' => 'nullable',
+            'owner' => 'nullable',
+            'image' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -138,20 +145,25 @@ class ProjectController extends BaseController
         // check if owner exists, if not create a new one
         $user = User::where('name', $request->owner)->first();
         if (is_null($user)) {
-            User::create([
+            $user = User::create([
                 'name' => $request->owner,
-                'email' => $request->owner . '@example.com',
+                'email' => strtolower(preg_replace('/\s+/', '', $request->owner)) . '@example.com',
+                'isProjectOwner' => 1,
                 'password' => bcrypt($request->owner),
+            ]);
+        } else {
+            $user->update([
+                'isProjectOwner' => 1
             ]);
         }
 
         // manipulate image storage
-        $image_path = '';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image_new_name = time() . $image->getClientOriginalExtension();
-            $image->storeAs('uploads/projects', $image_new_name);
-        }
+        // $image_path = '';
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $image_new_name = time() . $image->getClientOriginalExtension();
+        //     $image->storeAs('uploads/projects', $image_new_name);
+        // }
 
         $project = Project::find($id);
         if (is_null($project)) {
@@ -160,9 +172,17 @@ class ProjectController extends BaseController
             $project->title = $request->title;
             $project->description = $request->description;
             $project->category_id = $category->id;
-            $project->image = $image_path ? $image_path : NULL;
+            $project->image = $request->image ? $request->image : $project->image;
             $project->save();
 
+            // delete all owners
+            if ($request->has('owner') && $project->owners->count() > 0) {
+                foreach ($project->owners as $owner) {
+                    $owner->delete();
+                }
+            }
+
+            // create new owner
             $owner = ProjectOwner::firstOrCreate(
                 [
                     'project_id' => $project->id,
