@@ -281,29 +281,34 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::with('customRole', 'hosts', 'owns')->find($id);
 
         if (is_null($user)) {
             return $this->sendError('NOT_FOUND');
         }
 
-        // check if user has relations then delete them
-        if ($user->customRole->name == 'member') {
-            $member = MemberDetail::where('user_id', $user->id)->first();
-            $member->delete();
-        } else if ($user->customRole->name == 'leader') {
-            $leader = LeaderDetail::where('user_id', $user->id)->first();
-            $leader->delete();
-        }
+        // var_dump($user->customRole); die;
+        try {
+            // check if user has relations then delete them
+            if ($user->customRole->name == 'member') {
+                $member = MemberDetail::where('user_id', $user->id)->first();
+                if ($member) $member->delete();
+            } else if ($user->customRole->name == 'leader') {
+                $leader = LeaderDetail::where('user_id', $user->id)->first();
+                if ($leader) $leader->delete();
+            }
 
-        if (count($user->hosts) > 0) {
-            foreach ($user->hosts as $host) {
-                $host->delete();
+            if (count($user->hosts) > 0) {
+                foreach ($user->hosts as $host) {
+                    $host->delete();
+                }
+            } else if (count($user->owns) > 0) {
+                foreach ($user->owns as $own) {
+                    $own->delete();
+                }
             }
-        } else if (count($user->owns) > 0) {
-            foreach ($user->owns as $own) {
-                $own->delete();
-            }
+        } catch (\Throwable $th) {
+            return $this->sendError('DELETE_FAILED', $th);
         }
 
         if ($user->delete()) {
