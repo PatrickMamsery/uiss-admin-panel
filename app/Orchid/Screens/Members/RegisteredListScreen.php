@@ -31,7 +31,7 @@ class RegisteredListScreen extends Screen
         $role = CustomRole::where('name', 'member')->first();
 
         return [
-            'users' => User::where('role_id', $role->id)->paginate(),
+            'users' => User::with('memberDetails')->where('role_id', $role->id)->latest('updated_at')->paginate(),
         ];
     }
 
