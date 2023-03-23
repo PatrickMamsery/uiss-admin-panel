@@ -9,6 +9,7 @@ use App\Orchid\Layouts\Members\RegisteredListLayout;
 
 use App\Models\User;
 use App\Models\CustomRole;
+use App\Models\MemberDetail;
 
 class RegisteredListScreen extends Screen
 {
@@ -70,9 +71,25 @@ class RegisteredListScreen extends Screen
      */
     public function remove(User $user)
     {
+        if ($user->id === auth()->id()) {
+            Toast::warning(__('You can not remove yourself'));
+
+            return redirect()->route('platform.leaders');
+        }
+
+        // delete user membership details
+        $memberDetails = LeaderDetail::where('user_id', $user->id)->first();
+        $memberDetails->delete();
+
+        // in the case where there are many entries of the same user in the member_details table
+        $memberDetails = MemberDetail::where('user_id', $user->id)->get();
+        foreach ($memberDetails as $memberDetail) {
+            $memberDetail->delete();
+        }
+
         $user->delete();
 
-        Toast::info(__('User was removed'));
+        Toast::info(__('Member was removed'));
 
         return redirect()->route('platform.members');
     }

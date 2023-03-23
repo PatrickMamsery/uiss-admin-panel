@@ -8,6 +8,7 @@ use Orchid\Support\Facades\Toast;
 use App\Orchid\Layouts\Members\LeadersListLayout;
 
 use App\Models\User;
+use App\Models\LeaderDetail;
 use App\Models\CustomRole;
 
 class LeadersListScreen extends Screen
@@ -70,6 +71,24 @@ class LeadersListScreen extends Screen
      */
     public function remove(User $user)
     {
+        
+        // dd($user->customRole->name);
+        if ($user->id === auth()->id()) {
+            Toast::warning(__('You can not remove yourself'));
+
+            return redirect()->route('platform.leaders');
+        }
+
+        // delete user leadership details
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->first();
+        $leaderDetails->delete();
+
+        // in the case where there are many entries of the same user in the leader_details table
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+        foreach ($leaderDetails as $leaderDetail) {
+            $leaderDetail->delete();
+        }
+
         $user->delete();
 
         Toast::info(__('User was removed'));

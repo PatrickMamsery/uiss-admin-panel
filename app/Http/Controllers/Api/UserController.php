@@ -291,11 +291,25 @@ class UserController extends BaseController
         try {
             // check if user has relations then delete them
             if ($user->customRole->name == 'member') {
-                $member = MemberDetail::where('user_id', $user->id)->first();
-                if ($member) $member->delete();
+                $memberDetails = MemberDetail::where('user_id', $user->id)->get();
+                if (count($memberDetails) > 0) {
+                    foreach ($memberDetails as $memberDetail) {
+                        $memberDetail->delete();
+                    }
+                } else {
+                    $member = MemberDetail::where('user_id', $user->id)->first();
+                    if ($member) $member->delete();
+                }
             } else if ($user->customRole->name == 'leader') {
-                $leader = LeaderDetail::where('user_id', $user->id)->first();
-                if ($leader) $leader->delete();
+                $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+                if (count($leaderDetails) > 0) {
+                    foreach ($leaderDetails as $leaderDetail) {
+                        $leaderDetail->delete();
+                    }
+                } else {
+                    $leader = LeaderDetail::where('user_id', $user->id)->first();
+                    if ($leader) $leader->delete();
+                }
             }
 
             if (count($user->hosts) > 0) {

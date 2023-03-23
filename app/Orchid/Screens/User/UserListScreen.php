@@ -14,6 +14,9 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
+use App\Models\LeaderDetail;
+use App\Models\MemberDetail;
+
 class UserListScreen extends Screen
 {
     /**
@@ -114,8 +117,51 @@ class UserListScreen extends Screen
      */
     public function remove(Request $request): void
     {
-        User::findOrFail($request->get('id'))
-            ->delete();
+        $user = User::with('customRole', 'hosts', 'owns')->findOrFail($request->get('id'));
+        
+        if (!$user) Toast::error(__('User was not found'));
+
+        if ($user->customRole->name === 'admin') {
+            Toast::warning(__('You can not remove admin'));
+        }
+
+        try {
+            // check if user has relations then delete them
+            if ($user->customRole->name == 'member') {
+                $memberDetails = MemberDetail::where('user_id', $user->id)->get();
+                if (count($memberDetails) > 0) {
+                    foreach ($memberDetails as $memberDetail) {
+                        $memberDetail->delete();
+                    }
+                } else {
+                    $member = MemberDetail::where('user_id', $user->id)->first();
+                    if ($member) $member->delete();
+                }
+            } else if ($user->customRole->name == 'leader') {
+                $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+                if (count($leaderDetails) > 0) {
+                    foreach ($leaderDetails as $leaderDetail) {
+                        $leaderDetail->delete();
+                    }
+                } else {
+                    $leader = LeaderDetail::where('user_id', $user->id)->first();
+                    if ($leader) $leader->delete();
+                }
+            }
+
+            if (count($user->hosts) > 0) {
+                foreach ($user->hosts as $host) {
+                    $host->delete();
+                }
+            } else if (count($user->owns) > 0) {
+                foreach ($user->owns as $own) {
+                    $own->delete();
+                }
+            }
+
+        } catch (\Throwable $th) {
+            Toast::error(__('User was not removed'.$th->getMessage()));
+        }
 
         Toast::info(__('User was removed'));
     }
