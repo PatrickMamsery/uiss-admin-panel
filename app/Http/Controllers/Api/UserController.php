@@ -281,13 +281,13 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
-        $user = User::with('customRole', 'hosts', 'owns')->find($id);
+        $user = User::find($id);
 
         if (is_null($user)) {
             return $this->sendError('NOT_FOUND');
         }
 
-        // var_dump($user->customRole); die;
+        // var_dump(count(MemberDetail::where('user_id', $user->id)->get())); die;
         try {
             // check if user has relations then delete them
             if ($user->customRole->name == 'member') {
@@ -310,8 +310,31 @@ class UserController extends BaseController
                     $leader = LeaderDetail::where('user_id', $user->id)->first();
                     if ($leader) $leader->delete();
                 }
+            } else if (($user->customRole->name == 'leader' ||  $user->customRole->name == 'member') && (count(MemberDetail::where('user_id', $user->id)->get()) || count(LeaderDetail::where('user_id', $user->id)->get()))) {
+                // delete any other relations
+                $memberDetails = MemberDetail::where('user_id', $user->id)->get();
+                var_dump($memberDetails); die;
+                if (count($memberDetails) > 0) {
+                    foreach ($memberDetails as $memberDetail) {
+                        $memberDetail->delete();
+                    }
+                } else {
+                    $member = MemberDetail::where('user_id', $user->id)->first();
+                    if ($member) $member->delete();
+                }
+
+                $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+                if (count($leaderDetails) > 0) {
+                    foreach ($leaderDetails as $leaderDetail) {
+                        $leaderDetail->delete();
+                    }
+                } else {
+                    $leader = LeaderDetail::where('user_id', $user->id)->first();
+                    if ($leader) $leader->delete();
+                }
             }
 
+            // var_dump($user->owns); die;
             if (count($user->hosts) > 0) {
                 foreach ($user->hosts as $host) {
                     $host->delete();
@@ -321,6 +344,14 @@ class UserController extends BaseController
                     $own->delete();
                 }
             }
+
+            // delete user
+            if ($user->delete()) {
+                return $this->sendResponse(new UserResource($user), 'DELETE_SUCCESS', 204);
+            } else {
+                return $this->sendError('DELETE_FAILED');
+            }
+
         } catch (\Throwable $th) {
             return $this->sendError('DELETE_FAILED', $th);
         }
