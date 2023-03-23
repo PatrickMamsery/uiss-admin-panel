@@ -18,6 +18,7 @@ class User extends Authenticatable
         'phone',
         'email',
         'role_id',
+        'image',
         'isProjectOwner',
         'password',
         'permissions',

@@ -47,9 +47,12 @@ class UserController extends BaseController
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'nullable|unique:users',
+            'image' => 'nullable',
             'role' => 'nullable',
             'additionalInfo' => 'nullable',
         ]);
+
+        // var_dump($request->all()); die;
 
         
         if ($validator->fails()) {
@@ -70,6 +73,7 @@ class UserController extends BaseController
             }
         }
 
+        // var_dump($request->image); die;
 
         $user = User::create([
             'name' => $request->name,
@@ -77,6 +81,7 @@ class UserController extends BaseController
             'phone' => $request->phone,
             'role_id' => $role->id,
             'password' => $request->phone ? bcrypt($request->phone) : bcrypt($request->email),
+            'image' => $request->image,
         ]);
 
         // var_dump($request->additionalInfo['position']); die;
@@ -256,6 +261,7 @@ class UserController extends BaseController
             'name' => 'required',
             'email' => 'nullable|email|unique:users,email,' . $user->id,
             'phone' => 'nullable|unique:users,phone,' . $user->id,
+            'image' => 'nullable',
         ]);
 
         if ($validator->fails()) {
@@ -265,6 +271,7 @@ class UserController extends BaseController
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->image = $request->image ? $request->image : $user->image;
 
         if ($user->save()) {
             return $this->sendResponse(new UserResource($user), 'UPDATE_SUCCESS');
@@ -310,7 +317,7 @@ class UserController extends BaseController
                     $leader = LeaderDetail::where('user_id', $user->id)->first();
                     if ($leader) $leader->delete();
                 }
-            } else if (($user->customRole->name == 'leader' ||  $user->customRole->name == 'member') && (count(MemberDetail::where('user_id', $user->id)->get()) || count(LeaderDetail::where('user_id', $user->id)->get()))) {
+            } else if (($user->customRole->name == 'leader' ||  $user->customRole->name == 'member') && (count(MemberDetail::where('user_id', $user->id)->get()) > 0 || count(LeaderDetail::where('user_id', $user->id)->get()) > 0)) {
                 // delete any other relations
                 $memberDetails = MemberDetail::where('user_id', $user->id)->get();
                 var_dump($memberDetails); die;

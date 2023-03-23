@@ -19,6 +19,7 @@ class MemberResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
+            'image' => $this->image,
             'role' => $this->customRole->name,
             'regNo' => $this->memberDetails == null ? 'none' : $this->memberDetails->reg_no,
             'isProjectOwner' => $this->isProjectOwner,
