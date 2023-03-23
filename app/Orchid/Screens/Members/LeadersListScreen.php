@@ -81,7 +81,7 @@ class LeadersListScreen extends Screen
 
         // delete user leadership details
         $leaderDetails = LeaderDetail::where('user_id', $user->id)->first();
-        $leaderDetails->delete();
+        if ($leaderDetails) $leaderDetails->delete();
 
         // in the case where there are many entries of the same user in the leader_details table
         $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();

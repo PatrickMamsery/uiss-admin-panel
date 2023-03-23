@@ -78,8 +78,8 @@ class RegisteredListScreen extends Screen
         }
 
         // delete user membership details
-        $memberDetails = LeaderDetail::where('user_id', $user->id)->first();
-        $memberDetails->delete();
+        $memberDetails = MemberDetail::where('user_id', $user->id)->first();
+        if ($memberDetails) $memberDetails->delete();
 
         // in the case where there are many entries of the same user in the member_details table
         $memberDetails = MemberDetail::where('user_id', $user->id)->get();
