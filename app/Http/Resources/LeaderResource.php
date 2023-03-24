@@ -20,6 +20,7 @@ class LeaderResource extends JsonResource
             'phone' => $this->phone,
             'email' => $this->email,
             'image' => $this->image,
+            'role' => $this->customRole->name,
             'isProjectOwner' => $this->isProjectOwner,
             'position' => $this->leaderDetails == null ? 'none' : $this->leaderDetails->position['title'],
         ];
