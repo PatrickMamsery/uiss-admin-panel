@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
-use App\Models\College;
 use App\Models\Position;
 
 use App\Models\CustomRole;
-use App\Models\Department;
 use App\Models\University;
+use App\Models\College;
+use App\Models\Department;
+use App\Models\DegreeProgramme;
 use App\Models\LeaderDetail;
 use App\Models\MemberDetail;
 use Illuminate\Http\Request;
-use App\Models\DegreeProgramme;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +30,7 @@ class UserController extends BaseController
      */
     public function index()
     {
-        $per_page = 100;
+        $per_page = 15;
         return $this->sendResponse(UserResource::collection(User::paginate($per_page)), 'RETRIEVE_SUCCESS');
     }
 
@@ -42,7 +42,6 @@ class UserController extends BaseController
      */
     public function store(Request $request)
     {
-        // var_dump($request->all()); die;
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -51,19 +50,18 @@ class UserController extends BaseController
             'role' => 'nullable',
             'additionalInfo' => 'nullable',
         ]);
-
-        // var_dump($request->all()); die;
-
+        
         
         if ($validator->fails()) {
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
-
-        if ($request->role) {
-            // check if the role exists
-            // clean the role input to small letters
+        
+        // check if there's role attribute else create a new user with "member" role
+        if ($request->has('role')) {
+            // clean the role input to small letters 
             $inputRole = strtolower($request->role);
-
+            
+            // check if the role exists
             $role = CustomRole::where('name', $inputRole)->first();
             
             if (is_null($role)) {
@@ -71,114 +69,155 @@ class UserController extends BaseController
                 $role->name = $inputRole;
                 $role->save();
             }
-        }
-
-        // var_dump($request->image); die;
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'role_id' => $role->id,
-            'password' => $request->phone ? bcrypt($request->phone) : bcrypt($request->email),
-            'image' => $request->image,
-        ]);
-
-        // var_dump($request->additionalInfo['position']); die;
-        
-        switch ($request->role) {
-            case('member'):
-                $role = CustomRole::where('name', 'member')->first();
+            
+            // check if there is additional info in the payload
+            if ($role && !$request->has('additionalInfo')) {
+                return $this->sendError('MISSING_ADDITIONAL_INFO');
+            } else {
+                // check if additional info data is correct for given role
+                $additionalInfoData = $request->additionalInfo;
                 
-                // check if there are additional info
-                if ($role && !$request->additionalInfo) {
-                    return $this->sendError('MISSING_ADDITIONAL_INFO');
-                } else {
-                    // check if the member already exists
-                    $member = MemberDetail::where('user_id', $user->id)->first();
-                    if (!is_null($member)) {
-                        return $this->sendError('DUPLICATE_ENTRY');
-                    } else {
-                        // implement a try catch block to handle errors and create new instances of university, college, department and degree programme
-
-                        try {
-                            $data = $this->createMemberDetails($request->additionalInfo['university'], $request->additionalInfo['college'], $request->additionalInfo['department'], $request->additionalInfo['degreeProgramme']);
-
-                            $university = $data['university'];
-                            $college = $data['college'];
-                            $department = $data['department'];
-                            $degreeProgramme = $data['degreeProgramme'];
-
-                        } catch (\Exception $error) {
-                            return $this->sendError('CREATE_FAILED', $error);
-                        }
-
-                        try {
-                            // to do db transaction here
-                            DB::transaction(function () use ($user, $request, $member, $university, $college, $department, $degreeProgramme) {
+                if ($role->name == 'member' && array_key_exists('position', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
+                } else if ($role->name == 'leader' && array_key_exists('university', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
+                } else if ($role->name == 'leader' && !array_key_exists('position', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
+                }
+                
+                // create the user
+                $user = new User;
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->phone = $request->phone;
+                $user->role_id = $role->id;
+                $user->password = $request->phone ? bcrypt($request->phone) : bcrypt($request->email);
+                $user->image = $request->image ? $request->image : null;
+                // $user->save();
+                
+                // implement try-catch block so as to prevent any error from disrupting normal procedure
+                
+                try {
+                    DB::transaction(function () use ($user, $role, $additionalInfoData, $request) {
+                        $user->save();
+                        
+                        switch ($role->name) {
+                            case ('member'):
+                                // create member details, that is, university, college, department and degreeProgramme entries in DB
                                 
-                                $member = new MemberDetail;
-                                $member->user_id = $user->id;
-                                $member->reg_no = $request->additionalInfo['regNo'];
-                                $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
-                                $member->university_id = $university->id;
-                                $member->department_id = $department->id;
-                                $member->college_id = $college->id;
-                                $member->degree_programme_id = $degreeProgramme->id;
-                                $member->save();
-                            });
-                        } catch (\Exception $error) {
-                            return $this->sendError('CREATE_FAILED', $error);
+                                try {
+                                    $data = $this->createMemberDetails($additionalInfoData['university'], $additionalInfoData['college'], $additionalInfoData['department'], $additionalInfoData['degreeProgramme']);
+                                } catch (\Exception $error) {
+                                    $this->sendError('CREATE_FAILED', $error);
+                                }
+                                
+                                // create private data for the member details
+                                $university = $data['university'];
+                                $college = $data['college'];
+                                $department = $data['department'];
+                                $degreeProgramme = $data['degreeProgramme'];
+                                
+                                $memberDetails = MemberDetail::where('user_id', $user->id)->first();
+                                // var_dump($memberDetails); die;
+
+                                if (
+                                        !is_null($memberDetails)
+                                        && $memberDetails->reg_no == $additionalInfoData['regNo'] 
+                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest'] 
+                                        && $memberDetails->university_id == $university->id 
+                                        && $memberDetails->college_id == $college->id 
+                                        && $memberDetails->department_id == $department->id 
+                                        && $memberDetails->degree_programme_id == $degreeProgramme->id
+                                    ) 
+                                {
+                                    return $this->sendError('DUPLICATE_ENTRY');
+                                } else {
+                                    // var_dump($university->id, $department->id, $college->id, $degreeProgramme->id, $additionalInfoData['regNo'], $additionalInfoData['areaOfInterest']); die;
+                                    $member = new MemberDetail;
+                                    $member->user_id = $user->id;
+                                    $member->reg_no = $additionalInfoData['regNo'];
+                                    $member->area_of_interest = $additionalInfoData['areaOfInterest'];
+                                    $member->university_id = $university->id;
+                                    $member->college_id = $college->id;
+                                    $member->department_id = $department->id;
+                                    $member->degree_programme_id = $degreeProgramme->id;
+                                    $member->save();
+
+                                    // if ($member->save()) {
+                                    //     var_dump("hurrah!! done"); die;
+                                    // }
+
+                                    // redundant typecasting
+                                    
+                                    // if ($member->save()) {
+                                    //     // $createdUser = User::with('memberDetails', 'customRole')->find($user->id);
+                                    //     // var_dump($createdUser); die;
+                                    //     // return $this->sendResponse(new MemberResource($createdUser), 'CREATE_SUCCESS');
+                                    // } else {
+                                    //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
+                                    // }
+                                }
+                            break;
+        
+                            case ('leader'):
+                                $position = Position::where('title', $additionalInfoData['position'])->first();
+
+                                if (is_null($position)) {
+                                    $position = new Position;
+                                    $position->title = $additionalInfoData['position'];
+
+                                    $position->save();
+                                }
+
+                                $leader = new LeaderDetail;
+                                $leader->user_id = $user->id;
+                                $leader->position_id = $position->id;
+                                $leader->start_date = array_key_exists('startDate', $additionalInfoData) ? $additionalInfoData['startDate'] : \Carbon\Carbon::now();
+                                $leader->end_date = array_key_exists('endDate', $additionalInfoData) ? $additionalInfoData['endDate'] : \Carbon\Carbon::now()->addYear();
+
+                                $leader->save();
+                                // if ($leader->save()) return "yeah it returns";
+
+                                // var_dump($user->leaderDetails); die;
+                                // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
+                            break;
+                            
+                            // default:
+                            //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
+                            // break;
                         }
+                    });
+
+                    // formulate a return response methodology based on role
+                    if ($role->name == 'member') {
+                        $createdUser = User::with('memberDetails', 'customRole')->find($user->id);
+                        return $this->sendResponse(new MemberResource($createdUser), 'CREATE_SUCCESS');
+                    } else if ($role->name == 'leader') {
+                        $createdUser = User::with('leaderDetails', 'customRole')->find($user->id);
+                        return $this->sendResponse(new LeaderResource($createdUser), 'CREATE_SUCCESS');
                     }
-                }
-            break;
 
-            case('leader'):
-                $role = CustomRole::where('name', 'leader')->first();
-
-                
-                // check if there are additional info
-                if ($role && !$request->additionalInfo) {
-                    return $this->sendError('MISSING_ADDITIONAL_INFO');
-                } else {
-                    // check if the member already exists
-                    $leader = LeaderDetail::where('user_id', $user->id)->first();
-                    if (!is_null($leader)) {
-                        return $this->sendError('DUPLICATE_ENTRY');
-                    } else {
-                        // check if position is available in db or else create new
-                        $position = Position::where('title', $request->additionalInfo['position'])->first();
-                        // var_dump($position); die;
-
-                        if (is_null($position)) {
-                            $position = new Position;
-                            $position->title = $request->additionalInfo['position'];
-
-                            $position->save();
-                        }
-
-                        $leader = new LeaderDetail;
-                        $leader->user_id = $user->id;
-                        $leader->position_id = $position->id;
-                        $leader->start_date = array_key_exists('startDate', $request->additionalInfo) ? $request->additionalInfo['startDate'] : \Carbon\Carbon::now();
-                        $leader->end_date = array_key_exists('endDate', $request->additionalInfo) ? $request->additionalInfo['endDate'] : \Carbon\Carbon::now()->addYear();
-
-                        $leader->save();
-                    }
+                } catch (\Throwable $th) {
+                    return $this->sendError('CREATE_FAILED', $th->getMessage());
                 }
 
-            break;
-
-            // default:
-            //     $msg = 'Something went wrong.';
-            //     return $this->sendError($msg);
-        }
-
-        if (is_null($user)) {
-            return $this->sendError('CREATE_FAILED');
+            }
         } else {
-            return $this->sendResponse(new UserResource($user), 'CREATE_SUCCESS');
+            // creating a new user entry with "member" role
+            $user = new User;
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->role_id = CustomRole::where('name', 'member')->first()->id;
+            $user->password = $request->phone ? bcrypt($request->phone) : bcrypt($request->email);
+            $user->image = $request->image ?? NULL;
+            $user->save();
+
+            if (is_null($user)) {
+                return $this->sendError('CREATE_FAILED');
+            } else {
+                return $this->sendResponse(new UserResource($user), 'CREATE_SUCCESS');
+            }
         }
     }
 
@@ -224,7 +263,7 @@ class UserController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if (is_null($user)) {
             return $this->sendError('NOT_FOUND');
@@ -243,161 +282,167 @@ class UserController extends BaseController
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
 
-        
-        if ($request->role) {
-            // check if the role exists
-            // clean the role input to small letters
+        // check if there's role attribute else create a new user with "member" role
+        if ($request->has('role')) {
+            // clean the role input to small letters 
             $inputRole = strtolower($request->role);
-            
+
+            // check if the role exists
             $role = CustomRole::where('name', $inputRole)->first();
-            
+
             if (is_null($role)) {
                 $role = new CustomRole;
                 $role->name = $inputRole;
                 $role->save();
             }
-        }
 
-        // var_dump($inputRole); die;
+            // check if there is additional info in the payload
+            if ($role && !$request->has('additionalInfo')) {
+                return $this->sendError('MISSING_ADDITIONAL_INFO');
+            } else {
+                // check if additional info data is correct for given role
+                $additionalInfoData = $request->additionalInfo;
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->role_id = $role->id;
-        $user->image = $request->image ? $request->image : $user->image;
-
-        switch ($inputRole) {
-            case ('member'):
-                $role = CustomRole::where('name', 'member')->first();
-                
-                // check if there are additional info
-                if ($role && !$request->additionalInfo) {
-                    return $this->sendError('MISSING_ADDITIONAL_INFO');
-                } else {
-                    // check if the member already exists
-                    $member = MemberDetail::where('user_id', $user->id)->first();
-                    if (!is_null($member)) {
-                        $data = $this->createMemberDetails($request->additionalInfo['university'], $request->additionalInfo['college'], $request->additionalInfo['department'], $request->additionalInfo['degreeProgramme']);
-
-                        $university = $data['university'];
-                        $college = $data['college'];
-                        $department = $data['department'];
-                        $degreeProgramme = $data['degreeProgramme'];
-
-                        try {
-                            // to do db transaction here
-                            DB::transaction(function () use ($user, $request, $member, $university, $college, $department, $degreeProgramme) {
-                                
-                                $member->reg_no = $request->additionalInfo['regNo'];
-                                $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
-                                $member->university_id = $university->id;
-                                $member->college_id = $college->id;
-                                $member->department_id = $department->id;
-                                $member->degree_programme_id = $degreeProgramme->id;
-                                $member->save();
-                            });
-                        } catch (\Exception $error) {
-                            return $this->sendError('UPDATE_FAILED', $error);
-                        }
-                    } else {
-                        // implement a try catch block to handle errors and create new instances of university, college, department and degree programme
-
-                        try {
-                            $data = $this->createMemberDetails($request->additionalInfo['university'], $request->additionalInfo['college'], $request->additionalInfo['department'], $request->additionalInfo['degreeProgramme']);
-
-                            $university = $data['university'];
-                            $college = $data['college'];
-                            $department = $data['department'];
-                            $degreeProgramme = $data['degreeProgramme'];
-
-                        } catch (\Exception $error) {
-                            return $this->sendError('UPDATE_FAILED', $error);
-                        }
-
-                        try {
-                            // to do db transaction here
-                            DB::transaction(function () use ($user, $request, $member, $university, $college, $department, $degreeProgramme) {
-                                
-                                $member = new MemberDetail;
-                                $member->user_id = $user->id;
-                                $member->reg_no = $request->additionalInfo['regNo'];
-                                $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
-                                $member->university_id = $university->id;
-                                $member->department_id = $department->id;
-                                $member->college_id = $college->id;
-                                $member->degree_programme_id = $degreeProgramme->id;
-                                $member->save();
-                            });
-                        } catch (\Exception $error) {
-                            return $this->sendError('UPDATE_FAILED', $error);
-                        }
-                    }
+                if ($role->name == 'member' && array_key_exists('position', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
+                } else if ($role->name == 'leader' && array_key_exists('university', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
+                } else if ($role->name == 'leader' && !array_key_exists('position', $additionalInfoData)) {
+                    return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
                 }
-            break;
 
-            case ('leader'):
-                $role = CustomRole::where('name', 'leader')->first();
+                // update the user's data
+                $user->name = $request->name ? $request->name : $user->name;
+                $user->email = $request->email ? $request->email : $user->email;
+                $user->phone = $request->phone ? $request->phone : $user->phone;
+                $user->role_id = $role->id;
+                $user->image = $request->image ? $request->image : $user->image;
 
-                
-                // check if there are additional info
-                if ($role && !$request->additionalInfo) {
-                    return $this->sendError('MISSING_ADDITIONAL_INFO');
-                } else {
-                    // check if the member already exists
-                    $leader = LeaderDetail::where('user_id', $user->id)->first();
-                    if (!is_null($leader)) {
-                        
-                        // check if position attribute exists in payload
-                        if (array_key_exists('position', $request->additionalInfo)) {
-                            $position = Position::where('title', $request->additionalInfo['position'])->first();
+                // implement try-catch block to prevent any unforeseen error
+                try {
+                    DB::transaction(function () use ($user, $role, $additionalInfoData, $request) {
+                        $user->save();
+
+                        switch ($role->name) {
+                            case ('member'):
+                                // create member details, that is, university, college, department and degreeProgramme entries in DB
+                                $data = $this->createMemberDetails($additionalInfoData['university'], $additionalInfoData['college'], $additionalInfoData['department'], $additionalInfoData['degreeProgramme']);
+
+                                // create private data for the member details
+                                $university = $data['university'];
+                                $college = $data['college'];
+                                $department = $data['department'];
+                                $degreeProgramme = $data['degreeProgramme'];
+
+                                $memberDetails = MemberDetail::where('user_id', $user->id)->first();
+
+                                if (
+                                        !is_null($memberDetails)
+                                        && $memberDetails->reg_no == $additionalInfoData['regNo'] 
+                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest'] 
+                                        && $memberDetails->university_id == $university->id 
+                                        && $memberDetails->college_id == $college->id 
+                                        && $memberDetails->department_id == $department->id 
+                                        && $memberDetails->degree_programme_id == $degreeProgramme->id
+                                    ) 
+                                {
+                                    $memberDetails->user_id = $user->id;
+                                    $memberDetails->reg_no = $additionalInfoData['regNo'] ? $additionalInfoData['regNo'] : $memberDetails->reg_no;
+                                    $memberDetails->area_of_interest = $additionalInfoData['areaOfInterest'] ? $additionalInfoData['areaOfInterest'] : $memberDetails->area_of_interest;
+                                    $memberDetails->university_id = $university ? $university->id : $memberDetails->university_id;
+                                    $memberDetails->department_id = $department ? $department->id : $memberDetails->department_id;
+                                    $memberDetails->college_id = $college ? $college->id : $memberDetails->college_id;
+                                    $memberDetails->degree_programme_id = $degreeProgramme ? $degreeProgramme->id : $memberDetails->degree_programme_id;
+                                    $memberDetails->save();
+
+                                    return $this->sendResponse(new MemberResource($user), 'CREATE_SUCCESS');
+                                } else {
+                                    $member = new MemberDetail;
+                                    $member->user_id = $user->id;
+                                    $member->reg_no = $request->additionalInfo['regNo'];
+                                    $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
+                                    $member->university_id = $university->id;
+                                    $member->department_id = $department->id;
+                                    $member->college_id = $college->id;
+                                    $member->degree_programme_id = $degreeProgramme->id;
+                                    $member->save();
+
+                                    // return $this->sendResponse(new MemberResource($user), 'CREATE_SUCCESS');
+                                }
+                            break;
+        
+                            case ('leader'):
+                                $position = Position::where('title', $additionalInfoData['position'])->first();
+                                // var_dump($position); die;
+
+                                if (is_null($position)) {
+                                    $position = new Position;
+                                    $position->title = $additionalInfoData['position'];
+
+                                    $position->save();
+                                }
+
+                                // find if there's is any entry for this user in the leader details table
+                                $leaderDetails = LeaderDetail::where('user_id', $user->id)->first();
+
+                                if (!is_null($leaderDetails)) {
+                                    $leaderDetails->user_id = $user->id;
+                                    $leaderDetails->position_id = $position ? $position->id : $leaderDetails->position_id;
+                                    $leaderDetails->start_date = array_key_exists('startDate', $additionalInfoData) ? $additionalInfoData['startDate'] : \Carbon\Carbon::now();
+                                    $leaderDetails->end_date = array_key_exists('endDate', $additionalInfoData) ? $additionalInfoData['endDate'] : \Carbon\Carbon::now()->addYear();
+
+                                    $leaderDetails->save();
+                                } else {
+                                    $leader = new LeaderDetail;
+                                    $leader->user_id = $user->id;
+                                    $leader->position_id = $position->id;
+                                    $leader->start_date = array_key_exists('startDate', $additionalInfoData) ? $additionalInfoData['startDate'] : \Carbon\Carbon::now();
+                                    $leader->end_date = array_key_exists('endDate', $additionalInfoData) ? $additionalInfoData['endDate'] : \Carbon\Carbon::now()->addYear();
+
+                                    $leader->save();
+                                }
+
+                                // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
+                            break;
                             
-                            if (is_null($position)) {
-                                $position = new Position;
-                                $position->title = $request->additionalInfo['position'];
-                                
-                                $position->save();
-                            }
+                            default:
+                                return $this->sendError('UPDATE_FAILED', 'Miscellaneous error, recheck your data entries');
+                            break;
                         }
-                        
-                        
-                        $leader->user_id = $user->id;
-                        $leader->position_id = $position ? $position->id : $leader->position_id;
-                        $leader->start_date = array_key_exists('startDate', $request->additionalInfo) ? $request->additionalInfo['startDate'] : $leader->start_date;
-                        $leader->end_date = array_key_exists('endDate', $request->additionalInfo) ? $request->additionalInfo['endDate'] : $leader->end_date;
-                        $leader->save(); // update leader details
-                        // var_dump($leader->id); die;
-                    } else {
-                        // check if position is available in db or else create new
-                        $position = Position::where('title', $request->additionalInfo['position'])->first();
-                        // var_dump($position); die;
+                    });
 
-                        if (is_null($position)) {
-                            $position = new Position;
-                            $position->title = $request->additionalInfo['position'];
-
-                            $position->save();
-                        }
-
-                        $leader = new LeaderDetail;
-                        $leader->user_id = $user->id;
-                        $leader->position_id = $position->id;
-                        $leader->start_date = array_key_exists('startDate', $request->additionalInfo) ? $request->additionalInfo['startDate'] : \Carbon\Carbon::now();
-                        $leader->end_date = array_key_exists('endDate', $request->additionalInfo) ? $request->additionalInfo['endDate'] : \Carbon\Carbon::now()->addYear();
-
-                        $leader->save();
+                    // formulate a return response methodology based on role
+                    if ($role->name == 'member') {
+                        $createdUser = User::with('memberDetails', 'customRole')->find($user->id);
+                        return $this->sendResponse(new MemberResource($createdUser), 'CREATE_SUCCESS');
+                    } else if ($role->name == 'leader') {
+                        $createdUser = User::with('leaderDetails', 'customRole')->find($user->id);
+                        return $this->sendResponse(new LeaderResource($createdUser), 'CREATE_SUCCESS');
                     }
-                }
-            break;
-            
-            default:
-                # code...
-                break;
-        }
 
-        if ($user->save()) {
-            return $this->sendResponse(new UserResource($user), 'UPDATE_SUCCESS');
+                } catch (\Throwable $th) {
+                    return $this->sendError('UPDATE_FAILED', $th->getMessage());
+                }
+            }
+
         } else {
-            return $this->sendError('UPDATE_FAILED');
+            // check if the user had previous role set to member or leader
+            if ($user->customRole->name == 'member' || $user->customRole->name == 'leader') {
+                return $this->sendError('UPDATE_FAILED', 'Missing role data, essential for this action');
+            } else {
+                $user->name = $request->name ? $request->name : $user->name;
+                $user->email = $request->email ? $request->email : $user->email;
+                $user->phone = $request->phone ? $request->phone : $user->phone;
+                $user->role_id = $user->role_id;
+                $user->image = $request->image ? $request->image : $user->image;
+                $user->save();
+
+                if (is_null($user)) {
+                    return $this->sendError('UPDATE_FAILED');
+                } else {
+                    return $this->sendResponse(new UserResource($user), 'UPDATE_SUCCESS');
+                }
+            }
         }
     }
 
@@ -493,46 +538,56 @@ class UserController extends BaseController
 
     public function createMemberDetails($universityData, $collegeData, $departmentData, $degreeProgrammeData)
     {
-        $university = University::where('name', $universityData)->first();
-        if (is_null($university)) {
-            $university = new University;
-            $university->name = $universityData;
-            $university->save();
+        // var_dump("in create member method"); die;
+        // implement try-catch block to get the error
+        try {
+            $university = University::where('name', $universityData)->first();
+            if (is_null($university)) {
+                $university = new University;
+                $university->name = $universityData;
+                $university->save();
+            }
+            
+            $college = College::where('name', $collegeData)->where('university_id', $university->id)->first();
+            // var_dump($college); die;
+
+            if (is_null($college)) {
+                $college = new College;
+                $college->name = $collegeData;
+                $college->university_id = $university->id;
+                $college->save();
+            }
+
+            $department = Department::where('name', $departmentData)->where('college_id', $college->id)->first();
+
+            if (is_null($department)) {
+                $department = new Department;
+                $department->name = $departmentData;
+                $department->college_id = $college->id;
+                $department->save();
+            }
+
+            $degreeProgramme = DegreeProgramme::where('name', $degreeProgrammeData)->where('department_id', $department->id)->first();
+
+            if (is_null($degreeProgramme)) {
+                $degreeProgramme = new DegreeProgramme;
+                $degreeProgramme->name = $degreeProgrammeData;
+                $degreeProgramme->department_id = $department->id;
+                $degreeProgramme->save();
+            }
+
+            // var_dump("here then"); die;
+
+            $data = [
+                'university' => $university,
+                'college' => $college,
+                'department' => $department,
+                'degreeProgramme' => $degreeProgramme
+            ];
+
+            return $data;
+        } catch (\Throwable $th) {
+            return $this->sendError('CREATE_FAILED', $th);
         }
-        
-        $college = College::where('name', $college)->where('university_id', $university->id)->first();
-        // var_dump($college); die;
-
-        if (is_null($college)) {
-            $college = new College;
-            $college->name = $collegeData;
-            $college->university_id = $university->id;
-            $college->save();
-        }
-
-        $department = Department::where('name', $departmentData)->where('college_id', $college->id)->first();
-
-        if (is_null($department)) {
-            $department = new Department;
-            $department->name = $departmentData;
-            $department->college_id = $college->id;
-            $department->save();
-        }
-
-        $degreeProgramme = DegreeProgramme::where('name', $degreeProgrammeData)->where('department_id', $department->id)->first();
-
-        if (is_null($degreeProgramme)) {
-            $degreeProgramme = new DegreeProgramme;
-            $degreeProgramme->name = $degreeProgrammeData;
-            $degreeProgramme->department_id = $department->id;
-            $degreeProgramme->save();
-        }
-
-        return [
-            'university' => $university,
-            'college' => $college,
-            'department' => $department,
-            'degreeProgramme' => $degreeProgramme
-        ];
     }
 }

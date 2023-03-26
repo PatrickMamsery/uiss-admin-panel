@@ -36,7 +36,8 @@ Route::post('/register', [PassportAuthController::class, 'register']);
 Route::post('/login', [PassportAuthController::class, 'login']);
 
 Route::middleware(['auth.api'])->group(function () {
-    Route::apiResource('users', UserController::class)->middleware('withoutlink');
+    Route::apiResource('users', UserController::class)->except('store')->middleware('withoutlink');
+    Route::post('users', [UserController::class, 'store']);
 
     // Route::get('leaders', [MemberController::class, 'getLeaders']);
 
