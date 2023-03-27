@@ -9,6 +9,8 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
+use Illuminate\Support\Str;
+
 class ProgramListLayout extends Table
 {
     /**
@@ -43,12 +45,14 @@ class ProgramListLayout extends Table
                     ->route('platform.program.edit',$program);
                 }),
 
-            TD::make('description','Description'),
+            TD::make('description','Description')
+                ->render(function (Program $program) {
+                    return Str::limit($program->description, 50);
+                }),
 
-            TD::make('category','Category')
+            TD::make('category', 'Category')
                 ->render(function(Program $program){
-                    return Link::make($program->category_id)
-                    ->route('platform.program.edit', $program->category);
+                    return $program->category->name;
                 }),
             
             TD::make(__('Actions'))

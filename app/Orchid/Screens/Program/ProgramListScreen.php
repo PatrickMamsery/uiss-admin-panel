@@ -63,6 +63,6 @@ class ProgramListScreen extends Screen
         Program::findOrFail($request->get('id'))
             ->delete();
 
-        Toast::info(__('Program was deleted'));
+        Toast::info(__('Program was deleted successfully'));
     }
 }

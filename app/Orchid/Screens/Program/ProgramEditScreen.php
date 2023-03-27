@@ -4,13 +4,14 @@ namespace App\Orchid\Screens\Program;
 
 use Orchid\Screen\Screen;
 use App\Models\Program;
+use App\Models\ProgramCategory;
 
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Relation;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Alert;
@@ -78,11 +79,19 @@ class ProgramEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('program.name')
-                    ->title('Name')
-                    ->required()
-                    ->placeholder('Enter program name')
-                    ->help('Enter program name'),
+                Group::make([
+                    Input::make('program.name')
+                        ->title('Name')
+                        ->required()
+                        ->placeholder('Enter program name')
+                        ->help('Enter program name'),
+
+                    Select::make('program.category_id')
+                        ->title('Category')
+                        ->fromModel(ProgramCategory::class, 'name')
+                        ->help('Select category to which the program belongs, if not in the list, create a new category in the category panel')
+                        ->required(),
+                ]),
 
                 TextArea::make('program.description')
                     ->title('Description')
@@ -95,13 +104,11 @@ class ProgramEditScreen extends Screen
         ];
     }
 
-    public function createOrUpdate(Program $program,Request $request )
+    public function createOrUpdate(Program $program, Request $request )
     {
-
-
         $program->fill($request->get('program'))->save();
 
-        Alert::info('Program is created successfully');
+        Alert::info('Program is saved successfully');
 
         return redirect()->route('platform.programs');
     }
