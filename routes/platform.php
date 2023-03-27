@@ -175,7 +175,7 @@ Route::screen('program-categories', CategoryListScreen::class)
     ->breadcrumbs(function (Trail $trail) {
         return $trail
             ->parent('platform.index')
-            ->push(__('Edit'), route('platform.program-categories'));
+            ->push(__('Program Categories'), route('platform.program-categories'));
     });
 
 // Events

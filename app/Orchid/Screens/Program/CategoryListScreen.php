@@ -6,6 +6,8 @@ use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
+use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Fields\Input;
 
 use App\Models\ProgramCategory as Category;
 use App\Orchid\Layouts\Program\CategoryListLayout;
@@ -45,7 +47,7 @@ class CategoryListScreen extends Screen
         return [
             ModalToggle::make('Create Category')
                 ->modal('createCategoryModal')
-                ->method('createCategory')
+                ->method('saveCategory')
                 ->icon('plus')
         ];
     }
@@ -57,6 +59,43 @@ class CategoryListScreen extends Screen
      */
     public function layout(): array
     {
-        return [];
+        return [
+            Layout::modal('createCategoryModal', [
+                Layout::rows([
+                    Input::make('category.name')
+                        ->title('Name')
+                        ->required()
+                        ->placeholder('Name')
+                        ->help('Name of the category')
+                ])
+            ])->async('asyncGetCategory')->title('Create Category'),
+
+            CategoryListLayout::class
+        ];
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return array
+     */
+    public function asyncGetCategory(Category $category): array
+    {
+        return [
+            'category' => $category,
+        ];
+    }
+
+    public function saveCategory(Request $request)
+    {
+        $request->validate([
+            'category.name' => 'required'
+        ]);
+
+        Category::create($request->get('category'));
+
+        Toast::info('Category created');
+
+        return redirect()->route('platform.program-categories');
     }
 }
