@@ -60,7 +60,7 @@ class PlatformProvider extends OrchidServiceProvider
                         ->route('platform.projects'),
                     Menu::make(__('Owners'))
                         ->icon('people')
-                        ->route('platform.index'),
+                        ->route('platform.project-owners'),
                 ]),
 
             Menu::make(__('Events'))

@@ -155,7 +155,7 @@ class ProjectEditScreen extends Screen
         if (is_null($user)) {
             $user = User::create([
                 'name' => $ownerName,
-                'email' => $ownerName . '@example.com',
+                'email' => strtolower(preg_replace('/\s+/', '', $ownerName)) . '@example.com',
                 'password' => bcrypt($ownerName),
                 'role_id' => 5, // assign as a normal member
                 'isProjectOwner' => 1

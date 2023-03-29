@@ -66,7 +66,12 @@ class CategoryListScreen extends Screen
                         ->title('Name')
                         ->required()
                         ->placeholder('Name')
-                        ->help('Name of the category')
+                        ->help('Name of the category'),
+
+                    Input::make('category.id')
+                        ->type('hidden')
+                        ->required()
+                        ->canSee(false),
                 ])
             ])->async('asyncGetCategory')->title('Create Category'),
 
@@ -86,16 +91,17 @@ class CategoryListScreen extends Screen
         ];
     }
 
-    public function saveCategory(Request $request)
+    public function saveCategory(Category $category = null, Request $request)
     {
         $request->validate([
             'category.name' => 'required'
         ]);
 
-        Category::create($request->get('category'));
+        $category->fill($request->input('category'))
+            ->save();
 
-        Toast::info('Category created');
-
+        Toast::info('Category saved successfully');
+        
         return redirect()->route('platform.program-categories');
     }
 }

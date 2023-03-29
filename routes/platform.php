@@ -22,6 +22,8 @@ use App\Orchid\Screens\Program\ProgramListScreen;
 use App\Orchid\Screens\Program\CategoryListScreen;
 use App\Orchid\Screens\Project\ProjectEditScreen;
 use App\Orchid\Screens\Project\ProjectListScreen;
+use App\Orchid\Screens\Project\ProjectOwnersListScreen;
+use App\Orchid\Screens\Project\OwnersProjectsListScreen;
 use App\Orchid\Screens\Admin\AdminListScreen;
 use App\Orchid\Screens\Admin\AdminEditScreen;
 use App\Orchid\Screens\Members\RegisteredListScreen;
@@ -218,6 +220,24 @@ Route::screen('project/{project?}', ProjectEditScreen::class)
         return $trail
             ->parent('platform.projects')
             ->push(__('Edit'), route('platform.project.edit'));
+    });
+
+// Home > Project Owners
+Route::screen('project-owners', ProjectOwnersListScreen::class)
+    ->name('platform.project-owners')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Project Owners'), route('platform.project-owners'));
+    });
+
+// Home > Project Owners > Projects
+Route::screen('projects-by-owner/{user?}', OwnersProjectsListScreen::class)
+    ->name('platform.project-owner.projects')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.project-owners')
+            ->push(__('Projects'), route('platform.project-owner.projects'));
     });
 
 // Home > Members
