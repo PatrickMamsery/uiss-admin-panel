@@ -31,13 +31,13 @@ class EventListLayout extends Table
     protected function columns(): array
     {
         return [
-            TD::make('id','ID')
-                ->sort()
-                ->filter(TD::FILTER_TEXT)
-                ->render(function(CustomEvent $event){
-                    return Link::make($event->id)
-                    ->route('platform.event.edit',$event);
-                }),
+            // TD::make('id','ID')
+            //     ->sort()
+            //     ->filter(TD::FILTER_TEXT)
+            //     ->render(function(CustomEvent $event){
+            //         return Link::make($event->id)
+            //         ->route('platform.event.edit',$event);
+            //     }),
 
             TD::make('name','Name')
                 ->render(function(CustomEvent $event){
@@ -47,7 +47,7 @@ class EventListLayout extends Table
 
             TD::make('description','Description')
                 ->render(function(CustomEvent $event) {
-                    return Str::limit($event->description, 50);
+                    return Str::limit(strip_tags($event->description), 50);
                 }),
 
             TD::make('venue','Venue')

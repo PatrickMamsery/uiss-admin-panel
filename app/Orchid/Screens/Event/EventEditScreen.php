@@ -6,6 +6,8 @@ use App\Models\Event;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Group;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Actions\Button;
@@ -77,35 +79,38 @@ class EventEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Input::make('event.name')
-                    ->title('Name')
-                    ->required()
-                    ->placeholder('Enter event name'),
+                Group::make([
+                    Input::make('event.name')
+                        ->title('Name')
+                        ->required()
+                        ->placeholder('Enter event name'),
 
-                TextArea::make('event.description')
+                    Input::make('event.venue')
+                        ->title('Venue')
+                        ->required()
+                        ->placeholder('Enter event venue'),
+                ]),
+
+                Quill::make('event.description')
                     ->title('Description')
                     ->rows(5)
                     ->required()
                     ->placeholder('Enter event description'),
 
-                Input::make('event.venue')
-                    ->title('Venue')
-                    ->required()
-                    ->placeholder('Enter event venue'),
+                Group::make([
+                    DateTimer::make('event.start_date')
+                        ->title('Start date')
+                        ->required(),
 
-                DateTimer::make('event.start_date')
-                    ->title('Start date')
-                    ->required(),
-
-                DateTimer::make('event.end_date')
-                    ->title('End date')
-                    ->required(),
+                    DateTimer::make('event.end_date')
+                        ->title('End date')
+                        ->required(),
+                ]),
 
                 Cropper::make('event.image')
-                    ->targetId()
-                    ->title('Event Image')
-                    ->width(500)
-                    ->height(500),
+                    ->targetUrl()
+                    ->required()
+                    ->title('Event Image'),
             ])
         ];
     }
