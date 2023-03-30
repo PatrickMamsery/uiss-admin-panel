@@ -69,7 +69,7 @@ class PlatformProvider extends OrchidServiceProvider
                     Menu::make(__('Events'))
                         ->icon('task')
                         ->route('platform.events'),
-                    Menu::make(__('Organizers'))
+                    Menu::make(__('Hosts'))
                         ->icon('people')
                         ->route('platform.index'),
                 ]),

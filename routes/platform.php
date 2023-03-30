@@ -15,6 +15,7 @@ use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\Event\EventEditScreen;
 use App\Orchid\Screens\Event\EventListScreen;
+use App\Orchid\Screens\Event\EventHostsListScreen;
 use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\Program\ProgramEditScreen;
@@ -198,6 +199,15 @@ Route::screen('event/{event?}', EventEditScreen::class)
         return $trail
             ->parent('platform.events')
             ->push(__('Edit'), route('platform.event.edit'));
+    });
+
+// Home > Event Hosts
+Route::screen('event-hosts', EventHostsListScreen::class)
+    ->name('platform.event-hosts')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Event Hosts'), route('platform.event-hosts'));
     });
 
 

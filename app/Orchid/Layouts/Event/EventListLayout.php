@@ -47,7 +47,7 @@ class EventListLayout extends Table
 
             TD::make('description','Description')
                 ->render(function(CustomEvent $event) {
-                    return Str::limit(strip_tags($event->description), 50);
+                    return Str::limit(strip_tags($event->description), 30, '...');
                 }),
 
             TD::make('venue','Venue')
@@ -57,7 +57,7 @@ class EventListLayout extends Table
 
             TD::make('image','Image')
                 ->render(function(CustomEvent $event){
-                    return '<img style=" width: 100px;" src='.$event->image.' alt="preview"></img>';
+                    return '<img style=" height: 80px; width: 100px; object-fit: cover" src='.$event->image.' alt="preview"></img>';
                 }),
 
             TD::make('Duration')

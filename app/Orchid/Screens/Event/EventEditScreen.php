@@ -2,10 +2,12 @@
 
 namespace App\Orchid\Screens\Event;
 
-use App\Models\Event;
+use App\Models\Event as CustomEvent;
+use App\Models\EventHost;
 use Orchid\Screen\Screen;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\DateTimer;
@@ -15,6 +17,9 @@ use Orchid\Screen\Fields\Cropper;
 use Orchid\Support\Facades\Alert;
 use Orchid\Screen\Fields\TextArea;
 use Orchid\Support\Facades\Layout;
+use Orchid\Screen\Actions\ModalToggle;
+
+use App\Models\User;
 
 class EventEditScreen extends Screen
 {
@@ -27,16 +32,20 @@ class EventEditScreen extends Screen
 
     public $description = 'Create event';
 
+    public $event;
+
     /**
      * Query data.
      *
      * @return array
      */
-    public function query(Event $event): array
+    public function query(CustomEvent $event): array
     {
         $this->exists = $event->exists;
 
         if ($this->exists) {
+            $this->event = $event;
+            $this->name = 'Update "'. $event->name . '" Details';
             $this->description = 'Update event';
         }
 
@@ -53,14 +62,19 @@ class EventEditScreen extends Screen
     public function commandBar(): array
     {
         return [
+            ModalToggle::make('Add Event Host')
+                ->modal('createHostModal')
+                ->method('createHost')
+                ->icon('plus'),
+
             Button::make('Create')
                 ->icon('note')
-                ->method('createOrUpdate')
+                ->method('createEvent')
                 ->canSee(!$this->exists),
 
             Button::make('Update')
                 ->icon('pencil')
-                ->method('createOrUpdate')
+                ->method('updateEvent')
                 ->canSee($this->exists),
 
             Button::make('Delete')
@@ -78,6 +92,16 @@ class EventEditScreen extends Screen
     public function layout(): array
     {
         return [
+            Layout::modal('createHostModal', [
+                Layout::rows([
+                    Input::make('hosts')
+                        ->title('Event Host(s)')
+                        // ->multiple()
+                        ->placeholder('Enter event host\'s full name')
+                        ->help('Enter event host\'s full name if not in the available database entries. For multiple hosts, separate each name with a comma and a single whitespace.'),
+                ])
+            ])->title('Add Event Host'),
+
             Layout::rows([
                 Group::make([
                     Input::make('event.name')
@@ -91,9 +115,27 @@ class EventEditScreen extends Screen
                         ->placeholder('Enter event venue'),
                 ]),
 
+                Group::make([
+                    Select::make('event.hosts.')
+                        ->title('Event Hosts')
+                        ->fromModel(User::class, 'name')
+                        ->multiple()
+                        ->required()
+                        ->help('Choose from available entries in the database. If the required name is not in the list create a new entry using the "Add Event Host" button above. You may also add multiple hosts by holding down the "Ctrl" key and selecting multiple entries.'),
+                        // ->canSee(!$this->exists),
+
+                    // a readonly input attribute that will have values of already assigned hosts from the database
+                    Input::make('event_hosts')
+                        ->title('Event Host(s) already assigned to the event')
+                        ->readonly()
+                        ->value(implode(', ', EventHost::with('user')->where('event_id', ($this->exists ? $this->event->id : "none"))->get()->pluck('user.name')->toArray()))
+                        ->help('Already assigned hosts')
+                        ->canSee($this->exists),
+
+                ]),
+
                 Quill::make('event.description')
                     ->title('Description')
-                    ->rows(5)
                     ->required()
                     ->placeholder('Enter event description'),
 
@@ -109,25 +151,77 @@ class EventEditScreen extends Screen
 
                 Cropper::make('event.image')
                     ->targetUrl()
-                    ->required()
+                    // ->required()
                     ->title('Event Image'),
             ])
         ];
     }
 
-    public function createOrUpdate(Event $event,Request $request )
+    public function createEvent(CustomEvent $event, Request $request)
     {
-
-
         $event->fill($request->get('event'))->save();
 
-        Alert::info('event is created successfully');
+        // create new hosts
+        foreach ($request->get('event')['hosts'] as $host) {
+            // save entries in event_hosts table
+            EventHost::firstOrCreate([
+                'user_id' => $host,
+                'event_id' => $event->id
+            ]);
+        }
+
+        Alert::info('Event is created successfully');
 
         return redirect()->route('platform.events');
     }
 
+    public function updateEvent(CustomEvent $event, Request $request)
+    {
+        $event->fill($request->get('event'))->save();
 
-    public function delete(Event $event)
+        // delete current hosts
+        EventHost::where('event_id', $event->id)->delete();
+
+        // create new hosts
+        foreach ($request->get('event')['hosts'] as $host) {
+            // save entries in event_hosts table
+            EventHost::firstOrCreate([
+                'user_id' => $host,
+                'event_id' => $event->id
+            ]);
+        }
+
+        Alert::info('Event is updated successfully');
+
+        return redirect()->route('platform.events');
+    }
+
+    public function createHost(Request $request)
+    {
+        $hostsEntries = explode(', ', $request->get('hosts'));
+
+        foreach ($hostsEntries as $host) {
+            // check if the hosts are in the database
+            $user = User::where('name', $host)->first();
+
+            if ($user) {
+                continue; // skip if the host is already in the database
+            } else {
+                // create new user
+                $user = new User;
+                $user->name = $host;
+                $user->email = strtolower(preg_replace('/\s+/', '', $host)) . '@example.com';
+                $user->role_id = 5; // member
+                $user->password = bcrypt('password');
+                $user->save();
+
+                $hostId = $user->id;
+            }
+        }
+    }
+
+
+    public function delete(CustomEvent $event)
     {
         $event->delete();
 
