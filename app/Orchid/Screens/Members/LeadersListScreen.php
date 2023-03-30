@@ -8,6 +8,8 @@ use Orchid\Support\Facades\Toast;
 use App\Orchid\Layouts\Members\LeadersListLayout;
 
 use App\Models\User;
+use App\Models\EventHost;
+use App\Models\ProjectOwner;
 use App\Models\LeaderDetail;
 use App\Models\CustomRole;
 
@@ -32,7 +34,7 @@ class LeadersListScreen extends Screen
         $role = CustomRole::where('name', 'leader')->first();
 
         return [
-            'users' => User::where('role_id', $role->id)->paginate(),
+            'users' => User::where('role_id', $role->id)->latest('updated_at')->paginate(),
         ];
     }
 
@@ -45,7 +47,7 @@ class LeadersListScreen extends Screen
     {
         return [
             Link::make(__('Add Leader'))
-                ->icon('plus')
+                ->icon('user-follow')
                 ->route('platform.leaders.edit', null),
         ];
     }
@@ -77,6 +79,20 @@ class LeadersListScreen extends Screen
             Toast::warning(__('You can not remove yourself'));
 
             return redirect()->route('platform.leaders');
+        }
+
+        $hostedEvents = EventHost::where('user_id', $user->id)->get();
+
+        if ($hostedEvents) {
+            foreach ($hostedEvents as $hostedEvent) {
+                $hostedEvent->delete();
+            }
+        }
+
+        // delete user projects
+        $hostedProjects = ProjectOwner::where('user_id', $user->id)->get();
+        foreach ($hostedProjects as $project) {
+            $project->delete();
         }
 
         // delete user leadership details

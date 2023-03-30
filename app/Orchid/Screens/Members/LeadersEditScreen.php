@@ -4,14 +4,21 @@ namespace App\Orchid\Screens\Members;
 
 use Orchid\Screen\Screen;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Group;
 use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 
+use Orchid\Screen\Actions\ModalToggle;
+
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\EventHost;
+use App\Models\ProjectOwner;
+use App\Models\Position;
+use App\Models\LeaderDetail;
 use App\Models\CustomRole;
 
 class LeadersEditScreen extends Screen
@@ -52,6 +59,12 @@ class LeadersEditScreen extends Screen
     public function commandBar(): array
     {
         return [
+            ModalToggle::make('Create New Position')
+                ->icon('plus')
+                ->modal('createNewPositionModal')
+                ->method('createPosition'),
+                // ->canSee(!$this->exists),
+
             Button::make('Create')
                 ->icon('note')
                 ->method('createOrUpdate')
@@ -77,6 +90,16 @@ class LeadersEditScreen extends Screen
     public function layout(): array
     {
         return [
+            Layout::modal('createNewPositionModal', [
+                Layout::rows([
+                    Input::make('position.title')
+                        ->title('Position')
+                        ->required()
+                        ->placeholder('Chairman')
+                        ->help('Enter the position of the leader'),
+                ])
+            ])->title('Create New Position')->applyButton('Create'),
+
             Layout::rows([
                 Group::make([
                     Input::make('user.name')
@@ -96,6 +119,12 @@ class LeadersEditScreen extends Screen
                         ->required()
                         ->placeholder('(255)678909876')
                         ->help('Enter the phonenumber of the leader'),
+
+                    Select::make('user.position')
+                        ->title('Position')
+                        ->fromModel(Position::class, 'title')
+                        ->required()
+                        ->help('Enter leader\'s position'),
                 ])
             ])
         ];
@@ -128,10 +157,52 @@ class LeadersEditScreen extends Screen
      */
     public function delete(User $user)
     {
+        $hostedEvents = EventHost::where('user_id', $user->id)->get();
+
+        if ($hostedEvents) {
+            foreach ($hostedEvents as $hostedEvent) {
+                $hostedEvent->delete();
+            }
+        }
+
+        // delete user projects
+        $hostedProjects = ProjectOwner::where('user_id', $user->id)->get();
+        foreach ($hostedProjects as $project) {
+            $project->delete();
+        }
+
+        // delete user leadership details
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->first();
+        if ($leaderDetails) $leaderDetails->delete();
+
+        // in the case where there are many entries of the same user in the leader_details table
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+        foreach ($leaderDetails as $leaderDetail) {
+            $leaderDetail->delete();
+        }
+
         $user->delete()
             ? Alert::info('You have successfully deleted the leader.')
             : Alert::error('An error has occurred');
 
         return redirect()->route('platform.leaders');
+    }
+
+    public function createPosition(Request $request)
+    {
+        $position = Position::where('title', $request->get('position')['title'])->first();
+
+        if ($position) {
+            Alert::error('Position already exists.');
+            return redirect()->route('platform.leaders');
+        } else {
+            $position = new Position;
+            $position->title = $request->get('position')['title'];
+            $position->save();
+
+            Alert::info('You have successfully created a position.');
+
+            return redirect()->route('platform.leaders');
+        }
     }
 }

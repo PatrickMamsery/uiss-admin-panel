@@ -45,7 +45,7 @@ class RegisteredListLayout extends Table
                 ->sort()
                 ->filter(TD::FILTER_DATE)
                 ->render(function (User $user) {
-                    return $user->created_at->format('d.m.Y');
+                    return $user->created_at->toFormattedDateString();
                 }),
 
             TD::make(__('Actions'))

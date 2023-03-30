@@ -20,7 +20,7 @@ class EventController extends BaseController
      */
     public function index()
     {
-        $per_page = 100;
+        $per_page = 15;
         return $this->sendResponse(EventResource::collection(CustomEvent::latest('updated_at')->paginate($per_page)), 'RETRIEVE_SUCCESS');
     }
 

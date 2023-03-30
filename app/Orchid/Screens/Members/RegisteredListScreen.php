@@ -8,6 +8,8 @@ use Orchid\Support\Facades\Toast;
 use App\Orchid\Layouts\Members\RegisteredListLayout;
 
 use App\Models\User;
+use App\Models\EventHost;
+use App\Models\ProjectOwner;
 use App\Models\CustomRole;
 use App\Models\MemberDetail;
 
@@ -75,6 +77,18 @@ class RegisteredListScreen extends Screen
             Toast::warning(__('You can not remove yourself'));
 
             return redirect()->route('platform.leaders');
+        }
+
+        // delete user events
+        $hostedEvents = EventHost::where('user_id', $user->id)->get();
+        foreach ($hostedEvents as $event) {
+            $event->delete();
+        }
+
+        // delete user projects
+        $hostedProjects = ProjectOwner::where('user_id', $user->id)->get();
+        foreach ($hostedProjects as $project) {
+            $project->delete();
         }
 
         // delete user membership details

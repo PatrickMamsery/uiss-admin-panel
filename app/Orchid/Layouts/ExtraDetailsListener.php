@@ -10,6 +10,8 @@ use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Group;
 
+use Illuminate\Http\Request;
+
 use App\Models\University;
 use App\Models\College;
 use App\Models\Department;
@@ -24,11 +26,15 @@ class ExtraDetailsListener extends Listener
      * @var string[]
      */
     protected $targets = [
-        'university_id',
+        'universityId',
         'college_id',
         'department_id',
         // 'user.memberDetail.degree_programme_id',
     ];
+
+    // public $university_id;
+    // public $college_id;
+    // public $department_id;
 
     /**
      * What screen method should be called
@@ -95,8 +101,6 @@ class ExtraDetailsListener extends Listener
                         ->title('College')
                         ->fromModel(College::class, 'name')
                         ->empty('Select a college')
-                        // ->canSee($this->query->has('colleges'))
-                        // ->options($this->query->get('colleges'))
                         ->required()
                         ->help('Select the college you are currently studying in.'),
 

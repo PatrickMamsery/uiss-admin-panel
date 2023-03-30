@@ -10,11 +10,15 @@ use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\Button;
 use Orchid\Support\Facades\Alert;
 
+use Orchid\Screen\Actions\ModalToggle;
+
 use Illuminate\Http\Request;
 
 use App\Orchid\Layouts\ExtraDetailsListener;
 
 use App\Models\User;
+use App\Models\EventHost;
+use App\Models\ProjectOwner;
 use App\Models\CustomRole;
 use App\Models\University;
 use App\Models\College;
@@ -48,7 +52,7 @@ class RegisteredEditScreen extends Screen
         }
 
         return [
-            'user' => $user,
+            'user' => $user->load('memberDetails'),
         ];
     }
 
@@ -60,6 +64,12 @@ class RegisteredEditScreen extends Screen
     public function commandBar(): array
     {
         return [
+            ModalToggle::make('Create New Detail')
+                ->modal('createNewDetailModal')
+                ->method('createDetail')
+                ->icon('plus')
+                ->canSee(!$this->exists),
+
             Button::make('Create')
                 ->icon('note')
                 ->method('createOrUpdate')
@@ -83,18 +93,24 @@ class RegisteredEditScreen extends Screen
      */
     public function asyncGetExtraDetails(int $university_id = null, int $college_id = null, int $department_id = null)
     {
-        dd($university_id, $college_id, $department_id);
-        $universities = University::all();
-        $colleges = College::where('university_id', $university_id)->get();
-        $departments = Department::where('college_id', $college_id)->get();
-        $degreeProgrammes = DegreeProgramme::where('department_id', $department_id)->get();
-
         return [
-            'universities' => $universities,
-            'colleges' => $colleges,
-            'departments' => $departments,
-            'degreeProgrammes' => $degreeProgrammes,
+            'universities' => University::all(),
+            'colleges' => College::where('university_id', $university_id)->get(),
+            'departments' => Department::where('college_id', $college_id)->get(),
+            'degreeProgrammes' => DegreeProgramme::where('department_id', $department_id)->get(),
         ];
+
+        // $universities = University::all();
+        // $colleges = College::where('university_id', $this->university_id)->get();
+        // $departments = Department::where('college_id', $this->college_id)->get();
+        // $degreeProgrammes = DegreeProgramme::where('department_id', $this->department_id)->get();
+
+        // return [
+        //     'universities' => $universities,
+        //     'colleges' => $colleges,
+        //     'departments' => $departments,
+        //     'degreeProgrammes' => $degreeProgrammes,
+        // ];
     }
 
     /**
@@ -105,32 +121,30 @@ class RegisteredEditScreen extends Screen
     public function layout(): array
     {
         return [
-            // Layout::rows([
-                
+            Layout::modal('createNewDetailModal', [
+                Layout::rows([
+                    Input::make('detail.universityName')
+                        ->title('University Name')
+                        ->placeholder('University of Dar es Salaam')
+                        ->required(),
 
-            //     // Group::make([
-            //     //     Select::make('member.university_id')
-            //     //         ->title('University')
-            //     //         ->fromModel(University::class, 'name')
-            //     //         ->onselect('universitySelected')
-            //     //         ->help('Select university that the member is from'),
-                    
-            //     //     Select('member.college_id')
-            //     //         ->title('College')
-            //     //         ->fromQuery(College::where('university_id', $this->member->university_id)->get(), 'name')
-            //     //         ->help('Select college that the member is from'),
+                    Input::make('detail.collegeName')
+                        ->title('College Name')
+                        ->placeholder('College of Engineering and Technology')
+                        ->required(),
 
-            //     //     Select('member.department_id')
-            //     //         ->title('Department')
-            //     //         ->fromQuery(Department::where('college_id', $this->member->college_id)->get(), 'name')
-            //     //         ->help('Select department that the member is from'),
+                    Input::make('detail.departmentName')
+                        ->title('Department Name')
+                        ->placeholder('Department of Computer Science')
+                        ->required(),
 
-            //     //     Select('member.degree_programme_id')
-            //     //         ->title('Degree Programme')
-            //     //         ->fromQuery(DegreeProgramme::where('department_id', $this->member->department_id)->get(), 'name')
-            //     //         ->help('Select degree programme that the member is from'),
-            //     // ])
-            // ])
+                    Input::make('detail.degreeProgrammeName')
+                        ->title('Degree Programme Name')
+                        ->placeholder('Bachelor of Science in Computer Science')
+                        ->required(),
+                ])
+            ])->title('Create New Detail')->applyButton('Create'),
+
             ExtraDetailsListener::class,
         ];
     }
@@ -172,6 +186,28 @@ class RegisteredEditScreen extends Screen
      */
     public function delete(User $user)
     {
+        // delete user events
+        $hostedEvents = EventHost::where('user_id', $user->id)->get();
+        foreach ($hostedEvents as $event) {
+            $event->delete();
+        }
+
+        // delete user projects
+        $projects = ProjectOwner::where('user_id', $user->id)->get();
+        foreach ($projects as $project) {
+            $project->delete();
+        }
+
+        // delete user membership details
+        $memberDetails = MemberDetail::where('user_id', $user->id)->first();
+        if ($memberDetails) $memberDetails->delete();
+
+        // in the case where there are many entries of the same user in the member_details table
+        $memberDetails = MemberDetail::where('user_id', $user->id)->get();
+        foreach ($memberDetails as $memberDetail) {
+            $memberDetail->delete();
+        }
+
         $user->delete()
             ? Alert::info('You have successfully deleted the member.')
             : Alert::error('An error has occurred');
@@ -179,16 +215,56 @@ class RegisteredEditScreen extends Screen
         return redirect()->route('platform.members');
     }
 
-    // public function universitySelected(Request $request)
-    // {
-    //     $university = University::find($request->get('university_id'));
+    public function createDetail(Request $request)
+    {
+        $university = University::where('name', $request->get('detail')['universityName'])->first();
 
-    //     dd($university);
+        if (!$university) {
+            $university = new University();
+            $university->name = $request->get('detail')['universityName'];
+            $university->save();
+        }
 
-    //     return [
-    //         'member.college_id' => $university->colleges()->get(['id', 'name']),
-    //         'member.department_id' => $university->departments()->get(['id', 'name']),
-    //         'member.degree_programme_id' => $university->degreeProgrammes()->get(['id', 'name']),
-    //     ];
-    // }
+        $college = College::where('name', $request->get('detail')['collegeName'])->where('university_id', $university->id)->first();
+
+        if (!$college) {
+            $college = new College();
+            $college->name = $request->get('detail')['collegeName'];
+            $college->university_id = $university->id;
+            $college->save();
+        } else if ($college->university_id != $university->id) {
+            $college = new College();
+            $college->name = $request->get('detail')['collegeName'];
+            $college->university_id = $university->id;
+            $college->save();
+        }
+
+        $department = Department::where('name', $request->get('detail')['departmentName'])->first();
+
+        if (!$department) {
+            $department = new Department();
+            $department->name = $request->get('detail')['departmentName'];
+            $department->college_id = $college->id;
+            $department->save();
+        } else if ($department->college_id != $college->id) {
+            $department = new Department();
+            $department->name = $request->get('detail')['departmentName'];
+            $department->college_id = $college->id;
+            $department->save();
+        }
+
+        $degreeProgramme = DegreeProgramme::where('name', $request->get('detail')['degreeProgrammeName'])->first();
+
+        if (!$degreeProgramme) {
+            $degreeProgramme = new DegreeProgramme();
+            $degreeProgramme->name = $request->get('detail')['degreeProgrammeName'];
+            $degreeProgramme->department_id = $department->id;
+            $degreeProgramme->save();
+        } else if ($degreeProgramme->department_id != $department->id) {
+            $degreeProgramme = new DegreeProgramme();
+            $degreeProgramme->name = $request->get('detail')['degreeProgrammeName'];
+            $degreeProgramme->department_id = $department->id;
+            $degreeProgramme->save();
+        }
+    }
 }
