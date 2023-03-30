@@ -16,14 +16,14 @@ class PlatformScreen extends Screen
      *
      * @var string
      */
-    public $name = 'Get Started';
+    public $name = 'UISS - Admin Panel';
 
     /**
      * Display header description.
      *
      * @var string
      */
-    public $description = 'Welcome to your Orchid application.';
+    public $description = 'Welcome to UISS Admin Panel.';
 
     /**
      * Query data.
@@ -63,19 +63,19 @@ class PlatformScreen extends Screen
 
             // ];
 
-            
+            return [];
 
-        $charts = [
-            [
-                'labels' => ['january','february','march','april','may','june','july'],
-                'title'  => 'Some Data',
-                'values' => [25, 40, 30, 35, 8, 52, 17, -4],
-            ],
-        ];
+        // $charts = [
+        //     [
+        //         'labels' => ['january','february','march','april','may','june','july'],
+        //         'title'  => 'Some Data',
+        //         'values' => [25, 40, 30, 35, 8, 52, 17, -4],
+        //     ],
+        // ];
     
-        return [
-            'charts' => $charts,
-        ];
+        // return [
+        //     'charts' => $charts,
+        // ];
     }
 
     /**
@@ -86,7 +86,10 @@ class PlatformScreen extends Screen
     public function commandBar(): array
     {
         return [
-           
+            Link::make('Go to site')
+                ->href('https://admin.uiss.patrickmamsery.works')
+                ->target('_blank')
+                ->icon('globe-alt'),
         ];
     }
 
@@ -98,7 +101,8 @@ class PlatformScreen extends Screen
     public function layout(): array
     {
         return [
-            ChartsLayout::class
+            // ChartsLayout::class
+            Layout::view('home')
         ];
     }
 }

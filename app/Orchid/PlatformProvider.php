@@ -28,7 +28,8 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             Menu::make(__('Dashboard'))
                 ->icon('chart')
-                ->route('platform.index'),
+                ->route('platform.index')
+                ->active('admin/main'),
 
             Menu::make(__('Members'))
                 ->icon('people')
@@ -71,7 +72,7 @@ class PlatformProvider extends OrchidServiceProvider
                         ->route('platform.events'),
                     Menu::make(__('Hosts'))
                         ->icon('people')
-                        ->route('platform.index'),
+                        ->route('platform.event-hosts'),
                 ]),
 
             // Menu::make('News')

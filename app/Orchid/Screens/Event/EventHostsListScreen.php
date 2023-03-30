@@ -67,7 +67,36 @@ class EventHostsListScreen extends Screen
     public function layout(): array
     {
         return [
+            Layout::modal('editEventHostDetails', [
+                Layout::rows([
+                    Input::make('user.name')
+                        ->title('Name')
+                        ->required(),
+                ])
+            ])->async('asyncEditEventHost')
+                ->title('Edit Event Host\'s Details'),
+
             EventHostsListLayout::class
         ];
+    }
+
+    public function asyncEditEventHost(User $user): array
+    {
+        return [
+            'user' => $user,
+        ];
+    }
+
+    public function editEventHost(User $user, Request $request)
+    {
+        $request->validate([
+            'user.name' => 'required',
+        ]);
+
+        $user->fill($request->input('user'))->save();
+
+        Toast::info('Host\'s name edited successfully');
+
+        return redirect()->route('platform.event-hosts');
     }
 }
