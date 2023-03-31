@@ -5,9 +5,16 @@ declare(strict_types=1);
 namespace App\Orchid\Screens;
 
 use App\Orchid\Layouts\ChartsLayout;
+use App\Orchid\Layouts\OverviewMetrics;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
+
+use App\Models\User;
+use App\Models\CustomRole;
+use App\Models\Project;
+use App\Models\Program;
+use App\Models\Event as CustomEvent;
 
 class PlatformScreen extends Screen
 {
@@ -63,7 +70,20 @@ class PlatformScreen extends Screen
 
             // ];
 
-            return [];
+            // get values
+            $members = User::where('role_id', CustomRole::where('name', 'member')->first()->id)->count();
+            $projects = Project::count();
+            $programs = Program::count();
+            $events = CustomEvent::count();
+
+            return [
+                'metrics' => [
+                    ['keyValue' => number_format($members, 0), 'keyDiff' => 0],
+                    ['keyValue' => number_format($projects, 0), 'keyDiff' => 0],
+                    ['keyValue' => number_format($programs, 0), 'keyDiff' => 0],
+                    ['keyValue' => number_format($events, 0), 'keyDiff' => 0],
+                ],
+            ];
 
         // $charts = [
         //     [
@@ -102,6 +122,8 @@ class PlatformScreen extends Screen
     {
         return [
             // ChartsLayout::class
+            OverviewMetrics::class,
+
             Layout::view('home')
         ];
     }
