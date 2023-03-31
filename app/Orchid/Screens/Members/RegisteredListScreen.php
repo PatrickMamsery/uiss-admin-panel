@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\EventHost;
 use App\Models\ProjectOwner;
 use App\Models\CustomRole;
+use App\Models\LeaderDetail;
 use App\Models\MemberDetail;
 
 class RegisteredListScreen extends Screen
@@ -99,6 +100,16 @@ class RegisteredListScreen extends Screen
         $memberDetails = MemberDetail::where('user_id', $user->id)->get();
         foreach ($memberDetails as $memberDetail) {
             $memberDetail->delete();
+        }
+
+        // delete user leadership details in the case where there are too
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->first();
+        if ($leaderDetails) $leaderDetails->delete();
+
+        // in the case where there are many entries of the same user in the leader_details table
+        $leaderDetails = LeaderDetail::where('user_id', $user->id)->get();
+        foreach ($leaderDetails as $leaderDetail) {
+            $leaderDetail->delete();
         }
 
         $user->delete();
