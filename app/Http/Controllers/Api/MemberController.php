@@ -24,25 +24,25 @@ class MemberController extends BaseController
         if ($role->name == 'member') {
             $users = User::with('memberDetails')->whereHas('customRole', function ($q) {
                 $q->where('name', 'member');
-            })->get();
+            })->latest('updated_at')->paginate();
 
             return $this->sendResponse(MemberResource::collection($users), 'RETRIEVE_SUCCESS');
         } else if ($role->name == 'leader') {
             $users = User::with('leaderDetails')->whereHas('customRole', function ($q) {
                 $q->where('name', 'leader');
-            })->get();
+            })->latest('updated_at')->paginate();
 
             return $this->sendResponse(LeaderResource::collection($users), 'RETRIEVE_SUCCESS');
         }elseif ($role->name == 'admin') {
             $users = User::whereHas('customRole', function ($q) {
                 $q->where('name', 'admin');
-            })->get();
+            })->latest('updated_at')->paginate();
 
             return $this->sendResponse(UserResource::collection($users), 'RETRIEVE_SUCCESS');
         } elseif ($role->name == 'developer') {
             $users = User::whereHas('customRole', function ($q) {
                 $q->where('name', 'developer');
-            })->get();
+            })->latest('updated_at')->paginate();
 
             return $this->sendResponse(UserResource::collection($users), 'RETRIEVE_SUCCESS');
         } else {

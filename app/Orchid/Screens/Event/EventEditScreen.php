@@ -20,6 +20,7 @@ use Orchid\Support\Facades\Layout;
 use Orchid\Screen\Actions\ModalToggle;
 
 use App\Models\User;
+use App\Traits\CloudinaryManagementTrait as CloudinaryManagement;
 
 class EventEditScreen extends Screen
 {

@@ -21,6 +21,7 @@ use Orchid\Screen\Actions\ModalToggle;
 use App\Models\ProjectCategory as Category;
 use App\Models\ProjectOwner as Owner;
 use App\Models\User;
+use App\Traits\CloudinaryManagementTrait as CloudinaryManagement;
 
 class ProjectEditScreen extends Screen
 {
