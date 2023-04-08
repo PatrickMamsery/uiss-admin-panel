@@ -1,0 +1,1826 @@
+openapi: 3.0.3
+info:
+  title: 'UISS API documentation'
+  description: 'API documentation for basic CRUD operations for specified requests. All API endpoints are implemented in JSON Schema. The data transaction must be HTTP requests sent via specified url'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/register:
+    post:
+      summary: 'Create a new user by registration'
+      description: 'This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of user'
+                  example: iste
+                email:
+                  type: string
+                  description: 'Email of the user, should be valid email, unique to the users table'
+                  example: et
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters'
+                  example: facere
+                password_confirmation:
+                  type: string
+                  description: 'Must be same to the password value'
+                  example: aperiam
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/login:
+    post:
+      summary: 'POST api/login'
+      description: 'Logs-in user(s) to the specified dashboard'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email of the user, should be valid email, unique to the users table'
+                  example: asperiores
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters'
+                  example: laboriosam
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'POST api/logout'
+      description: 'Logs-out user(s) from the specified dashboard'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Successfully logged out'
+                properties:
+                  message:
+                    type: string
+                    example: 'Successfully logged out'
+      tags:
+        - 'User Authentication'
+  /api/users:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Admin
+                      email: admin@admin.com
+                      phone: null
+                      image: null
+                    -
+                      id: 4
+                      name: 'Gerardo Turner PhD'
+                      email: bgutmann@example.net
+                      phone: '(940) 882-6311'
+                      image: null
+                    -
+                      id: 5
+                      name: 'Randal Leuschke'
+                      email: wwilliamson@example.net
+                      phone: '+1 (779) 531-7820'
+                      image: null
+                    -
+                      id: 6
+                      name: 'Kenyatta Robel'
+                      email: veronica.nolan@example.com
+                      phone: 915-241-5785
+                      image: null
+                    -
+                      id: 7
+                      name: 'Briana Romaguera'
+                      email: edd.howe@example.net
+                      phone: +1.458.570.0081
+                      image: null
+                    -
+                      id: 8
+                      name: 'Ms. Christy Hammes V'
+                      email: andrew.ritchie@example.org
+                      phone: 305.812.5319
+                      image: null
+                    -
+                      id: 9
+                      name: 'Veda Langosh'
+                      email: mueller.kaden@example.org
+                      phone: '(925) 493-8819'
+                      image: null
+                    -
+                      id: 10
+                      name: 'Mr. Lane Keebler III'
+                      email: bergstrom.marcus@example.org
+                      phone: +1-757-396-9187
+                      image: null
+                    -
+                      id: 15
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga2@gmail.com
+                      phone: '0744556672'
+                      image: null
+                    -
+                      id: 16
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga3@gmail.com
+                      phone: '0744556673'
+                      image: null
+                    -
+                      id: 17
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga4@gmail.com
+                      phone: '0744556674'
+                      image: null
+                    -
+                      id: 20
+                      name: Hellena
+                      email: Hellena@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 21
+                      name: Millenia
+                      email: Millenia@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 22
+                      name: Maasenga
+                      email: maasenga@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 23
+                      name: 'Godwin Makyao'
+                      email: gmak1@gmail.com
+                      phone: '0745678901'
+                      image: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 3
+                    path: 'http://localhost:8000/api/users'
+                    per_page: 15
+                    to: 15
+                    total: 44
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Admin
+                        email: admin@admin.com
+                        phone: null
+                        image: null
+                      -
+                        id: 4
+                        name: 'Gerardo Turner PhD'
+                        email: bgutmann@example.net
+                        phone: '(940) 882-6311'
+                        image: null
+                      -
+                        id: 5
+                        name: 'Randal Leuschke'
+                        email: wwilliamson@example.net
+                        phone: '+1 (779) 531-7820'
+                        image: null
+                      -
+                        id: 6
+                        name: 'Kenyatta Robel'
+                        email: veronica.nolan@example.com
+                        phone: 915-241-5785
+                        image: null
+                      -
+                        id: 7
+                        name: 'Briana Romaguera'
+                        email: edd.howe@example.net
+                        phone: +1.458.570.0081
+                        image: null
+                      -
+                        id: 8
+                        name: 'Ms. Christy Hammes V'
+                        email: andrew.ritchie@example.org
+                        phone: 305.812.5319
+                        image: null
+                      -
+                        id: 9
+                        name: 'Veda Langosh'
+                        email: mueller.kaden@example.org
+                        phone: '(925) 493-8819'
+                        image: null
+                      -
+                        id: 10
+                        name: 'Mr. Lane Keebler III'
+                        email: bergstrom.marcus@example.org
+                        phone: +1-757-396-9187
+                        image: null
+                      -
+                        id: 15
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga2@gmail.com
+                        phone: '0744556672'
+                        image: null
+                      -
+                        id: 16
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga3@gmail.com
+                        phone: '0744556673'
+                        image: null
+                      -
+                        id: 17
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga4@gmail.com
+                        phone: '0744556674'
+                        image: null
+                      -
+                        id: 20
+                        name: Hellena
+                        email: Hellena@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 21
+                        name: Millenia
+                        email: Millenia@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 22
+                        name: Maasenga
+                        email: maasenga@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 23
+                        name: 'Godwin Makyao'
+                        email: gmak1@gmail.com
+                        phone: '0745678901'
+                        image: null
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 3
+                      path: 'http://localhost:8000/api/users'
+                      per_page: 15
+                      to: 15
+                      total: 44
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: quo
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: ronny.west@example.org
+                phone:
+                  type: string
+                  description: ''
+                  example: null
+                image:
+                  type: string
+                  description: ''
+                  example: null
+                role:
+                  type: string
+                  description: ''
+                  example: null
+                additionalInfo:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - name
+                - email
+  '/api/users/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Admin
+                    email: admin@admin.com
+                    phone: null
+                    image: null
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: Admin
+                      email: admin@admin.com
+                      phone: null
+                      image: null
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                email:
+                  type: string
+                  description: ''
+                  example: null
+                phone:
+                  type: string
+                  description: ''
+                  example: null
+                image:
+                  type: string
+                  description: ''
+                  example: null
+                role:
+                  type: string
+                  description: ''
+                  example: null
+                additionalInfo:
+                  type: string
+                  description: ''
+                  example: null
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/users/role/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Role provided does not match our records'
+                  statusCode: 404
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Role provided does not match our records'
+                  statusCode:
+                    type: integer
+                    example: 404
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the role.'
+        example: possimus
+        required: true
+        schema:
+          type: string
+  /api/programs:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: FYP
+                      description: 'a short description'
+                      category: FinHub
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: 'http://localhost:8000/api/programs'
+                    per_page: 15
+                    to: 1
+                    total: 1
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: FYP
+                        description: 'a short description'
+                        category: FinHub
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      path: 'http://localhost:8000/api/programs'
+                      per_page: 15
+                      to: 1
+                      total: 1
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: omnis
+                description:
+                  type: string
+                  description: ''
+                  example: et
+                category:
+                  type: string
+                  description: ''
+                  example: accusantium
+              required:
+                - name
+                - description
+                - category
+  '/api/programs/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: FYP
+                    description: 'a short description'
+                    category: FinHub
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: FYP
+                      description: 'a short description'
+                      category: FinHub
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                description:
+                  type: string
+                  description: ''
+                  example: null
+                category:
+                  type: string
+                  description: ''
+                  example: null
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the program.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/projects:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      title: 'Live Profile'
+                      description: '<p>u know</p>'
+                      image: 'http://localhost:8000/storage/2023/03/21/451ea31b97d892f454448c02165cf21376b73797.png'
+                      category: 'Embedded Systems'
+                      people: []
+                    -
+                      id: 2
+                      title: 'Visiting Day'
+                      description: '<p>karanga za nini</p>'
+                      image: 'http://localhost:8000/storage/2023/03/27/728ce4cec26e5c378f272d1aea2d6c19bf95d24f.png'
+                      category: 'Embedded Systems'
+                      people:
+                        - 'Hellena Nyamweru'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: 'http://localhost:8000/api/projects'
+                    per_page: 15
+                    to: 2
+                    total: 2
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: 'Live Profile'
+                        description: '<p>u know</p>'
+                        image: 'http://localhost:8000/storage/2023/03/21/451ea31b97d892f454448c02165cf21376b73797.png'
+                        category: 'Embedded Systems'
+                        people: []
+                      -
+                        id: 2
+                        title: 'Visiting Day'
+                        description: '<p>karanga za nini</p>'
+                        image: 'http://localhost:8000/storage/2023/03/27/728ce4cec26e5c378f272d1aea2d6c19bf95d24f.png'
+                        category: 'Embedded Systems'
+                        people:
+                          - 'Hellena Nyamweru'
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      path: 'http://localhost:8000/api/projects'
+                      per_page: 15
+                      to: 2
+                      total: 2
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: qui
+                description:
+                  type: string
+                  description: ''
+                  example: commodi
+                category:
+                  type: string
+                  description: ''
+                  example: omnis
+                owner:
+                  type: string
+                  description: ''
+                  example: nihil
+              required:
+                - title
+                - description
+                - category
+                - owner
+  '/api/projects/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    title: 'Live Profile'
+                    description: '<p>u know</p>'
+                    image: 'http://localhost:8000/storage/2023/03/21/451ea31b97d892f454448c02165cf21376b73797.png'
+                    category: 'Embedded Systems'
+                    people: []
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      title: 'Live Profile'
+                      description: '<p>u know</p>'
+                      image: 'http://localhost:8000/storage/2023/03/21/451ea31b97d892f454448c02165cf21376b73797.png'
+                      category: 'Embedded Systems'
+                      people: []
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: null
+                description:
+                  type: string
+                  description: ''
+                  example: null
+                category:
+                  type: string
+                  description: ''
+                  example: null
+                owner:
+                  type: string
+                  description: ''
+                  example: null
+                image:
+                  type: string
+                  description: ''
+                  example: null
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the project.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/events:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 11
+                      name: 'Signe Silva'
+                      description: '<p>Consequuntur eiusmod.</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/7a92165af093d253cb80b67cc5e820660484e3e5.png'
+                      venue: 'Quae ea esse anim u'
+                      startDate: '2023-03-31T00:00:00.000000Z'
+                      endDate: '2023-04-08T00:00:00.000000Z'
+                      hosts: []
+                    -
+                      id: 1
+                      name: 'Introduction to UI/UX'
+                      description: '<p>One two</p>'
+                      image: 'http://localhost:8000/storage/2023/03/31/1c7b75e6c841dae356ec6e965a62a413270df151.png'
+                      venue: 'Hindu Mandal'
+                      startDate: '2023-03-05T00:00:00.000000Z'
+                      endDate: '2023-04-07T00:00:00.000000Z'
+                      hosts:
+                        - Babuu
+                    -
+                      id: 10
+                      name: 'FinHub Launch'
+                      description: '<p>The launch of new CRDB - UDSM partnership</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/7a92165af093d253cb80b67cc5e820660484e3e5.png'
+                      venue: B201
+                      startDate: '2023-04-01T00:00:00.000000Z'
+                      endDate: '2023-04-01T00:00:00.000000Z'
+                      hosts:
+                        - 'Revinah Love'
+                    -
+                      id: 9
+                      name: Birthday
+                      description: '<p>jiji</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/fbe36cb6dbf647cd7f8acaca164f6c0d95facddd.png'
+                      venue: 'D Lab'
+                      startDate: '2023-03-25T00:00:00.000000Z'
+                      endDate: '2023-04-01T00:00:00.000000Z'
+                      hosts:
+                        - 'Babuu Laurian'
+                        - 'Lukando Basil'
+                        - 'Lumuliko Kiswaga'
+                        - Hellena
+                    -
+                      id: 3
+                      name: Travel
+                      description: '<p>One two</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/723e09d00d0dfc726dee37f32d036325a90593d2.png'
+                      venue: 'Hindu Mandal'
+                      startDate: '2023-03-04T00:00:00.000000Z'
+                      endDate: '2023-03-05T00:00:00.000000Z'
+                      hosts:
+                        - Hellena
+                    -
+                      id: 4
+                      name: 'Introduction to UI/UX'
+                      description: '<p>One two</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png'
+                      venue: 'Hindu Mandal'
+                      startDate: '2023-03-05T00:00:00.000000Z'
+                      endDate: '2023-04-07T00:00:00.000000Z'
+                      hosts:
+                        - Hellena
+                        - Maasenga
+                    -
+                      id: 5
+                      name: 'Introduction to UI/UX'
+                      description: '<p>One two</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/bc004a8705956a2f38216eb7894ceabf8376c6f8.png'
+                      venue: 'Hindu Mandal'
+                      startDate: '2023-03-05T00:00:00.000000Z'
+                      endDate: '2023-04-07T00:00:00.000000Z'
+                      hosts:
+                        - Caroline
+                    -
+                      id: 8
+                      name: Kwahiyo
+                      description: '<p>amniotic fluid</p>'
+                      image: 'http://localhost:8000/storage/2023/03/29/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png'
+                      venue: B302
+                      startDate: '2023-03-29T00:00:00.000000Z'
+                      endDate: '2023-03-29T00:00:00.000000Z'
+                      hosts: []
+                    -
+                      id: 6
+                      name: 'UISS Talks v1'
+                      description: 'One two'
+                      image: 'https://via.placeholder.com/640x480.png/004422?text=quo'
+                      venue: B106
+                      startDate: '2023-03-04T00:00:00.000000Z'
+                      endDate: '2023-03-05T00:00:00.000000Z'
+                      hosts:
+                        - Hellena
+                        - Makyao
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    path: 'http://localhost:8000/api/events'
+                    per_page: 15
+                    to: 9
+                    total: 9
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 11
+                        name: 'Signe Silva'
+                        description: '<p>Consequuntur eiusmod.</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/7a92165af093d253cb80b67cc5e820660484e3e5.png'
+                        venue: 'Quae ea esse anim u'
+                        startDate: '2023-03-31T00:00:00.000000Z'
+                        endDate: '2023-04-08T00:00:00.000000Z'
+                        hosts: []
+                      -
+                        id: 1
+                        name: 'Introduction to UI/UX'
+                        description: '<p>One two</p>'
+                        image: 'http://localhost:8000/storage/2023/03/31/1c7b75e6c841dae356ec6e965a62a413270df151.png'
+                        venue: 'Hindu Mandal'
+                        startDate: '2023-03-05T00:00:00.000000Z'
+                        endDate: '2023-04-07T00:00:00.000000Z'
+                        hosts:
+                          - Babuu
+                      -
+                        id: 10
+                        name: 'FinHub Launch'
+                        description: '<p>The launch of new CRDB - UDSM partnership</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/7a92165af093d253cb80b67cc5e820660484e3e5.png'
+                        venue: B201
+                        startDate: '2023-04-01T00:00:00.000000Z'
+                        endDate: '2023-04-01T00:00:00.000000Z'
+                        hosts:
+                          - 'Revinah Love'
+                      -
+                        id: 9
+                        name: Birthday
+                        description: '<p>jiji</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/fbe36cb6dbf647cd7f8acaca164f6c0d95facddd.png'
+                        venue: 'D Lab'
+                        startDate: '2023-03-25T00:00:00.000000Z'
+                        endDate: '2023-04-01T00:00:00.000000Z'
+                        hosts:
+                          - 'Babuu Laurian'
+                          - 'Lukando Basil'
+                          - 'Lumuliko Kiswaga'
+                          - Hellena
+                      -
+                        id: 3
+                        name: Travel
+                        description: '<p>One two</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/723e09d00d0dfc726dee37f32d036325a90593d2.png'
+                        venue: 'Hindu Mandal'
+                        startDate: '2023-03-04T00:00:00.000000Z'
+                        endDate: '2023-03-05T00:00:00.000000Z'
+                        hosts:
+                          - Hellena
+                      -
+                        id: 4
+                        name: 'Introduction to UI/UX'
+                        description: '<p>One two</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png'
+                        venue: 'Hindu Mandal'
+                        startDate: '2023-03-05T00:00:00.000000Z'
+                        endDate: '2023-04-07T00:00:00.000000Z'
+                        hosts:
+                          - Hellena
+                          - Maasenga
+                      -
+                        id: 5
+                        name: 'Introduction to UI/UX'
+                        description: '<p>One two</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/bc004a8705956a2f38216eb7894ceabf8376c6f8.png'
+                        venue: 'Hindu Mandal'
+                        startDate: '2023-03-05T00:00:00.000000Z'
+                        endDate: '2023-04-07T00:00:00.000000Z'
+                        hosts:
+                          - Caroline
+                      -
+                        id: 8
+                        name: Kwahiyo
+                        description: '<p>amniotic fluid</p>'
+                        image: 'http://localhost:8000/storage/2023/03/29/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png'
+                        venue: B302
+                        startDate: '2023-03-29T00:00:00.000000Z'
+                        endDate: '2023-03-29T00:00:00.000000Z'
+                        hosts: []
+                      -
+                        id: 6
+                        name: 'UISS Talks v1'
+                        description: 'One two'
+                        image: 'https://via.placeholder.com/640x480.png/004422?text=quo'
+                        venue: B106
+                        startDate: '2023-03-04T00:00:00.000000Z'
+                        endDate: '2023-03-05T00:00:00.000000Z'
+                        hosts:
+                          - Hellena
+                          - Makyao
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      path: 'http://localhost:8000/api/events'
+                      per_page: 15
+                      to: 9
+                      total: 9
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: mollitia
+                description:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: jnmxstojwxffywrqnexdduubhldnllebgmuckivovajtcotnnjbtexbvgeowraowqfuumtatqpzyhbmeolcvtqzisxxmcednzwozsklczzrnhlwipimobzrjpfirdekxsfgazovzvzgmlwkwdviihskbzksudymuxhjuyyrzdqnqnpordqdxdmoowlfatcsmsrvmqncubsubnkowplvuyfyukzyglhvixytdfgxervthfyztqkfrkhuusvievlnivcnavpfblvsiuezgjkhypbdsridljlljrdiwvkqslhokfatnyiloxckkpubwpgjsflzibhihzkojvnvherumypxugkluknwnqvbzbxxtapbjsgftsyjnssjitbcuofughsgxlqgntohv
+                venue:
+                  type: string
+                  description: ''
+                  example: impedit
+                image:
+                  type: string
+                  description: ''
+                  example: null
+                startDate:
+                  type: string
+                  description: ''
+                  example: pariatur
+                endDate:
+                  type: string
+                  description: ''
+                  example: qui
+                hosts:
+                  type: string
+                  description: ''
+                  example: quo
+              required:
+                - name
+                - description
+                - venue
+                - startDate
+                - endDate
+                - hosts
+  '/api/events/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Introduction to UI/UX'
+                    description: '<p>One two</p>'
+                    image: 'http://localhost:8000/storage/2023/03/31/1c7b75e6c841dae356ec6e965a62a413270df151.png'
+                    venue: 'Hindu Mandal'
+                    startDate: '2023-03-05T00:00:00.000000Z'
+                    endDate: '2023-04-07T00:00:00.000000Z'
+                    hosts:
+                      - Babuu
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Introduction to UI/UX'
+                      description: '<p>One two</p>'
+                      image: 'http://localhost:8000/storage/2023/03/31/1c7b75e6c841dae356ec6e965a62a413270df151.png'
+                      venue: 'Hindu Mandal'
+                      startDate: '2023-03-05T00:00:00.000000Z'
+                      endDate: '2023-04-07T00:00:00.000000Z'
+                      hosts:
+                        - Babuu
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: null
+                description:
+                  type: string
+                  description: 'Must not be greater than 2000 characters.'
+                  example: obdgkbtlpvhbxlshgstiwpsyyuvghebgmdrrumwgastipielrxvdrgpnztkyjuwrtnyusoesokxtzkxgxdpkxxwrrpwbknyqjncwvnheksylightilarppnxzcccbobyhfxgsfmrvhkhgwjgflgygnzutlennqpphdzrruiwvhhbdjawwolhfmplkrmdlwrzgcwtvoqkcxykvsdvktiobpggpeyjbweqvqkegaedrowteidgyyhptmujdjwjmtdqkbdaysazpggfcsabomfhgfodgbffffmutizwtdfdxupxeqiwaaayqfowecjwnqohhatdjfynsntxtliveknhwuusqejmihecaythqjrvryrlumyxeochlsogqtuoskopwoztztvvgrwguozicjazsvndyzptlvtiullkhtpdxjatbqqkrpashortctrrpxjlfapeoxylgjxdkvvqwknsqpeuxfsxvlougrdzbdyzsapxblzssmtzolyhbryucwngbyhaijvvnmsyfzrporrufspjdfnhkfrzckprncqjoytvmgyfjtzkogoeluqhztueuzrwqhgqkotyjzupopzrdxgivhooaoqtrupftwhkrvkgivzwrsfuaweaopnjcrjswolabprgtccouzuplmsfewfsajduylfzbgttwhrvfradalwkjfhrpydzyumwsobwvleembbfcftqwwutrtopikenfzjrthgppnktfklkzdwjdcqxhukoqrsvgpuhjrjwiyfmbyjuapxiwokwxlhwxcskccsmwnqbfcpqmpfkrevhsxgvdcggbpmgorlmfqlmqnnuluarnpq
+                venue:
+                  type: string
+                  description: ''
+                  example: null
+                image:
+                  type: string
+                  description: ''
+                  example: null
+                startDate:
+                  type: string
+                  description: ''
+                  example: null
+                endDate:
+                  type: string
+                  description: ''
+                  example: null
+                hosts:
+                  type: string
+                  description: ''
+                  example: null
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/test:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This is a test route'
+                properties:
+                  message:
+                    type: string
+                    example: 'This is a test route'
+      tags:
+        - Endpoints
+tags:
+  -
+    name: 'User Authentication'
+    description: ''
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

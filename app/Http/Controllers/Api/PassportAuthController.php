@@ -8,8 +8,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
+/**
+ * @group User Authentication
+ */
 class PassportAuthController extends Controller
 {
+    /**
+     * Create a new user by registration
+     * 
+     * This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration
+     * 
+     * @unauthenticated
+     * 
+     * @bodyParam name string required The name of user
+     * @bodyParam email string required Email of the user, should be valid email, unique to the users table
+     * @bodyParam password string required Must be at least 6 characters
+     * @bodyParam password_confirmation string required Must be same to the password value
+     */
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -34,6 +49,17 @@ class PassportAuthController extends Controller
         return response(['token' => $token]);
     }
     
+    /**
+     * POST api/login
+     * 
+     * Logs-in user(s) to the specified dashboard
+     * 
+     * @unauthenticated
+     * 
+     * @bodyParam email string required Email of the user, should be valid email, unique to the users table
+     * @bodyParam password string required Must be at least 6 characters
+     *
+     */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -48,6 +74,7 @@ class PassportAuthController extends Controller
                         'name' => Auth::user()->name,
                         'email' => Auth::user()->email,
                         'phone' => Auth::user()->phone,
+                        'image' => Auth::user()->image,
                         'role' => Auth::user()->customRole->name,
                     ]
                 ], 200
@@ -57,6 +84,18 @@ class PassportAuthController extends Controller
         return response(['error' => 'Unauthorized'], 401);
     }
 
+    /**
+     * POST api/logout
+     * 
+     * Logs-out user(s) from the specified dashboard
+     * 
+     * @authenticated
+     * 
+     * @response {
+     *  "message": "Successfully logged out"
+     * }
+     */
+    
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();

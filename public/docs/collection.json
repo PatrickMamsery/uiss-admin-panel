@@ -1,0 +1,1086 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost:8000"
+        }
+    ],
+    "info": {
+        "name": "UISS API documentation",
+        "_postman_id": "d65f0385-1661-457d-8535-cabc85fe634c",
+        "description": "API documentation for basic CRUD operations for specified requests. All API endpoints are implemented in JSON Schema. The data transaction must be HTTP requests sent via specified url",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "User Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create a new user by registration",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"iste\",\"email\":\"et\",\"password\":\"facere\",\"password_confirmation\":\"aperiam\"}"
+                        },
+                        "description": "This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"asperiores\",\"password\":\"laboriosam\"}"
+                        },
+                        "description": "Logs-in user(s) to the specified dashboard",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Logs-out user(s) from the specified dashboard"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"message\": \"Successfully logged out\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},{\"id\":4,\"name\":\"Gerardo Turner PhD\",\"email\":\"bgutmann@example.net\",\"phone\":\"(940) 882-6311\",\"image\":null},{\"id\":5,\"name\":\"Randal Leuschke\",\"email\":\"wwilliamson@example.net\",\"phone\":\"+1 (779) 531-7820\",\"image\":null},{\"id\":6,\"name\":\"Kenyatta Robel\",\"email\":\"veronica.nolan@example.com\",\"phone\":\"915-241-5785\",\"image\":null},{\"id\":7,\"name\":\"Briana Romaguera\",\"email\":\"edd.howe@example.net\",\"phone\":\"+1.458.570.0081\",\"image\":null},{\"id\":8,\"name\":\"Ms. Christy Hammes V\",\"email\":\"andrew.ritchie@example.org\",\"phone\":\"305.812.5319\",\"image\":null},{\"id\":9,\"name\":\"Veda Langosh\",\"email\":\"mueller.kaden@example.org\",\"phone\":\"(925) 493-8819\",\"image\":null},{\"id\":10,\"name\":\"Mr. Lane Keebler III\",\"email\":\"bergstrom.marcus@example.org\",\"phone\":\"+1-757-396-9187\",\"image\":null},{\"id\":15,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga2@gmail.com\",\"phone\":\"0744556672\",\"image\":null},{\"id\":16,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga3@gmail.com\",\"phone\":\"0744556673\",\"image\":null},{\"id\":17,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga4@gmail.com\",\"phone\":\"0744556674\",\"image\":null},{\"id\":20,\"name\":\"Hellena\",\"email\":\"Hellena@example.com\",\"phone\":null,\"image\":null},{\"id\":21,\"name\":\"Millenia\",\"email\":\"Millenia@example.com\",\"phone\":null,\"image\":null},{\"id\":22,\"name\":\"Maasenga\",\"email\":\"maasenga@example.com\",\"phone\":null,\"image\":null},{\"id\":23,\"name\":\"Godwin Makyao\",\"email\":\"gmak1@gmail.com\",\"phone\":\"0745678901\",\"image\":null}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":3,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/users\",\"per_page\":15,\"to\":15,\"total\":44},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"quo\",\"email\":\"ronny.west@example.org\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/users\/role\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/role\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/role\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "possimus",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Role provided does not match our records\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/programs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/programs"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"FYP\",\"description\":\"a short description\",\"category\":\"FinHub\"}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/programs\",\"per_page\":15,\"to\":1,\"total\":1},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/programs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/programs"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"omnis\",\"description\":\"et\",\"category\":\"accusantium\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/programs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/programs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the program."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"FYP\",\"description\":\"a short description\",\"category\":\"FinHub\"},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/programs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/programs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the program."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/programs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/programs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the program."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/projects",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/projects"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "54"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"title\":\"Live Profile\",\"description\":\"<p>u know<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/21\\\/451ea31b97d892f454448c02165cf21376b73797.png\",\"category\":\"Embedded Systems\",\"people\":[]},{\"id\":2,\"title\":\"Visiting Day\",\"description\":\"<p>karanga za nini<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/27\\\/728ce4cec26e5c378f272d1aea2d6c19bf95d24f.png\",\"category\":\"Embedded Systems\",\"people\":[\"Hellena Nyamweru\"]}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/projects\",\"per_page\":15,\"to\":2,\"total\":2},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/projects",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/projects"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"qui\",\"description\":\"commodi\",\"category\":\"omnis\",\"owner\":\"nihil\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/projects\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/projects\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the project."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "53"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"title\":\"Live Profile\",\"description\":\"<p>u know<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/21\\\/451ea31b97d892f454448c02165cf21376b73797.png\",\"category\":\"Embedded Systems\",\"people\":[]},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/projects\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/projects\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the project."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/projects\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/projects\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the project."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "52"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":11,\"name\":\"Signe Silva\",\"description\":\"<p>Consequuntur eiusmod.<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/7a92165af093d253cb80b67cc5e820660484e3e5.png\",\"venue\":\"Quae ea esse anim u\",\"startDate\":\"2023-03-31T00:00:00.000000Z\",\"endDate\":\"2023-04-08T00:00:00.000000Z\",\"hosts\":[]},{\"id\":1,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/31\\\/1c7b75e6c841dae356ec6e965a62a413270df151.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Babuu\"]},{\"id\":10,\"name\":\"FinHub Launch\",\"description\":\"<p>The launch of new CRDB - UDSM partnership<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/7a92165af093d253cb80b67cc5e820660484e3e5.png\",\"venue\":\"B201\",\"startDate\":\"2023-04-01T00:00:00.000000Z\",\"endDate\":\"2023-04-01T00:00:00.000000Z\",\"hosts\":[\"Revinah Love\"]},{\"id\":9,\"name\":\"Birthday\",\"description\":\"<p>jiji<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/fbe36cb6dbf647cd7f8acaca164f6c0d95facddd.png\",\"venue\":\"D Lab\",\"startDate\":\"2023-03-25T00:00:00.000000Z\",\"endDate\":\"2023-04-01T00:00:00.000000Z\",\"hosts\":[\"Babuu Laurian\",\"Lukando Basil\",\"Lumuliko Kiswaga\",\"Hellena\"]},{\"id\":3,\"name\":\"Travel\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/723e09d00d0dfc726dee37f32d036325a90593d2.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-04T00:00:00.000000Z\",\"endDate\":\"2023-03-05T00:00:00.000000Z\",\"hosts\":[\"Hellena\"]},{\"id\":4,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Hellena\",\"Maasenga\"]},{\"id\":5,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/bc004a8705956a2f38216eb7894ceabf8376c6f8.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Caroline\"]},{\"id\":8,\"name\":\"Kwahiyo\",\"description\":\"<p>amniotic fluid<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png\",\"venue\":\"B302\",\"startDate\":\"2023-03-29T00:00:00.000000Z\",\"endDate\":\"2023-03-29T00:00:00.000000Z\",\"hosts\":[]},{\"id\":6,\"name\":\"UISS Talks v1\",\"description\":\"One two\",\"image\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/004422?text=quo\",\"venue\":\"B106\",\"startDate\":\"2023-03-04T00:00:00.000000Z\",\"endDate\":\"2023-03-05T00:00:00.000000Z\",\"hosts\":[\"Hellena\",\"Makyao\"]}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/events\",\"per_page\":15,\"to\":9,\"total\":9},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"mollitia\",\"description\":\"jnmxstojwxffywrqnexdduubhldnllebgmuckivovajtcotnnjbtexbvgeowraowqfuumtatqpzyhbmeolcvtqzisxxmcednzwozsklczzrnhlwipimobzrjpfirdekxsfgazovzvzgmlwkwdviihskbzksudymuxhjuyyrzdqnqnpordqdxdmoowlfatcsmsrvmqncubsubnkowplvuyfyukzyglhvixytdfgxervthfyztqkfrkhuusvievlnivcnavpfblvsiuezgjkhypbdsridljlljrdiwvkqslhokfatnyiloxckkpubwpgjsflzibhihzkojvnvherumypxugkluknwnqvbzbxxtapbjsgftsyjnssjitbcuofughsgxlqgntohv\",\"venue\":\"impedit\",\"startDate\":\"pariatur\",\"endDate\":\"qui\",\"hosts\":\"quo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "51"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/31\\\/1c7b75e6c841dae356ec6e965a62a413270df151.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Babuu\"]},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"description\":\"obdgkbtlpvhbxlshgstiwpsyyuvghebgmdrrumwgastipielrxvdrgpnztkyjuwrtnyusoesokxtzkxgxdpkxxwrrpwbknyqjncwvnheksylightilarppnxzcccbobyhfxgsfmrvhkhgwjgflgygnzutlennqpphdzrruiwvhhbdjawwolhfmplkrmdlwrzgcwtvoqkcxykvsdvktiobpggpeyjbweqvqkegaedrowteidgyyhptmujdjwjmtdqkbdaysazpggfcsabomfhgfodgbffffmutizwtdfdxupxeqiwaaayqfowecjwnqohhatdjfynsntxtliveknhwuusqejmihecaythqjrvryrlumyxeochlsogqtuoskopwoztztvvgrwguozicjazsvndyzptlvtiullkhtpdxjatbqqkrpashortctrrpxjlfapeoxylgjxdkvvqwknsqpeuxfsxvlougrdzbdyzsapxblzssmtzolyhbryucwngbyhaijvvnmsyfzrporrufspjdfnhkfrzckprncqjoytvmgyfjtzkogoeluqhztueuzrwqhgqkotyjzupopzrdxgivhooaoqtrupftwhkrvkgivzwrsfuaweaopnjcrjswolabprgtccouzuplmsfewfsajduylfzbgttwhrvfradalwkjfhrpydzyumwsobwvleembbfcftqwwutrtopikenfzjrthgppnktfklkzdwjdcqxhukoqrsvgpuhjrjwiyfmbyjuapxiwokwxlhwxcskccsmwnqbfcpqmpfkrevhsxgvdcggbpmgorlmfqlmqnnuluarnpq\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/test",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/test",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/test"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "50"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"message\":\"This is a test route\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}

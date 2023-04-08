@@ -28,9 +28,9 @@ use App\Http\Middleware\WithoutLinks;
 // header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 // header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::post('/register', [PassportAuthController::class, 'register']);
 Route::post('/login', [PassportAuthController::class, 'login']);
