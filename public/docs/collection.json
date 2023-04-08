@@ -10,326 +10,15 @@
     ],
     "info": {
         "name": "UISS API documentation",
-        "_postman_id": "d65f0385-1661-457d-8535-cabc85fe634c",
+        "_postman_id": "10f6091d-7211-4d55-b3f7-0b88079ee1ff",
         "description": "API documentation for basic CRUD operations for specified requests. All API endpoints are implemented in JSON Schema. The data transaction must be HTTP requests sent via specified url",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "User Authentication",
-            "description": "",
-            "item": [
-                {
-                    "name": "Create a new user by registration",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/register",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/register"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"name\":\"iste\",\"email\":\"et\",\"password\":\"facere\",\"password_confirmation\":\"aperiam\"}"
-                        },
-                        "description": "This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "POST api\/login",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/login",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/login"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"email\":\"asperiores\",\"password\":\"laboriosam\"}"
-                        },
-                        "description": "Logs-in user(s) to the specified dashboard",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "POST api\/logout",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/logout",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/logout"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "Logs-out user(s) from the specified dashboard"
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n \"message\": \"Successfully logged out\"\n}",
-                            "name": ""
-                        }
-                    ]
-                }
-            ]
-        },
-        {
             "name": "Endpoints",
             "description": "",
             "item": [
-                {
-                    "name": "Display a listing of the resource.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/users",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/users"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":[{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},{\"id\":4,\"name\":\"Gerardo Turner PhD\",\"email\":\"bgutmann@example.net\",\"phone\":\"(940) 882-6311\",\"image\":null},{\"id\":5,\"name\":\"Randal Leuschke\",\"email\":\"wwilliamson@example.net\",\"phone\":\"+1 (779) 531-7820\",\"image\":null},{\"id\":6,\"name\":\"Kenyatta Robel\",\"email\":\"veronica.nolan@example.com\",\"phone\":\"915-241-5785\",\"image\":null},{\"id\":7,\"name\":\"Briana Romaguera\",\"email\":\"edd.howe@example.net\",\"phone\":\"+1.458.570.0081\",\"image\":null},{\"id\":8,\"name\":\"Ms. Christy Hammes V\",\"email\":\"andrew.ritchie@example.org\",\"phone\":\"305.812.5319\",\"image\":null},{\"id\":9,\"name\":\"Veda Langosh\",\"email\":\"mueller.kaden@example.org\",\"phone\":\"(925) 493-8819\",\"image\":null},{\"id\":10,\"name\":\"Mr. Lane Keebler III\",\"email\":\"bergstrom.marcus@example.org\",\"phone\":\"+1-757-396-9187\",\"image\":null},{\"id\":15,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga2@gmail.com\",\"phone\":\"0744556672\",\"image\":null},{\"id\":16,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga3@gmail.com\",\"phone\":\"0744556673\",\"image\":null},{\"id\":17,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga4@gmail.com\",\"phone\":\"0744556674\",\"image\":null},{\"id\":20,\"name\":\"Hellena\",\"email\":\"Hellena@example.com\",\"phone\":null,\"image\":null},{\"id\":21,\"name\":\"Millenia\",\"email\":\"Millenia@example.com\",\"phone\":null,\"image\":null},{\"id\":22,\"name\":\"Maasenga\",\"email\":\"maasenga@example.com\",\"phone\":null,\"image\":null},{\"id\":23,\"name\":\"Godwin Makyao\",\"email\":\"gmak1@gmail.com\",\"phone\":\"0745678901\",\"image\":null}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":3,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/users\",\"per_page\":15,\"to\":15,\"total\":44},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Display the specified resource.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/users\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user."
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "58"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "Update the specified resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/users\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user."
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "[]"
-                        },
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Remove the specified resource from storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/users\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user."
-                                }
-                            ]
-                        },
-                        "method": "DELETE",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Store a newly created resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/users",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/users"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"name\":\"quo\",\"email\":\"ronny.west@example.org\"}"
-                        },
-                        "description": ""
-                    },
-                    "response": []
-                },
                 {
                     "name": "api\/users\/role\/{id}",
                     "request": {
@@ -342,7 +31,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "possimus",
+                                    "value": "non",
                                     "description": "The ID of the role."
                                 }
                             ]
@@ -466,7 +155,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"omnis\",\"description\":\"et\",\"category\":\"accusantium\"}"
+                            "raw": "{\"name\":\"omnis\",\"description\":\"similique\",\"category\":\"magni\"}"
                         },
                         "description": ""
                     },
@@ -677,7 +366,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"title\":\"qui\",\"description\":\"commodi\",\"category\":\"omnis\",\"owner\":\"nihil\"}"
+                            "raw": "{\"title\":\"qui\",\"description\":\"a\",\"category\":\"pariatur\",\"owner\":\"laboriosam\"}"
                         },
                         "description": ""
                     },
@@ -888,7 +577,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"mollitia\",\"description\":\"jnmxstojwxffywrqnexdduubhldnllebgmuckivovajtcotnnjbtexbvgeowraowqfuumtatqpzyhbmeolcvtqzisxxmcednzwozsklczzrnhlwipimobzrjpfirdekxsfgazovzvzgmlwkwdviihskbzksudymuxhjuyyrzdqnqnpordqdxdmoowlfatcsmsrvmqncubsubnkowplvuyfyukzyglhvixytdfgxervthfyztqkfrkhuusvievlnivcnavpfblvsiuezgjkhypbdsridljlljrdiwvkqslhokfatnyiloxckkpubwpgjsflzibhihzkojvnvherumypxugkluknwnqvbzbxxtapbjsgftsyjnssjitbcuofughsgxlqgntohv\",\"venue\":\"impedit\",\"startDate\":\"pariatur\",\"endDate\":\"qui\",\"hosts\":\"quo\"}"
+                            "raw": "{\"name\":\"qui\",\"description\":\"ipgwtasygflxzzymujksxnbgdwchfuuzftqynmhujegvewkcahwdwnhmxtlkxbwpxxoyehdnyeogelmawgvuluenbocuiahfalfvvlleewrribtsemaelhvadseegcagvwpkwpkyivakqydoeimaaphqtxsplqirhxfcwcqojwkxdlopdwqksggytdzvzhvbxopklmzfceoduudfbfejgzmrtcbddeffzsmrhcqzymgmrqustgmnkxjxandcxvzagifhdmcfmyfwdjllbgvpecnoaruedjkutccverczmbwsakxfmcbivfrzlwmqviociosmvxnetsznsztgxoytkutdsocwdixckvrsogzgtgwappurnbrpuselyvpcpbhswaplbrkawpuxxdxtjuitgpeohnbglxtzfmwjbjptlrprubpothvgqkjdvcdohpjbwekkpfvnrerdilfejyxbqkxlhqtdvhozpzdwejtlzqybrpkcscoiwijppszhfrvbjqzkqvlvdivqthibmnhsdnzvaksoskhahfxvdkbomptzbqyxyxuqvxaebaycpypdjystthwmsobpyrimpexxbpzoonydadsuxzdpjkwjwqluqavpcmqmtdtbxfplanlcuxbwzphiantahiomgbvrxvxvifjmcijbqemjxdmdwehmubjblsihushmazdwfqjpukgfexjpvdrhdxncbynsdbagymgmsgnbffmemjsvnjkxijqqfnawwzfdytrvnitzuhtapjbudviqtctnswtzpaensfddrnpbcakcajjxibllfsteqarriewyaznofyojtvqdikhhjzyakquonbpsvfjhicbegourvdsavdhmnvfzxpogqu\",\"venue\":\"voluptatem\",\"startDate\":\"numquam\",\"endDate\":\"rerum\",\"hosts\":\"consequatur\"}"
                         },
                         "description": ""
                     },
@@ -985,7 +674,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"description\":\"obdgkbtlpvhbxlshgstiwpsyyuvghebgmdrrumwgastipielrxvdrgpnztkyjuwrtnyusoesokxtzkxgxdpkxxwrrpwbknyqjncwvnheksylightilarppnxzcccbobyhfxgsfmrvhkhgwjgflgygnzutlennqpphdzrruiwvhhbdjawwolhfmplkrmdlwrzgcwtvoqkcxykvsdvktiobpggpeyjbweqvqkegaedrowteidgyyhptmujdjwjmtdqkbdaysazpggfcsabomfhgfodgbffffmutizwtdfdxupxeqiwaaayqfowecjwnqohhatdjfynsntxtliveknhwuusqejmihecaythqjrvryrlumyxeochlsogqtuoskopwoztztvvgrwguozicjazsvndyzptlvtiullkhtpdxjatbqqkrpashortctrrpxjlfapeoxylgjxdkvvqwknsqpeuxfsxvlougrdzbdyzsapxblzssmtzolyhbryucwngbyhaijvvnmsyfzrporrufspjdfnhkfrzckprncqjoytvmgyfjtzkogoeluqhztueuzrwqhgqkotyjzupopzrdxgivhooaoqtrupftwhkrvkgivzwrsfuaweaopnjcrjswolabprgtccouzuplmsfewfsajduylfzbgttwhrvfradalwkjfhrpydzyumwsobwvleembbfcftqwwutrtopikenfzjrthgppnktfklkzdwjdcqxhukoqrsvgpuhjrjwiyfmbyjuapxiwokwxlhwxcskccsmwnqbfcpqmpfkrevhsxgvdcggbpmgorlmfqlmqnnuluarnpq\"}"
+                            "raw": "{\"description\":\"emmjkerpkabdsdjacglzciwdlfoyrhapldlpmddbsvimbinudfdavyjcbuxyokbpsxedbiixpqjpwturmipxnwjgjunkxxjgfmwucgjqzsiwlyxrjykxinngxzadwgfiiajvqexgttrtrkqjmmyqkmbdsbbasgmteozctxsaufwpghxgktetsqvucwxbwfuwoumeawyitmcuzgwoeaknfmsvqogawqslytllhdvttmjwywjmvomaudhqycqmyfxxrmlpeiytfeirmsyolfopykucqcvoftaxrobwtkypnauislkcuzxhjlzcevxrbcjszjbfhyfwxvaibsgrxnryvbldylupqkhyozvrtpduqamrubifxpyhcvbrffismripvtffdmnapgpvhuxecaszdrywbfzrzevzreinxdgnkldlhfiualsgslanwoyrpgmpnkdylbhrearlqkdyadptwhthnszogbheygsxvbatjmopbuwbypabgmfeclixulsxiapqimsngjqhsafkpeorhifjhrwcoyomxopinmnyrtbdlwqnplqcqbbhlxmsagadslezgpaoilcqjptcsqyydssecvyhxpbhtqqemyfdjqukbbfrmyhxitdufgtgybbsaupioxdbzaadxiimrtttdumvvwfebbiquyziemxdkzjatdoqtxgjlbkmxhrjkwcwikniprnhjbwhvdfioigolbwkofalzhqrpoatqeqffnthpdspuglbsosbdkbzlpjnesnwzczuqeexzauevupwxnlwceowftpfidnispiuvjmjkmaqsaeqldibnbqlfnlxwkbqpfgbuoooddjabaikvdbhcoeahuxpmlljcbqolqkzipiejnnemoknztjwvqruuirtxbknarvvfcvtzcdyersyzlonsakdvrslbfwmvylooinnbzlwsgurpekvvgedovnyktykkpuhprpfgocdbmqumqphdzacevsinsaijpqoiqtgruajcgwrirtgvqxdmqeaydfkrrdupsppjrvgkgiwuykpoacayccskfmfzffcosetysalyssfnmmxfvmastmlojcjuwlsaglgfqyfwavaqnpxzceqsayetkcvlyljliztdwuevjqtejymxymkshnmpfuvhymxazoxbzrxkbsfbkzsyojjepshdcphknpjjcnfqvikkxvogqbenomzlhxjsivisvlficjskeodysjhwnsyxethyaiqnbsbhtpgusincfnvwxniutsffhftopvykehnrcricwxuxpesozsywtmgwicxfacopglbsylnxjjiekpyjykjgiflqmdeqxlsqyxmvkfqdhcncfnzyhvtllgckiwzjlrwmdmwzgocekytmvqepbguyruvhpqjveyreorcxtgnxezjdarlnncsmdtfpzhwngnarpuyyficzwdvgqcclsrwcuzsllnkyfvnhmdvatjllxyhqdwxryowlpigivpimyvaajewpdpuwiidagjbvffdwuvpkqmmjxiwmllgvxfseirhadfksgfscfxpmcvhxwtopyfjyhgjtylfklmuaipvtwgyzt\"}"
                         },
                         "description": ""
                     },
@@ -1074,6 +763,336 @@
                             "code": 200,
                             "body": "{\"message\":\"This is a test route\"}",
                             "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create a new user by registration",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"alias\",\"email\":\"eos\",\"password\":\"dolores\",\"password_confirmation\":\"voluptatem\"}"
+                        },
+                        "description": "This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/login",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"odit\",\"password\":\"voluptatum\"}"
+                        },
+                        "description": "Logs-in user(s) to the specified dashboard",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/logout",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Logs-out user(s) from the specified dashboard"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"message\": \"Successfully logged out\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Management",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Retrieves all users paginated in chunks of 15"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},{\"id\":4,\"name\":\"Gerardo Turner PhD\",\"email\":\"bgutmann@example.net\",\"phone\":\"(940) 882-6311\",\"image\":null},{\"id\":5,\"name\":\"Randal Leuschke\",\"email\":\"wwilliamson@example.net\",\"phone\":\"+1 (779) 531-7820\",\"image\":null},{\"id\":6,\"name\":\"Kenyatta Robel\",\"email\":\"veronica.nolan@example.com\",\"phone\":\"915-241-5785\",\"image\":null},{\"id\":7,\"name\":\"Briana Romaguera\",\"email\":\"edd.howe@example.net\",\"phone\":\"+1.458.570.0081\",\"image\":null},{\"id\":8,\"name\":\"Ms. Christy Hammes V\",\"email\":\"andrew.ritchie@example.org\",\"phone\":\"305.812.5319\",\"image\":null},{\"id\":9,\"name\":\"Veda Langosh\",\"email\":\"mueller.kaden@example.org\",\"phone\":\"(925) 493-8819\",\"image\":null},{\"id\":10,\"name\":\"Mr. Lane Keebler III\",\"email\":\"bergstrom.marcus@example.org\",\"phone\":\"+1-757-396-9187\",\"image\":null},{\"id\":15,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga2@gmail.com\",\"phone\":\"0744556672\",\"image\":null},{\"id\":16,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga3@gmail.com\",\"phone\":\"0744556673\",\"image\":null},{\"id\":17,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga4@gmail.com\",\"phone\":\"0744556674\",\"image\":null},{\"id\":20,\"name\":\"Hellena\",\"email\":\"Hellena@example.com\",\"phone\":null,\"image\":null},{\"id\":21,\"name\":\"Millenia\",\"email\":\"Millenia@example.com\",\"phone\":null,\"image\":null},{\"id\":22,\"name\":\"Maasenga\",\"email\":\"maasenga@example.com\",\"phone\":null,\"image\":null},{\"id\":23,\"name\":\"Godwin Makyao\",\"email\":\"gmak1@gmail.com\",\"phone\":\"0745678901\",\"image\":null}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":3,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/users\",\"per_page\":15,\"to\":15,\"total\":45},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET \/api\/users\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display the specified user"
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT \/api\/users\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"John Doe\",\"email\":\"johndoe@mail.com\",\"phone\":\"08012345678\",\"image\":\"https:\\\/\\\/res.cloudinary.com\\\/duqkqzjxk\\\/image\\\/upload\\\/v1590000000\\\/avatars\\\/1.jpg\",\"role\":\"member\",\"additionalInfo\":{\"regNo\":\"123456\",\"areaOfInterest\":\"Software Engineering\",\"university\":\"University of Lagos\",\"college\":\"College of Engineering\",\"department\":\"Department of Computer Science\",\"degreeProgramme\":\"B.Sc. Computer Science\"}}"
+                        },
+                        "description": "Update the specified user"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE \/api\/users\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a user from the database completely and all its relations\n\n<aside class=\"notice\"> <strong>NOTE:<\/strong> This action is irreversible <\/aside>"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/users",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"dolor\",\"email\":\"enim\",\"phone\":\"cumque\",\"image\":\"minus\",\"role\":\"minus\",\"additionalInfo\":[]}"
+                        },
+                        "description": "Creates a new user"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": {\n      \"id\": 1,\n      \"name\": \"John Doe\",\n      \"email\": \"johndoe@mail.com\",\n      \"phone\": \"08012345678\",\n      \"image\": \"https:\/\/via.placeholder.com\/150\",\n      \"role\": \"member\",\n      \"regNo\": \"2020-04-09890\",\n      \"isProjectOwner\": 0,\n      \"areaOfInterest\": \"Software Development\",\n      \"university\": \"University of Lagos\",\n      \"college\": \"College of Medicine\",\n      \"department\": \"Department of Surgery\",\n      \"degreeProgramme\": \"MBBS\"\n  },\n  \"status\": \"success\",\n  \"message\": \"Resource created successfully\",\n  \"statusCode\": 200\n  }",
+                            "name": "member"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": {\n      \"id\": 1,\n      \"name\": \"John Doe\",\n      \"email\": \"johndoe@mail.com\",\n      \"phone\": \"08012345678\",\n      \"image\": \"https:\/\/via.placeholder.com\/150\",\n      \"role\": \"leader\",\n      \"isProjectOwner\": 0,\n      \"position\": \"President\"\n  },\n  \"status\": \"success\",\n  \"message\": \"Resource created successfully\",\n  \"statusCode\": 200\n  }",
+                            "name": "leader"
                         }
                     ]
                 }

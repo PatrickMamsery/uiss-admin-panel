@@ -21,10 +21,15 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\MemberResource;
 use App\Http\Resources\LeaderResource;
 
+/**
+ * @group User Management
+ */
 class UserController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * GET api/users
+     * 
+     * Retrieves all users paginated in chunks of 15
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +40,59 @@ class UserController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * POST api/users
+     * 
+     * Creates a new user
+     * 
+     * @bodyParam name string required The name of user
+     * @bodyParam email string required Email of the user, should be valid email, unique to the users table
+     * @bodyParam phone string Phone number of the user, unique to the users table
+     * @bodyParam image string Image of the user, should be a valid url
+     * @bodyParam role string Role of the user, should be either "member", "leader", "developer" or "admin"
+     * @bodyParam additionalInfo object Additional information of the user, should be an object with the following keys:
+        * - position: string, required if role is "leader"
+        * - university: string, required if role is "member"
+        * - college: string, required if role is "member"
+        * - department: string, required if role is "member"
+        * - degreeProgramme: string, required if role is "member"
+
+        * @response scenario="member" {
+        *   "data": {
+        *       "id": 1,
+        *       "name": "John Doe",
+        *       "email": "johndoe@mail.com",
+        *       "phone": "08012345678",
+        *       "image": "https://via.placeholder.com/150",
+        *       "role": "member",
+        *       "regNo": "2020-04-09890",
+        *       "isProjectOwner": 0,
+        *       "areaOfInterest": "Software Development",
+        *       "university": "University of Lagos",
+        *       "college": "College of Medicine",
+        *       "department": "Department of Surgery",
+        *       "degreeProgramme": "MBBS"
+        *   },
+        *   "status": "success",
+        *   "message": "Resource created successfully",
+        *   "statusCode": 200
+        *   }
+
+        * @response scenario="leader" {
+        *   "data": {
+        *       "id": 1,
+        *       "name": "John Doe",
+        *       "email": "johndoe@mail.com",
+        *       "phone": "08012345678",
+        *       "image": "https://via.placeholder.com/150",
+        *       "role": "leader",
+        *       "isProjectOwner": 0,
+        *       "position": "President"
+        *   },
+        *   "status": "success",
+        *   "message": "Resource created successfully",
+        *   "statusCode": 200
+        *   }
+     * 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -46,8 +103,8 @@ class UserController extends BaseController
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'phone' => 'nullable|unique:users',
-            'image' => 'nullable',
-            'role' => 'nullable',
+            'image' => 'nullable|string',
+            'role' => 'nullable|string',
             'additionalInfo' => 'nullable',
         ]);
         
@@ -143,10 +200,6 @@ class UserController extends BaseController
                                     $member->degree_programme_id = $degreeProgramme->id;
                                     $member->save();
 
-                                    // if ($member->save()) {
-                                    //     var_dump("hurrah!! done"); die;
-                                    // }
-
                                     // redundant typecasting
                                     
                                     // if ($member->save()) {
@@ -176,7 +229,6 @@ class UserController extends BaseController
                                 $leader->end_date = array_key_exists('endDate', $additionalInfoData) ? $additionalInfoData['endDate'] : \Carbon\Carbon::now()->addYear();
 
                                 $leader->save();
-                                // if ($leader->save()) return "yeah it returns";
 
                                 // var_dump($user->leaderDetails); die;
                                 // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
@@ -222,7 +274,10 @@ class UserController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * GET /api/users/{id}
+     * 
+     * Display the specified user
+     * 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -255,7 +310,16 @@ class UserController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+     * PUT /api/users/{id}
+     * 
+     * Update the specified user
+     * 
+     * @bodyParam name string The name of the user. Example: John Doe
+     * @bodyParam email string The email of the user. Example: johndoe@mail.com
+     * @bodyParam phone string The phone number of the user. Example: 08012345678
+     * @bodyParam image string The image of the user. Example: https://res.cloudinary.com/duqkqzjxk/image/upload/v1590000000/avatars/1.jpg
+     * @bodyParam role string The role of the user. Example: member
+     * @bodyParam additionalInfo array The additional information of the user. Example: {"regNo": "123456", "areaOfInterest": "Software Engineering", "university": "University of Lagos", "college": "College of Engineering", "department": "Department of Computer Science", "degreeProgramme": "B.Sc. Computer Science"}
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -447,7 +511,11 @@ class UserController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * DELETE /api/users/{id}
+     * 
+     * Delete a user from the database completely and all its relations
+     * 
+     * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

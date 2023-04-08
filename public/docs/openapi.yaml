@@ -7,613 +7,6 @@ servers:
   -
     url: 'http://localhost:8000'
 paths:
-  /api/register:
-    post:
-      summary: 'Create a new user by registration'
-      description: 'This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration'
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'User Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: 'The name of user'
-                  example: iste
-                email:
-                  type: string
-                  description: 'Email of the user, should be valid email, unique to the users table'
-                  example: et
-                password:
-                  type: string
-                  description: 'Must be at least 6 characters'
-                  example: facere
-                password_confirmation:
-                  type: string
-                  description: 'Must be same to the password value'
-                  example: aperiam
-              required:
-                - name
-                - email
-                - password
-                - password_confirmation
-      security: []
-  /api/login:
-    post:
-      summary: 'POST api/login'
-      description: 'Logs-in user(s) to the specified dashboard'
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'User Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  description: 'Email of the user, should be valid email, unique to the users table'
-                  example: asperiores
-                password:
-                  type: string
-                  description: 'Must be at least 6 characters'
-                  example: laboriosam
-              required:
-                - email
-                - password
-      security: []
-  /api/logout:
-    post:
-      summary: 'POST api/logout'
-      description: 'Logs-out user(s) from the specified dashboard'
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: 'Successfully logged out'
-                properties:
-                  message:
-                    type: string
-                    example: 'Successfully logged out'
-      tags:
-        - 'User Authentication'
-  /api/users:
-    get:
-      summary: 'Display a listing of the resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    -
-                      id: 1
-                      name: Admin
-                      email: admin@admin.com
-                      phone: null
-                      image: null
-                    -
-                      id: 4
-                      name: 'Gerardo Turner PhD'
-                      email: bgutmann@example.net
-                      phone: '(940) 882-6311'
-                      image: null
-                    -
-                      id: 5
-                      name: 'Randal Leuschke'
-                      email: wwilliamson@example.net
-                      phone: '+1 (779) 531-7820'
-                      image: null
-                    -
-                      id: 6
-                      name: 'Kenyatta Robel'
-                      email: veronica.nolan@example.com
-                      phone: 915-241-5785
-                      image: null
-                    -
-                      id: 7
-                      name: 'Briana Romaguera'
-                      email: edd.howe@example.net
-                      phone: +1.458.570.0081
-                      image: null
-                    -
-                      id: 8
-                      name: 'Ms. Christy Hammes V'
-                      email: andrew.ritchie@example.org
-                      phone: 305.812.5319
-                      image: null
-                    -
-                      id: 9
-                      name: 'Veda Langosh'
-                      email: mueller.kaden@example.org
-                      phone: '(925) 493-8819'
-                      image: null
-                    -
-                      id: 10
-                      name: 'Mr. Lane Keebler III'
-                      email: bergstrom.marcus@example.org
-                      phone: +1-757-396-9187
-                      image: null
-                    -
-                      id: 15
-                      name: 'Lumuliko Kiswaga'
-                      email: kiswaga2@gmail.com
-                      phone: '0744556672'
-                      image: null
-                    -
-                      id: 16
-                      name: 'Lumuliko Kiswaga'
-                      email: kiswaga3@gmail.com
-                      phone: '0744556673'
-                      image: null
-                    -
-                      id: 17
-                      name: 'Lumuliko Kiswaga'
-                      email: kiswaga4@gmail.com
-                      phone: '0744556674'
-                      image: null
-                    -
-                      id: 20
-                      name: Hellena
-                      email: Hellena@example.com
-                      phone: null
-                      image: null
-                    -
-                      id: 21
-                      name: Millenia
-                      email: Millenia@example.com
-                      phone: null
-                      image: null
-                    -
-                      id: 22
-                      name: Maasenga
-                      email: maasenga@example.com
-                      phone: null
-                      image: null
-                    -
-                      id: 23
-                      name: 'Godwin Makyao'
-                      email: gmak1@gmail.com
-                      phone: '0745678901'
-                      image: null
-                  meta:
-                    current_page: 1
-                    from: 1
-                    last_page: 3
-                    path: 'http://localhost:8000/api/users'
-                    per_page: 15
-                    to: 15
-                    total: 44
-                  status: success
-                  message: 'Resource retrieved successfully'
-                  statusCode: 200
-                properties:
-                  data:
-                    type: array
-                    example:
-                      -
-                        id: 1
-                        name: Admin
-                        email: admin@admin.com
-                        phone: null
-                        image: null
-                      -
-                        id: 4
-                        name: 'Gerardo Turner PhD'
-                        email: bgutmann@example.net
-                        phone: '(940) 882-6311'
-                        image: null
-                      -
-                        id: 5
-                        name: 'Randal Leuschke'
-                        email: wwilliamson@example.net
-                        phone: '+1 (779) 531-7820'
-                        image: null
-                      -
-                        id: 6
-                        name: 'Kenyatta Robel'
-                        email: veronica.nolan@example.com
-                        phone: 915-241-5785
-                        image: null
-                      -
-                        id: 7
-                        name: 'Briana Romaguera'
-                        email: edd.howe@example.net
-                        phone: +1.458.570.0081
-                        image: null
-                      -
-                        id: 8
-                        name: 'Ms. Christy Hammes V'
-                        email: andrew.ritchie@example.org
-                        phone: 305.812.5319
-                        image: null
-                      -
-                        id: 9
-                        name: 'Veda Langosh'
-                        email: mueller.kaden@example.org
-                        phone: '(925) 493-8819'
-                        image: null
-                      -
-                        id: 10
-                        name: 'Mr. Lane Keebler III'
-                        email: bergstrom.marcus@example.org
-                        phone: +1-757-396-9187
-                        image: null
-                      -
-                        id: 15
-                        name: 'Lumuliko Kiswaga'
-                        email: kiswaga2@gmail.com
-                        phone: '0744556672'
-                        image: null
-                      -
-                        id: 16
-                        name: 'Lumuliko Kiswaga'
-                        email: kiswaga3@gmail.com
-                        phone: '0744556673'
-                        image: null
-                      -
-                        id: 17
-                        name: 'Lumuliko Kiswaga'
-                        email: kiswaga4@gmail.com
-                        phone: '0744556674'
-                        image: null
-                      -
-                        id: 20
-                        name: Hellena
-                        email: Hellena@example.com
-                        phone: null
-                        image: null
-                      -
-                        id: 21
-                        name: Millenia
-                        email: Millenia@example.com
-                        phone: null
-                        image: null
-                      -
-                        id: 22
-                        name: Maasenga
-                        email: maasenga@example.com
-                        phone: null
-                        image: null
-                      -
-                        id: 23
-                        name: 'Godwin Makyao'
-                        email: gmak1@gmail.com
-                        phone: '0745678901'
-                        image: null
-                    items:
-                      type: object
-                  meta:
-                    type: object
-                    example:
-                      current_page: 1
-                      from: 1
-                      last_page: 3
-                      path: 'http://localhost:8000/api/users'
-                      per_page: 15
-                      to: 15
-                      total: 44
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Resource retrieved successfully'
-                  statusCode:
-                    type: integer
-                    example: 200
-      tags:
-        - Endpoints
-    post:
-      summary: 'Store a newly created resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: quo
-                email:
-                  type: string
-                  description: 'Must be a valid email address.'
-                  example: ronny.west@example.org
-                phone:
-                  type: string
-                  description: ''
-                  example: null
-                image:
-                  type: string
-                  description: ''
-                  example: null
-                role:
-                  type: string
-                  description: ''
-                  example: null
-                additionalInfo:
-                  type: string
-                  description: ''
-                  example: null
-              required:
-                - name
-                - email
-  '/api/users/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    id: 1
-                    name: Admin
-                    email: admin@admin.com
-                    phone: null
-                    image: null
-                  status: success
-                  message: 'Resource retrieved successfully'
-                  statusCode: 200
-                properties:
-                  data:
-                    type: object
-                    example:
-                      id: 1
-                      name: Admin
-                      email: admin@admin.com
-                      phone: null
-                      image: null
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Resource retrieved successfully'
-                  statusCode:
-                    type: integer
-                    example: 200
-      tags:
-        - Endpoints
-    put:
-      summary: 'Update the specified resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: null
-                email:
-                  type: string
-                  description: ''
-                  example: null
-                phone:
-                  type: string
-                  description: ''
-                  example: null
-                image:
-                  type: string
-                  description: ''
-                  example: null
-                role:
-                  type: string
-                  description: ''
-                  example: null
-                additionalInfo:
-                  type: string
-                  description: ''
-                  example: null
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the user.'
-        example: 1
-        required: true
-        schema:
-          type: integer
   '/api/users/role/{id}':
     get:
       summary: ''
@@ -668,7 +61,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the role.'
-        example: possimus
+        example: non
         required: true
         schema:
           type: string
@@ -797,11 +190,11 @@ paths:
                 description:
                   type: string
                   description: ''
-                  example: et
+                  example: similique
                 category:
                   type: string
                   description: ''
-                  example: accusantium
+                  example: magni
               required:
                 - name
                 - description
@@ -1096,15 +489,15 @@ paths:
                 description:
                   type: string
                   description: ''
-                  example: commodi
+                  example: a
                 category:
                   type: string
                   description: ''
-                  example: omnis
+                  example: pariatur
                 owner:
                   type: string
                   description: ''
-                  example: nihil
+                  example: laboriosam
               required:
                 - title
                 - description
@@ -1564,15 +957,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: mollitia
+                  example: qui
                 description:
                   type: string
                   description: 'Must not be greater than 2000 characters.'
-                  example: jnmxstojwxffywrqnexdduubhldnllebgmuckivovajtcotnnjbtexbvgeowraowqfuumtatqpzyhbmeolcvtqzisxxmcednzwozsklczzrnhlwipimobzrjpfirdekxsfgazovzvzgmlwkwdviihskbzksudymuxhjuyyrzdqnqnpordqdxdmoowlfatcsmsrvmqncubsubnkowplvuyfyukzyglhvixytdfgxervthfyztqkfrkhuusvievlnivcnavpfblvsiuezgjkhypbdsridljlljrdiwvkqslhokfatnyiloxckkpubwpgjsflzibhihzkojvnvherumypxugkluknwnqvbzbxxtapbjsgftsyjnssjitbcuofughsgxlqgntohv
+                  example: ipgwtasygflxzzymujksxnbgdwchfuuzftqynmhujegvewkcahwdwnhmxtlkxbwpxxoyehdnyeogelmawgvuluenbocuiahfalfvvlleewrribtsemaelhvadseegcagvwpkwpkyivakqydoeimaaphqtxsplqirhxfcwcqojwkxdlopdwqksggytdzvzhvbxopklmzfceoduudfbfejgzmrtcbddeffzsmrhcqzymgmrqustgmnkxjxandcxvzagifhdmcfmyfwdjllbgvpecnoaruedjkutccverczmbwsakxfmcbivfrzlwmqviociosmvxnetsznsztgxoytkutdsocwdixckvrsogzgtgwappurnbrpuselyvpcpbhswaplbrkawpuxxdxtjuitgpeohnbglxtzfmwjbjptlrprubpothvgqkjdvcdohpjbwekkpfvnrerdilfejyxbqkxlhqtdvhozpzdwejtlzqybrpkcscoiwijppszhfrvbjqzkqvlvdivqthibmnhsdnzvaksoskhahfxvdkbomptzbqyxyxuqvxaebaycpypdjystthwmsobpyrimpexxbpzoonydadsuxzdpjkwjwqluqavpcmqmtdtbxfplanlcuxbwzphiantahiomgbvrxvxvifjmcijbqemjxdmdwehmubjblsihushmazdwfqjpukgfexjpvdrhdxncbynsdbagymgmsgnbffmemjsvnjkxijqqfnawwzfdytrvnitzuhtapjbudviqtctnswtzpaensfddrnpbcakcajjxibllfsteqarriewyaznofyojtvqdikhhjzyakquonbpsvfjhicbegourvdsavdhmnvfzxpogqu
                 venue:
                   type: string
                   description: ''
-                  example: impedit
+                  example: voluptatem
                 image:
                   type: string
                   description: ''
@@ -1580,15 +973,15 @@ paths:
                 startDate:
                   type: string
                   description: ''
-                  example: pariatur
+                  example: numquam
                 endDate:
                   type: string
                   description: ''
-                  example: qui
+                  example: rerum
                 hosts:
                   type: string
                   description: ''
-                  example: quo
+                  example: consequatur
               required:
                 - name
                 - description
@@ -1709,7 +1102,7 @@ paths:
                 description:
                   type: string
                   description: 'Must not be greater than 2000 characters.'
-                  example: obdgkbtlpvhbxlshgstiwpsyyuvghebgmdrrumwgastipielrxvdrgpnztkyjuwrtnyusoesokxtzkxgxdpkxxwrrpwbknyqjncwvnheksylightilarppnxzcccbobyhfxgsfmrvhkhgwjgflgygnzutlennqpphdzrruiwvhhbdjawwolhfmplkrmdlwrzgcwtvoqkcxykvsdvktiobpggpeyjbweqvqkegaedrowteidgyyhptmujdjwjmtdqkbdaysazpggfcsabomfhgfodgbffffmutizwtdfdxupxeqiwaaayqfowecjwnqohhatdjfynsntxtliveknhwuusqejmihecaythqjrvryrlumyxeochlsogqtuoskopwoztztvvgrwguozicjazsvndyzptlvtiullkhtpdxjatbqqkrpashortctrrpxjlfapeoxylgjxdkvvqwknsqpeuxfsxvlougrdzbdyzsapxblzssmtzolyhbryucwngbyhaijvvnmsyfzrporrufspjdfnhkfrzckprncqjoytvmgyfjtzkogoeluqhztueuzrwqhgqkotyjzupopzrdxgivhooaoqtrupftwhkrvkgivzwrsfuaweaopnjcrjswolabprgtccouzuplmsfewfsajduylfzbgttwhrvfradalwkjfhrpydzyumwsobwvleembbfcftqwwutrtopikenfzjrthgppnktfklkzdwjdcqxhukoqrsvgpuhjrjwiyfmbyjuapxiwokwxlhwxcskccsmwnqbfcpqmpfkrevhsxgvdcggbpmgorlmfqlmqnnuluarnpq
+                  example: emmjkerpkabdsdjacglzciwdlfoyrhapldlpmddbsvimbinudfdavyjcbuxyokbpsxedbiixpqjpwturmipxnwjgjunkxxjgfmwucgjqzsiwlyxrjykxinngxzadwgfiiajvqexgttrtrkqjmmyqkmbdsbbasgmteozctxsaufwpghxgktetsqvucwxbwfuwoumeawyitmcuzgwoeaknfmsvqogawqslytllhdvttmjwywjmvomaudhqycqmyfxxrmlpeiytfeirmsyolfopykucqcvoftaxrobwtkypnauislkcuzxhjlzcevxrbcjszjbfhyfwxvaibsgrxnryvbldylupqkhyozvrtpduqamrubifxpyhcvbrffismripvtffdmnapgpvhuxecaszdrywbfzrzevzreinxdgnkldlhfiualsgslanwoyrpgmpnkdylbhrearlqkdyadptwhthnszogbheygsxvbatjmopbuwbypabgmfeclixulsxiapqimsngjqhsafkpeorhifjhrwcoyomxopinmnyrtbdlwqnplqcqbbhlxmsagadslezgpaoilcqjptcsqyydssecvyhxpbhtqqemyfdjqukbbfrmyhxitdufgtgybbsaupioxdbzaadxiimrtttdumvvwfebbiquyziemxdkzjatdoqtxgjlbkmxhrjkwcwikniprnhjbwhvdfioigolbwkofalzhqrpoatqeqffnthpdspuglbsosbdkbzlpjnesnwzczuqeexzauevupwxnlwceowftpfidnispiuvjmjkmaqsaeqldibnbqlfnlxwkbqpfgbuoooddjabaikvdbhcoeahuxpmlljcbqolqkzipiejnnemoknztjwvqruuirtxbknarvvfcvtzcdyersyzlonsakdvrslbfwmvylooinnbzlwsgurpekvvgedovnyktykkpuhprpfgocdbmqumqphdzacevsinsaijpqoiqtgruajcgwrirtgvqxdmqeaydfkrrdupsppjrvgkgiwuykpoacayccskfmfzffcosetysalyssfnmmxfvmastmlojcjuwlsaglgfqyfwavaqnpxzceqsayetkcvlyljliztdwuevjqtejymxymkshnmpfuvhymxazoxbzrxkbsfbkzsyojjepshdcphknpjjcnfqvikkxvogqbenomzlhxjsivisvlficjskeodysjhwnsyxethyaiqnbsbhtpgusincfnvwxniutsffhftopvykehnrcricwxuxpesozsywtmgwicxfacopglbsylnxjjiekpyjykjgiflqmdeqxlsqyxmvkfqdhcncfnzyhvtllgckiwzjlrwmdmwzgocekytmvqepbguyruvhpqjveyreorcxtgnxezjdarlnncsmdtfpzhwngnarpuyyficzwdvgqcclsrwcuzsllnkyfvnhmdvatjllxyhqdwxryowlpigivpimyvaajewpdpuwiidagjbvffdwuvpkqmmjxiwmllgvxfseirhadfksgfscfxpmcvhxwtopyfjyhgjtylfklmuaipvtwgyzt
                 venue:
                   type: string
                   description: ''
@@ -1808,12 +1201,671 @@ paths:
                     example: 'This is a test route'
       tags:
         - Endpoints
+  /api/register:
+    post:
+      summary: 'Create a new user by registration'
+      description: 'This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of user'
+                  example: alias
+                email:
+                  type: string
+                  description: 'Email of the user, should be valid email, unique to the users table'
+                  example: eos
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters'
+                  example: dolores
+                password_confirmation:
+                  type: string
+                  description: 'Must be same to the password value'
+                  example: voluptatem
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/login:
+    post:
+      summary: 'POST api/login'
+      description: 'Logs-in user(s) to the specified dashboard'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Email of the user, should be valid email, unique to the users table'
+                  example: odit
+                password:
+                  type: string
+                  description: 'Must be at least 6 characters'
+                  example: voluptatum
+              required:
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: 'POST api/logout'
+      description: 'Logs-out user(s) from the specified dashboard'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Successfully logged out'
+                properties:
+                  message:
+                    type: string
+                    example: 'Successfully logged out'
+      tags:
+        - 'User Authentication'
+  /api/users:
+    get:
+      summary: 'GET api/users'
+      description: 'Retrieves all users paginated in chunks of 15'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Admin
+                      email: admin@admin.com
+                      phone: null
+                      image: null
+                    -
+                      id: 4
+                      name: 'Gerardo Turner PhD'
+                      email: bgutmann@example.net
+                      phone: '(940) 882-6311'
+                      image: null
+                    -
+                      id: 5
+                      name: 'Randal Leuschke'
+                      email: wwilliamson@example.net
+                      phone: '+1 (779) 531-7820'
+                      image: null
+                    -
+                      id: 6
+                      name: 'Kenyatta Robel'
+                      email: veronica.nolan@example.com
+                      phone: 915-241-5785
+                      image: null
+                    -
+                      id: 7
+                      name: 'Briana Romaguera'
+                      email: edd.howe@example.net
+                      phone: +1.458.570.0081
+                      image: null
+                    -
+                      id: 8
+                      name: 'Ms. Christy Hammes V'
+                      email: andrew.ritchie@example.org
+                      phone: 305.812.5319
+                      image: null
+                    -
+                      id: 9
+                      name: 'Veda Langosh'
+                      email: mueller.kaden@example.org
+                      phone: '(925) 493-8819'
+                      image: null
+                    -
+                      id: 10
+                      name: 'Mr. Lane Keebler III'
+                      email: bergstrom.marcus@example.org
+                      phone: +1-757-396-9187
+                      image: null
+                    -
+                      id: 15
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga2@gmail.com
+                      phone: '0744556672'
+                      image: null
+                    -
+                      id: 16
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga3@gmail.com
+                      phone: '0744556673'
+                      image: null
+                    -
+                      id: 17
+                      name: 'Lumuliko Kiswaga'
+                      email: kiswaga4@gmail.com
+                      phone: '0744556674'
+                      image: null
+                    -
+                      id: 20
+                      name: Hellena
+                      email: Hellena@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 21
+                      name: Millenia
+                      email: Millenia@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 22
+                      name: Maasenga
+                      email: maasenga@example.com
+                      phone: null
+                      image: null
+                    -
+                      id: 23
+                      name: 'Godwin Makyao'
+                      email: gmak1@gmail.com
+                      phone: '0745678901'
+                      image: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 3
+                    path: 'http://localhost:8000/api/users'
+                    per_page: 15
+                    to: 15
+                    total: 45
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Admin
+                        email: admin@admin.com
+                        phone: null
+                        image: null
+                      -
+                        id: 4
+                        name: 'Gerardo Turner PhD'
+                        email: bgutmann@example.net
+                        phone: '(940) 882-6311'
+                        image: null
+                      -
+                        id: 5
+                        name: 'Randal Leuschke'
+                        email: wwilliamson@example.net
+                        phone: '+1 (779) 531-7820'
+                        image: null
+                      -
+                        id: 6
+                        name: 'Kenyatta Robel'
+                        email: veronica.nolan@example.com
+                        phone: 915-241-5785
+                        image: null
+                      -
+                        id: 7
+                        name: 'Briana Romaguera'
+                        email: edd.howe@example.net
+                        phone: +1.458.570.0081
+                        image: null
+                      -
+                        id: 8
+                        name: 'Ms. Christy Hammes V'
+                        email: andrew.ritchie@example.org
+                        phone: 305.812.5319
+                        image: null
+                      -
+                        id: 9
+                        name: 'Veda Langosh'
+                        email: mueller.kaden@example.org
+                        phone: '(925) 493-8819'
+                        image: null
+                      -
+                        id: 10
+                        name: 'Mr. Lane Keebler III'
+                        email: bergstrom.marcus@example.org
+                        phone: +1-757-396-9187
+                        image: null
+                      -
+                        id: 15
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga2@gmail.com
+                        phone: '0744556672'
+                        image: null
+                      -
+                        id: 16
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga3@gmail.com
+                        phone: '0744556673'
+                        image: null
+                      -
+                        id: 17
+                        name: 'Lumuliko Kiswaga'
+                        email: kiswaga4@gmail.com
+                        phone: '0744556674'
+                        image: null
+                      -
+                        id: 20
+                        name: Hellena
+                        email: Hellena@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 21
+                        name: Millenia
+                        email: Millenia@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 22
+                        name: Maasenga
+                        email: maasenga@example.com
+                        phone: null
+                        image: null
+                      -
+                        id: 23
+                        name: 'Godwin Makyao'
+                        email: gmak1@gmail.com
+                        phone: '0745678901'
+                        image: null
+                    items:
+                      type: object
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 3
+                      path: 'http://localhost:8000/api/users'
+                      per_page: 15
+                      to: 15
+                      total: 45
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'User Management'
+    post:
+      summary: 'POST api/users'
+      description: 'Creates a new user'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: leader
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: johndoe@mail.com
+                    phone: '08012345678'
+                    image: 'https://via.placeholder.com/150'
+                    role: leader
+                    isProjectOwner: 0
+                    position: President
+                  status: success
+                  message: 'Resource created successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'John Doe'
+                      email: johndoe@mail.com
+                      phone: '08012345678'
+                      image: 'https://via.placeholder.com/150'
+                      role: leader
+                      isProjectOwner: 0
+                      position: President
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource created successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of user'
+                  example: dolor
+                email:
+                  type: string
+                  description: 'Email of the user, should be valid email, unique to the users table'
+                  example: enim
+                phone:
+                  type: string
+                  description: 'Phone number of the user, unique to the users table'
+                  example: cumque
+                image:
+                  type: string
+                  description: 'Image of the user, should be a valid url'
+                  example: minus
+                role:
+                  type: string
+                  description: 'Role of the user, should be either "member", "leader", "developer" or "admin"'
+                  example: minus
+                additionalInfo:
+                  type: object
+                  description: "Additional information of the user, should be an object with the following keys:\n- position: string, required if role is \"leader\"\n- university: string, required if role is \"member\"\n- college: string, required if role is \"member\"\n- department: string, required if role is \"member\"\n- degreeProgramme: string, required if role is \"member\""
+                  example: []
+                  properties: []
+              required:
+                - name
+                - email
+  '/api/users/{id}':
+    get:
+      summary: 'GET /api/users/{id}'
+      description: 'Display the specified user'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Admin
+                    email: admin@admin.com
+                    phone: null
+                    image: null
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: Admin
+                      email: admin@admin.com
+                      phone: null
+                      image: null
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'User Management'
+    put:
+      summary: 'PUT /api/users/{id}'
+      description: 'Update the specified user'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: johndoe@mail.com
+                phone:
+                  type: string
+                  description: 'The phone number of the user.'
+                  example: '08012345678'
+                image:
+                  type: string
+                  description: 'The image of the user.'
+                  example: 'https://res.cloudinary.com/duqkqzjxk/image/upload/v1590000000/avatars/1.jpg'
+                role:
+                  type: string
+                  description: 'The role of the user.'
+                  example: member
+                additionalInfo:
+                  type: array
+                  description: 'The additional information of the user.'
+                  example:
+                    regNo: '123456'
+                    areaOfInterest: 'Software Engineering'
+                    university: 'University of Lagos'
+                    college: 'College of Engineering'
+                    department: 'Department of Computer Science'
+                    degreeProgramme: 'B.Sc. Computer Science'
+                  items:
+                    type: string
+    delete:
+      summary: 'DELETE /api/users/{id}'
+      description: "Delete a user from the database completely and all its relations\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'User Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
 tags:
+  -
+    name: Endpoints
+    description: ''
   -
     name: 'User Authentication'
     description: ''
   -
-    name: Endpoints
+    name: 'User Management'
     description: ''
 components:
   securitySchemes:
