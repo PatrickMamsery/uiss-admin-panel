@@ -80,12 +80,18 @@ class ExtraDetailsListener extends Listener
                         ->required()
                         ->placeholder('2019/0001')
                         ->help('Enter the registration number of the member'),
-                    
+
                     Input::make('member.area_of_interest')
                         ->title('Area of Interest')
                         ->required()
                         ->placeholder('Software Development')
                         ->help('Enter the area of interest of the member - not more than 100 characters'),
+
+                    Input::make('member.initial_area_of_interest')
+                        ->title('Initial Area of Interest')
+                        ->required()
+                        ->placeholder('Software Development')
+                        ->help('Enter the initial area of interest of the member - not more than 100 characters'),
                 ]),
 
                 Group::make([

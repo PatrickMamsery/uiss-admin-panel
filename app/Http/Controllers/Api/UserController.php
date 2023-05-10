@@ -28,7 +28,7 @@ class UserController extends BaseController
 {
     /**
      * GET api/users
-     * 
+     *
      * Retrieves all users paginated in chunks of 15
      *
      * @return \Illuminate\Http\Response
@@ -41,9 +41,9 @@ class UserController extends BaseController
 
     /**
      * POST api/users
-     * 
+     *
      * Creates a new user
-     * 
+     *
      * @bodyParam name string required The name of user
      * @bodyParam email string required Email of the user, should be valid email, unique to the users table
      * @bodyParam phone string Phone number of the user, unique to the users table
@@ -67,6 +67,7 @@ class UserController extends BaseController
         *       "regNo": "2020-04-09890",
         *       "isProjectOwner": 0,
         *       "areaOfInterest": "Software Development",
+        *       "initialAreaOfInterest": "Software Development - 2020",
         *       "university": "University of Lagos",
         *       "college": "College of Medicine",
         *       "department": "Department of Surgery",
@@ -92,7 +93,7 @@ class UserController extends BaseController
         *   "message": "Resource created successfully",
         *   "statusCode": 200
         *   }
-     * 
+     *
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -107,33 +108,33 @@ class UserController extends BaseController
             'role' => 'nullable|string',
             'additionalInfo' => 'nullable',
         ]);
-        
-        
+
+
         if ($validator->fails()) {
             return $this->sendError('VALIDATION_ERROR', $validator->errors());
         }
-        
+
         // check if there's role attribute else create a new user with "member" role
         if ($request->has('role')) {
-            // clean the role input to small letters 
+            // clean the role input to small letters
             $inputRole = strtolower($request->role);
-            
+
             // check if the role exists
             $role = CustomRole::where('name', $inputRole)->first();
-            
+
             if (is_null($role)) {
                 $role = new CustomRole;
                 $role->name = $inputRole;
                 $role->save();
             }
-            
+
             // check if there is additional info in the payload
             if ($role && !$request->has('additionalInfo')) {
                 return $this->sendError('MISSING_ADDITIONAL_INFO');
             } else {
                 // check if additional info data is correct for given role
                 $additionalInfoData = $request->additionalInfo;
-                
+
                 if ($role->name == 'member' && array_key_exists('position', $additionalInfoData)) {
                     return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
                 } else if ($role->name == 'leader' && array_key_exists('university', $additionalInfoData)) {
@@ -141,7 +142,7 @@ class UserController extends BaseController
                 } else if ($role->name == 'leader' && !array_key_exists('position', $additionalInfoData)) {
                     return $this->sendError('ADDITIONAL_INFO_ROLE_MISMATCH');
                 }
-                
+
                 // create the user
                 $user = new User;
                 $user->name = $request->name;
@@ -151,41 +152,41 @@ class UserController extends BaseController
                 $user->password = $request->phone ? bcrypt($request->phone) : bcrypt($request->email);
                 $user->image = $request->image ? $request->image : null;
                 // $user->save();
-                
+
                 // implement try-catch block so as to prevent any error from disrupting normal procedure
-                
+
                 try {
                     DB::transaction(function () use ($user, $role, $additionalInfoData, $request) {
                         $user->save();
-                        
+
                         switch ($role->name) {
                             case ('member'):
                                 // create member details, that is, university, college, department and degreeProgramme entries in DB
-                                
+
                                 try {
                                     $data = $this->createMemberDetails($additionalInfoData['university'], $additionalInfoData['college'], $additionalInfoData['department'], $additionalInfoData['degreeProgramme']);
                                 } catch (\Exception $error) {
                                     $this->sendError('CREATE_FAILED', $error);
                                 }
-                                
+
                                 // create private data for the member details
                                 $university = $data['university'];
                                 $college = $data['college'];
                                 $department = $data['department'];
                                 $degreeProgramme = $data['degreeProgramme'];
-                                
+
                                 $memberDetails = MemberDetail::where('user_id', $user->id)->first();
                                 // var_dump($memberDetails); die;
 
                                 if (
                                         !is_null($memberDetails)
-                                        && $memberDetails->reg_no == $additionalInfoData['regNo'] 
-                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest'] 
-                                        && $memberDetails->university_id == $university->id 
-                                        && $memberDetails->college_id == $college->id 
-                                        && $memberDetails->department_id == $department->id 
+                                        && $memberDetails->reg_no == $additionalInfoData['regNo']
+                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
+                                        && $memberDetails->university_id == $university->id
+                                        && $memberDetails->college_id == $college->id
+                                        && $memberDetails->department_id == $department->id
                                         && $memberDetails->degree_programme_id == $degreeProgramme->id
-                                    ) 
+                                    )
                                 {
                                     return $this->sendError('DUPLICATE_ENTRY');
                                 } else {
@@ -194,6 +195,7 @@ class UserController extends BaseController
                                     $member->user_id = $user->id;
                                     $member->reg_no = $additionalInfoData['regNo'];
                                     $member->area_of_interest = $additionalInfoData['areaOfInterest'];
+                                    $member->initial_area_of_interest = $additionalInfoData['initialAreaOfInterest'];
                                     $member->university_id = $university->id;
                                     $member->college_id = $college->id;
                                     $member->department_id = $department->id;
@@ -201,7 +203,7 @@ class UserController extends BaseController
                                     $member->save();
 
                                     // redundant typecasting
-                                    
+
                                     // if ($member->save()) {
                                     //     // $createdUser = User::with('memberDetails', 'customRole')->find($user->id);
                                     //     // var_dump($createdUser); die;
@@ -211,7 +213,7 @@ class UserController extends BaseController
                                     // }
                                 }
                             break;
-        
+
                             case ('leader'):
                                 $position = Position::where('title', $additionalInfoData['position'])->first();
 
@@ -233,7 +235,7 @@ class UserController extends BaseController
                                 // var_dump($user->leaderDetails); die;
                                 // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
                             break;
-                            
+
                             // default:
                             //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
                             // break;
@@ -275,9 +277,9 @@ class UserController extends BaseController
 
     /**
      * GET /api/users/{id}
-     * 
+     *
      * Display the specified user
-     * 
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -290,7 +292,7 @@ class UserController extends BaseController
             return $this->sendError('NOT_FOUND');
         }
 
-        
+
         // display different user details based on the role
         switch ($user->customRole->name) {
             case('member'):
@@ -311,9 +313,9 @@ class UserController extends BaseController
 
     /**
      * PUT /api/users/{id}
-     * 
+     *
      * Update the specified user
-     * 
+     *
      * @bodyParam name string The name of the user. Example: John Doe
      * @bodyParam email string The email of the user. Example: johndoe@mail.com
      * @bodyParam phone string The phone number of the user. Example: 08012345678
@@ -348,7 +350,7 @@ class UserController extends BaseController
 
         // check if there's role attribute else create a new user with "member" role
         if ($request->has('role')) {
-            // clean the role input to small letters 
+            // clean the role input to small letters
             $inputRole = strtolower($request->role);
 
             // check if the role exists
@@ -402,17 +404,18 @@ class UserController extends BaseController
 
                                 if (
                                         !is_null($memberDetails)
-                                        && $memberDetails->reg_no == $additionalInfoData['regNo'] 
-                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest'] 
-                                        && $memberDetails->university_id == $university->id 
-                                        && $memberDetails->college_id == $college->id 
-                                        && $memberDetails->department_id == $department->id 
+                                        && $memberDetails->reg_no == $additionalInfoData['regNo']
+                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
+                                        && $memberDetails->university_id == $university->id
+                                        && $memberDetails->college_id == $college->id
+                                        && $memberDetails->department_id == $department->id
                                         && $memberDetails->degree_programme_id == $degreeProgramme->id
-                                    ) 
+                                    )
                                 {
                                     $memberDetails->user_id = $user->id;
                                     $memberDetails->reg_no = $additionalInfoData['regNo'] ? $additionalInfoData['regNo'] : $memberDetails->reg_no;
                                     $memberDetails->area_of_interest = $additionalInfoData['areaOfInterest'] ? $additionalInfoData['areaOfInterest'] : $memberDetails->area_of_interest;
+                                    $memberDetails->initial_area_of_interest = $additionalInfoData['initialAreaOfInterest'] ? $additionalInfoData['initialAreaOfInterest'] : $memberDetails->initial_area_of_interest;
                                     $memberDetails->university_id = $university ? $university->id : $memberDetails->university_id;
                                     $memberDetails->department_id = $department ? $department->id : $memberDetails->department_id;
                                     $memberDetails->college_id = $college ? $college->id : $memberDetails->college_id;
@@ -425,6 +428,7 @@ class UserController extends BaseController
                                     $member->user_id = $user->id;
                                     $member->reg_no = $request->additionalInfo['regNo'];
                                     $member->area_of_interest = $request->additionalInfo['areaOfInterest'];
+                                    $member->initial_area_of_interest = $request->additionalInfo['initialAreaOfInterest'];
                                     $member->university_id = $university->id;
                                     $member->department_id = $department->id;
                                     $member->college_id = $college->id;
@@ -434,7 +438,7 @@ class UserController extends BaseController
                                     // return $this->sendResponse(new MemberResource($user), 'CREATE_SUCCESS');
                                 }
                             break;
-        
+
                             case ('leader'):
                                 $position = Position::where('title', $additionalInfoData['position'])->first();
                                 // var_dump($position); die;
@@ -468,7 +472,7 @@ class UserController extends BaseController
 
                                 // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
                             break;
-                            
+
                             default:
                                 return $this->sendError('UPDATE_FAILED', 'Miscellaneous error, recheck your data entries');
                             break;
@@ -512,9 +516,9 @@ class UserController extends BaseController
 
     /**
      * DELETE /api/users/{id}
-     * 
+     *
      * Delete a user from the database completely and all its relations
-     * 
+     *
      * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
      *
      * @param  int  $id
@@ -615,7 +619,7 @@ class UserController extends BaseController
                 $university->name = $universityData;
                 $university->save();
             }
-            
+
             $college = College::where('name', $collegeData)->where('university_id', $university->id)->first();
             // var_dump($college); die;
 
