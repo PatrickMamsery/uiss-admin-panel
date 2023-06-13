@@ -75,6 +75,10 @@ class PlatformProvider extends OrchidServiceProvider
                         ->route('platform.event-hosts'),
                 ]),
 
+            Menu::make('Gallery')
+                ->icon('layers')
+                ->route('platform.albums'),
+
             // Menu::make('News')
             //     ->icon('docs')
             //     ->route('platform.news'),

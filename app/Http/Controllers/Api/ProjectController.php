@@ -63,7 +63,7 @@ class ProjectController extends BaseController
                     'isProjectOwner' => 1
                 ]);
             }
-            
+
             // manipulate image storage
             // $image_path = '';
             // if ($request->hasFile('image')) {
@@ -77,7 +77,7 @@ class ProjectController extends BaseController
                 'description' => $request->description,
                 'category_id' => $category->id,
                 // 'image' => $image_path ? $image_path : $event->image, // made way for cloudinary image management from frontend
-                'image' => $request->image ? $request->image : $event->image,
+                'image' => $request->image ? $request->image : '',
             ]);
 
             // var_dump($user->id, $project->id); die;
@@ -90,10 +90,10 @@ class ProjectController extends BaseController
         } catch (\Throwable $th) {
             return $this->sendError('UPDATE_FAILED', $th->getMessage());
         }
-        
+
 
         // var_dump($owner); die;
-        
+
         if (is_null($project)) {
             return $this->sendError('CREATE_FAILED');
         } else {
@@ -207,13 +207,13 @@ class ProjectController extends BaseController
         if (is_null($project)) {
             return $this->sendError('NOT_FOUND');
         }
-        
+
         if ($project->owners->count() > 0) {
             foreach ($project->owners as $owner) {
                 $owner->delete();
             }
         }
-        
+
         if ($project->delete()) {
             return $this->sendResponse(new ProjectResource($project), 'DELETE_SUCCESS', 204);
         } else {

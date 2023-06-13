@@ -50,9 +50,9 @@ class EventController extends BaseController
             // check if hosts exist, if not create new entries
             $hosts = [];
             $hosts = explode(', ', $request->hosts);
-            
+
             $host_array = []; // this is to receive new created models
-            
+
             foreach($hosts as $host) {
                 $user = User::where('name', $host)->first();
                 if (is_null($user)) {
@@ -63,7 +63,7 @@ class EventController extends BaseController
                         'password' => bcrypt($host),
                     ]);
                 }
-                
+
                 array_push($host_array, $user->id);
             }
             // var_dump($host_array); die;
@@ -75,13 +75,13 @@ class EventController extends BaseController
             //     $image_new_name = time() . $image->getClientOriginalExtension();
             //     $image->storeAs('uploads/events', $image_new_name);
             // }
-            
+
             $event = CustomEvent::create([
                 'name' => $request->name,
                 'description' => $request->description,
                 'venue' => $request->venue,
                 // 'image' => $image_path ? $image_path : $event->image, // made way for cloudinary image management from frontend
-                'image' => $request->image ? $request->image : $event->image,
+                'image' => $request->image ? $request->image : '',
                 'start_date' => $request->startDate,
                 'end_date' => $request->endDate,
             ]);
@@ -152,9 +152,9 @@ class EventController extends BaseController
             // check if hosts exist, if not create new entries
             $hosts = [];
             $hosts = explode(', ', $request->hosts);
-            
+
             $host_array = []; // this is to receive new created models
-            
+
             foreach($hosts as $host) {
                 $user = User::where('name', $host)->first();
                 if (is_null($user)) {
@@ -165,7 +165,7 @@ class EventController extends BaseController
                         'password' => bcrypt($host),
                     ]);
                 }
-                
+
                 array_push($host_array, $user->id);
             }
             // var_dump($host_array); die;
@@ -177,7 +177,7 @@ class EventController extends BaseController
             //     $image_new_name = time() . $image->getClientOriginalExtension();
             //     $image->storeAs('uploads/events', $image_new_name);
             // }
-            
+
             $event = CustomEvent::find($id);
             $event->flushCache();
 

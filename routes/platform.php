@@ -32,6 +32,10 @@ use App\Orchid\Screens\Members\RegisteredListScreen;
 use App\Orchid\Screens\Members\RegisteredEditScreen;
 use App\Orchid\Screens\Members\LeadersListScreen;
 use App\Orchid\Screens\Members\LeadersEditScreen;
+use App\Orchid\Screens\Image\ImageEditScreen;
+use App\Orchid\Screens\Image\AlbumImageListScreen;
+use App\Orchid\Screens\Image\AlbumListScreen;
+use App\Orchid\Screens\Image\AlbumEditScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
 use App\Orchid\Screens\Examples\ExampleFieldsScreen;
@@ -313,5 +317,42 @@ Route::screen('admin-user/{admin?}', AdminEditScreen::class)
             ->parent('platform.admin-users')
             ->push(__('Edit'), route('platform.admin-user.edit'));
     });
+
+
+// Home > Image > Edit
+Route::screen('image-edit/{image?}', ImageEditScreen::class)
+->name('platform.image.edit')
+->breadcrumbs(function (Trail $trail){
+    return $trail
+        ->parent('platform.album_images')
+        ->push(__('Edit'),route('platform.image.edit'));
+});
+
+// Home > Albums > Images
+Route::screen('album_images/{album?}', AlbumImageListScreen::class)
+->name('platform.album_images')
+->breadcrumbs(function (Trail $trail){
+    return $trail
+        ->parent('platform.albums')
+        ->push(__('Images'), route('platform.album_images'));
+});
+
+// Home > Albums
+Route::screen('albums', AlbumListScreen::class)
+->name('platform.albums')
+->breadcrumbs(function (Trail $trail){
+    return $trail
+        ->parent('platform.index')
+        ->push(__('Albums'),route('platform.albums'));
+});
+
+// Home > ImageAlbum > Edit
+Route::screen('album-edit/{image?}', AlbumEditScreen::class)
+->name('platform.album.edit')
+->breadcrumbs(function (Trail $trail){
+    return $trail
+        ->parent('platform.album_images')
+        ->push(__('Edit'),route('platform.album.edit'));
+});
 
 

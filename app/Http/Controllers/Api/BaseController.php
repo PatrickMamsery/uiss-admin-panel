@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Config;
+use Illuminate\Support\Facades\Config;
 
 class BaseController extends Controller
 {
