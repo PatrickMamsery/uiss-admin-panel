@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 use App\Http\Resources\EventResource;
+use App\Http\Resources\EventRegistrationResource;
 use App\Models\Event as CustomEvent;
 use App\Models\EventHost as Host;
 use App\Models\User;
+use App\Models\EventRegistration;
 
 class EventController extends BaseController
 {
@@ -243,6 +246,88 @@ class EventController extends BaseController
             return $this->sendResponse(new EventResource($event), 'DELETE_SUCCESS', 204);
         } else {
             return $this->sendError('DELETE_FAILED');
+        }
+    }
+
+    // User registration for events
+    /**
+     * Register a user for an event
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function registerToEvent(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->sendError('VALIDATION_ERROR', $validator->errors());
+        }
+
+        try {
+
+            // flow
+            // check if user exists, if not create new user
+            // check if user has registered for event, if yes, return error
+            // else register user for event
+
+            $user = User::where('name', $request->name)->first();
+
+            if (is_null($user)) {
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => strtolower(preg_replace('/\s+/', '', $request->name)) . '@example.com',
+                    'role_id' => 6, // guest
+                    'password' => bcrypt($request->name),
+                ]);
+            }
+
+            $event = CustomEvent::find($id);
+
+            // var_dump($event); die;
+
+            if (is_null($event)) {
+                return $this->sendError('NOT_FOUND');
+            } else {
+                // new or update
+                $eventRegistration = EventRegistration::where('user_id', $user->id)->where('event_id', $event->id)->first();
+
+                if (!is_null($eventRegistration)) {
+                    return $this->sendError('ALREADY_REGISTERED');
+                } else {
+                    $eventRegistration = new EventRegistration();
+                    $eventRegistration->user_id = $user->id;
+                    $eventRegistration->event_id = $event->id;
+                    $eventRegistration->status = 'pending';
+                    $eventRegistration->save();
+                }
+
+            }
+
+            return $this->sendResponse(new EventRegistrationResource($eventRegistration), 'REGISTER_SUCCESS');
+        } catch (\Throwable $th) {
+            return $this->sendError('REGISTER_FAILED', $th->getMessage());
+        }
+    }
+
+    // get all registered users for an event
+    /**
+     * Get all registered users for an event
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     *
+     */
+    public function getRegisteredUsers($id)
+    {
+        $event = CustomEvent::find($id);
+
+        if (is_null($event)) {
+            return $this->sendError('NOT_FOUND');
+        } else {
+            $eventRegistrations = EventRegistration::where('event_id', $event->id)->get();
+            return $this->sendResponse(EventRegistrationResource::collection($eventRegistrations), 'GET_SUCCESS');
         }
     }
 }

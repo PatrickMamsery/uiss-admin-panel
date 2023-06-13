@@ -53,6 +53,9 @@ Route::middleware(['auth.api'])->group(function () {
 
     // Event routes
     Route::apiResource('events', EventController::class)->middleware('withoutlink');
+    Route::post('events/{id}/register', [EventController::class, 'registerToEvent'])->middleware('withoutlink');
+    Route::get('events/{id}/registration-list', [EventController::class, 'getRegisteredUsers'])->middleware('withoutlink');
+    // Route::post('events/{id}/unregister', [EventController::class, 'unregisterFromEvent'])->middleware('withoutlink');
 
     // Gallery routes
     // Images
