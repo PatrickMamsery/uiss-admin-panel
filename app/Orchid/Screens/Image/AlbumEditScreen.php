@@ -49,7 +49,7 @@ class AlbumEditScreen extends Screen
     public function commandBar(): array
     {
         return [
-            Button::make('create')
+            Button::make('Create')
                 ->icon('note')
                 ->method('createOrUpdate')
                 ->canSee(!$this->exists),

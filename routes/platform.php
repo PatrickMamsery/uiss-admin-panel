@@ -17,7 +17,6 @@ use App\Orchid\Screens\Event\EventEditScreen;
 use App\Orchid\Screens\Event\EventListScreen;
 use App\Orchid\Screens\Event\EventHostsListScreen;
 use App\Orchid\Screens\Event\HostEventsListScreen;
-use App\Orchid\Screens\Examples\ExampleScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use App\Orchid\Screens\Program\ProgramEditScreen;
 use App\Orchid\Screens\Program\ProgramListScreen;
@@ -36,12 +35,6 @@ use App\Orchid\Screens\Image\ImageEditScreen;
 use App\Orchid\Screens\Image\AlbumImageListScreen;
 use App\Orchid\Screens\Image\AlbumListScreen;
 use App\Orchid\Screens\Image\AlbumEditScreen;
-use App\Orchid\Screens\Examples\ExampleCardsScreen;
-use App\Orchid\Screens\Examples\ExampleChartsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsScreen;
-use App\Orchid\Screens\Examples\ExampleLayoutsScreen;
-use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
-use App\Orchid\Screens\Examples\ExampleFieldsAdvancedScreen;
 
 /*
 |--------------------------------------------------------------------------
