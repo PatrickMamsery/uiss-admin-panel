@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\ClubController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\MemberController;
@@ -58,20 +59,35 @@ Route::middleware(['auth.api'])->group(function () {
     // Route::post('events/{id}/unregister', [EventController::class, 'unregisterFromEvent'])->middleware('withoutlink');
 
     // Gallery routes
-    // Images
-    Route::get('/gallery/images', [GalleryController::class, 'getImages'])->middleware('withoutlink');
-    Route::get('/gallery/images/{id}', [GalleryController::class, 'getImage'])->middleware('withoutlink');
-    Route::post('/gallery/images', [GalleryController::class, 'createImage'])->middleware('withoutlink');
-    Route::put('/gallery/images/{id}', [GalleryController::class, 'updateImage'])->middleware('withoutlink');
-    Route::delete('/gallery/images/{id}', [GalleryController::class, 'deleteImage'])->middleware('withoutlink');
+    Route::prefix('gallery')->middleware('withoutlink')->group(function () {
 
-    // Albums
-    Route::get('/gallery/albums', [GalleryController::class, 'getAlbums'])->middleware('withoutlink');
-    Route::get('/gallery/albums/{id}', [GalleryController::class, 'getAlbum'])->middleware('withoutlink');
-    Route::get('/gallery/albums/{id}/images', [GalleryController::class, 'getAlbumImages'])->middleware('withoutlink');
-    Route::post('/gallery/albums', [GalleryController::class, 'createAlbum'])->middleware('withoutlink');
-    Route::put('/gallery/albums/{id}', [GalleryController::class, 'updateAlbum'])->middleware('withoutlink');
-    Route::delete('/gallery/albums/{id}', [GalleryController::class, 'deleteAlbum'])->middleware('withoutlink');
+        // Images
+        Route::get('/images', [GalleryController::class, 'getImages']);
+        Route::get('/images/{id}', [GalleryController::class, 'getImage']);
+        Route::post('/images', [GalleryController::class, 'createImage']);
+        Route::put('/images/{id}', [GalleryController::class, 'updateImage']);
+        Route::delete('/images/{id}', [GalleryController::class, 'deleteImage']);
+
+        // Albums
+        Route::get('/albums', [GalleryController::class, 'getAlbums']);
+        Route::get('/albums/{id}', [GalleryController::class, 'getAlbum']);
+        Route::get('/albums/{id}/images', [GalleryController::class, 'getAlbumImages']);
+        Route::post('/albums', [GalleryController::class, 'createAlbum']);
+        Route::put('/albums/{id}', [GalleryController::class, 'updateAlbum']);
+        Route::delete('/albums/{id}', [GalleryController::class, 'deleteAlbum']);
+    });
+
+    // Clubs routes
+    Route::apiResource('clubs', ClubController::class)->middleware('withoutlink');
+
+    Route::prefix('clubs')->middleware('withoutlink')->group(function () {
+        Route::get('/{id}/members', [ClubController::class, 'getClubMembers']);
+        Route::get('/{id}/leaders', [ClubController::class, 'getClubLeaders']);
+        Route::post('/{id}/addLeader', [ClubController::class, 'addLeader']);
+
+        Route::post('/{id}/addMember', [ClubController::class, 'addMember']);
+        Route::post('/{id}/register', [ClubController::class, 'registerToClub']);
+    });
 
     // logout route
     Route::post('/logout', [PassportAuthController::class, 'logout']);
