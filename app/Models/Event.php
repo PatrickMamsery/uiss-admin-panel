@@ -28,4 +28,9 @@ class Event extends BaseModel
     {
         return $this->hasMany(EventHost::class);
     }
+
+    public function attendees()
+    {
+        return $this->hasMany(EventRegistration::class);
+    }
 }

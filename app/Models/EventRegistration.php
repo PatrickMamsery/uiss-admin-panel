@@ -18,7 +18,7 @@ class EventRegistration extends Model
 
     public function event()
     {
-        return $this->belongsTo(Event::class, 'event_id', 'id');
+        return $this->belongsTo(\App\Models\Event::class, 'event_id', 'id');
     }
 
     public function user()

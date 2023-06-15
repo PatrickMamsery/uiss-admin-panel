@@ -172,6 +172,7 @@ class ClubController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
+            'additionalInfo' => 'nullable'
         ]);
 
         if ($validator->fails()) {
@@ -249,7 +250,9 @@ class ClubController extends BaseController
     public function registerToClub(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required'
+            'name' => 'required',
+            'email' => 'nullable|email|unique:users,email',
+            'phone' => 'nullable|unique:users,phone'
         ]);
 
         if ($validator->fails()) {
@@ -262,7 +265,8 @@ class ClubController extends BaseController
         if (is_null($user)) {
             $user = User::create([
                 'name' => $request->name,
-                'email' => strtolower(preg_replace('/\s+/', '', $request->name)) . '@example.com',
+                'email' => $request->email ?? strtolower(preg_replace('/\s+/', '', $request->name)) . '@example.com',
+                'phone' => $request->phone ?? '(255)600000000',
                 'role_id' => 5,
                 'password' => bcrypt($request->name)
             ]);

@@ -236,9 +236,19 @@ class EventController extends BaseController
             return $this->sendError('NOT_FOUND');
         }
 
+        // fail safe check if event has passed and has no
+        // if ($event->start_date > )
+
         if ($event->eventHosts->count() > 0) {
             foreach ($event->eventHosts as $host) {
                 $host->delete();
+            }
+        }
+
+        // fail safe: delete all registered attendees
+        if ($event->attendees->count() > 0) {
+            foreach ($event->attendees as $attendee) {
+                $attendee->delete();
             }
         }
 
@@ -260,6 +270,8 @@ class EventController extends BaseController
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'email' => 'nullable|email|unique:users,email',
+            'phone' => 'nullable|unique:users,phone',
         ]);
 
         if ($validator->fails()) {
@@ -278,7 +290,8 @@ class EventController extends BaseController
             if (is_null($user)) {
                 $user = User::create([
                     'name' => $request->name,
-                    'email' => strtolower(preg_replace('/\s+/', '', $request->name)) . '@example.com',
+                    'email' => $request->email ?? strtolower(preg_replace('/\s+/', '', $request->name)) . '@example.com',
+                    'phone' => $request->phone ?? '(255)600000000',
                     'role_id' => 6, // guest
                     'password' => bcrypt($request->name),
                 ]);
@@ -302,6 +315,8 @@ class EventController extends BaseController
                     $eventRegistration->event_id = $event->id;
                     $eventRegistration->status = 'pending';
                     $eventRegistration->save();
+
+                    // TODO::send confirmation email
                 }
 
             }
@@ -327,7 +342,7 @@ class EventController extends BaseController
             return $this->sendError('NOT_FOUND');
         } else {
             $eventRegistrations = EventRegistration::where('event_id', $event->id)->get();
-            return $this->sendResponse(EventRegistrationResource::collection($eventRegistrations), 'GET_SUCCESS');
+            return $this->sendResponse(EventRegistrationResource::collection($eventRegistrations), 'RETRIEVE_SUCCESS');
         }
     }
 }
