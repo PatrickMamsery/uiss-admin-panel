@@ -27,9 +27,11 @@ use App\Http\Resources\LeaderResource;
 class UserController extends BaseController
 {
     /**
-     * GET api/users
+     * GET ALL USERS (GET api/users)
      *
      * Retrieves all users paginated in chunks of 15
+     *
+     * @authenticated
      *
      * @return \Illuminate\Http\Response
      */

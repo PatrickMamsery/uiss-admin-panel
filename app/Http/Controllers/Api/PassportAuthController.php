@@ -14,7 +14,7 @@ use App\Models\User;
 class PassportAuthController extends Controller
 {
     /**
-     * Create a new user by registration
+     * CREATE NEW USER BY REGISTRATION (POST api/register)
      *
      * This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration
      *
@@ -50,7 +50,7 @@ class PassportAuthController extends Controller
     }
 
     /**
-     * POST api/login
+     * LOGIN (POST api/login)
      *
      * Logs-in user(s) to the specified dashboard
      *
@@ -85,7 +85,7 @@ class PassportAuthController extends Controller
     }
 
     /**
-     * POST api/logout
+     * LOGOUT (POST api/logout)
      *
      * Logs-out user(s) from the specified dashboard
      *

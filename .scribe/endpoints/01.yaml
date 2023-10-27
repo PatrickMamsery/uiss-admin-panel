@@ -6,7 +6,7 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      title: 'Create a new user by registration'
+      title: 'CREATE NEW USER BY REGISTRATION (POST api/register)'
       description: 'This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration'
       authenticated: false
       custom: []
@@ -20,21 +20,21 @@ endpoints:
         name: name
         description: 'The name of user'
         required: true
-        example: alias
+        example: hic
         type: string
         custom: []
       email:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: eos
+        example: voluptatem
         type: string
         custom: []
       password:
         name: password
         description: 'Must be at least 6 characters'
         required: true
-        example: dolores
+        example: vero
         type: string
         custom: []
       password_confirmation:
@@ -51,7 +51,7 @@ endpoints:
       - POST
     uri: api/login
     metadata:
-      title: 'POST api/login'
+      title: 'LOGIN (POST api/login)'
       description: 'Logs-in user(s) to the specified dashboard'
       authenticated: false
       custom: []
@@ -65,14 +65,14 @@ endpoints:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: odit
+        example: delectus
         type: string
         custom: []
       password:
         name: password
         description: 'Must be at least 6 characters'
         required: true
-        example: voluptatum
+        example: cum
         type: string
         custom: []
     responses: []
@@ -82,7 +82,7 @@ endpoints:
       - POST
     uri: api/logout
     metadata:
-      title: 'POST api/logout'
+      title: 'LOGOUT (POST api/logout)'
       description: 'Logs-out user(s) from the specified dashboard'
       authenticated: true
       custom: []

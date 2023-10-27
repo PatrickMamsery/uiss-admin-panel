@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "UISS API documentation",
-        "_postman_id": "10f6091d-7211-4d55-b3f7-0b88079ee1ff",
+        "_postman_id": "991505a5-fd16-4626-935d-a35c57011212",
         "description": "API documentation for basic CRUD operations for specified requests. All API endpoints are implemented in JSON Schema. The data transaction must be HTTP requests sent via specified url",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -31,7 +31,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "non",
+                                    "value": "vitae",
                                     "description": "The ID of the role."
                                 }
                             ]
@@ -128,7 +128,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":1,\"name\":\"FYP\",\"description\":\"a short description\",\"category\":\"FinHub\"}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/programs\",\"per_page\":15,\"to\":1,\"total\":1},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/programs\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
                             "name": ""
                         }
                     ]
@@ -155,7 +155,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"omnis\",\"description\":\"similique\",\"category\":\"magni\"}"
+                            "raw": "{\"name\":\"ipsa\",\"description\":\"repellendus\",\"category\":\"sit\"}"
                         },
                         "description": ""
                     },
@@ -173,7 +173,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "5",
                                     "description": "The ID of the program."
                                 }
                             ]
@@ -216,8 +216,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"data\":{\"id\":1,\"name\":\"FYP\",\"description\":\"a short description\",\"category\":\"FinHub\"},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
                             "name": ""
                         }
                     ]
@@ -234,7 +234,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "2",
                                     "description": "The ID of the program."
                                 }
                             ]
@@ -339,7 +339,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":1,\"title\":\"Live Profile\",\"description\":\"<p>u know<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/21\\\/451ea31b97d892f454448c02165cf21376b73797.png\",\"category\":\"Embedded Systems\",\"people\":[]},{\"id\":2,\"title\":\"Visiting Day\",\"description\":\"<p>karanga za nini<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/27\\\/728ce4cec26e5c378f272d1aea2d6c19bf95d24f.png\",\"category\":\"Embedded Systems\",\"people\":[\"Hellena Nyamweru\"]}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/projects\",\"per_page\":15,\"to\":2,\"total\":2},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/projects\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
                             "name": ""
                         }
                     ]
@@ -366,7 +366,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"title\":\"qui\",\"description\":\"a\",\"category\":\"pariatur\",\"owner\":\"laboriosam\"}"
+                            "raw": "{\"title\":\"accusantium\",\"description\":\"possimus\",\"category\":\"nihil\",\"owner\":\"in\"}"
                         },
                         "description": ""
                     },
@@ -384,7 +384,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "5",
                                     "description": "The ID of the project."
                                 }
                             ]
@@ -427,8 +427,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"data\":{\"id\":1,\"title\":\"Live Profile\",\"description\":\"<p>u know<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/21\\\/451ea31b97d892f454448c02165cf21376b73797.png\",\"category\":\"Embedded Systems\",\"people\":[]},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
                             "name": ""
                         }
                     ]
@@ -445,7 +445,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "8",
                                     "description": "The ID of the project."
                                 }
                             ]
@@ -481,7 +481,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "16",
                                     "description": "The ID of the project."
                                 }
                             ]
@@ -550,7 +550,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":11,\"name\":\"Signe Silva\",\"description\":\"<p>Consequuntur eiusmod.<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/7a92165af093d253cb80b67cc5e820660484e3e5.png\",\"venue\":\"Quae ea esse anim u\",\"startDate\":\"2023-03-31T00:00:00.000000Z\",\"endDate\":\"2023-04-08T00:00:00.000000Z\",\"hosts\":[]},{\"id\":1,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/31\\\/1c7b75e6c841dae356ec6e965a62a413270df151.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Babuu\"]},{\"id\":10,\"name\":\"FinHub Launch\",\"description\":\"<p>The launch of new CRDB - UDSM partnership<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/7a92165af093d253cb80b67cc5e820660484e3e5.png\",\"venue\":\"B201\",\"startDate\":\"2023-04-01T00:00:00.000000Z\",\"endDate\":\"2023-04-01T00:00:00.000000Z\",\"hosts\":[\"Revinah Love\"]},{\"id\":9,\"name\":\"Birthday\",\"description\":\"<p>jiji<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/fbe36cb6dbf647cd7f8acaca164f6c0d95facddd.png\",\"venue\":\"D Lab\",\"startDate\":\"2023-03-25T00:00:00.000000Z\",\"endDate\":\"2023-04-01T00:00:00.000000Z\",\"hosts\":[\"Babuu Laurian\",\"Lukando Basil\",\"Lumuliko Kiswaga\",\"Hellena\"]},{\"id\":3,\"name\":\"Travel\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/723e09d00d0dfc726dee37f32d036325a90593d2.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-04T00:00:00.000000Z\",\"endDate\":\"2023-03-05T00:00:00.000000Z\",\"hosts\":[\"Hellena\"]},{\"id\":4,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Hellena\",\"Maasenga\"]},{\"id\":5,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/bc004a8705956a2f38216eb7894ceabf8376c6f8.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Caroline\"]},{\"id\":8,\"name\":\"Kwahiyo\",\"description\":\"<p>amniotic fluid<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/29\\\/a22a628dfdffa40f8588d14d8940fa6dee6922b4.png\",\"venue\":\"B302\",\"startDate\":\"2023-03-29T00:00:00.000000Z\",\"endDate\":\"2023-03-29T00:00:00.000000Z\",\"hosts\":[]},{\"id\":6,\"name\":\"UISS Talks v1\",\"description\":\"One two\",\"image\":\"https:\\\/\\\/via.placeholder.com\\\/640x480.png\\\/004422?text=quo\",\"venue\":\"B106\",\"startDate\":\"2023-03-04T00:00:00.000000Z\",\"endDate\":\"2023-03-05T00:00:00.000000Z\",\"hosts\":[\"Hellena\",\"Makyao\"]}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/events\",\"per_page\":15,\"to\":9,\"total\":9},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/events\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
                             "name": ""
                         }
                     ]
@@ -577,7 +577,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"qui\",\"description\":\"ipgwtasygflxzzymujksxnbgdwchfuuzftqynmhujegvewkcahwdwnhmxtlkxbwpxxoyehdnyeogelmawgvuluenbocuiahfalfvvlleewrribtsemaelhvadseegcagvwpkwpkyivakqydoeimaaphqtxsplqirhxfcwcqojwkxdlopdwqksggytdzvzhvbxopklmzfceoduudfbfejgzmrtcbddeffzsmrhcqzymgmrqustgmnkxjxandcxvzagifhdmcfmyfwdjllbgvpecnoaruedjkutccverczmbwsakxfmcbivfrzlwmqviociosmvxnetsznsztgxoytkutdsocwdixckvrsogzgtgwappurnbrpuselyvpcpbhswaplbrkawpuxxdxtjuitgpeohnbglxtzfmwjbjptlrprubpothvgqkjdvcdohpjbwekkpfvnrerdilfejyxbqkxlhqtdvhozpzdwejtlzqybrpkcscoiwijppszhfrvbjqzkqvlvdivqthibmnhsdnzvaksoskhahfxvdkbomptzbqyxyxuqvxaebaycpypdjystthwmsobpyrimpexxbpzoonydadsuxzdpjkwjwqluqavpcmqmtdtbxfplanlcuxbwzphiantahiomgbvrxvxvifjmcijbqemjxdmdwehmubjblsihushmazdwfqjpukgfexjpvdrhdxncbynsdbagymgmsgnbffmemjsvnjkxijqqfnawwzfdytrvnitzuhtapjbudviqtctnswtzpaensfddrnpbcakcajjxibllfsteqarriewyaznofyojtvqdikhhjzyakquonbpsvfjhicbegourvdsavdhmnvfzxpogqu\",\"venue\":\"voluptatem\",\"startDate\":\"numquam\",\"endDate\":\"rerum\",\"hosts\":\"consequatur\"}"
+                            "raw": "{\"name\":\"voluptates\",\"description\":\"skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco\",\"venue\":\"doloremque\",\"startDate\":\"voluptatum\",\"endDate\":\"rerum\",\"hosts\":\"saepe\"}"
                         },
                         "description": ""
                     },
@@ -595,7 +595,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "10",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -638,8 +638,8 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"data\":{\"id\":1,\"name\":\"Introduction to UI\\\/UX\",\"description\":\"<p>One two<\\\/p>\",\"image\":\"http:\\\/\\\/localhost:8000\\\/storage\\\/2023\\\/03\\\/31\\\/1c7b75e6c841dae356ec6e965a62a413270df151.png\",\"venue\":\"Hindu Mandal\",\"startDate\":\"2023-03-05T00:00:00.000000Z\",\"endDate\":\"2023-04-07T00:00:00.000000Z\",\"hosts\":[\"Babuu\"]},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
                             "name": ""
                         }
                     ]
@@ -656,7 +656,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "19",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -674,7 +674,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"description\":\"emmjkerpkabdsdjacglzciwdlfoyrhapldlpmddbsvimbinudfdavyjcbuxyokbpsxedbiixpqjpwturmipxnwjgjunkxxjgfmwucgjqzsiwlyxrjykxinngxzadwgfiiajvqexgttrtrkqjmmyqkmbdsbbasgmteozctxsaufwpghxgktetsqvucwxbwfuwoumeawyitmcuzgwoeaknfmsvqogawqslytllhdvttmjwywjmvomaudhqycqmyfxxrmlpeiytfeirmsyolfopykucqcvoftaxrobwtkypnauislkcuzxhjlzcevxrbcjszjbfhyfwxvaibsgrxnryvbldylupqkhyozvrtpduqamrubifxpyhcvbrffismripvtffdmnapgpvhuxecaszdrywbfzrzevzreinxdgnkldlhfiualsgslanwoyrpgmpnkdylbhrearlqkdyadptwhthnszogbheygsxvbatjmopbuwbypabgmfeclixulsxiapqimsngjqhsafkpeorhifjhrwcoyomxopinmnyrtbdlwqnplqcqbbhlxmsagadslezgpaoilcqjptcsqyydssecvyhxpbhtqqemyfdjqukbbfrmyhxitdufgtgybbsaupioxdbzaadxiimrtttdumvvwfebbiquyziemxdkzjatdoqtxgjlbkmxhrjkwcwikniprnhjbwhvdfioigolbwkofalzhqrpoatqeqffnthpdspuglbsosbdkbzlpjnesnwzczuqeexzauevupwxnlwceowftpfidnispiuvjmjkmaqsaeqldibnbqlfnlxwkbqpfgbuoooddjabaikvdbhcoeahuxpmlljcbqolqkzipiejnnemoknztjwvqruuirtxbknarvvfcvtzcdyersyzlonsakdvrslbfwmvylooinnbzlwsgurpekvvgedovnyktykkpuhprpfgocdbmqumqphdzacevsinsaijpqoiqtgruajcgwrirtgvqxdmqeaydfkrrdupsppjrvgkgiwuykpoacayccskfmfzffcosetysalyssfnmmxfvmastmlojcjuwlsaglgfqyfwavaqnpxzceqsayetkcvlyljliztdwuevjqtejymxymkshnmpfuvhymxazoxbzrxkbsfbkzsyojjepshdcphknpjjcnfqvikkxvogqbenomzlhxjsivisvlficjskeodysjhwnsyxethyaiqnbsbhtpgusincfnvwxniutsffhftopvykehnrcricwxuxpesozsywtmgwicxfacopglbsylnxjjiekpyjykjgiflqmdeqxlsqyxmvkfqdhcncfnzyhvtllgckiwzjlrwmdmwzgocekytmvqepbguyruvhpqjveyreorcxtgnxezjdarlnncsmdtfpzhwngnarpuyyficzwdvgqcclsrwcuzsllnkyfvnhmdvatjllxyhqdwxryowlpigivpimyvaajewpdpuwiidagjbvffdwuvpkqmmjxiwmllgvxfseirhadfksgfscfxpmcvhxwtopyfjyhgjtylfklmuaipvtwgyzt\"}"
+                            "raw": "{\"description\":\"hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm\"}"
                         },
                         "description": ""
                     },
@@ -692,7 +692,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "9",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -753,7 +753,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "50"
+                                    "value": "40"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -765,6 +765,1027 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "Get all registered users for an event",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id\/registration-list",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id\/registration-list",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "14",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "50"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Resource not found\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a listing of the resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "44"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/clubs\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Register to club",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id\/register",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"nesciunt\",\"email\":\"stroman.micaela@example.com\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add a member to the club.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id\/addMember",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id\/addMember",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "15",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"eum\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "api\/clubs\/{id}\/addLeader",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id\/addLeader",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id\/addLeader",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "9",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":\"illo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get club leaders",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id\/leaders",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id\/leaders",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "41"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Club] 5\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Exceptions\/Handler.php\",\n    \"line\": 385,\n    \"trace\": [\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Exceptions\/Handler.php\",\n            \"line\": 332,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/nunomaduro\/collision\/src\/Adapters\/Laravel\/ExceptionHandler.php\",\n            \"line\": 54,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"NunoMaduro\\\\Collision\\\\Adapters\\\\Laravel\\\\ExceptionHandler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 130,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/app\/Http\/Middleware\/WithoutLinks.php\",\n            \"line\": 19,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Http\\\\Middleware\\\\WithoutLinks\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/SubstituteBindings.php\",\n            \"line\": 50,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 103,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 55,\n            \"function\": \"handleRequestUsingNamedLimiter\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/app\/Http\/Middleware\/AuthenticateApi.php\",\n            \"line\": 17,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Http\\\\Middleware\\\\AuthenticateApi\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 723,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 698,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 662,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 651,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 167,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/fruitcake\/laravel-cors\/src\/HandleCors.php\",\n            \"line\": 52,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Fruitcake\\\\Cors\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Http\/Middleware\/TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 142,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 111,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 299,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 287,\n            \"function\": \"callLaravelOrLumenRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 89,\n            \"function\": \"makeApiCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 45,\n            \"function\": \"makeResponseCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 35,\n            \"function\": \"makeResponseCallIfConditionsPass\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 222,\n            \"function\": \"__invoke\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 179,\n            \"function\": \"iterateThroughStrategies\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 116,\n            \"function\": \"fetchResponses\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 123,\n            \"function\": \"processRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 80,\n            \"function\": \"extractEndpointsInfoFromLaravelApp\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 56,\n            \"function\": \"extractEndpointsInfoAndWriteToDisk\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Commands\/GenerateDocumentation.php\",\n            \"line\": 55,\n            \"function\": \"get\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 36,\n            \"function\": \"handle\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Util.php\",\n            \"line\": 40,\n            \"function\": \"Illuminate\\\\Container\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 93,\n            \"function\": \"unwrapIfClosure\",\n            \"class\": \"Illuminate\\\\Container\\\\Util\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 37,\n            \"function\": \"callBoundMethod\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Container.php\",\n            \"line\": 653,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php\",\n            \"line\": 136,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\Container\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Command\/Command.php\",\n            \"line\": 298,\n            \"function\": \"execute\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php\",\n            \"line\": 121,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Command\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 1040,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 301,\n            \"function\": \"doRunCommand\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 171,\n            \"function\": \"doRun\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Application.php\",\n            \"line\": 94,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Console\/Kernel.php\",\n            \"line\": 129,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/artisan\",\n            \"line\": 37,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Console\\\\Kernel\",\n            \"type\": \"->\"\n        }\n    ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get members belonging to a club",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id\/members",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id\/members",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "16",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "42"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\n    \"message\": \"No query results for model [App\\\\Models\\\\Club] 16\",\n    \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\NotFoundHttpException\",\n    \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Exceptions\/Handler.php\",\n    \"line\": 385,\n    \"trace\": [\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Exceptions\/Handler.php\",\n            \"line\": 332,\n            \"function\": \"prepareException\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/nunomaduro\/collision\/src\/Adapters\/Laravel\/ExceptionHandler.php\",\n            \"line\": 54,\n            \"function\": \"render\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Exceptions\\\\Handler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Pipeline.php\",\n            \"line\": 51,\n            \"function\": \"render\",\n            \"class\": \"NunoMaduro\\\\Collision\\\\Adapters\\\\Laravel\\\\ExceptionHandler\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 130,\n            \"function\": \"handleException\",\n            \"class\": \"Illuminate\\\\Routing\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/app\/Http\/Middleware\/WithoutLinks.php\",\n            \"line\": 19,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Http\\\\Middleware\\\\WithoutLinks\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/SubstituteBindings.php\",\n            \"line\": 50,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\SubstituteBindings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 127,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 103,\n            \"function\": \"handleRequest\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Middleware\/ThrottleRequests.php\",\n            \"line\": 55,\n            \"function\": \"handleRequestUsingNamedLimiter\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Routing\\\\Middleware\\\\ThrottleRequests\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/app\/Http\/Middleware\/AuthenticateApi.php\",\n            \"line\": 17,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"App\\\\Http\\\\Middleware\\\\AuthenticateApi\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 723,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 698,\n            \"function\": \"runRouteWithinStack\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 662,\n            \"function\": \"runRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Routing\/Router.php\",\n            \"line\": 651,\n            \"function\": \"dispatchToRoute\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 167,\n            \"function\": \"dispatch\",\n            \"class\": \"Illuminate\\\\Routing\\\\Router\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 128,\n            \"function\": \"Illuminate\\\\Foundation\\\\Http\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ConvertEmptyStringsToNull.php\",\n            \"line\": 31,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TransformsRequest.php\",\n            \"line\": 21,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/TrimStrings.php\",\n            \"line\": 40,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/ValidatePostSize.php\",\n            \"line\": 27,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Middleware\/PreventRequestsDuringMaintenance.php\",\n            \"line\": 86,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/fruitcake\/laravel-cors\/src\/HandleCors.php\",\n            \"line\": 52,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Fruitcake\\\\Cors\\\\HandleCors\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Http\/Middleware\/TrustProxies.php\",\n            \"line\": 39,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 167,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Pipeline\/Pipeline.php\",\n            \"line\": 103,\n            \"function\": \"Illuminate\\\\Pipeline\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 142,\n            \"function\": \"then\",\n            \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Http\/Kernel.php\",\n            \"line\": 111,\n            \"function\": \"sendRequestThroughRouter\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 299,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 287,\n            \"function\": \"callLaravelOrLumenRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 89,\n            \"function\": \"makeApiCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 45,\n            \"function\": \"makeResponseCall\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Strategies\/Responses\/ResponseCalls.php\",\n            \"line\": 35,\n            \"function\": \"makeResponseCallIfConditionsPass\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 222,\n            \"function\": \"__invoke\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Strategies\\\\Responses\\\\ResponseCalls\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 179,\n            \"function\": \"iterateThroughStrategies\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Extracting\/Extractor.php\",\n            \"line\": 116,\n            \"function\": \"fetchResponses\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 123,\n            \"function\": \"processRoute\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Extracting\\\\Extractor\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 80,\n            \"function\": \"extractEndpointsInfoFromLaravelApp\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/GroupedEndpoints\/GroupedEndpointsFromApp.php\",\n            \"line\": 56,\n            \"function\": \"extractEndpointsInfoAndWriteToDisk\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/knuckleswtf\/scribe\/src\/Commands\/GenerateDocumentation.php\",\n            \"line\": 55,\n            \"function\": \"get\",\n            \"class\": \"Knuckles\\\\Scribe\\\\GroupedEndpoints\\\\GroupedEndpointsFromApp\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 36,\n            \"function\": \"handle\",\n            \"class\": \"Knuckles\\\\Scribe\\\\Commands\\\\GenerateDocumentation\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Util.php\",\n            \"line\": 40,\n            \"function\": \"Illuminate\\\\Container\\\\{closure}\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 93,\n            \"function\": \"unwrapIfClosure\",\n            \"class\": \"Illuminate\\\\Container\\\\Util\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/BoundMethod.php\",\n            \"line\": 37,\n            \"function\": \"callBoundMethod\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Container\/Container.php\",\n            \"line\": 653,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\BoundMethod\",\n            \"type\": \"::\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php\",\n            \"line\": 136,\n            \"function\": \"call\",\n            \"class\": \"Illuminate\\\\Container\\\\Container\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Command\/Command.php\",\n            \"line\": 298,\n            \"function\": \"execute\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Command.php\",\n            \"line\": 121,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Command\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 1040,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Command\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 301,\n            \"function\": \"doRunCommand\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/symfony\/console\/Application.php\",\n            \"line\": 171,\n            \"function\": \"doRun\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Console\/Application.php\",\n            \"line\": 94,\n            \"function\": \"run\",\n            \"class\": \"Symfony\\\\Component\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/vendor\/laravel\/framework\/src\/Illuminate\/Foundation\/Console\/Kernel.php\",\n            \"line\": 129,\n            \"function\": \"run\",\n            \"class\": \"Illuminate\\\\Console\\\\Application\",\n            \"type\": \"->\"\n        },\n        {\n            \"file\": \"\/Users\/patrickmamsery\/Sites\/PKMaestro\/uiss\/uiss-api\/artisan\",\n            \"line\": 37,\n            \"function\": \"handle\",\n            \"class\": \"Illuminate\\\\Foundation\\\\Console\\\\Kernel\",\n            \"type\": \"->\"\n        }\n    ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "7",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "17",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Display the specified resource.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "14",
+                                    "description": "The ID of the club."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "43"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/clubs",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/clubs"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"laborum\",\"description\":\"incidunt\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete an album",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "10",
+                                    "description": "The ID of the album."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get all images in the gallery",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/images"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "49"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/gallery\\\/images\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update an album",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "6",
+                                    "description": "The ID of the album."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"id\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create an album",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"est\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get all images in an album",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums\/:id\/images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums\/:id\/images",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of the album."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "45"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get a single album",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "10",
+                                    "description": "The ID of the album."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "46"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "api\/gallery\/albums",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/albums",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/albums"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "47"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[],\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/gallery\\\/albums\",\"per_page\":15,\"to\":null,\"total\":0},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete an image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/images\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/images\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "15",
+                                    "description": "The ID of the image."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update an image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/images\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/images\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of the image."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"album\":\"sit\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Register a user for an event",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id\/register",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"autem\",\"email\":\"ckeebler@example.net\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get a single image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/images\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/images\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the image."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "48"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"status\":\"error\",\"message\":\"Failed to retrieve resource\",\"statusCode\":404}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create an image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/gallery\/images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/gallery\/images"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"album\":\"ipsam\",\"url\":\"quo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
                 }
             ]
         },
@@ -773,7 +1794,7 @@
             "description": "",
             "item": [
                 {
-                    "name": "Create a new user by registration",
+                    "name": "CREATE NEW USER BY REGISTRATION (POST api\/register)",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -794,7 +1815,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"alias\",\"email\":\"eos\",\"password\":\"dolores\",\"password_confirmation\":\"voluptatem\"}"
+                            "raw": "{\"name\":\"hic\",\"email\":\"voluptatem\",\"password\":\"vero\",\"password_confirmation\":\"voluptatem\"}"
                         },
                         "description": "This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration",
                         "auth": {
@@ -804,7 +1825,7 @@
                     "response": []
                 },
                 {
-                    "name": "POST api\/login",
+                    "name": "LOGIN (POST api\/login)",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -825,7 +1846,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"odit\",\"password\":\"voluptatum\"}"
+                            "raw": "{\"email\":\"delectus\",\"password\":\"cum\"}"
                         },
                         "description": "Logs-in user(s) to the specified dashboard",
                         "auth": {
@@ -835,7 +1856,7 @@
                     "response": []
                 },
                 {
-                    "name": "POST api\/logout",
+                    "name": "LOGOUT (POST api\/logout)",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -873,7 +1894,7 @@
             "description": "",
             "item": [
                 {
-                    "name": "GET api\/users",
+                    "name": "GET ALL USERS (GET api\/users)",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -920,7 +1941,7 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null},{\"id\":4,\"name\":\"Gerardo Turner PhD\",\"email\":\"bgutmann@example.net\",\"phone\":\"(940) 882-6311\",\"image\":null},{\"id\":5,\"name\":\"Randal Leuschke\",\"email\":\"wwilliamson@example.net\",\"phone\":\"+1 (779) 531-7820\",\"image\":null},{\"id\":6,\"name\":\"Kenyatta Robel\",\"email\":\"veronica.nolan@example.com\",\"phone\":\"915-241-5785\",\"image\":null},{\"id\":7,\"name\":\"Briana Romaguera\",\"email\":\"edd.howe@example.net\",\"phone\":\"+1.458.570.0081\",\"image\":null},{\"id\":8,\"name\":\"Ms. Christy Hammes V\",\"email\":\"andrew.ritchie@example.org\",\"phone\":\"305.812.5319\",\"image\":null},{\"id\":9,\"name\":\"Veda Langosh\",\"email\":\"mueller.kaden@example.org\",\"phone\":\"(925) 493-8819\",\"image\":null},{\"id\":10,\"name\":\"Mr. Lane Keebler III\",\"email\":\"bergstrom.marcus@example.org\",\"phone\":\"+1-757-396-9187\",\"image\":null},{\"id\":15,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga2@gmail.com\",\"phone\":\"0744556672\",\"image\":null},{\"id\":16,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga3@gmail.com\",\"phone\":\"0744556673\",\"image\":null},{\"id\":17,\"name\":\"Lumuliko Kiswaga\",\"email\":\"kiswaga4@gmail.com\",\"phone\":\"0744556674\",\"image\":null},{\"id\":20,\"name\":\"Hellena\",\"email\":\"Hellena@example.com\",\"phone\":null,\"image\":null},{\"id\":21,\"name\":\"Millenia\",\"email\":\"Millenia@example.com\",\"phone\":null,\"image\":null},{\"id\":22,\"name\":\"Maasenga\",\"email\":\"maasenga@example.com\",\"phone\":null,\"image\":null},{\"id\":23,\"name\":\"Godwin Makyao\",\"email\":\"gmak1@gmail.com\",\"phone\":\"0745678901\",\"image\":null}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":3,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/users\",\"per_page\":15,\"to\":15,\"total\":45},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"phone\":null,\"image\":null}],\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\\/\\\/localhost:8000\\\/api\\\/users\",\"per_page\":15,\"to\":1,\"total\":1},\"status\":\"success\",\"message\":\"Resource retrieved successfully\",\"statusCode\":200}",
                             "name": ""
                         }
                     ]
@@ -1077,7 +2098,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"dolor\",\"email\":\"enim\",\"phone\":\"cumque\",\"image\":\"minus\",\"role\":\"minus\",\"additionalInfo\":[]}"
+                            "raw": "{\"name\":\"maiores\",\"email\":\"qui\",\"phone\":\"in\",\"image\":\"molestias\",\"role\":\"maiores\",\"additionalInfo\":[]}"
                         },
                         "description": "Creates a new user"
                     },
@@ -1085,7 +2106,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"data\": {\n      \"id\": 1,\n      \"name\": \"John Doe\",\n      \"email\": \"johndoe@mail.com\",\n      \"phone\": \"08012345678\",\n      \"image\": \"https:\/\/via.placeholder.com\/150\",\n      \"role\": \"member\",\n      \"regNo\": \"2020-04-09890\",\n      \"isProjectOwner\": 0,\n      \"areaOfInterest\": \"Software Development\",\n      \"university\": \"University of Lagos\",\n      \"college\": \"College of Medicine\",\n      \"department\": \"Department of Surgery\",\n      \"degreeProgramme\": \"MBBS\"\n  },\n  \"status\": \"success\",\n  \"message\": \"Resource created successfully\",\n  \"statusCode\": 200\n  }",
+                            "body": "{\n  \"data\": {\n      \"id\": 1,\n      \"name\": \"John Doe\",\n      \"email\": \"johndoe@mail.com\",\n      \"phone\": \"08012345678\",\n      \"image\": \"https:\/\/via.placeholder.com\/150\",\n      \"role\": \"member\",\n      \"regNo\": \"2020-04-09890\",\n      \"isProjectOwner\": 0,\n      \"areaOfInterest\": \"Software Development\",\n      \"initialAreaOfInterest\": \"Software Development - 2020\",\n      \"university\": \"University of Lagos\",\n      \"college\": \"College of Medicine\",\n      \"department\": \"Department of Surgery\",\n      \"degreeProgramme\": \"MBBS\"\n  },\n  \"status\": \"success\",\n  \"message\": \"Resource created successfully\",\n  \"statusCode\": 200\n  }",
                             "name": "member"
                         },
                         {

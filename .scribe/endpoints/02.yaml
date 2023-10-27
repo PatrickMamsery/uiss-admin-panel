@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: api/users
     metadata:
-      title: 'GET api/users'
+      title: 'GET ALL USERS (GET api/users)'
       description: 'Retrieves all users paginated in chunks of 15'
       authenticated: true
       custom: []
@@ -20,7 +20,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":1,"name":"Admin","email":"admin@admin.com","phone":null,"image":null},{"id":4,"name":"Gerardo Turner PhD","email":"bgutmann@example.net","phone":"(940) 882-6311","image":null},{"id":5,"name":"Randal Leuschke","email":"wwilliamson@example.net","phone":"+1 (779) 531-7820","image":null},{"id":6,"name":"Kenyatta Robel","email":"veronica.nolan@example.com","phone":"915-241-5785","image":null},{"id":7,"name":"Briana Romaguera","email":"edd.howe@example.net","phone":"+1.458.570.0081","image":null},{"id":8,"name":"Ms. Christy Hammes V","email":"andrew.ritchie@example.org","phone":"305.812.5319","image":null},{"id":9,"name":"Veda Langosh","email":"mueller.kaden@example.org","phone":"(925) 493-8819","image":null},{"id":10,"name":"Mr. Lane Keebler III","email":"bergstrom.marcus@example.org","phone":"+1-757-396-9187","image":null},{"id":15,"name":"Lumuliko Kiswaga","email":"kiswaga2@gmail.com","phone":"0744556672","image":null},{"id":16,"name":"Lumuliko Kiswaga","email":"kiswaga3@gmail.com","phone":"0744556673","image":null},{"id":17,"name":"Lumuliko Kiswaga","email":"kiswaga4@gmail.com","phone":"0744556674","image":null},{"id":20,"name":"Hellena","email":"Hellena@example.com","phone":null,"image":null},{"id":21,"name":"Millenia","email":"Millenia@example.com","phone":null,"image":null},{"id":22,"name":"Maasenga","email":"maasenga@example.com","phone":null,"image":null},{"id":23,"name":"Godwin Makyao","email":"gmak1@gmail.com","phone":"0745678901","image":null}],"meta":{"current_page":1,"from":1,"last_page":3,"path":"http:\/\/localhost:8000\/api\/users","per_page":15,"to":15,"total":45},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[{"id":1,"name":"Admin","email":"admin@admin.com","phone":null,"image":null}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"http:\/\/localhost:8000\/api\/users","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -186,35 +186,35 @@ endpoints:
         name: name
         description: 'The name of user'
         required: true
-        example: dolor
+        example: maiores
         type: string
         custom: []
       email:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: enim
+        example: qui
         type: string
         custom: []
       phone:
         name: phone
         description: 'Phone number of the user, unique to the users table'
         required: false
-        example: cumque
+        example: in
         type: string
         custom: []
       image:
         name: image
         description: 'Image of the user, should be a valid url'
         required: false
-        example: minus
+        example: molestias
         type: string
         custom: []
       role:
         name: role
         description: 'Role of the user, should be either "member", "leader", "developer" or "admin"'
         required: false
-        example: minus
+        example: maiores
         type: string
         custom: []
       additionalInfo:
@@ -245,6 +245,7 @@ endpoints:
                 "regNo": "2020-04-09890",
                 "isProjectOwner": 0,
                 "areaOfInterest": "Software Development",
+                "initialAreaOfInterest": "Software Development - 2020",
                 "university": "University of Lagos",
                 "college": "College of Medicine",
                 "department": "Department of Surgery",
