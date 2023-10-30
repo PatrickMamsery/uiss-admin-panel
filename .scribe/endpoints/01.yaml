@@ -8,7 +8,7 @@ endpoints:
       - GET
     uri: 'api/users/role/{name}'
     metadata:
-      title: 'Get all members'
+      title: 'Get all members by role'
       description: 'This endpoint retrieves all members as organised by their roles whether admin or member.'
       authenticated: true
       custom: []
@@ -21,7 +21,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: aut
+        example: est
         type: string
         custom: []
     queryParameters: []

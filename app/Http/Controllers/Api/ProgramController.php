@@ -10,10 +10,19 @@ use App\Http\Resources\ProgramResource;
 use App\Models\Program;
 use App\Models\ProgramCategory;
 
+/**
+ * @group Program management
+ *
+ * APIs for managing programs
+ */
 class ProgramController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * Get all programs
+     *
+     * This endpoint retrieves all programs paginated in chunks of 15.
+     *
+     * @queryParam page The page number to retrieve. Example: 1
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,7 +32,13 @@ class ProgramController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new program
+     *
+     * This endpoint creates a new program.
+     *
+     * @bodyParam name string required The name of the program. Example: Program 1
+     * @bodyParam description string required The description of the program. Example: This is a program
+     * @bodyParam category string required The category of the program. Example: Category 1
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -57,7 +72,11 @@ class ProgramController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * Get a program
+     *
+     * This endpoint retrieves a program by its ID.
+     *
+     * @urlParam id required The ID of the program. Example: 1
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -74,7 +93,15 @@ class ProgramController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a program
+     *
+     * This endpoint updates a program.
+     *
+     * @urlParam id required The ID of the program. Example: 1
+     *
+     * @bodyParam name string The name of the program. Example: Program 1
+     * @bodyParam description string The description of the program. Example: This is a program
+     * @bodyParam category string The category of the program. Example: Category 1
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -110,7 +137,11 @@ class ProgramController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a program
+     *
+     * This endpoint deletes a program and all it's relations completely.
+     *
+     * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

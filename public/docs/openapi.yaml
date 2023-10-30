@@ -7,261 +7,6 @@ servers:
   -
     url: 'http://localhost:8000'
 paths:
-  /api/programs:
-    get:
-      summary: 'Display a listing of the resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  meta:
-                    current_page: 1
-                    from: null
-                    last_page: 1
-                    path: 'http://localhost:8000/api/programs'
-                    per_page: 15
-                    to: null
-                    total: 0
-                  status: success
-                  message: 'Resource retrieved successfully'
-                  statusCode: 200
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  meta:
-                    type: object
-                    example:
-                      current_page: 1
-                      from: null
-                      last_page: 1
-                      path: 'http://localhost:8000/api/programs'
-                      per_page: 15
-                      to: null
-                      total: 0
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Resource retrieved successfully'
-                  statusCode:
-                    type: integer
-                    example: 200
-      tags:
-        - Endpoints
-    post:
-      summary: 'Store a newly created resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: distinctio
-                description:
-                  type: string
-                  description: ''
-                  example: earum
-                category:
-                  type: string
-                  description: ''
-                  example: aliquid
-              required:
-                - name
-                - description
-                - category
-  '/api/programs/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: error
-                  message: 'Failed to retrieve resource'
-                  statusCode: 404
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  message:
-                    type: string
-                    example: 'Failed to retrieve resource'
-                  statusCode:
-                    type: integer
-                    example: 404
-      tags:
-        - Endpoints
-    put:
-      summary: 'Update the specified resource in storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: null
-                description:
-                  type: string
-                  description: ''
-                  example: null
-                category:
-                  type: string
-                  description: ''
-                  example: null
-    delete:
-      summary: 'Remove the specified resource from storage.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the program.'
-        example: 6
-        required: true
-        schema:
-          type: integer
   /api/projects:
     get:
       summary: 'Display a listing of the resource.'
@@ -371,19 +116,19 @@ paths:
                 title:
                   type: string
                   description: ''
-                  example: tempora
+                  example: consequuntur
                 description:
                   type: string
                   description: ''
-                  example: ullam
+                  example: laborum
                 category:
                   type: string
                   description: ''
-                  example: magni
+                  example: et
                 owner:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: perspiciatis
               required:
                 - title
                 - description
@@ -526,7 +271,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the project.'
-        example: 15
+        example: 8
         required: true
         schema:
           type: integer
@@ -639,15 +384,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quis
+                  example: soluta
                 description:
                   type: string
                   description: 'Must not be greater than 2000 characters.'
-                  example: ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl
+                  example: mdvkwgijbjolqifpscltuvozecehxmpgoyhxhlvrzfjqvbtpofdsmfdpqjtczhrihzujknzwelzrwramrrxdfkrtvtodfezmafnbwvggwinuisjkxgiruhepshucmjnqnnuvikbviosayqnfsrxwgpmmluvjrkmcyoudzbttgflrchgaemmpdmsnfzlhzocdvvqwbthpkvqwhabuoscmeesgsstwzznurcaastogmhaihejmmhapequfsnlykahffbgfvghfremvoqipzwtmamrchekpkgfbqwdupvlorjwgignmvahhyyrygvsbtvvftabgzzlsinfyjrceqnwchzvxvowcgmjrvrtmvhkyhdmnvchbejzjdkatrjqwhkgvmrdbeemksrfpngrbhoiceyzwpvekdwgyiqlvzdanwypijqrivzttngdbogxoilvucogkuveenarscovqahqocrwilkkrjzzgrmjssdqcpcvsgodnalantkof
                 venue:
                   type: string
                   description: ''
-                  example: atque
+                  example: quam
                 image:
                   type: string
                   description: ''
@@ -655,15 +400,15 @@ paths:
                 startDate:
                   type: string
                   description: ''
-                  example: rerum
+                  example: delectus
                 endDate:
                   type: string
                   description: ''
-                  example: ducimus
+                  example: nostrum
                 hosts:
                   type: string
                   description: ''
-                  example: aliquam
+                  example: quae
               required:
                 - name
                 - description
@@ -762,7 +507,7 @@ paths:
                 description:
                   type: string
                   description: 'Must not be greater than 2000 characters.'
-                  example: kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf
+                  example: lpvfhhmiwragxoohstauaitmrososwhfpvoeqfjpkscabneociwjyntecebrrnimbpyotvnzsihywemlsubelpnqffmvahuwhikuyqdqxmgpgyvvynhdvojycuqtzmgmevpxaxvhtnyahewitxfygfutnutfcjxoerofmtyeulrdhbkqwmwjmobxcigyttiljlbnfwpftlyfybdpfncoxteggvmyotwxhzrhpxdazgmcikdejknapqukxihlwixfosxoqqevvcsecjvdsvmuekrnwrrhdnlulkpiwdwcubhlgimgygvmrdfpwdhkwkanlieodpvklybnmgrksuzamniosvbfxxfekkftxfeubszrweukqxofhkgtybbzhmdnryuaxpesisbcxwdmgryyzptopkkootfeuytplqiogyshistnxpratpjlsowyeaysaiudwhsuxkcgphewnqrofxqpxtdyejfhbgjghzfxeumzijmlpeuvidkohujtzeskeitidkfzzcfkxcyhofemfsqwtvbiqubvhcuhteryswdxpmikxkeltkgrduurrpmmsngfnghkqmgmslexghjkojixaqxxuigmqdrstichrzgptjwfndijrjltssblymbopznmpshytphmhisrxxdoiihmlktfoesobypjghjjdbvhvrrojgqnzixzcgfrddkhtofnzpsfpuypnrbvldnivtkodsmxapxrjljwkqssfunkfkemelkhsatmiulmpiafghlkvwiqkthmhbbrhqsqcqzerthubjhgumnpdsqommagkubwwclizkyhazigsdpkbxgpemqxcchuflmaizqytzfechtwvmydwogabqxacnzgplbckafilehyquyjxvvvtcvbiigrawbksfooxmhgzzcllxsqpvjycigradpvojsdcpqvmgivmojsksccomdqhmhnbfrngrmcoobnxgdcfnsyfhhscmbezzrgnuzukrawposzwodlpgpxsfqfklmrxyibtwcqwizcawpkctidzchyottgqwohoumefzjpotwhhtdojuualzskxrukqcrbrxzdfknlxstcedytybmnvxweqzdnjcgncuddjtqcisocxjujbpwheorheiigzeadv
                 venue:
                   type: string
                   description: ''
@@ -816,7 +561,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 15
+        example: 11
         required: true
         schema:
           type: integer
@@ -915,7 +660,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 17
+        example: 3
         required: true
         schema:
           type: integer
@@ -1028,11 +773,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: eos
+                  example: facilis
                 description:
                   type: string
                   description: ''
-                  example: pariatur
+                  example: quia
               required:
                 - name
                 - description
@@ -1075,11 +820,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: ab
+                  example: est
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: thalvorson@example.net
+                  example: jast.jadon@example.org
                 phone:
                   type: string
                   description: ''
@@ -1091,7 +836,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 12
+        example: 18
         required: true
         schema:
           type: integer
@@ -1134,7 +879,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: expedita
+                  example: nihil
               required:
                 - user_id
     parameters:
@@ -1142,7 +887,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 14
+        example: 11
         required: true
         schema:
           type: integer
@@ -1185,7 +930,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: dolorum
+                  example: et
                 additionalInfo:
                   type: string
                   description: ''
@@ -1197,7 +942,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 7
+        example: 9
         required: true
         schema:
           type: integer
@@ -1235,7 +980,7 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Club] 15'
+                  message: 'No query results for model [App\Models\Club] 8'
                   exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
                   file: /Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php
                   line: 385
@@ -1627,7 +1372,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Club] 15'
+                    example: 'No query results for model [App\Models\Club] 8'
                   exception:
                     type: string
                     example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -2033,7 +1778,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 15
+        example: 8
         required: true
         schema:
           type: integer
@@ -2071,7 +1816,7 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Club] 12'
+                  message: 'No query results for model [App\Models\Club] 13'
                   exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
                   file: /Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php
                   line: 385
@@ -2463,7 +2208,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Club] 12'
+                    example: 'No query results for model [App\Models\Club] 13'
                   exception:
                     type: string
                     example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -2869,7 +2614,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 12
+        example: 13
         required: true
         schema:
           type: integer
@@ -2998,7 +2743,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 12
+        example: 3
         required: true
         schema:
           type: integer
@@ -3069,7 +2814,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: temporibus
+                  example: voluptatem
                 visibility:
                   type: string
                   description: ''
@@ -3242,7 +2987,7 @@ paths:
                 album:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: excepturi
                 caption:
                   type: string
                   description: ''
@@ -3254,7 +2999,7 @@ paths:
                 url:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: provident
               required:
                 - album
                 - url
@@ -3297,7 +3042,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: dolores
+                  example: minima
                 visibility:
                   type: string
                   description: ''
@@ -3428,7 +3173,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the album.'
-        example: 20
+        example: 12
         required: true
         schema:
           type: integer
@@ -3499,7 +3244,7 @@ paths:
                 album:
                   type: string
                   description: ''
-                  example: non
+                  example: animi
                 caption:
                   type: string
                   description: ''
@@ -3567,7 +3312,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the image.'
-        example: 14
+        example: 12
         required: true
         schema:
           type: integer
@@ -3610,11 +3355,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: ratione
+                  example: officiis
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: abeatty@example.com
+                  example: leffler.river@example.com
                 phone:
                   type: string
                   description: ''
@@ -3626,13 +3371,13 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 14
+        example: 11
         required: true
         schema:
           type: integer
   '/api/users/role/{name}':
     get:
-      summary: 'Get all members'
+      summary: 'Get all members by role'
       description: 'This endpoint retrieves all members as organised by their roles whether admin or member.'
       parameters:
         -
@@ -3684,7 +3429,272 @@ paths:
         in: path
         name: name
         description: ''
-        example: aut
+        example: est
+        required: true
+        schema:
+          type: string
+  /api/programs:
+    get:
+      summary: 'Get all programs'
+      description: 'This endpoint retrieves all programs paginated in chunks of 15.'
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'The page number to retrieve.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number to retrieve.'
+            example: 1
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  meta:
+                    current_page: 1
+                    from: null
+                    last_page: 1
+                    path: 'http://localhost:8000/api/programs'
+                    per_page: 15
+                    to: null
+                    total: 0
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: null
+                      last_page: 1
+                      path: 'http://localhost:8000/api/programs'
+                      per_page: 15
+                      to: null
+                      total: 0
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Program management'
+    post:
+      summary: 'Create a new program'
+      description: 'This endpoint creates a new program.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Program management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the program.'
+                  example: 'Program 1'
+                description:
+                  type: string
+                  description: 'The description of the program.'
+                  example: 'This is a program'
+                category:
+                  type: string
+                  description: 'The category of the program.'
+                  example: 'Category 1'
+              required:
+                - name
+                - description
+                - category
+  '/api/programs/{id}':
+    get:
+      summary: 'Get a program'
+      description: 'This endpoint retrieves a program by its ID.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Failed to retrieve resource'
+                  statusCode: 404
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Failed to retrieve resource'
+                  statusCode:
+                    type: integer
+                    example: 404
+      tags:
+        - 'Program management'
+    put:
+      summary: 'Update a program'
+      description: 'This endpoint updates a program.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Program management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the program.'
+                  example: 'Program 1'
+                description:
+                  type: string
+                  description: 'The description of the program.'
+                  example: 'This is a program'
+                category:
+                  type: string
+                  description: 'The category of the program.'
+                  example: 'Category 1'
+    delete:
+      summary: 'Delete a program'
+      description: "This endpoint deletes a program and all it's relations completely.\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Program management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the program.'
+        example: '1'
         required: true
         schema:
           type: string
@@ -3720,19 +3730,19 @@ paths:
                 name:
                   type: string
                   description: 'The name of user'
-                  example: vitae
+                  example: velit
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: voluptatem
+                  example: quidem
                 password:
                   type: string
                   description: 'Must be at least 6 characters'
-                  example: voluptatum
+                  example: laborum
                 password_confirmation:
                   type: string
                   description: 'Must be same to the password value'
-                  example: est
+                  example: veniam
               required:
                 - name
                 - email
@@ -3771,11 +3781,11 @@ paths:
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: sunt
+                  example: cum
                 password:
                   type: string
                   description: 'Must be at least 6 characters'
-                  example: fugit
+                  example: est
               required:
                 - email
                 - password
@@ -3945,23 +3955,23 @@ paths:
                 name:
                   type: string
                   description: 'The name of user'
-                  example: ex
+                  example: voluptates
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: labore
+                  example: id
                 phone:
                   type: string
                   description: 'Phone number of the user, unique to the users table'
-                  example: beatae
+                  example: enim
                 image:
                   type: string
                   description: 'Image of the user, should be a valid url'
-                  example: unde
+                  example: quo
                 role:
                   type: string
                   description: 'Role of the user, should be either "member", "leader", "developer" or "admin"'
-                  example: quam
+                  example: aut
                 additionalInfo:
                   type: object
                   description: "Additional information of the user, should be an object with the following keys:\n- position: string, required if role is \"leader\"\n- university: string, required if role is \"member\"\n- college: string, required if role is \"member\"\n- department: string, required if role is \"member\"\n- degreeProgramme: string, required if role is \"member\""
@@ -4137,6 +4147,9 @@ tags:
   -
     name: 'Member management'
     description: "\nAPIs for managing members"
+  -
+    name: 'Program management'
+    description: "\nAPIs for managing programs"
   -
     name: 'User Authentication'
     description: ''
