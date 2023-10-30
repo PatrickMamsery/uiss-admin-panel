@@ -79,10 +79,7 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-users-role--id-">
-                        <a href="#endpoints-GETapi-users-role--id-">GET api/users/role/{id}</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-programs">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-programs">
                         <a href="#endpoints-GETapi-programs">Display a listing of the resource.</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-POSTapi-programs">
@@ -202,6 +199,16 @@
                                                     </ul>
                             </ul>
                     <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="member-management">
+                    <a href="#member-management">Member management</a>
+                </li>
+                                    <ul id="tocify-subheader-member-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="member-management-GETapi-users-role--name-">
+                        <a href="#member-management-GETapi-users-role--name-">Get all members</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-4" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user-authentication">
                     <a href="#user-authentication">User Authentication</a>
                 </li>
@@ -217,13 +224,13 @@
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-4" class="tocify-header">
+                    <ul id="tocify-header-5" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user-management">
                     <a href="#user-management">User Management</a>
                 </li>
                                     <ul id="tocify-subheader-user-management" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="user-management-GETapi-users">
-                        <a href="#user-management-GETapi-users">GET ALL USERS (GET api/users)</a>
+                        <a href="#user-management-GETapi-users">GET (GET api/users)</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="user-management-GETapi-users--id-">
                         <a href="#user-management-GETapi-users--id-">GET /api/users/{id}</a>
@@ -249,7 +256,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 27 2023</li>
+        <li>Last updated: October 30 2023</li>
     </ul>
 </div>
 
@@ -267,165 +274,13 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://localhost:8000</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer Token"</code></strong>.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer Token"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 <p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
         <h1 id="endpoints">Endpoints</h1>
 
     
-
-            <h2 id="endpoints-GETapi-users-role--id-">GET api/users/role/{id}</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-users-role--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users/role/vitae" \
-    --header "Authorization: Bearer Token" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="php-example">
-    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
-$response = $client-&gt;get(
-    'http://localhost:8000/api/users/role/vitae',
-    [
-        'headers' =&gt; [
-            'Authorization' =&gt; 'Bearer Token',
-            'Content-Type' =&gt; 'application/json',
-            'Accept' =&gt; 'application/json',
-        ],
-    ]
-);
-$body = $response-&gt;getBody();
-print_r(json_decode((string) $body));</code></pre></div>
-
-
-<div class="python-example">
-    <pre><code class="language-python">import requests
-import json
-
-url = 'http://localhost:8000/api/users/role/vitae'
-headers = {
-  'Authorization': 'Bearer Token',
-  'Content-Type': 'application/json',
-  'Accept': 'application/json'
-}
-
-response = requests.request('GET', url, headers=headers)
-response.json()</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/users/role/vitae"
-);
-
-const headers = {
-    "Authorization": "Bearer Token",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-users-role--id-">
-            <blockquote>
-            <p>Example response (404):</p>
-        </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
-
-<code class="language-json">{
-    &quot;status&quot;: &quot;error&quot;,
-    &quot;message&quot;: &quot;Role provided does not match our records&quot;,
-    &quot;statusCode&quot;: 404
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-users-role--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-users-role--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-users-role--id-"></code></pre>
-</span>
-<span id="execution-error-GETapi-users-role--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-users-role--id-"></code></pre>
-</span>
-<form id="form-GETapi-users-role--id-" data-method="GET"
-      data-path="api/users/role/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Authorization":"Bearer Token","Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-users-role--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-users-role--id-"
-                    onclick="tryItOut('GETapi-users-role--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-users-role--id-"
-                    onclick="cancelTryOut('GETapi-users-role--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-users-role--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/users/role/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-GETapi-users-role--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETapi-users-role--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="GETapi-users-role--id-"
-               value="vitae"
-               data-component="url" hidden>
-    <br>
-<p>The ID of the role.</p>
-            </p>
-                    </form>
 
             <h2 id="endpoints-GETapi-programs">Display a listing of the resource.</h2>
 
@@ -507,7 +362,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -597,9 +452,9 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ipsa\",
-    \"description\": \"repellendus\",
-    \"category\": \"sit\"
+    \"name\": \"distinctio\",
+    \"description\": \"earum\",
+    \"category\": \"aliquid\"
 }"
 </code></pre></div>
 
@@ -615,9 +470,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'ipsa',
-            'description' =&gt; 'repellendus',
-            'category' =&gt; 'sit',
+            'name' =&gt; 'distinctio',
+            'description' =&gt; 'earum',
+            'category' =&gt; 'aliquid',
         ],
     ]
 );
@@ -631,9 +486,9 @@ import json
 
 url = 'http://localhost:8000/api/programs'
 payload = {
-    "name": "ipsa",
-    "description": "repellendus",
-    "category": "sit"
+    "name": "distinctio",
+    "description": "earum",
+    "category": "aliquid"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -657,9 +512,9 @@ const headers = {
 };
 
 let body = {
-    "name": "ipsa",
-    "description": "repellendus",
-    "category": "sit"
+    "name": "distinctio",
+    "description": "earum",
+    "category": "aliquid"
 };
 
 fetch(url, {
@@ -725,7 +580,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-programs"
-               value="ipsa"
+               value="distinctio"
                data-component="body" hidden>
     <br>
 
@@ -735,7 +590,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTapi-programs"
-               value="repellendus"
+               value="earum"
                data-component="body" hidden>
     <br>
 
@@ -745,7 +600,7 @@ fetch(url, {
                 <input type="text"
                name="category"
                data-endpoint="POSTapi-programs"
-               value="sit"
+               value="aliquid"
                data-component="body" hidden>
     <br>
 
@@ -766,7 +621,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/programs/5" \
+    --get "http://localhost:8000/api/programs/6" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -775,7 +630,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/programs/5',
+    'http://localhost:8000/api/programs/6',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -792,7 +647,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/programs/5'
+url = 'http://localhost:8000/api/programs/6'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -805,7 +660,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/programs/5"
+    "http://localhost:8000/api/programs/6"
 );
 
 const headers = {
@@ -832,7 +687,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -897,7 +752,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-programs--id-"
-               value="5"
+               value="6"
                data-component="url" hidden>
     <br>
 <p>The ID of the program.</p>
@@ -918,7 +773,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/programs/2" \
+    "http://localhost:8000/api/programs/15" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -928,7 +783,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost:8000/api/programs/2',
+    'http://localhost:8000/api/programs/15',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -945,7 +800,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/programs/2'
+url = 'http://localhost:8000/api/programs/15'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -958,7 +813,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/programs/2"
+    "http://localhost:8000/api/programs/15"
 );
 
 const headers = {
@@ -1033,7 +888,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-programs--id-"
-               value="2"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the program.</p>
@@ -1282,7 +1137,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1372,10 +1227,10 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"title\": \"accusantium\",
-    \"description\": \"possimus\",
-    \"category\": \"nihil\",
-    \"owner\": \"in\"
+    \"title\": \"tempora\",
+    \"description\": \"ullam\",
+    \"category\": \"magni\",
+    \"owner\": \"dolorem\"
 }"
 </code></pre></div>
 
@@ -1391,10 +1246,10 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'title' =&gt; 'accusantium',
-            'description' =&gt; 'possimus',
-            'category' =&gt; 'nihil',
-            'owner' =&gt; 'in',
+            'title' =&gt; 'tempora',
+            'description' =&gt; 'ullam',
+            'category' =&gt; 'magni',
+            'owner' =&gt; 'dolorem',
         ],
     ]
 );
@@ -1408,10 +1263,10 @@ import json
 
 url = 'http://localhost:8000/api/projects'
 payload = {
-    "title": "accusantium",
-    "description": "possimus",
-    "category": "nihil",
-    "owner": "in"
+    "title": "tempora",
+    "description": "ullam",
+    "category": "magni",
+    "owner": "dolorem"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -1435,10 +1290,10 @@ const headers = {
 };
 
 let body = {
-    "title": "accusantium",
-    "description": "possimus",
-    "category": "nihil",
-    "owner": "in"
+    "title": "tempora",
+    "description": "ullam",
+    "category": "magni",
+    "owner": "dolorem"
 };
 
 fetch(url, {
@@ -1504,7 +1359,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-projects"
-               value="accusantium"
+               value="tempora"
                data-component="body" hidden>
     <br>
 
@@ -1514,7 +1369,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTapi-projects"
-               value="possimus"
+               value="ullam"
                data-component="body" hidden>
     <br>
 
@@ -1524,7 +1379,7 @@ fetch(url, {
                 <input type="text"
                name="category"
                data-endpoint="POSTapi-projects"
-               value="nihil"
+               value="magni"
                data-component="body" hidden>
     <br>
 
@@ -1534,7 +1389,7 @@ fetch(url, {
                 <input type="text"
                name="owner"
                data-endpoint="POSTapi-projects"
-               value="in"
+               value="dolorem"
                data-component="body" hidden>
     <br>
 
@@ -1555,7 +1410,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/projects/5" \
+    --get "http://localhost:8000/api/projects/15" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1564,7 +1419,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/projects/5',
+    'http://localhost:8000/api/projects/15',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -1581,7 +1436,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/projects/5'
+url = 'http://localhost:8000/api/projects/15'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -1594,7 +1449,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/projects/5"
+    "http://localhost:8000/api/projects/15"
 );
 
 const headers = {
@@ -1621,7 +1476,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1686,7 +1541,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-projects--id-"
-               value="5"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the project.</p>
@@ -1894,7 +1749,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/projects/16" \
+    "http://localhost:8000/api/projects/8" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1903,7 +1758,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost:8000/api/projects/16',
+    'http://localhost:8000/api/projects/8',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -1920,7 +1775,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/projects/16'
+url = 'http://localhost:8000/api/projects/8'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -1933,7 +1788,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/projects/16"
+    "http://localhost:8000/api/projects/8"
 );
 
 const headers = {
@@ -2004,7 +1859,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-projects--id-"
-               value="16"
+               value="8"
                data-component="url" hidden>
     <br>
 <p>The ID of the project.</p>
@@ -2091,7 +1946,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2181,12 +2036,12 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"voluptates\",
-    \"description\": \"skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco\",
-    \"venue\": \"doloremque\",
-    \"startDate\": \"voluptatum\",
-    \"endDate\": \"rerum\",
-    \"hosts\": \"saepe\"
+    \"name\": \"quis\",
+    \"description\": \"ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl\",
+    \"venue\": \"atque\",
+    \"startDate\": \"rerum\",
+    \"endDate\": \"ducimus\",
+    \"hosts\": \"aliquam\"
 }"
 </code></pre></div>
 
@@ -2202,12 +2057,12 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'voluptates',
-            'description' =&gt; 'skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco',
-            'venue' =&gt; 'doloremque',
-            'startDate' =&gt; 'voluptatum',
-            'endDate' =&gt; 'rerum',
-            'hosts' =&gt; 'saepe',
+            'name' =&gt; 'quis',
+            'description' =&gt; 'ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl',
+            'venue' =&gt; 'atque',
+            'startDate' =&gt; 'rerum',
+            'endDate' =&gt; 'ducimus',
+            'hosts' =&gt; 'aliquam',
         ],
     ]
 );
@@ -2221,12 +2076,12 @@ import json
 
 url = 'http://localhost:8000/api/events'
 payload = {
-    "name": "voluptates",
-    "description": "skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco",
-    "venue": "doloremque",
-    "startDate": "voluptatum",
-    "endDate": "rerum",
-    "hosts": "saepe"
+    "name": "quis",
+    "description": "ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl",
+    "venue": "atque",
+    "startDate": "rerum",
+    "endDate": "ducimus",
+    "hosts": "aliquam"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -2250,12 +2105,12 @@ const headers = {
 };
 
 let body = {
-    "name": "voluptates",
-    "description": "skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco",
-    "venue": "doloremque",
-    "startDate": "voluptatum",
-    "endDate": "rerum",
-    "hosts": "saepe"
+    "name": "quis",
+    "description": "ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl",
+    "venue": "atque",
+    "startDate": "rerum",
+    "endDate": "ducimus",
+    "hosts": "aliquam"
 };
 
 fetch(url, {
@@ -2321,7 +2176,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-events"
-               value="voluptates"
+               value="quis"
                data-component="body" hidden>
     <br>
 
@@ -2331,7 +2186,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTapi-events"
-               value="skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco"
+               value="ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl"
                data-component="body" hidden>
     <br>
 <p>Must not be greater than 2000 characters.</p>
@@ -2341,7 +2196,7 @@ fetch(url, {
                 <input type="text"
                name="venue"
                data-endpoint="POSTapi-events"
-               value="doloremque"
+               value="atque"
                data-component="body" hidden>
     <br>
 
@@ -2361,7 +2216,7 @@ fetch(url, {
                 <input type="text"
                name="startDate"
                data-endpoint="POSTapi-events"
-               value="voluptatum"
+               value="rerum"
                data-component="body" hidden>
     <br>
 
@@ -2371,7 +2226,7 @@ fetch(url, {
                 <input type="text"
                name="endDate"
                data-endpoint="POSTapi-events"
-               value="rerum"
+               value="ducimus"
                data-component="body" hidden>
     <br>
 
@@ -2381,7 +2236,7 @@ fetch(url, {
                 <input type="text"
                name="hosts"
                data-endpoint="POSTapi-events"
-               value="saepe"
+               value="aliquam"
                data-component="body" hidden>
     <br>
 
@@ -2402,7 +2257,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/events/10" \
+    --get "http://localhost:8000/api/events/15" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2411,7 +2266,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/events/10',
+    'http://localhost:8000/api/events/15',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -2428,7 +2283,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/events/10'
+url = 'http://localhost:8000/api/events/15'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -2441,7 +2296,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/events/10"
+    "http://localhost:8000/api/events/15"
 );
 
 const headers = {
@@ -2468,7 +2323,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2533,7 +2388,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-events--id-"
-               value="10"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the event.</p>
@@ -2554,12 +2409,12 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/events/19" \
+    "http://localhost:8000/api/events/15" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"description\": \"hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm\"
+    \"description\": \"kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf\"
 }"
 </code></pre></div>
 
@@ -2567,7 +2422,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost:8000/api/events/19',
+    'http://localhost:8000/api/events/15',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -2575,7 +2430,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'description' =&gt; 'hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm',
+            'description' =&gt; 'kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf',
         ],
     ]
 );
@@ -2587,9 +2442,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/events/19'
+url = 'http://localhost:8000/api/events/15'
 payload = {
-    "description": "hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm"
+    "description": "kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -2603,7 +2458,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/events/19"
+    "http://localhost:8000/api/events/15"
 );
 
 const headers = {
@@ -2613,7 +2468,7 @@ const headers = {
 };
 
 let body = {
-    "description": "hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm"
+    "description": "kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf"
 };
 
 fetch(url, {
@@ -2683,7 +2538,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-events--id-"
-               value="19"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the event.</p>
@@ -2704,7 +2559,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="PUTapi-events--id-"
-               value="hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm"
+               value="kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf"
                data-component="body" hidden>
     <br>
 <p>Must not be greater than 2000 characters.</p>
@@ -2775,7 +2630,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/events/9" \
+    "http://localhost:8000/api/events/10" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2784,7 +2639,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost:8000/api/events/9',
+    'http://localhost:8000/api/events/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -2801,7 +2656,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/events/9'
+url = 'http://localhost:8000/api/events/10'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -2814,7 +2669,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/events/9"
+    "http://localhost:8000/api/events/10"
 );
 
 const headers = {
@@ -2885,7 +2740,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-events--id-"
-               value="9"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the event.</p>
@@ -2972,7 +2827,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 40
+x-ratelimit-remaining: 42
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -3045,7 +2900,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/events/14/registration-list" \
+    --get "http://localhost:8000/api/events/17/registration-list" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3054,7 +2909,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/events/14/registration-list',
+    'http://localhost:8000/api/events/17/registration-list',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -3071,7 +2926,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/events/14/registration-list'
+url = 'http://localhost:8000/api/events/17/registration-list'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -3084,7 +2939,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/events/14/registration-list"
+    "http://localhost:8000/api/events/17/registration-list"
 );
 
 const headers = {
@@ -3111,7 +2966,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -3176,7 +3031,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-events--id--registration-list"
-               value="14"
+               value="17"
                data-component="url" hidden>
     <br>
 <p>The ID of the event.</p>
@@ -3263,7 +3118,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 44
+x-ratelimit-remaining: 46
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -3348,13 +3203,13 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/clubs/16/register" \
+    "http://localhost:8000/api/clubs/12/register" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"nesciunt\",
-    \"email\": \"stroman.micaela@example.com\"
+    \"name\": \"ab\",
+    \"email\": \"thalvorson@example.net\"
 }"
 </code></pre></div>
 
@@ -3362,7 +3217,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost:8000/api/clubs/16/register',
+    'http://localhost:8000/api/clubs/12/register',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -3370,8 +3225,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'nesciunt',
-            'email' =&gt; 'stroman.micaela@example.com',
+            'name' =&gt; 'ab',
+            'email' =&gt; 'thalvorson@example.net',
         ],
     ]
 );
@@ -3383,10 +3238,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/16/register'
+url = 'http://localhost:8000/api/clubs/12/register'
 payload = {
-    "name": "nesciunt",
-    "email": "stroman.micaela@example.com"
+    "name": "ab",
+    "email": "thalvorson@example.net"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -3400,7 +3255,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/16/register"
+    "http://localhost:8000/api/clubs/12/register"
 );
 
 const headers = {
@@ -3410,8 +3265,8 @@ const headers = {
 };
 
 let body = {
-    "name": "nesciunt",
-    "email": "stroman.micaela@example.com"
+    "name": "ab",
+    "email": "thalvorson@example.net"
 };
 
 fetch(url, {
@@ -3477,7 +3332,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTapi-clubs--id--register"
-               value="16"
+               value="12"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -3488,7 +3343,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-clubs--id--register"
-               value="nesciunt"
+               value="ab"
                data-component="body" hidden>
     <br>
 
@@ -3498,7 +3353,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-clubs--id--register"
-               value="stroman.micaela@example.com"
+               value="thalvorson@example.net"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -3529,12 +3384,12 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/clubs/15/addMember" \
+    "http://localhost:8000/api/clubs/14/addMember" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"eum\"
+    \"user_id\": \"expedita\"
 }"
 </code></pre></div>
 
@@ -3542,7 +3397,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost:8000/api/clubs/15/addMember',
+    'http://localhost:8000/api/clubs/14/addMember',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -3550,7 +3405,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'user_id' =&gt; 'eum',
+            'user_id' =&gt; 'expedita',
         ],
     ]
 );
@@ -3562,9 +3417,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/15/addMember'
+url = 'http://localhost:8000/api/clubs/14/addMember'
 payload = {
-    "user_id": "eum"
+    "user_id": "expedita"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -3578,7 +3433,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/15/addMember"
+    "http://localhost:8000/api/clubs/14/addMember"
 );
 
 const headers = {
@@ -3588,7 +3443,7 @@ const headers = {
 };
 
 let body = {
-    "user_id": "eum"
+    "user_id": "expedita"
 };
 
 fetch(url, {
@@ -3654,7 +3509,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTapi-clubs--id--addMember"
-               value="15"
+               value="14"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -3665,7 +3520,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="POSTapi-clubs--id--addMember"
-               value="eum"
+               value="expedita"
                data-component="body" hidden>
     <br>
 
@@ -3686,12 +3541,12 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/clubs/9/addLeader" \
+    "http://localhost:8000/api/clubs/7/addLeader" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"illo\"
+    \"user_id\": \"dolorum\"
 }"
 </code></pre></div>
 
@@ -3699,7 +3554,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost:8000/api/clubs/9/addLeader',
+    'http://localhost:8000/api/clubs/7/addLeader',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -3707,7 +3562,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'user_id' =&gt; 'illo',
+            'user_id' =&gt; 'dolorum',
         ],
     ]
 );
@@ -3719,9 +3574,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/9/addLeader'
+url = 'http://localhost:8000/api/clubs/7/addLeader'
 payload = {
-    "user_id": "illo"
+    "user_id": "dolorum"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -3735,7 +3590,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/9/addLeader"
+    "http://localhost:8000/api/clubs/7/addLeader"
 );
 
 const headers = {
@@ -3745,7 +3600,7 @@ const headers = {
 };
 
 let body = {
-    "user_id": "illo"
+    "user_id": "dolorum"
 };
 
 fetch(url, {
@@ -3811,7 +3666,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTapi-clubs--id--addLeader"
-               value="9"
+               value="7"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -3822,7 +3677,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="POSTapi-clubs--id--addLeader"
-               value="illo"
+               value="dolorum"
                data-component="body" hidden>
     <br>
 
@@ -3853,7 +3708,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/clubs/5/leaders" \
+    --get "http://localhost:8000/api/clubs/15/leaders" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3862,7 +3717,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/clubs/5/leaders',
+    'http://localhost:8000/api/clubs/15/leaders',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -3879,7 +3734,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/5/leaders'
+url = 'http://localhost:8000/api/clubs/15/leaders'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -3892,7 +3747,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/5/leaders"
+    "http://localhost:8000/api/clubs/15/leaders"
 );
 
 const headers = {
@@ -3919,13 +3774,13 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 41
+x-ratelimit-remaining: 43
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Club] 5&quot;,
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Club] 15&quot;,
     &quot;exception&quot;: &quot;Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException&quot;,
     &quot;file&quot;: &quot;/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php&quot;,
     &quot;line&quot;: 385,
@@ -4435,7 +4290,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-clubs--id--leaders"
-               value="5"
+               value="15"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -4456,7 +4311,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/clubs/16/members" \
+    --get "http://localhost:8000/api/clubs/12/members" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4465,7 +4320,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/clubs/16/members',
+    'http://localhost:8000/api/clubs/12/members',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -4482,7 +4337,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/16/members'
+url = 'http://localhost:8000/api/clubs/12/members'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -4495,7 +4350,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/16/members"
+    "http://localhost:8000/api/clubs/12/members"
 );
 
 const headers = {
@@ -4522,13 +4377,13 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 42
+x-ratelimit-remaining: 44
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Club] 16&quot;,
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Club] 12&quot;,
     &quot;exception&quot;: &quot;Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException&quot;,
     &quot;file&quot;: &quot;/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php&quot;,
     &quot;line&quot;: 385,
@@ -5038,7 +4893,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-clubs--id--members"
-               value="16"
+               value="12"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -5059,7 +4914,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/clubs/7" \
+    "http://localhost:8000/api/clubs/12" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5068,7 +4923,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost:8000/api/clubs/7',
+    'http://localhost:8000/api/clubs/12',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -5085,7 +4940,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/7'
+url = 'http://localhost:8000/api/clubs/12'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -5098,7 +4953,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/7"
+    "http://localhost:8000/api/clubs/12"
 );
 
 const headers = {
@@ -5169,7 +5024,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-clubs--id-"
-               value="7"
+               value="12"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -5190,7 +5045,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/clubs/17" \
+    "http://localhost:8000/api/clubs/12" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -5200,7 +5055,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost:8000/api/clubs/17',
+    'http://localhost:8000/api/clubs/12',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -5217,7 +5072,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/17'
+url = 'http://localhost:8000/api/clubs/12'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -5230,7 +5085,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/17"
+    "http://localhost:8000/api/clubs/12"
 );
 
 const headers = {
@@ -5305,7 +5160,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-clubs--id-"
-               value="17"
+               value="12"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -5347,7 +5202,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/clubs/14" \
+    --get "http://localhost:8000/api/clubs/20" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5356,7 +5211,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/clubs/14',
+    'http://localhost:8000/api/clubs/20',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -5373,7 +5228,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/clubs/14'
+url = 'http://localhost:8000/api/clubs/20'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -5386,7 +5241,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/clubs/14"
+    "http://localhost:8000/api/clubs/20"
 );
 
 const headers = {
@@ -5413,7 +5268,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 43
+x-ratelimit-remaining: 45
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -5478,7 +5333,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-clubs--id-"
-               value="14"
+               value="20"
                data-component="url" hidden>
     <br>
 <p>The ID of the club.</p>
@@ -5504,8 +5359,8 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"laborum\",
-    \"description\": \"incidunt\"
+    \"name\": \"eos\",
+    \"description\": \"pariatur\"
 }"
 </code></pre></div>
 
@@ -5521,8 +5376,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'laborum',
-            'description' =&gt; 'incidunt',
+            'name' =&gt; 'eos',
+            'description' =&gt; 'pariatur',
         ],
     ]
 );
@@ -5536,8 +5391,8 @@ import json
 
 url = 'http://localhost:8000/api/clubs'
 payload = {
-    "name": "laborum",
-    "description": "incidunt"
+    "name": "eos",
+    "description": "pariatur"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -5561,8 +5416,8 @@ const headers = {
 };
 
 let body = {
-    "name": "laborum",
-    "description": "incidunt"
+    "name": "eos",
+    "description": "pariatur"
 };
 
 fetch(url, {
@@ -5628,7 +5483,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-clubs"
-               value="laborum"
+               value="eos"
                data-component="body" hidden>
     <br>
 
@@ -5638,7 +5493,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTapi-clubs"
-               value="incidunt"
+               value="pariatur"
                data-component="body" hidden>
     <br>
 
@@ -5659,7 +5514,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/gallery/albums/10" \
+    "http://localhost:8000/api/gallery/albums/2" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -5668,7 +5523,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost:8000/api/gallery/albums/10',
+    'http://localhost:8000/api/gallery/albums/2',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -5685,7 +5540,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/albums/10'
+url = 'http://localhost:8000/api/gallery/albums/2'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -5698,7 +5553,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/albums/10"
+    "http://localhost:8000/api/gallery/albums/2"
 );
 
 const headers = {
@@ -5769,7 +5624,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-gallery-albums--id-"
-               value="10"
+               value="2"
                data-component="url" hidden>
     <br>
 <p>The ID of the album.</p>
@@ -5856,7 +5711,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 49
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -5941,12 +5796,12 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/gallery/albums/6" \
+    "http://localhost:8000/api/gallery/albums/16" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"id\"
+    \"name\": \"temporibus\"
 }"
 </code></pre></div>
 
@@ -5954,7 +5809,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost:8000/api/gallery/albums/6',
+    'http://localhost:8000/api/gallery/albums/16',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -5962,7 +5817,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'id',
+            'name' =&gt; 'temporibus',
         ],
     ]
 );
@@ -5974,9 +5829,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/albums/6'
+url = 'http://localhost:8000/api/gallery/albums/16'
 payload = {
-    "name": "id"
+    "name": "temporibus"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -5990,7 +5845,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/albums/6"
+    "http://localhost:8000/api/gallery/albums/16"
 );
 
 const headers = {
@@ -6000,7 +5855,7 @@ const headers = {
 };
 
 let body = {
-    "name": "id"
+    "name": "temporibus"
 };
 
 fetch(url, {
@@ -6066,7 +5921,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-gallery-albums--id-"
-               value="6"
+               value="16"
                data-component="url" hidden>
     <br>
 <p>The ID of the album.</p>
@@ -6077,7 +5932,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTapi-gallery-albums--id-"
-               value="id"
+               value="temporibus"
                data-component="body" hidden>
     <br>
 
@@ -6113,7 +5968,7 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"est\"
+    \"name\": \"dolores\"
 }"
 </code></pre></div>
 
@@ -6129,7 +5984,7 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'est',
+            'name' =&gt; 'dolores',
         ],
     ]
 );
@@ -6143,7 +5998,7 @@ import json
 
 url = 'http://localhost:8000/api/gallery/albums'
 payload = {
-    "name": "est"
+    "name": "dolores"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -6167,7 +6022,7 @@ const headers = {
 };
 
 let body = {
-    "name": "est"
+    "name": "dolores"
 };
 
 fetch(url, {
@@ -6233,7 +6088,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-gallery-albums"
-               value="est"
+               value="dolores"
                data-component="body" hidden>
     <br>
 
@@ -6264,7 +6119,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/gallery/albums/5/images" \
+    --get "http://localhost:8000/api/gallery/albums/20/images" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6273,7 +6128,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/gallery/albums/5/images',
+    'http://localhost:8000/api/gallery/albums/20/images',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -6290,7 +6145,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/albums/5/images'
+url = 'http://localhost:8000/api/gallery/albums/20/images'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -6303,7 +6158,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/albums/5/images"
+    "http://localhost:8000/api/gallery/albums/20/images"
 );
 
 const headers = {
@@ -6330,7 +6185,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 45
+x-ratelimit-remaining: 47
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -6395,7 +6250,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-gallery-albums--id--images"
-               value="5"
+               value="20"
                data-component="url" hidden>
     <br>
 <p>The ID of the album.</p>
@@ -6416,7 +6271,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/gallery/albums/10" \
+    --get "http://localhost:8000/api/gallery/albums/4" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6425,7 +6280,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/gallery/albums/10',
+    'http://localhost:8000/api/gallery/albums/4',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -6442,7 +6297,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/albums/10'
+url = 'http://localhost:8000/api/gallery/albums/4'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -6455,7 +6310,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/albums/10"
+    "http://localhost:8000/api/gallery/albums/4"
 );
 
 const headers = {
@@ -6482,7 +6337,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 46
+x-ratelimit-remaining: 48
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -6547,7 +6402,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-gallery-albums--id-"
-               value="10"
+               value="4"
                data-component="url" hidden>
     <br>
 <p>The ID of the album.</p>
@@ -6634,7 +6489,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 47
+x-ratelimit-remaining: 49
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -6719,7 +6574,7 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost:8000/api/gallery/images/15" \
+    "http://localhost:8000/api/gallery/images/14" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -6728,7 +6583,7 @@ access-control-allow-origin: *
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost:8000/api/gallery/images/15',
+    'http://localhost:8000/api/gallery/images/14',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -6745,7 +6600,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/images/15'
+url = 'http://localhost:8000/api/gallery/images/14'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -6758,7 +6613,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/images/15"
+    "http://localhost:8000/api/gallery/images/14"
 );
 
 const headers = {
@@ -6829,7 +6684,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEapi-gallery-images--id-"
-               value="15"
+               value="14"
                data-component="url" hidden>
     <br>
 <p>The ID of the image.</p>
@@ -6850,12 +6705,12 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:8000/api/gallery/images/5" \
+    "http://localhost:8000/api/gallery/images/6" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"album\": \"sit\"
+    \"album\": \"non\"
 }"
 </code></pre></div>
 
@@ -6863,7 +6718,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost:8000/api/gallery/images/5',
+    'http://localhost:8000/api/gallery/images/6',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -6871,7 +6726,7 @@ $response = $client-&gt;put(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'album' =&gt; 'sit',
+            'album' =&gt; 'non',
         ],
     ]
 );
@@ -6883,9 +6738,9 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/images/5'
+url = 'http://localhost:8000/api/gallery/images/6'
 payload = {
-    "album": "sit"
+    "album": "non"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -6899,7 +6754,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/images/5"
+    "http://localhost:8000/api/gallery/images/6"
 );
 
 const headers = {
@@ -6909,7 +6764,7 @@ const headers = {
 };
 
 let body = {
-    "album": "sit"
+    "album": "non"
 };
 
 fetch(url, {
@@ -6975,7 +6830,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTapi-gallery-images--id-"
-               value="5"
+               value="6"
                data-component="url" hidden>
     <br>
 <p>The ID of the image.</p>
@@ -6986,7 +6841,7 @@ fetch(url, {
                 <input type="text"
                name="album"
                data-endpoint="PUTapi-gallery-images--id-"
-               value="sit"
+               value="non"
                data-component="body" hidden>
     <br>
 
@@ -7037,13 +6892,13 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/events/12/register" \
+    "http://localhost:8000/api/events/14/register" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"autem\",
-    \"email\": \"ckeebler@example.net\"
+    \"name\": \"ratione\",
+    \"email\": \"abeatty@example.com\"
 }"
 </code></pre></div>
 
@@ -7051,7 +6906,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost:8000/api/events/12/register',
+    'http://localhost:8000/api/events/14/register',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -7059,8 +6914,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'autem',
-            'email' =&gt; 'ckeebler@example.net',
+            'name' =&gt; 'ratione',
+            'email' =&gt; 'abeatty@example.com',
         ],
     ]
 );
@@ -7072,10 +6927,10 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/events/12/register'
+url = 'http://localhost:8000/api/events/14/register'
 payload = {
-    "name": "autem",
-    "email": "ckeebler@example.net"
+    "name": "ratione",
+    "email": "abeatty@example.com"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -7089,7 +6944,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/events/12/register"
+    "http://localhost:8000/api/events/14/register"
 );
 
 const headers = {
@@ -7099,8 +6954,8 @@ const headers = {
 };
 
 let body = {
-    "name": "autem",
-    "email": "ckeebler@example.net"
+    "name": "ratione",
+    "email": "abeatty@example.com"
 };
 
 fetch(url, {
@@ -7166,7 +7021,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTapi-events--id--register"
-               value="12"
+               value="14"
                data-component="url" hidden>
     <br>
 <p>The ID of the event.</p>
@@ -7177,7 +7032,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-events--id--register"
-               value="autem"
+               value="ratione"
                data-component="body" hidden>
     <br>
 
@@ -7187,7 +7042,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-events--id--register"
-               value="ckeebler@example.net"
+               value="abeatty@example.com"
                data-component="body" hidden>
     <br>
 <p>Must be a valid email address.</p>
@@ -7218,7 +7073,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/gallery/images/2" \
+    --get "http://localhost:8000/api/gallery/images/10" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -7227,7 +7082,7 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:8000/api/gallery/images/2',
+    'http://localhost:8000/api/gallery/images/10',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer Token',
@@ -7244,7 +7099,7 @@ print_r(json_decode((string) $body));</code></pre></div>
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:8000/api/gallery/images/2'
+url = 'http://localhost:8000/api/gallery/images/10'
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
@@ -7257,7 +7112,7 @@ response.json()</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/gallery/images/2"
+    "http://localhost:8000/api/gallery/images/10"
 );
 
 const headers = {
@@ -7284,7 +7139,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 48
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -7349,7 +7204,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-gallery-images--id-"
-               value="2"
+               value="10"
                data-component="url" hidden>
     <br>
 <p>The ID of the image.</p>
@@ -7375,8 +7230,8 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"album\": \"ipsam\",
-    \"url\": \"quo\"
+    \"album\": \"dolorem\",
+    \"url\": \"voluptatem\"
 }"
 </code></pre></div>
 
@@ -7392,8 +7247,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'album' =&gt; 'ipsam',
-            'url' =&gt; 'quo',
+            'album' =&gt; 'dolorem',
+            'url' =&gt; 'voluptatem',
         ],
     ]
 );
@@ -7407,8 +7262,8 @@ import json
 
 url = 'http://localhost:8000/api/gallery/images'
 payload = {
-    "album": "ipsam",
-    "url": "quo"
+    "album": "dolorem",
+    "url": "voluptatem"
 }
 headers = {
   'Authorization': 'Bearer Token',
@@ -7432,8 +7287,8 @@ const headers = {
 };
 
 let body = {
-    "album": "ipsam",
-    "url": "quo"
+    "album": "dolorem",
+    "url": "voluptatem"
 };
 
 fetch(url, {
@@ -7499,7 +7354,7 @@ fetch(url, {
                 <input type="text"
                name="album"
                data-endpoint="POSTapi-gallery-images"
-               value="ipsam"
+               value="dolorem"
                data-component="body" hidden>
     <br>
 
@@ -7529,12 +7384,168 @@ fetch(url, {
                 <input type="text"
                name="url"
                data-endpoint="POSTapi-gallery-images"
-               value="quo"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
         </p>
         </form>
+
+        <h1 id="member-management">Member management</h1>
+
+    <p>APIs for managing members</p>
+
+            <h2 id="member-management-GETapi-users-role--name-">Get all members</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>This endpoint retrieves all members as organised by their roles whether admin or member.</p>
+
+<span id="example-requests-GETapi-users-role--name-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/users/role/aut" \
+    --header "Authorization: Bearer Token" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/users/role/aut',
+    [
+        'headers' =&gt; [
+            'Authorization' =&gt; 'Bearer Token',
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/users/role/aut'
+headers = {
+  'Authorization': 'Bearer Token',
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/users/role/aut"
+);
+
+const headers = {
+    "Authorization": "Bearer Token",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-users-role--name-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Role provided does not match our records&quot;,
+    &quot;statusCode&quot;: 404
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-users-role--name-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-users-role--name-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-users-role--name-"></code></pre>
+</span>
+<span id="execution-error-GETapi-users-role--name-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-users-role--name-"></code></pre>
+</span>
+<form id="form-GETapi-users-role--name-" data-method="GET"
+      data-path="api/users/role/{name}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Authorization":"Bearer Token","Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-users-role--name-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-users-role--name-"
+                    onclick="tryItOut('GETapi-users-role--name-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-users-role--name-"
+                    onclick="cancelTryOut('GETapi-users-role--name-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-users-role--name-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/users/role/{name}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETapi-users-role--name-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETapi-users-role--name-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="GETapi-users-role--name-"
+               value="aut"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
 
         <h1 id="user-authentication">User Authentication</h1>
 
@@ -7557,10 +7568,10 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"hic\",
+    \"name\": \"vitae\",
     \"email\": \"voluptatem\",
-    \"password\": \"vero\",
-    \"password_confirmation\": \"voluptatem\"
+    \"password\": \"voluptatum\",
+    \"password_confirmation\": \"est\"
 }"
 </code></pre></div>
 
@@ -7575,10 +7586,10 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'hic',
+            'name' =&gt; 'vitae',
             'email' =&gt; 'voluptatem',
-            'password' =&gt; 'vero',
-            'password_confirmation' =&gt; 'voluptatem',
+            'password' =&gt; 'voluptatum',
+            'password_confirmation' =&gt; 'est',
         ],
     ]
 );
@@ -7592,10 +7603,10 @@ import json
 
 url = 'http://localhost:8000/api/register'
 payload = {
-    "name": "hic",
+    "name": "vitae",
     "email": "voluptatem",
-    "password": "vero",
-    "password_confirmation": "voluptatem"
+    "password": "voluptatum",
+    "password_confirmation": "est"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -7617,10 +7628,10 @@ const headers = {
 };
 
 let body = {
-    "name": "hic",
+    "name": "vitae",
     "email": "voluptatem",
-    "password": "vero",
-    "password_confirmation": "voluptatem"
+    "password": "voluptatum",
+    "password_confirmation": "est"
 };
 
 fetch(url, {
@@ -7678,7 +7689,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-register"
-               value="hic"
+               value="vitae"
                data-component="body" hidden>
     <br>
 <p>The name of user</p>
@@ -7698,7 +7709,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-register"
-               value="vero"
+               value="voluptatum"
                data-component="body" hidden>
     <br>
 <p>Must be at least 6 characters</p>
@@ -7708,7 +7719,7 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTapi-register"
-               value="voluptatem"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>Must be same to the password value</p>
@@ -7732,8 +7743,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"delectus\",
-    \"password\": \"cum\"
+    \"email\": \"sunt\",
+    \"password\": \"fugit\"
 }"
 </code></pre></div>
 
@@ -7748,8 +7759,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'delectus',
-            'password' =&gt; 'cum',
+            'email' =&gt; 'sunt',
+            'password' =&gt; 'fugit',
         ],
     ]
 );
@@ -7763,8 +7774,8 @@ import json
 
 url = 'http://localhost:8000/api/login'
 payload = {
-    "email": "delectus",
-    "password": "cum"
+    "email": "sunt",
+    "password": "fugit"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -7786,8 +7797,8 @@ const headers = {
 };
 
 let body = {
-    "email": "delectus",
-    "password": "cum"
+    "email": "sunt",
+    "password": "fugit"
 };
 
 fetch(url, {
@@ -7845,7 +7856,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-login"
-               value="delectus"
+               value="sunt"
                data-component="body" hidden>
     <br>
 <p>Email of the user, should be valid email, unique to the users table</p>
@@ -7855,7 +7866,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTapi-login"
-               value="cum"
+               value="fugit"
                data-component="body" hidden>
     <br>
 <p>Must be at least 6 characters</p>
@@ -7995,7 +8006,7 @@ fetch(url, {
 
     
 
-            <h2 id="user-management-GETapi-users">GET ALL USERS (GET api/users)</h2>
+            <h2 id="user-management-GETapi-users">GET (GET api/users)</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -8009,7 +8020,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/users" \
+    --get "http://localhost:8000/api/users?page=1" \
     --header "Authorization: Bearer Token" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -8025,6 +8036,9 @@ $response = $client-&gt;get(
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
         ],
+        'query' =&gt; [
+            'page'=&gt; '1',
+        ],
     ]
 );
 $body = $response-&gt;getBody();
@@ -8036,13 +8050,16 @@ print_r(json_decode((string) $body));</code></pre></div>
 import json
 
 url = 'http://localhost:8000/api/users'
+params = {
+  'page': '1',
+}
 headers = {
   'Authorization': 'Bearer Token',
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
 
-response = requests.request('GET', url, headers=headers)
+response = requests.request('GET', url, headers=headers, params=params)
 response.json()</code></pre></div>
 
 
@@ -8050,6 +8067,12 @@ response.json()</code></pre></div>
     <pre><code class="language-javascript">const url = new URL(
     "http://localhost:8000/api/users"
 );
+
+const params = {
+    "page": "1",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
 
 const headers = {
     "Authorization": "Bearer Token",
@@ -8066,42 +8089,32 @@ fetch(url, {
 
 <span id="example-responses-GETapi-users">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Admin&quot;,
-            &quot;email&quot;: &quot;admin@admin.com&quot;,
-            &quot;phone&quot;: null,
-            &quot;image&quot;: null
-        }
-    ],
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: 1,
-        &quot;last_page&quot;: 1,
-        &quot;path&quot;: &quot;http://localhost:8000/api/users&quot;,
-        &quot;per_page&quot;: 15,
-        &quot;to&quot;: 1,
-        &quot;total&quot;: 1
-    },
-    &quot;status&quot;: &quot;success&quot;,
-    &quot;message&quot;: &quot;Resource retrieved successfully&quot;,
-    &quot;statusCode&quot;: 200
+ &quot;data&quot;: [
+    {
+         &quot;id&quot;: 1,
+         &quot;name&quot;: &quot;John Doe&quot;,
+         &quot;email&quot;: &quot;admin@admin.com&quot;,
+         &quot;phone&quot;: &quot;08012345678&quot;,
+         &quot;image&quot;: &quot;https://via.placeholder.com/150&quot;,
+     }
+ ],
+ &quot;meta&quot;: {
+     &quot;current_page&quot;: 1,
+     &quot;from&quot;: 1,
+     &quot;last_page&quot;: 1,
+      &quot;path&quot;: &quot;http://localhost:8000/api/users&quot;,
+      &quot;per_page&quot;: 15,
+      &quot;to&quot;: 1,
+      &quot;total&quot;: 1
+  },
+  &quot;status&quot;: &quot;success&quot;,
+  &quot;message&quot;: &quot;Resource retrieved successfully&quot;,
+  &quot;statusCode&quot;: 200
 }</code>
  </pre>
     </span>
@@ -8152,6 +8165,17 @@ access-control-allow-origin: *
                                                                 data-endpoint="GETapi-users"
                                                                 data-component="header"></label>
         </p>
+                    <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETapi-users"
+               value="1"
+               data-component="query" hidden>
+    <br>
+<p>The page number to retrieve.</p>
+            </p>
                 </form>
 
             <h2 id="user-management-GETapi-users--id-">GET /api/users/{id}</h2>
@@ -8225,31 +8249,32 @@ fetch(url, {
 
 <span id="example-responses-GETapi-users--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary>
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
-access-control-allow-origin: *
- </code></pre>
-        </details>         <pre>
+                <pre>
 
 <code class="language-json">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;Admin&quot;,
-        &quot;email&quot;: &quot;admin@admin.com&quot;,
-        &quot;phone&quot;: null,
-        &quot;image&quot;: null
+ &quot;data&quot;: {
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Admin&quot;,
+    &quot;email&quot;: &quot;admin@admin.com&quot;,
+    &quot;phone&quot;: &quot;08012345678&quot;,
+    &quot;image&quot;: &quot;https://via.placeholder.com/150&quot;,
     },
     &quot;status&quot;: &quot;success&quot;,
     &quot;message&quot;: &quot;Resource retrieved successfully&quot;,
     &quot;statusCode&quot;: 200
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;status&quot;: &quot;error&quot;,
+    &quot;message&quot;: &quot;Resource not found&quot;,
+    &quot;statusCode&quot;: 404
 }</code>
  </pre>
     </span>
@@ -8748,11 +8773,11 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"maiores\",
-    \"email\": \"qui\",
-    \"phone\": \"in\",
-    \"image\": \"molestias\",
-    \"role\": \"maiores\",
+    \"name\": \"ex\",
+    \"email\": \"labore\",
+    \"phone\": \"beatae\",
+    \"image\": \"unde\",
+    \"role\": \"quam\",
     \"additionalInfo\": []
 }"
 </code></pre></div>
@@ -8769,11 +8794,11 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'name' =&gt; 'maiores',
-            'email' =&gt; 'qui',
-            'phone' =&gt; 'in',
-            'image' =&gt; 'molestias',
-            'role' =&gt; 'maiores',
+            'name' =&gt; 'ex',
+            'email' =&gt; 'labore',
+            'phone' =&gt; 'beatae',
+            'image' =&gt; 'unde',
+            'role' =&gt; 'quam',
             'additionalInfo' =&gt; [],
         ],
     ]
@@ -8788,11 +8813,11 @@ import json
 
 url = 'http://localhost:8000/api/users'
 payload = {
-    "name": "maiores",
-    "email": "qui",
-    "phone": "in",
-    "image": "molestias",
-    "role": "maiores",
+    "name": "ex",
+    "email": "labore",
+    "phone": "beatae",
+    "image": "unde",
+    "role": "quam",
     "additionalInfo": []
 }
 headers = {
@@ -8817,11 +8842,11 @@ const headers = {
 };
 
 let body = {
-    "name": "maiores",
-    "email": "qui",
-    "phone": "in",
-    "image": "molestias",
-    "role": "maiores",
+    "name": "ex",
+    "email": "labore",
+    "phone": "beatae",
+    "image": "unde",
+    "role": "quam",
     "additionalInfo": []
 };
 
@@ -8936,7 +8961,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-users"
-               value="maiores"
+               value="ex"
                data-component="body" hidden>
     <br>
 <p>The name of user</p>
@@ -8946,7 +8971,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTapi-users"
-               value="qui"
+               value="labore"
                data-component="body" hidden>
     <br>
 <p>Email of the user, should be valid email, unique to the users table</p>
@@ -8956,7 +8981,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-users"
-               value="in"
+               value="beatae"
                data-component="body" hidden>
     <br>
 <p>Phone number of the user, unique to the users table</p>
@@ -8966,7 +8991,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="POSTapi-users"
-               value="molestias"
+               value="unde"
                data-component="body" hidden>
     <br>
 <p>Image of the user, should be a valid url</p>
@@ -8976,7 +9001,7 @@ fetch(url, {
                 <input type="text"
                name="role"
                data-endpoint="POSTapi-users"
-               value="maiores"
+               value="quam"
                data-component="body" hidden>
     <br>
 <p>Role of the user, should be either &quot;member&quot;, &quot;leader&quot;, &quot;developer&quot; or &quot;admin&quot;</p>

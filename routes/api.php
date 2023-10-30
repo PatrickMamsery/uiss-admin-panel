@@ -43,7 +43,7 @@ Route::middleware(['auth.api'])->group(function () {
 
     // Route::get('leaders', [MemberController::class, 'getLeaders']);
 
-    Route::get('users/role/{id}', [MemberController::class, 'getUsersByRole']);
+    Route::get('users/role/{name}', [MemberController::class, 'getUsersByRole'])->middleware('withoutlink');
 
 
     // Program routes

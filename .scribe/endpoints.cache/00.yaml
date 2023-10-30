@@ -6,41 +6,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/users/role/{id}'
-    metadata:
-      title: ''
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the role.'
-        required: true
-        example: vitae
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"status":"error","message":"Role provided does not match our records","statusCode":404}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - GET
     uri: api/programs
     metadata:
       title: 'Display a listing of the resource.'
@@ -62,7 +27,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '58'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -86,21 +51,21 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: ipsa
+        example: distinctio
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: repellendus
+        example: earum
         type: string
         custom: []
       category:
         name: category
         description: ''
         required: true
-        example: sit
+        example: aliquid
         type: string
         custom: []
     responses: []
@@ -123,7 +88,7 @@ endpoints:
         name: id
         description: 'The ID of the program.'
         required: true
-        example: 5
+        example: 6
         type: integer
         custom: []
     queryParameters: []
@@ -136,7 +101,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -159,7 +124,7 @@ endpoints:
         name: id
         description: 'The ID of the program.'
         required: true
-        example: 2
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -236,7 +201,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -260,28 +225,28 @@ endpoints:
         name: title
         description: ''
         required: true
-        example: accusantium
+        example: tempora
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: possimus
+        example: ullam
         type: string
         custom: []
       category:
         name: category
         description: ''
         required: true
-        example: nihil
+        example: magni
         type: string
         custom: []
       owner:
         name: owner
         description: ''
         required: true
-        example: in
+        example: dolorem
         type: string
         custom: []
     responses: []
@@ -304,7 +269,7 @@ endpoints:
         name: id
         description: 'The ID of the project.'
         required: true
-        example: 5
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -317,7 +282,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -400,7 +365,7 @@ endpoints:
         name: id
         description: 'The ID of the project.'
         required: true
-        example: 16
+        example: 8
         type: integer
         custom: []
     queryParameters: []
@@ -431,7 +396,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
+          x-ratelimit-remaining: '54'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -455,21 +420,21 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: voluptates
+        example: quis
         type: string
         custom: []
       description:
         name: description
         description: 'Must not be greater than 2000 characters.'
         required: true
-        example: skgbkqjojeaqvartznnuanvgwbxijejgzgfisdqqnhiyluzurflfuisrstjsiguxjwdzztmscjmumxqqrduaulfgljwsepqeokbicjbkcimhnoooybbahzdtzfbprontfsimtataaiufqsrdlrqlgurcswesaarvvwrqmxqflrfpnsesvxznzvxvkmrahciujljtilelvquanvadxfhxuysclncjpfhhesifzaklihyahqrommibudewifpxuhhqeptnaknrcnqqrmfdyigejbyzhqivawmsxktnsmzxvnjsskdngxiqdnwqdmdcuxsmxjzubeynpffsofncmcsockyhsunkzlyseezicgcmqlwvpbzsifdnhoznckyryfcrmklkmqzioiryqnusvbsacmuxdpmjxpjxyfcpfjrmlbbyqmimwqgxuxnprdcbivctutotacejzerjqjanrcqxkotteofmdwpuuarscrqooxbeabyyomgco
+        example: ljppgsdfsofwfbjfqdjdzklbetotoikzoyiojmbocxhejgfxdvldoohwvlmdzhvsunqozbbxgcwaujjckahnphpixnjkhkmwyzvgghxrrinnkicjteuxnyigxhnkzsxbfybpfngosopygxaozrycfanvkdlftqyzfkvpjvijvkleumbkvhlobpftnnnyoeqwjirypmyyolqocwvbqkeghruykztimfeiyltdwhtcbntclatzsocasmuojdgygmsglmzwvwqtimickotafafimnienvalaorrrikorlmklvluexkevwfkmiccegqwuqamnvvnlbfffuvwjndohjlehfnpfkgxgelikzphsfkhycdpssjwfhcekxemgckysxvpxyukwvrerrwyzcphwywoyrhzsqaumkiebpfnvbkuqxfzqphzvxpxewwmulnuyundqtmpwklmkyjnkjoxuylenitiwnkftebdsstcabrhjdbtgppxyqxxhprdikspypxjpbxojumoxixvniuiojtezuwuudqwjmdrndvwzpkmaxnlnjjtdmfbsycnwawbeahguugwbdlqrweaxwjigrcnkneztbbcstdfgfjbcvwnsuvjiegbidmicqsltyiafohdfstohynnrggosgswoguntigoddffrshnvrwbnmexwrumszcnjqoxtlkgpluskitqpjwiwlibtxcizrsxfwdnmhkrzcpggrmnapuhoencwtgmrihdhvatyaicrxqvlnzvhdrscqrqmoztaknhczgrkzqfnkcwogpqxxecnvsgfbigxpzaztjspchdgskqpmulzoftsuclsevtwoiluwvbvhqcynksqpmstzbffhkjcqwzkwdbfigcqdxewohixdnrmcchkgsqdngnknkueklwinoapyevfqztmcebzjvbdqkgjypghnvsasiqgqbniabtzooyaeiqqakdmtdieovzvjeybbijqvttivyezrmjzigkijqvkresykpizhvwrlkixpoioqndpjxoauhpsxlhfxrcwofdvacyqmjhieapfqgrajegwjnctjfqfejxphdyqvclwswotlqomlqwqqdxpqnoortutqzoctczhvlbriorvnegrwzajdbyqjjtqdriuozewpusqjlskvdmlrwtiwuhrgkyddwevmprwqysrtmvqlmyjnxhgnhmiznmtkictruzwuducblxpcwroahvkaaxieewqsmslrvjpiilazibqtwzqdrwftsclwhzgtwjqdluyjdxghduataxnvyl
         type: string
         custom: []
       venue:
         name: venue
         description: ''
         required: true
-        example: doloremque
+        example: atque
         type: string
         custom: []
       image:
@@ -483,21 +448,21 @@ endpoints:
         name: startDate
         description: ''
         required: true
-        example: voluptatum
+        example: rerum
         type: string
         custom: []
       endDate:
         name: endDate
         description: ''
         required: true
-        example: rerum
+        example: ducimus
         type: string
         custom: []
       hosts:
         name: hosts
         description: ''
         required: true
-        example: saepe
+        example: aliquam
         type: string
         custom: []
     responses: []
@@ -520,7 +485,7 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 10
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -533,7 +498,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '53'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -556,7 +521,7 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 19
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -572,7 +537,7 @@ endpoints:
         name: description
         description: 'Must not be greater than 2000 characters.'
         required: false
-        example: hmjzviqmpywhutdfbnlstdfoknqkjehymbxeswpjlgyzidhlfbjwshcbsjdqbvynooxaunedruutzbzdqmixhsliitqajftpmybjxjywnctgbnivgidptudoafbkcmpqvueehfgozooycucymgrqfebwwbxmnejgdskwxrqaatzymmevmsytlygpvlpducseugaxsiovigwfgvbrdafernlmnimyogqywfxsffiotgvrbfxxgrdjxlgpnfgcrworposfzlxpmoxtmkqvtdycacyxkypmvnwasaycvjlcdebqykpumkfzmnufyrvhxejhkhdjafcjoofstzlxheohiapslyomqhsjlyndxtmkrgiqgpzeoypecnhmxeclnwbbovycqfuctndwgluiuwgmblwycxkwdvtkejinxghhofxtcwatixuimawmutxzrjxxiczwrivcxfsnufwbpzpwikjksnudlqsioypxzidxdjupbljcebkhwgmpflfwsfoeykkpzwzfabatwpenkgoidamnniuafjivpelejqmvlubxibcozfmuevgkdpmrorljemeatsrzbnm
+        example: kfyhprnemgtkhzgfxoowzpleknekyywooedmtghscqhzipaxzwkoabyuhcfznumziumkbwmeazydgzmmvxmuibyvscdifsrgmuocwhoixtmpqvpuiysewoxkummopqeaeutildvzzmabrukeulwbkoitmjzfojuuulftzvowlozdpbjjqgxgtijfzqobnmsehgmodgqmfkxrdxxqsalcpabshhuznqqlpnyhxmkwjznzzxrhbjbfgfrcbxkziaczftxcyhmbrwdpvcmypxjkymrgxylsoseckrwfvogsbuyierwkybpkmcaibshwvddvgnbkcqscrdqcfzbneflvnocfheasatgdfueawbvzcdxbcvrwwkclbxdbfjowzfinjxwjvkibmkbqkanceduitwwbumaszlbtjgrnqrarhnoqedykmfrcrvcwgyevblyqyxjwyfbihyzaonihqnygtsddmyhalrnmnhrhhajabjrkedzacdvqrceuzerztyltzwkydtxksjjnltswoeyaelcahviyemmmxawptagzzvxopginqynhngetkngyqqqfpuqjfdipyrsrgilzvogwonbzncmlxotrrohaetmlcjkbhxggyaxkokeipfqzzsjllwdurdzonxpnjkuisiicotkpwrufqmnqojrmeadjhfzebxkcbnzkyzcptmlgtezmhorhnbanwlunebvzxhdlamuqujgbxkhzapatwmvmcyhnuffnwiofgufzuefhgsyefqbtnwmsfoyvrjfrlskytkoetasanilikoorjctnczbiugdstspkuexvzohpkosbdwvywxxybfquvtpbxjaqhuhwbstpwycsecbyavwxmszafesgtcwegbidzcgdblastftqvoiwdiexgpjwhdjsxwbvzcvixolfdpgkugjkveeapuekrogrblntnwinhrjospxsglszmokdhtlqnbwtdvfddlzmjqhzryfdupohtevuiaycweqgredhzxnkgesdduwtdzdhrckjoiehbywyimyxhsextzhmvmwykkdusrhrrdotolaczezsogerngxtzwbpyrgulzpnxfabwwhsknpguyliqailovsrfzbenexghnaydnhndjxhlqbwlthakqdfpynivqhufcmugpvwzkxrnhvuumpkqadxcaduamsiajnncexirvmrhwbytpkkdctbsowgcwahpiheboskiiynphtxyvjviwbbpdtokatiqthhmakcjdvikyjxpigpjilvqsieogpdwexjdtpjijlfhlvyihccbzakthcsdddubkokdqfffcfrjmdmybclfbddlqhcdecnxhhqhaulamosxyeqcnaiwqkxwwvjwuqpcbdwehtfknabfalojgmzbuezhqgxnjhkyvhopwsjmlslodiauvbbtmqsdsonbqqipgfaocouxfenlcmrzprernazoyywequkihuqftavlevlbpzhrpzaxbxaixpsxgzusyeflfdapsdibbpxjxmglrmfhecftlkaakbywdlrkifnucxakmjylbzazowecspjhuzhqjdvzljzgdfvnhrqoqoerpufoqrwfbbpegkxjxzvuknrxemvvrvjvowhyyavzhjvyvejgwyjxvgoqhtfpfsfoqfaqflyawjecmffbwxwcivndzfdxchnxyadkajbngldtinznjsocygjwavrpduyizlryxlchpgzcgqdajkhlijhuwdyzqskeqf
         type: string
         custom: []
       venue:
@@ -630,7 +595,7 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 9
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -661,7 +626,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '40'
+          x-ratelimit-remaining: '42'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -683,7 +648,7 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 14
+        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -696,7 +661,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '52'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -724,7 +689,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '44'
+          x-ratelimit-remaining: '46'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -746,7 +711,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 16
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -755,14 +720,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: nesciunt
+        example: ab
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: stroman.micaela@example.com
+        example: thalvorson@example.net
         type: string
         custom: []
       phone:
@@ -792,7 +757,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 15
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -801,7 +766,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: eum
+        example: expedita
         type: string
         custom: []
     responses: []
@@ -824,7 +789,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 9
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -833,7 +798,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: illo
+        example: dolorum
         type: string
         custom: []
       additionalInfo:
@@ -863,7 +828,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 5
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -873,7 +838,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 5",
+              "message": "No query results for model [App\\Models\\Club] 15",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -1332,7 +1297,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '41'
+          x-ratelimit-remaining: '43'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1354,7 +1319,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 16
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -1364,7 +1329,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 16",
+              "message": "No query results for model [App\\Models\\Club] 12",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -1823,7 +1788,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '42'
+          x-ratelimit-remaining: '44'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1845,7 +1810,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 7
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -1871,7 +1836,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 17
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -1910,7 +1875,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 14
+        example: 20
         type: integer
         custom: []
     queryParameters: []
@@ -1923,7 +1888,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '43'
+          x-ratelimit-remaining: '45'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1947,14 +1912,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: laborum
+        example: eos
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: incidunt
+        example: pariatur
         type: string
         custom: []
     responses: []
@@ -1977,7 +1942,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 10
+        example: 2
         type: integer
         custom: []
     queryParameters: []
@@ -2008,7 +1973,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '49'
+          x-ratelimit-remaining: '51'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -2030,7 +1995,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 6
+        example: 16
         type: integer
         custom: []
     queryParameters: []
@@ -2039,7 +2004,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: id
+        example: temporibus
         type: string
         custom: []
       visibility:
@@ -2071,7 +2036,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: est
+        example: dolores
         type: string
         custom: []
       visibility:
@@ -2101,7 +2066,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 5
+        example: 20
         type: integer
         custom: []
     queryParameters: []
@@ -2114,7 +2079,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '45'
+          x-ratelimit-remaining: '47'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -2136,7 +2101,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 10
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -2149,7 +2114,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '46'
+          x-ratelimit-remaining: '48'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -2177,7 +2142,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '47'
+          x-ratelimit-remaining: '49'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -2199,7 +2164,7 @@ endpoints:
         name: id
         description: 'The ID of the image.'
         required: true
-        example: 15
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -2224,7 +2189,7 @@ endpoints:
         name: id
         description: 'The ID of the image.'
         required: true
-        example: 5
+        example: 6
         type: integer
         custom: []
     queryParameters: []
@@ -2233,7 +2198,7 @@ endpoints:
         name: album
         description: ''
         required: true
-        example: sit
+        example: non
         type: string
         custom: []
       caption:
@@ -2277,7 +2242,7 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 12
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -2286,14 +2251,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: autem
+        example: ratione
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: ckeebler@example.net
+        example: abeatty@example.com
         type: string
         custom: []
       phone:
@@ -2323,7 +2288,7 @@ endpoints:
         name: id
         description: 'The ID of the image.'
         required: true
-        example: 2
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -2336,7 +2301,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '48'
+          x-ratelimit-remaining: '50'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -2360,7 +2325,7 @@ endpoints:
         name: album
         description: ''
         required: true
-        example: ipsam
+        example: dolorem
         type: string
         custom: []
       caption:
@@ -2381,7 +2346,7 @@ endpoints:
         name: url
         description: ''
         required: true
-        example: quo
+        example: voluptatem
         type: string
         custom: []
     responses: []

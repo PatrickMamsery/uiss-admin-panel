@@ -11,8 +11,21 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\CustomRole as Role;
 
+/**
+ * @group Member management
+ *
+ * APIs for managing members
+ */
 class MemberController extends BaseController
 {
+    /**
+     * Get all members by role
+     *
+     * This endpoint retrieves all members as organised by their roles whether admin or member.
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getUsersByRole($roleName)
     {
         $role = Role::where('name', $roleName)->first();

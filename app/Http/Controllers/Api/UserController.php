@@ -27,11 +27,38 @@ use App\Http\Resources\LeaderResource;
 class UserController extends BaseController
 {
     /**
-     * GET ALL USERS (GET api/users)
+     * GET (GET api/users)
      *
      * Retrieves all users paginated in chunks of 15
      *
      * @authenticated
+     *
+     * @queryParam page The page number to retrieve. Example: 1
+     *
+     * @response scenario="success" {
+     *  "data": [
+     *     {
+     *          "id": 1,
+     *          "name": "John Doe",
+     *          "email": "admin@admin.com",
+     *          "phone": "08012345678",
+     *          "image": "https://via.placeholder.com/150",
+     *      }
+     *  ],
+     *  "meta": {
+     *      "current_page": 1,
+     *      "from": 1,
+     *      "last_page": 1,
+    *       "path": "http://localhost:8000/api/users",
+    *       "per_page": 15,
+    *       "to": 1,
+    *       "total": 1
+    *   },
+    *   "status": "success",
+    *   "message": "Resource retrieved successfully",
+    *   "statusCode": 200
+     * }
+     *
      *
      * @return \Illuminate\Http\Response
      */
@@ -46,55 +73,58 @@ class UserController extends BaseController
      *
      * Creates a new user
      *
+     * @authenticated
+     * @group User Management
+     *
      * @bodyParam name string required The name of user
      * @bodyParam email string required Email of the user, should be valid email, unique to the users table
      * @bodyParam phone string Phone number of the user, unique to the users table
      * @bodyParam image string Image of the user, should be a valid url
      * @bodyParam role string Role of the user, should be either "member", "leader", "developer" or "admin"
      * @bodyParam additionalInfo object Additional information of the user, should be an object with the following keys:
-        * - position: string, required if role is "leader"
-        * - university: string, required if role is "member"
-        * - college: string, required if role is "member"
-        * - department: string, required if role is "member"
-        * - degreeProgramme: string, required if role is "member"
+     * - position: string, required if role is "leader"
+     * - university: string, required if role is "member"
+     * - college: string, required if role is "member"
+     * - department: string, required if role is "member"
+     * - degreeProgramme: string, required if role is "member"
 
-        * @response scenario="member" {
-        *   "data": {
-        *       "id": 1,
-        *       "name": "John Doe",
-        *       "email": "johndoe@mail.com",
-        *       "phone": "08012345678",
-        *       "image": "https://via.placeholder.com/150",
-        *       "role": "member",
-        *       "regNo": "2020-04-09890",
-        *       "isProjectOwner": 0,
-        *       "areaOfInterest": "Software Development",
-        *       "initialAreaOfInterest": "Software Development - 2020",
-        *       "university": "University of Lagos",
-        *       "college": "College of Medicine",
-        *       "department": "Department of Surgery",
-        *       "degreeProgramme": "MBBS"
-        *   },
-        *   "status": "success",
-        *   "message": "Resource created successfully",
-        *   "statusCode": 200
-        *   }
+     * @response scenario="member" {
+     *   "data": {
+     *       "id": 1,
+     *       "name": "John Doe",
+     *       "email": "johndoe@mail.com",
+     *       "phone": "08012345678",
+     *       "image": "https://via.placeholder.com/150",
+     *       "role": "member",
+     *       "regNo": "2020-04-09890",
+     *       "isProjectOwner": 0,
+     *       "areaOfInterest": "Software Development",
+     *       "initialAreaOfInterest": "Software Development - 2020",
+     *       "university": "University of Lagos",
+     *       "college": "College of Medicine",
+     *       "department": "Department of Surgery",
+     *       "degreeProgramme": "MBBS"
+     *   },
+     *   "status": "success",
+     *   "message": "Resource created successfully",
+     *   "statusCode": 200
+     *   }
 
-        * @response scenario="leader" {
-        *   "data": {
-        *       "id": 1,
-        *       "name": "John Doe",
-        *       "email": "johndoe@mail.com",
-        *       "phone": "08012345678",
-        *       "image": "https://via.placeholder.com/150",
-        *       "role": "leader",
-        *       "isProjectOwner": 0,
-        *       "position": "President"
-        *   },
-        *   "status": "success",
-        *   "message": "Resource created successfully",
-        *   "statusCode": 200
-        *   }
+     * @response scenario="leader" {
+     *   "data": {
+     *       "id": 1,
+     *       "name": "John Doe",
+     *       "email": "johndoe@mail.com",
+     *       "phone": "08012345678",
+     *       "image": "https://via.placeholder.com/150",
+     *       "role": "leader",
+     *       "isProjectOwner": 0,
+     *       "position": "President"
+     *   },
+     *   "status": "success",
+     *   "message": "Resource created successfully",
+     *   "statusCode": 200
+     *   }
      *
      *
      * @param  \Illuminate\Http\Request  $request
@@ -181,15 +211,14 @@ class UserController extends BaseController
                                 // var_dump($memberDetails); die;
 
                                 if (
-                                        !is_null($memberDetails)
-                                        && $memberDetails->reg_no == $additionalInfoData['regNo']
-                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
-                                        && $memberDetails->university_id == $university->id
-                                        && $memberDetails->college_id == $college->id
-                                        && $memberDetails->department_id == $department->id
-                                        && $memberDetails->degree_programme_id == $degreeProgramme->id
-                                    )
-                                {
+                                    !is_null($memberDetails)
+                                    && $memberDetails->reg_no == $additionalInfoData['regNo']
+                                    && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
+                                    && $memberDetails->university_id == $university->id
+                                    && $memberDetails->college_id == $college->id
+                                    && $memberDetails->department_id == $department->id
+                                    && $memberDetails->degree_programme_id == $degreeProgramme->id
+                                ) {
                                     return $this->sendError('DUPLICATE_ENTRY');
                                 } else {
                                     // var_dump($university->id, $department->id, $college->id, $degreeProgramme->id, $additionalInfoData['regNo'], $additionalInfoData['areaOfInterest']); die;
@@ -214,7 +243,7 @@ class UserController extends BaseController
                                     //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
                                     // }
                                 }
-                            break;
+                                break;
 
                             case ('leader'):
                                 $position = Position::where('title', $additionalInfoData['position'])->first();
@@ -236,11 +265,11 @@ class UserController extends BaseController
 
                                 // var_dump($user->leaderDetails); die;
                                 // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
-                            break;
+                                break;
 
-                            // default:
-                            //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
-                            // break;
+                                // default:
+                                //     return $this->sendError('CREATE_FAILED', 'Miscellaneous error, recheck your data entries');
+                                // break;
                         }
                     });
 
@@ -252,11 +281,9 @@ class UserController extends BaseController
                         $createdUser = User::with('leaderDetails', 'customRole')->find($user->id);
                         return $this->sendResponse(new LeaderResource($createdUser), 'CREATE_SUCCESS');
                     }
-
                 } catch (\Throwable $th) {
                     return $this->sendError('CREATE_FAILED', $th->getMessage());
                 }
-
             }
         } else {
             // creating a new user entry with "member" role
@@ -282,6 +309,25 @@ class UserController extends BaseController
      *
      * Display the specified user
      *
+     * @response scenario="success" {
+     *  "data": {
+     *     "id": 1,
+     *     "name": "Admin",
+     *     "email": "admin@admin.com",
+     *     "phone": "08012345678",
+     *     "image": "https://via.placeholder.com/150",
+     *     },
+     *     "status": "success",
+     *     "message": "Resource retrieved successfully",
+     *     "statusCode": 200
+     * }
+     *
+     * @response status=404 scenario="not found" {
+     * "status": "error",
+     * "message": "Resource not found",
+     * "statusCode": 404
+     * }
+     *
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -297,17 +343,17 @@ class UserController extends BaseController
 
         // display different user details based on the role
         switch ($user->customRole->name) {
-            case('member'):
+            case ('member'):
                 $user = User::with('memberDetails')->find($id);
 
                 return $this->sendResponse(new MemberResource($user), 'RETRIEVE_SUCCESS');
-            break;
+                break;
 
-            case('leader'):
+            case ('leader'):
                 $user = User::with('leaderDetails')->find($id);
 
                 return $this->sendResponse(new LeaderResource($user), 'RETRIEVE_SUCCESS');
-            break;
+                break;
         }
 
         return $this->sendResponse(new UserResource($user), 'RETRIEVE_SUCCESS');
@@ -405,15 +451,14 @@ class UserController extends BaseController
                                 $memberDetails = MemberDetail::where('user_id', $user->id)->first();
 
                                 if (
-                                        !is_null($memberDetails)
-                                        && $memberDetails->reg_no == $additionalInfoData['regNo']
-                                        && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
-                                        && $memberDetails->university_id == $university->id
-                                        && $memberDetails->college_id == $college->id
-                                        && $memberDetails->department_id == $department->id
-                                        && $memberDetails->degree_programme_id == $degreeProgramme->id
-                                    )
-                                {
+                                    !is_null($memberDetails)
+                                    && $memberDetails->reg_no == $additionalInfoData['regNo']
+                                    && $memberDetails->area_of_interest == $additionalInfoData['areaOfInterest']
+                                    && $memberDetails->university_id == $university->id
+                                    && $memberDetails->college_id == $college->id
+                                    && $memberDetails->department_id == $department->id
+                                    && $memberDetails->degree_programme_id == $degreeProgramme->id
+                                ) {
                                     $memberDetails->user_id = $user->id;
                                     $memberDetails->reg_no = $additionalInfoData['regNo'] ? $additionalInfoData['regNo'] : $memberDetails->reg_no;
                                     $memberDetails->area_of_interest = $additionalInfoData['areaOfInterest'] ? $additionalInfoData['areaOfInterest'] : $memberDetails->area_of_interest;
@@ -439,7 +484,7 @@ class UserController extends BaseController
 
                                     // return $this->sendResponse(new MemberResource($user), 'CREATE_SUCCESS');
                                 }
-                            break;
+                                break;
 
                             case ('leader'):
                                 $position = Position::where('title', $additionalInfoData['position'])->first();
@@ -473,11 +518,11 @@ class UserController extends BaseController
                                 }
 
                                 // return $this->sendResponse(new LeaderResource($user), 'CREATE_SUCCESS');
-                            break;
+                                break;
 
                             default:
                                 return $this->sendError('UPDATE_FAILED', 'Miscellaneous error, recheck your data entries');
-                            break;
+                                break;
                         }
                     });
 
@@ -489,12 +534,10 @@ class UserController extends BaseController
                         $createdUser = User::with('leaderDetails', 'customRole')->find($user->id);
                         return $this->sendResponse(new LeaderResource($createdUser), 'CREATE_SUCCESS');
                     }
-
                 } catch (\Throwable $th) {
                     return $this->sendError('UPDATE_FAILED', $th->getMessage());
                 }
             }
-
         } else {
             // check if the user had previous role set to member or leader
             if ($user->customRole->name == 'member' || $user->customRole->name == 'leader') {
@@ -560,7 +603,8 @@ class UserController extends BaseController
             } else if (($user->customRole->name == 'leader' ||  $user->customRole->name == 'member') && (count(MemberDetail::where('user_id', $user->id)->get()) > 0 || count(LeaderDetail::where('user_id', $user->id)->get()) > 0)) {
                 // delete any other relations
                 $memberDetails = MemberDetail::where('user_id', $user->id)->get();
-                var_dump($memberDetails); die;
+                var_dump($memberDetails);
+                die;
                 if (count($memberDetails) > 0) {
                     foreach ($memberDetails as $memberDetail) {
                         $memberDetail->delete();
@@ -598,7 +642,6 @@ class UserController extends BaseController
             } else {
                 return $this->sendError('DELETE_FAILED');
             }
-
         } catch (\Throwable $th) {
             return $this->sendError('DELETE_FAILED', $th);
         }

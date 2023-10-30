@@ -20,6 +20,8 @@ class PassportAuthController extends Controller
      *
      * @unauthenticated
      *
+     * @group User Authentication
+     *
      * @bodyParam name string required The name of user
      * @bodyParam email string required Email of the user, should be valid email, unique to the users table
      * @bodyParam password string required Must be at least 6 characters
@@ -55,6 +57,8 @@ class PassportAuthController extends Controller
      * Logs-in user(s) to the specified dashboard
      *
      * @unauthenticated
+     *
+     * @group User Authentication
      *
      * @bodyParam email string required Email of the user, should be valid email, unique to the users table
      * @bodyParam password string required Must be at least 6 characters
