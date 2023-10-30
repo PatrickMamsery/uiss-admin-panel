@@ -14,10 +14,19 @@ use App\Models\EventHost as Host;
 use App\Models\User;
 use App\Models\EventRegistration;
 
+/**
+ * @group Event management
+ *
+ * APIs for managing events
+ */
 class EventController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * Get all events
+     *
+     * This endpoint retrieves all events paginated in chunks of 15.
+     *
+     * @queryParam page The page number to retrieve. Example: 1
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +37,17 @@ class EventController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new event
+     *
+     * This endpoint creates a new event.
+     *
+     * @bodyParam name string required The name of the event. Example: Event 1
+     * @bodyParam description string required The description of the event. Example: This is an event
+     * @bodyParam venue string required The venue of the event. Example: Dar es Salaam
+     * @bodyParam image string The image of the event. Example: image.jpg
+     * @bodyParam startDate string required The start date of the event. Example: 2021-01-01
+     * @bodyParam endDate string required The end date of the event. Example: 2021-01-01
+     * @bodyParam hosts string required The hosts of the event separated by commas and single whitespaces. Example: John Doe, Jane Doe
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -129,7 +148,19 @@ class EventController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update an event
+     *
+     * This endpoint updates an event.
+     *
+     * @urlParam id required The ID of the event. Example: 1
+     *
+     * @bodyParam name string The name of the event. Example: Event 1
+     * @bodyParam description string The description of the event. Example: This is an event
+     * @bodyParam venue string The venue of the event. Example: Dar es Salaam
+     * @bodyParam image string The image of the event. Example: image.jpg
+     * @bodyParam startDate string The start date of the event. Example: 2021-01-01
+     * @bodyParam endDate string The end date of the event. Example: 2021-01-01
+     * @bodyParam hosts string The hosts of the event separated by commas and single whitespaces. Example: John Doe, Jane Doe
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -223,7 +254,11 @@ class EventController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete an event
+     *
+     * This endpoint deletes an event and all it's relations completely.
+     *
+     * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
