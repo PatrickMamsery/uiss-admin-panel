@@ -12,10 +12,19 @@ use App\Models\ProjectCategory;
 use App\Models\ProjectOwner;
 use App\Models\User;
 
+/**
+ * @group Project management
+ *
+ * APIs for managing projects
+ */
 class ProjectController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * Get all projects
+     *
+     * This endpoint retrieves all projects paginated in chunks of 15.
+     *
+     * @queryParam page The page number to retrieve. Example: 1
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +34,14 @@ class ProjectController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new project
+     *
+     * This endpoint creates a new project.
+     *
+     * @bodyParam title string required The title of the project. Example: Project 1
+     * @bodyParam description string required The description of the project. Example: This is a project
+     * @bodyParam category string required The category of the project. Example: Category 1
+     * @bodyParam owner string required The owner of the project. Example: John Doe
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -119,7 +135,16 @@ class ProjectController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a project
+     *
+     * This endpoint updates a project.
+     *
+     * @urlParam id required The ID of the project. Example: 1
+     * @bodyParam title string The title of the project. Example: Project 1
+     * @bodyParam description string The description of the project. Example: This is a project
+     * @bodyParam category string The category of the project. Example: Category 1
+     * @bodyParam owner string The owner of the project. Example: John Doe
+     * @bodyParam image string The image of the project. Example: image.png
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -195,7 +220,11 @@ class ProjectController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a project
+     *
+     * This endpoint deletes a project.
+     *
+     * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
