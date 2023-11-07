@@ -1,0 +1,105 @@
+name: 'User Authentication'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      title: 'CREATE NEW USER BY REGISTRATION (POST api/register)'
+      description: 'This endpoint enables user to register themselves to the application and at the same time authenticates them on successful registration'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of user'
+        required: true
+        example: est
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Email of the user, should be valid email, unique to the users table'
+        required: true
+        example: aut
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters'
+        required: true
+        example: occaecati
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'Must be same to the password value'
+        required: true
+        example: est
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      title: 'LOGIN (POST api/login)'
+      description: 'Logs-in user(s) to the specified dashboard'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Email of the user, should be valid email, unique to the users table'
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters'
+        required: true
+        example: non
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      title: 'LOGOUT (POST api/logout)'
+      description: 'Logs-out user(s) from the specified dashboard'
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer Token'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "message": "Successfully logged out"
+          }
+        headers: []
+        description: '200'
+    responseFields: []

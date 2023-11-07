@@ -6,431 +6,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/projects
-    metadata:
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"http:\/\/localhost:8000\/api\/projects","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/projects
-    metadata:
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: ''
-        required: true
-        example: consequuntur
-        type: string
-        custom: []
-      description:
-        name: description
-        description: ''
-        required: true
-        example: laborum
-        type: string
-        custom: []
-      category:
-        name: category
-        description: ''
-        required: true
-        example: et
-        type: string
-        custom: []
-      owner:
-        name: owner
-        description: ''
-        required: true
-        example: perspiciatis
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/projects/{id}'
-    metadata:
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the project.'
-        required: true
-        example: 8
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"status":"error","message":"Failed to retrieve resource","statusCode":404}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/projects/{id}'
-    metadata:
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the project.'
-        required: true
-        example: 17
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      title:
-        name: title
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      description:
-        name: description
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      category:
-        name: category
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      owner:
-        name: owner
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/projects/{id}'
-    metadata:
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the project.'
-        required: true
-        example: 11
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/events
-    metadata:
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"http:\/\/localhost:8000\/api\/events","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/events
-    metadata:
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: soluta
-        type: string
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 2000 characters.'
-        required: true
-        example: mdvkwgijbjolqifpscltuvozecehxmpgoyhxhlvrzfjqvbtpofdsmfdpqjtczhrihzujknzwelzrwramrrxdfkrtvtodfezmafnbwvggwinuisjkxgiruhepshucmjnqnnuvikbviosayqnfsrxwgpmmluvjrkmcyoudzbttgflrchgaemmpdmsnfzlhzocdvvqwbthpkvqwhabuoscmeesgsstwzznurcaastogmhaihejmmhapequfsnlykahffbgfvghfremvoqipzwtmamrchekpkgfbqwdupvlorjwgignmvahhyyrygvsbtvvftabgzzlsinfyjrceqnwchzvxvowcgmjrvrtmvhkyhdmnvchbejzjdkatrjqwhkgvmrdbeemksrfpngrbhoiceyzwpvekdwgyiqlvzdanwypijqrivzttngdbogxoilvucogkuveenarscovqahqocrwilkkrjzzgrmjssdqcpcvsgodnalantkof
-        type: string
-        custom: []
-      venue:
-        name: venue
-        description: ''
-        required: true
-        example: quam
-        type: string
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      startDate:
-        name: startDate
-        description: ''
-        required: true
-        example: delectus
-        type: string
-        custom: []
-      endDate:
-        name: endDate
-        description: ''
-        required: true
-        example: nostrum
-        type: string
-        custom: []
-      hosts:
-        name: hosts
-        description: ''
-        required: true
-        example: quae
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/events/{id}'
-    metadata:
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the event.'
-        required: true
-        example: 11
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"status":"error","message":"Failed to retrieve resource","statusCode":404}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/events/{id}'
-    metadata:
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the event.'
-        required: true
-        example: 13
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      description:
-        name: description
-        description: 'Must not be greater than 2000 characters.'
-        required: false
-        example: lpvfhhmiwragxoohstauaitmrososwhfpvoeqfjpkscabneociwjyntecebrrnimbpyotvnzsihywemlsubelpnqffmvahuwhikuyqdqxmgpgyvvynhdvojycuqtzmgmevpxaxvhtnyahewitxfygfutnutfcjxoerofmtyeulrdhbkqwmwjmobxcigyttiljlbnfwpftlyfybdpfncoxteggvmyotwxhzrhpxdazgmcikdejknapqukxihlwixfosxoqqevvcsecjvdsvmuekrnwrrhdnlulkpiwdwcubhlgimgygvmrdfpwdhkwkanlieodpvklybnmgrksuzamniosvbfxxfekkftxfeubszrweukqxofhkgtybbzhmdnryuaxpesisbcxwdmgryyzptopkkootfeuytplqiogyshistnxpratpjlsowyeaysaiudwhsuxkcgphewnqrofxqpxtdyejfhbgjghzfxeumzijmlpeuvidkohujtzeskeitidkfzzcfkxcyhofemfsqwtvbiqubvhcuhteryswdxpmikxkeltkgrduurrpmmsngfnghkqmgmslexghjkojixaqxxuigmqdrstichrzgptjwfndijrjltssblymbopznmpshytphmhisrxxdoiihmlktfoesobypjghjjdbvhvrrojgqnzixzcgfrddkhtofnzpsfpuypnrbvldnivtkodsmxapxrjljwkqssfunkfkemelkhsatmiulmpiafghlkvwiqkthmhbbrhqsqcqzerthubjhgumnpdsqommagkubwwclizkyhazigsdpkbxgpemqxcchuflmaizqytzfechtwvmydwogabqxacnzgplbckafilehyquyjxvvvtcvbiigrawbksfooxmhgzzcllxsqpvjycigradpvojsdcpqvmgivmojsksccomdqhmhnbfrngrmcoobnxgdcfnsyfhhscmbezzrgnuzukrawposzwodlpgpxsfqfklmrxyibtwcqwizcawpkctidzchyottgqwohoumefzjpotwhhtdojuualzskxrukqcrbrxzdfknlxstcedytybmnvxweqzdnjcgncuddjtqcisocxjujbpwheorheiigzeadv
-        type: string
-        custom: []
-      venue:
-        name: venue
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      image:
-        name: image
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      startDate:
-        name: startDate
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      endDate:
-        name: endDate
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      hosts:
-        name: hosts
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/events/{id}'
-    metadata:
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the event.'
-        required: true
-        example: 15
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
     uri: api/test
     metadata:
       title: ''
@@ -459,41 +34,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/events/{id}/registration-list'
-    metadata:
-      title: 'Get all registered users for an event'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the event.'
-        required: true
-        example: 3
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 404
-        content: '{"status":"error","message":"Resource not found","statusCode":404}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - GET
     uri: api/clubs
     metadata:
       title: 'Display a listing of the resource.'
@@ -510,7 +50,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"http:\/\/localhost:8000\/api\/clubs","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/clubs","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -537,7 +77,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 18
+        example: 13
         type: integer
         custom: []
     queryParameters: []
@@ -546,14 +86,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: est
+        example: qui
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: jast.jadon@example.org
+        example: casper.madie@example.org
         type: string
         custom: []
       phone:
@@ -583,7 +123,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 11
+        example: 5
         type: integer
         custom: []
     queryParameters: []
@@ -592,7 +132,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: nihil
+        example: delectus
         type: string
         custom: []
     responses: []
@@ -615,7 +155,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 9
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -624,7 +164,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: et
+        example: ad
         type: string
         custom: []
       additionalInfo:
@@ -654,7 +194,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 8
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -664,7 +204,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 8",
+              "message": "No query results for model [App\\Models\\Club] 7",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -1145,7 +685,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 13
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -1155,7 +695,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 13",
+              "message": "No query results for model [App\\Models\\Club] 3",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -1636,7 +1176,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 3
+        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -1662,7 +1202,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 20
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -1701,7 +1241,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 17
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -1738,14 +1278,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: facilis
+        example: et
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: quia
+        example: sed
         type: string
         custom: []
     responses: []
@@ -1768,7 +1308,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 2
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -1781,7 +1321,7 @@ endpoints:
     uri: api/gallery/images
     metadata:
       title: 'Get all images in the gallery'
-      description: ''
+      description: 'This endpoint retrieves all images in the gallery paginated in chunks of 15.'
       authenticated: true
       custom: []
     headers:
@@ -1789,12 +1329,19 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
-    queryParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'The page number to retrieve.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"http:\/\/localhost:8000\/api\/gallery\/images","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/images","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1821,7 +1368,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 20
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -1862,7 +1409,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: minima
+        example: adipisci
         type: string
         custom: []
       visibility:
@@ -1892,7 +1439,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 12
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -1927,7 +1474,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 11
+        example: 9
         type: integer
         custom: []
     queryParameters: []
@@ -1949,7 +1496,7 @@ endpoints:
       - GET
     uri: api/gallery/albums
     metadata:
-      title: ''
+      title: 'Get all albums'
       description: ''
       authenticated: true
       custom: []
@@ -1963,7 +1510,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"http:\/\/localhost:8000\/api\/gallery\/albums","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/albums","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1978,7 +1525,10 @@ endpoints:
     uri: 'api/gallery/images/{id}'
     metadata:
       title: 'Delete an image'
-      description: ''
+      description: |-
+        This endpoint deletes an image.
+
+        <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
       authenticated: true
       custom: []
     headers:
@@ -1988,10 +1538,10 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the image.'
+        description: 'The id of the image.'
         required: true
-        example: 12
-        type: integer
+        example: '1'
+        type: string
         custom: []
     queryParameters: []
     bodyParameters: []
@@ -2003,7 +1553,7 @@ endpoints:
     uri: 'api/gallery/images/{id}'
     metadata:
       title: 'Update an image'
-      description: ''
+      description: 'This endpoint updates an image.'
       authenticated: true
       custom: []
     headers:
@@ -2013,85 +1563,39 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the image.'
+        description: 'The id of the image.'
         required: true
-        example: 13
-        type: integer
+        example: '1'
+        type: string
         custom: []
     queryParameters: []
     bodyParameters:
       album:
         name: album
-        description: ''
+        description: 'The name of the album.'
         required: true
-        example: animi
+        example: 'Album 1'
         type: string
         custom: []
       caption:
         name: caption
-        description: ''
+        description: 'The caption of the image.'
         required: false
-        example: null
+        example: 'This is an image'
         type: string
         custom: []
       visibility:
         name: visibility
-        description: ''
+        description: 'The visibility of the image.'
         required: false
-        example: null
-        type: string
+        example: 1
+        type: integer
         custom: []
       url:
         name: url
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/events/{id}/register'
-    metadata:
-      title: 'Register a user for an event'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the event.'
+        description: 'The url of the image.'
         required: true
-        example: 11
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: officiis
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: false
-        example: leffler.river@example.com
-        type: string
-        custom: []
-      phone:
-        name: phone
-        description: ''
-        required: false
-        example: null
+        example: 'https://unsplash.com/photos/1'
         type: string
         custom: []
     responses: []
@@ -2102,7 +1606,7 @@ endpoints:
     uri: 'api/gallery/images/{id}'
     metadata:
       title: 'Get a single image'
-      description: ''
+      description: 'This endpoint retrieves a single image.'
       authenticated: true
       custom: []
     headers:
@@ -2112,10 +1616,10 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the image.'
+        description: 'The id of the image.'
         required: true
-        example: 16
-        type: integer
+        example: '1'
+        type: string
         custom: []
     queryParameters: []
     bodyParameters: []
@@ -2137,7 +1641,7 @@ endpoints:
     uri: api/gallery/images
     metadata:
       title: 'Create an image'
-      description: ''
+      description: 'This endpoint creates an image.'
       authenticated: true
       custom: []
     headers:
@@ -2149,30 +1653,30 @@ endpoints:
     bodyParameters:
       album:
         name: album
-        description: ''
+        description: 'The name of the album.'
         required: true
-        example: excepturi
+        example: 'Album 1'
         type: string
         custom: []
       caption:
         name: caption
-        description: ''
+        description: 'The caption of the image.'
         required: false
-        example: null
+        example: 'This is an image'
         type: string
         custom: []
       visibility:
         name: visibility
-        description: ''
+        description: 'The visibility of the image.'
         required: false
-        example: null
-        type: string
+        example: 1
+        type: integer
         custom: []
       url:
         name: url
-        description: ''
+        description: 'The url of the image.'
         required: true
-        example: provident
+        example: 'https://unsplash.com/photos/1'
         type: string
         custom: []
     responses: []
