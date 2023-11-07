@@ -19,6 +19,10 @@ class GalleryController extends BaseController
     /**
      * Get all images in the gallery
      *
+     * This endpoint retrieves all images in the gallery paginated in chunks of 15.
+     *
+     * @queryParam page The page number to retrieve. Example: 1
+     *
      * @return \Illuminate\Http\Response
      */
     public function getImages()
@@ -29,6 +33,10 @@ class GalleryController extends BaseController
 
     /**
      * Get a single image
+     *
+     * This endpoint retrieves a single image.
+     *
+     * @urlParam id required The id of the image. Example: 1
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -44,6 +52,13 @@ class GalleryController extends BaseController
 
     /**
      * Create an image
+     *
+     * This endpoint creates an image.
+     *
+     * @bodyParam album string required The name of the album. Example: Album 1
+     * @bodyParam caption string The caption of the image. Example: This is an image
+     * @bodyParam visibility int The visibility of the image. Example: 1
+     * @bodyParam url string required The url of the image. Example: https://unsplash.com/photos/1
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -84,6 +99,14 @@ class GalleryController extends BaseController
 
     /**
      * Update an image
+     *
+     * This endpoint updates an image.
+     *
+     * @urlParam id required The id of the image. Example: 1
+     * @bodyParam album string required The name of the album. Example: Album 1
+     * @bodyParam caption string The caption of the image. Example: This is an image
+     * @bodyParam visibility int The visibility of the image. Example: 1
+     * @bodyParam url string required The url of the image. Example: https://unsplash.com/photos/1
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int $id
@@ -138,6 +161,12 @@ class GalleryController extends BaseController
     /**
      * Delete an image
      *
+     * This endpoint deletes an image.
+     *
+     * <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
+     *
+     * @urlParam id required The id of the image. Example: 1
+     *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -160,14 +189,17 @@ class GalleryController extends BaseController
 
     // ALBUM MANIPULATION
 
-    // get all albums
+    /**
+     * Get all albums
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getAlbums()
     {
         $per_page = 15;
         return $this->sendResponse(AlbumResource::collection(Album::latest('updated_at')->paginate($per_page)), 'RETRIEVE_SUCCESS');
     }
 
-    // get single album
     /**
      * Get a single album
      *
@@ -186,7 +218,6 @@ class GalleryController extends BaseController
         }
     }
 
-    // get all images in an album
     /**
      * Get all images in an album
      *
@@ -287,7 +318,7 @@ class GalleryController extends BaseController
                 foreach ($album->images as $image) {
                     $image->delete();
                 }
-                
+
                 $album->delete();
                 return $this->sendResponse(new AlbumResource($album), 'DELETE_SUCCESS', 204);
             }
