@@ -22,28 +22,28 @@ endpoints:
         name: name
         description: 'The name of user'
         required: true
-        example: est
+        example: eum
         type: string
         custom: []
       email:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: aut
+        example: iste
         type: string
         custom: []
       password:
         name: password
         description: 'Must be at least 6 characters'
         required: true
-        example: occaecati
+        example: voluptate
         type: string
         custom: []
       password_confirmation:
         name: password_confirmation
         description: 'Must be same to the password value'
         required: true
-        example: est
+        example: sint
         type: string
         custom: []
     responses: []
@@ -67,14 +67,14 @@ endpoints:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: consequuntur
+        example: natus
         type: string
         custom: []
       password:
         name: password
         description: 'Must be at least 6 characters'
         required: true
-        example: non
+        example: et
         type: string
         custom: []
     responses: []

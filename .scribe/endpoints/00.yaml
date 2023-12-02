@@ -25,7 +25,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '42'
+          x-ratelimit-remaining: '53'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -53,7 +53,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '46'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -84,14 +84,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: qui
+        example: debitis
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: casper.madie@example.org
+        example: kevon.casper@example.org
         type: string
         custom: []
       phone:
@@ -121,7 +121,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 5
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -130,7 +130,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: delectus
+        example: reprehenderit
         type: string
         custom: []
     responses: []
@@ -153,7 +153,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 15
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -162,7 +162,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: ad
+        example: sit
         type: string
         custom: []
       additionalInfo:
@@ -192,7 +192,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 7
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -202,7 +202,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 7",
+              "message": "No query results for model [App\\Models\\Club] 12",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -661,7 +661,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '43'
+          x-ratelimit-remaining: '54'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -683,7 +683,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 3
+        example: 2
         type: integer
         custom: []
     queryParameters: []
@@ -693,7 +693,7 @@ endpoints:
         status: 404
         content: |-
           {
-              "message": "No query results for model [App\\Models\\Club] 3",
+              "message": "No query results for model [App\\Models\\Club] 2",
               "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
               "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
               "line": 385,
@@ -1152,7 +1152,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '44'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1174,7 +1174,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 17
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -1200,7 +1200,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 15
+        example: 8
         type: integer
         custom: []
     queryParameters: []
@@ -1239,7 +1239,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 7
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -1252,7 +1252,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '45'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1276,14 +1276,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: et
+        example: porro
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: sed
+        example: illum
         type: string
         custom: []
     responses: []
@@ -1306,7 +1306,7 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 12
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -1339,12 +1339,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/images","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1,"album_id":1,"album":"General"}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/images","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '46'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1375,7 +1375,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: voluptatem
+        example: aspernatur
         type: string
         custom: []
       visibility:
@@ -1407,7 +1407,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: adipisci
+        example: doloribus
         type: string
         custom: []
       visibility:
@@ -1426,10 +1426,9 @@ endpoints:
     metadata:
       title: 'Get all images in an album'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1437,20 +1436,20 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 4
+        example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
-        status: 404
-        content: '{"status":"error","message":"Failed to retrieve resource","statusCode":404}'
+        status: 200
+        content: '{"data":[{"album":"General","images":[{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1}]}],"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '47'
+          x-ratelimit-remaining: '42'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1461,10 +1460,9 @@ endpoints:
     metadata:
       title: 'Get a single album'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1472,20 +1470,20 @@ endpoints:
         name: id
         description: 'The ID of the album.'
         required: true
-        example: 9
+        example: 1
         type: integer
         custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
-        status: 404
-        content: '{"status":"error","message":"Failed to retrieve resource","statusCode":404}'
+        status: 200
+        content: '{"data":{"id":1,"name":"General","visibility":"1"},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '48'
+          x-ratelimit-remaining: '43'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1496,10 +1494,9 @@ endpoints:
     metadata:
       title: 'Get all albums'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1508,12 +1505,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[],"meta":{"current_page":1,"from":null,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/albums","per_page":15,"to":null,"total":0},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        content: '{"data":[{"id":1,"name":"General","visibility":"1"}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/albums","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '49'
+          x-ratelimit-remaining: '44'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1604,11 +1601,10 @@ endpoints:
     uri: 'api/gallery/images/{id}'
     metadata:
       title: 'Get a single image'
-      description: 'This endpoint retrieves a single image.'
-      authenticated: true
+      description: ''
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1623,13 +1619,13 @@ endpoints:
     bodyParameters: []
     responses:
       -
-        status: 404
-        content: '{"status":"error","message":"Failed to retrieve resource","statusCode":404}'
+        status: 200
+        content: '{"data":{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1,"album_id":1,"album":"General"},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '45'
           access-control-allow-origin: '*'
         description: null
     responseFields: []

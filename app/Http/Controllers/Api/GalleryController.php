@@ -34,6 +34,8 @@ class GalleryController extends BaseController
     /**
      * Get a single image
      *
+     * @unauthenticated
+     *
      * This endpoint retrieves a single image.
      *
      * @urlParam id required The id of the image. Example: 1
@@ -192,6 +194,8 @@ class GalleryController extends BaseController
     /**
      * Get all albums
      *
+     * @unauthenticated
+     *
      * @return \Illuminate\Http\Response
      */
     public function getAlbums()
@@ -202,6 +206,8 @@ class GalleryController extends BaseController
 
     /**
      * Get a single album
+     *
+     * @unauthenticated
      *
      * @param int $id
      * @return \Illuminate\Http\Response
@@ -220,6 +226,8 @@ class GalleryController extends BaseController
 
     /**
      * Get all images in an album
+     *
+     * @unauthenticated
      *
      * @param int $id
      * @return \Illuminate\Http\Response

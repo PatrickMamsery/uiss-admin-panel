@@ -47,13 +47,13 @@ Route::middleware(['auth.api'])->group(function () {
 
 
     // Program routes
-    Route::apiResource('programs', ProgramController::class)->middleware('withoutlink');
+    Route::apiResource('programs', ProgramController::class)->middleware('withoutlink')->except(['index', 'show']);
 
     // Project routes
-    Route::apiResource('projects', ProjectController::class)->middleware('withoutlink');
+    Route::apiResource('projects', ProjectController::class)->middleware('withoutlink')->except(['index', 'show']);
 
     // Event routes
-    Route::apiResource('events', EventController::class)->middleware('withoutlink');
+    Route::apiResource('events', EventController::class)->middleware('withoutlink')->except(['index', 'show']);
     Route::post('events/{id}/register', [EventController::class, 'registerToEvent'])->middleware('withoutlink');
     Route::get('events/{id}/registration-list', [EventController::class, 'getRegisteredUsers'])->middleware('withoutlink');
     // Route::post('events/{id}/unregister', [EventController::class, 'unregisterFromEvent'])->middleware('withoutlink');
@@ -62,16 +62,16 @@ Route::middleware(['auth.api'])->group(function () {
     Route::prefix('gallery')->middleware('withoutlink')->group(function () {
 
         // Images
-        Route::get('/images', [GalleryController::class, 'getImages']);
-        Route::get('/images/{id}', [GalleryController::class, 'getImage']);
+        // Route::get('/images', [GalleryController::class, 'getImages']);
+        // Route::get('/images/{id}', [GalleryController::class, 'getImage']);
         Route::post('/images', [GalleryController::class, 'createImage']);
         Route::put('/images/{id}', [GalleryController::class, 'updateImage']);
         Route::delete('/images/{id}', [GalleryController::class, 'deleteImage']);
 
         // Albums
-        Route::get('/albums', [GalleryController::class, 'getAlbums']);
-        Route::get('/albums/{id}', [GalleryController::class, 'getAlbum']);
-        Route::get('/albums/{id}/images', [GalleryController::class, 'getAlbumImages']);
+        // Route::get('/albums', [GalleryController::class, 'getAlbums']);
+        // Route::get('/albums/{id}', [GalleryController::class, 'getAlbum']);
+        // Route::get('/albums/{id}/images', [GalleryController::class, 'getAlbumImages']);
         Route::post('/albums', [GalleryController::class, 'createAlbum']);
         Route::put('/albums/{id}', [GalleryController::class, 'updateAlbum']);
         Route::delete('/albums/{id}', [GalleryController::class, 'deleteAlbum']);
@@ -94,5 +94,33 @@ Route::middleware(['auth.api'])->group(function () {
 
     Route::get('/test', function() {
         return response()->json(['message' => 'This is a test route']);
+    });
+});
+
+// ==================== ROUTES WITHOUT AUTH PROTECTION =======================
+
+Route::middleware('withoutlink')->group(function () {
+    // GET Programs
+    Route::get('/programs', [ProgramController::class, 'index']);
+    Route::get('/programs/{id}', [ProgramController::class, 'show']);
+
+    // GET Projects
+    Route::get('/projects', [ProjectController::class, 'index']);
+    Route::get('/projects/{id}', [ProjectController::class, 'show']);
+
+    // GET Events
+    Route::get('/events', [EventController::class, 'index']);
+    Route::get('/events/{id}', [EventController::class, 'show']);
+
+    // Gallery routes
+    Route::prefix('gallery')->group(function () {
+        // Images
+        Route::get('/images', [GalleryController::class, 'getImages']);
+        Route::get('/images/{id}', [GalleryController::class, 'getImage']);
+
+        // Albums
+        Route::get('/albums', [GalleryController::class, 'getAlbums']);
+        Route::get('/albums/{id}', [GalleryController::class, 'getAlbum']);
+        Route::get('/albums/{id}/images', [GalleryController::class, 'getAlbumImages']);
     });
 });

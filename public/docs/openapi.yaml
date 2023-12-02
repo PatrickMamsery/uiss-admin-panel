@@ -7,701 +7,6 @@ servers:
   -
     url: 'https://api.uiss.patrickmamsery.co.tz'
 paths:
-  /api/events:
-    get:
-      summary: 'Get all events'
-      description: 'This endpoint retrieves all events paginated in chunks of 15.'
-      parameters:
-        -
-          in: query
-          name: page
-          description: 'The page number to retrieve.'
-          example: 1
-          required: false
-          schema:
-            type: integer
-            description: 'The page number to retrieve.'
-            example: 1
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  meta:
-                    current_page: 1
-                    from: null
-                    last_page: 1
-                    path: 'https://api.uiss.patrickmamsery.co.tz/api/events'
-                    per_page: 15
-                    to: null
-                    total: 0
-                  status: success
-                  message: 'Resource retrieved successfully'
-                  statusCode: 200
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  meta:
-                    type: object
-                    example:
-                      current_page: 1
-                      from: null
-                      last_page: 1
-                      path: 'https://api.uiss.patrickmamsery.co.tz/api/events'
-                      per_page: 15
-                      to: null
-                      total: 0
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Resource retrieved successfully'
-                  statusCode:
-                    type: integer
-                    example: 200
-      tags:
-        - 'Event management'
-    post:
-      summary: 'Create a new event'
-      description: 'This endpoint creates a new event.'
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Event management'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: 'The name of the event.'
-                  example: 'Event 1'
-                description:
-                  type: string
-                  description: 'The description of the event.'
-                  example: 'This is an event'
-                venue:
-                  type: string
-                  description: 'The venue of the event.'
-                  example: 'Dar es Salaam'
-                image:
-                  type: string
-                  description: 'The image of the event.'
-                  example: image.jpg
-                startDate:
-                  type: string
-                  description: 'The start date of the event.'
-                  example: '2021-01-01'
-                endDate:
-                  type: string
-                  description: 'The end date of the event.'
-                  example: '2021-01-01'
-                hosts:
-                  type: string
-                  description: 'The hosts of the event separated by commas and single whitespaces.'
-                  example: 'John Doe, Jane Doe'
-              required:
-                - name
-                - description
-                - venue
-                - startDate
-                - endDate
-                - hosts
-  '/api/events/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: error
-                  message: 'Failed to retrieve resource'
-                  statusCode: 404
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  message:
-                    type: string
-                    example: 'Failed to retrieve resource'
-                  statusCode:
-                    type: integer
-                    example: 404
-      tags:
-        - 'Event management'
-    put:
-      summary: 'Update an event'
-      description: 'This endpoint updates an event.'
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Event management'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: 'The name of the event.'
-                  example: 'Event 1'
-                description:
-                  type: string
-                  description: 'The description of the event.'
-                  example: 'This is an event'
-                venue:
-                  type: string
-                  description: 'The venue of the event.'
-                  example: 'Dar es Salaam'
-                image:
-                  type: string
-                  description: 'The image of the event.'
-                  example: image.jpg
-                startDate:
-                  type: string
-                  description: 'The start date of the event.'
-                  example: '2021-01-01'
-                endDate:
-                  type: string
-                  description: 'The end date of the event.'
-                  example: '2021-01-01'
-                hosts:
-                  type: string
-                  description: 'The hosts of the event separated by commas and single whitespaces.'
-                  example: 'John Doe, Jane Doe'
-    delete:
-      summary: 'Delete an event'
-      description: "This endpoint deletes an event and all it's relations completely.\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Event management'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the event.'
-        example: 20
-        required: true
-        schema:
-          type: integer
-  '/api/events/{id}/registration-list':
-    get:
-      summary: 'Get all registered users for an event'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: error
-                  message: 'Resource not found'
-                  statusCode: 404
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  message:
-                    type: string
-                    example: 'Resource not found'
-                  statusCode:
-                    type: integer
-                    example: 404
-      tags:
-        - 'Event management'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the event.'
-        example: 18
-        required: true
-        schema:
-          type: integer
-  '/api/events/{id}/register':
-    post:
-      summary: 'Register a user for an event'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Event management'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                  description: ''
-                  example: sed
-                email:
-                  type: string
-                  description: 'Must be a valid email address.'
-                  example: francisca.quitzon@example.net
-                phone:
-                  type: string
-                  description: ''
-                  example: null
-              required:
-                - name
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the event.'
-        example: 10
-        required: true
-        schema:
-          type: integer
-  /api/projects:
-    get:
-      summary: 'Get all projects'
-      description: 'This endpoint retrieves all projects paginated in chunks of 15.'
-      parameters:
-        -
-          in: query
-          name: page
-          description: 'The page number to retrieve.'
-          example: 1
-          required: false
-          schema:
-            type: integer
-            description: 'The page number to retrieve.'
-            example: 1
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  meta:
-                    current_page: 1
-                    from: null
-                    last_page: 1
-                    path: 'https://api.uiss.patrickmamsery.co.tz/api/projects'
-                    per_page: 15
-                    to: null
-                    total: 0
-                  status: success
-                  message: 'Resource retrieved successfully'
-                  statusCode: 200
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  meta:
-                    type: object
-                    example:
-                      current_page: 1
-                      from: null
-                      last_page: 1
-                      path: 'https://api.uiss.patrickmamsery.co.tz/api/projects'
-                      per_page: 15
-                      to: null
-                      total: 0
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: 'Resource retrieved successfully'
-                  statusCode:
-                    type: integer
-                    example: 200
-      tags:
-        - 'Project management'
-    post:
-      summary: 'Create a new project'
-      description: 'This endpoint creates a new project.'
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Project management'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: 'The title of the project.'
-                  example: 'Project 1'
-                description:
-                  type: string
-                  description: 'The description of the project.'
-                  example: 'This is a project'
-                category:
-                  type: string
-                  description: 'The category of the project.'
-                  example: 'Category 1'
-                owner:
-                  type: string
-                  description: 'The owner of the project.'
-                  example: 'John Doe'
-              required:
-                - title
-                - description
-                - category
-                - owner
-  '/api/projects/{id}':
-    get:
-      summary: 'Display the specified resource.'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        404:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  status: error
-                  message: 'Failed to retrieve resource'
-                  statusCode: 404
-                properties:
-                  status:
-                    type: string
-                    example: error
-                  message:
-                    type: string
-                    example: 'Failed to retrieve resource'
-                  statusCode:
-                    type: integer
-                    example: 404
-      tags:
-        - 'Project management'
-    put:
-      summary: 'Update a project'
-      description: 'This endpoint updates a project.'
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Project management'
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                  description: 'The title of the project.'
-                  example: 'Project 1'
-                description:
-                  type: string
-                  description: 'The description of the project.'
-                  example: 'This is a project'
-                category:
-                  type: string
-                  description: 'The category of the project.'
-                  example: 'Category 1'
-                owner:
-                  type: string
-                  description: 'The owner of the project.'
-                  example: 'John Doe'
-                image:
-                  type: string
-                  description: 'The image of the project.'
-                  example: image.png
-    delete:
-      summary: 'Delete a project'
-      description: "This endpoint deletes a project.\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - 'Project management'
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the project.'
-        example: 7
-        required: true
-        schema:
-          type: integer
   /api/test:
     get:
       summary: ''
@@ -852,11 +157,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: et
+                  example: porro
                 description:
                   type: string
                   description: ''
-                  example: sed
+                  example: illum
               required:
                 - name
                 - description
@@ -899,11 +204,11 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: qui
+                  example: debitis
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: casper.madie@example.org
+                  example: kevon.casper@example.org
                 phone:
                   type: string
                   description: ''
@@ -958,7 +263,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: delectus
+                  example: reprehenderit
               required:
                 - user_id
     parameters:
@@ -966,7 +271,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 5
+        example: 14
         required: true
         schema:
           type: integer
@@ -1009,7 +314,7 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: ad
+                  example: sit
                 additionalInfo:
                   type: string
                   description: ''
@@ -1021,7 +326,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 15
+        example: 7
         required: true
         schema:
           type: integer
@@ -1059,7 +364,7 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Club] 7'
+                  message: 'No query results for model [App\Models\Club] 12'
                   exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
                   file: /Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php
                   line: 385
@@ -1451,7 +756,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Club] 7'
+                    example: 'No query results for model [App\Models\Club] 12'
                   exception:
                     type: string
                     example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -1857,7 +1162,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 7
+        example: 12
         required: true
         schema:
           type: integer
@@ -1895,7 +1200,7 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'No query results for model [App\Models\Club] 3'
+                  message: 'No query results for model [App\Models\Club] 2'
                   exception: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
                   file: /Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php
                   line: 385
@@ -2287,7 +1592,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'No query results for model [App\Models\Club] 3'
+                    example: 'No query results for model [App\Models\Club] 2'
                   exception:
                     type: string
                     example: Symfony\Component\HttpKernel\Exception\NotFoundHttpException
@@ -2693,7 +1998,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 3
+        example: 2
         required: true
         schema:
           type: integer
@@ -2822,7 +2127,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the club.'
-        example: 17
+        example: 10
         required: true
         schema:
           type: integer
@@ -2893,7 +2198,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: aspernatur
                 visibility:
                   type: string
                   description: ''
@@ -2904,13 +2209,6 @@ paths:
       summary: 'Get a single album'
       description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -2926,34 +2224,45 @@ paths:
           schema:
             type: string
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  status: error
-                  message: 'Failed to retrieve resource'
-                  statusCode: 404
+                  data:
+                    id: 1
+                    name: General
+                    visibility: '1'
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
                 properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: General
+                      visibility: '1'
                   status:
                     type: string
-                    example: error
+                    example: success
                   message:
                     type: string
-                    example: 'Failed to retrieve resource'
+                    example: 'Resource retrieved successfully'
                   statusCode:
                     type: integer
-                    example: 404
+                    example: 200
       tags:
         - Endpoints
+      security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the album.'
-        example: 12
+        example: 1
         required: true
         schema:
           type: integer
@@ -3001,32 +2310,48 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data:
+                    -
+                      id: 1
+                      url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                      caption: 'no caption'
+                      visibility: 1
+                      album_id: 1
+                      album: General
                   meta:
                     current_page: 1
-                    from: null
+                    from: 1
                     last_page: 1
                     path: 'https://api.uiss.patrickmamsery.co.tz/api/gallery/images'
                     per_page: 15
-                    to: null
-                    total: 0
+                    to: 1
+                    total: 1
                   status: success
                   message: 'Resource retrieved successfully'
                   statusCode: 200
                 properties:
                   data:
                     type: array
-                    example: []
+                    example:
+                      -
+                        id: 1
+                        url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                        caption: 'no caption'
+                        visibility: 1
+                        album_id: 1
+                        album: General
+                    items:
+                      type: object
                   meta:
                     type: object
                     example:
                       current_page: 1
-                      from: null
+                      from: 1
                       last_page: 1
                       path: 'https://api.uiss.patrickmamsery.co.tz/api/gallery/images'
                       per_page: 15
-                      to: null
-                      total: 0
+                      to: 1
+                      total: 1
                   status:
                     type: string
                     example: success
@@ -3131,7 +2456,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: adipisci
+                  example: doloribus
                 visibility:
                   type: string
                   description: ''
@@ -3142,13 +2467,6 @@ paths:
       summary: 'Get all albums'
       description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -3171,32 +2489,42 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data:
+                    -
+                      id: 1
+                      name: General
+                      visibility: '1'
                   meta:
                     current_page: 1
-                    from: null
+                    from: 1
                     last_page: 1
                     path: 'https://api.uiss.patrickmamsery.co.tz/api/gallery/albums'
                     per_page: 15
-                    to: null
-                    total: 0
+                    to: 1
+                    total: 1
                   status: success
                   message: 'Resource retrieved successfully'
                   statusCode: 200
                 properties:
                   data:
                     type: array
-                    example: []
+                    example:
+                      -
+                        id: 1
+                        name: General
+                        visibility: '1'
+                    items:
+                      type: object
                   meta:
                     type: object
                     example:
                       current_page: 1
-                      from: null
+                      from: 1
                       last_page: 1
                       path: 'https://api.uiss.patrickmamsery.co.tz/api/gallery/albums'
                       per_page: 15
-                      to: null
-                      total: 0
+                      to: 1
+                      total: 1
                   status:
                     type: string
                     example: success
@@ -3208,18 +2536,12 @@ paths:
                     example: 200
       tags:
         - Endpoints
+      security: []
   '/api/gallery/albums/{id}/images':
     get:
       summary: 'Get all images in an album'
       description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -3235,34 +2557,57 @@ paths:
           schema:
             type: string
       responses:
-        404:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  status: error
-                  message: 'Failed to retrieve resource'
-                  statusCode: 404
+                  data:
+                    -
+                      album: General
+                      images:
+                        -
+                          id: 1
+                          url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                          caption: 'no caption'
+                          visibility: 1
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
                 properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        album: General
+                        images:
+                          -
+                            id: 1
+                            url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                            caption: 'no caption'
+                            visibility: 1
+                    items:
+                      type: object
                   status:
                     type: string
-                    example: error
+                    example: success
                   message:
                     type: string
-                    example: 'Failed to retrieve resource'
+                    example: 'Resource retrieved successfully'
                   statusCode:
                     type: integer
-                    example: 404
+                    example: 200
       tags:
         - Endpoints
+      security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the album.'
-        example: 4
+        example: 1
         required: true
         schema:
           type: integer
@@ -3351,7 +2696,149 @@ paths:
                 - url
     get:
       summary: 'Get a single image'
-      description: 'This endpoint retrieves a single image.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                    caption: 'no caption'
+                    visibility: 1
+                    album_id: 1
+                    album: General
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      url: 'http://localhost:8000/storage/2023/12/02/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp'
+                      caption: 'no caption'
+                      visibility: 1
+                      album_id: 1
+                      album: General
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The id of the image.'
+        example: '1'
+        required: true
+        schema:
+          type: string
+  /api/events:
+    get:
+      summary: 'Get all events'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'The page number to retrieve.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number to retrieve.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  meta:
+                    current_page: 1
+                    from: null
+                    last_page: 1
+                    path: 'https://api.uiss.patrickmamsery.co.tz/api/events'
+                    per_page: 15
+                    to: null
+                    total: 0
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: null
+                      last_page: 1
+                      path: 'https://api.uiss.patrickmamsery.co.tz/api/events'
+                      per_page: 15
+                      to: null
+                      total: 0
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Event management'
+      security: []
+    post:
+      summary: 'Create a new event'
+      description: 'This endpoint creates a new event.'
       parameters:
         -
           in: header
@@ -3360,6 +2847,70 @@ paths:
           example: 'Bearer Token'
           schema:
             type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Event management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the event.'
+                  example: 'Event 1'
+                description:
+                  type: string
+                  description: 'The description of the event.'
+                  example: 'This is an event'
+                venue:
+                  type: string
+                  description: 'The venue of the event.'
+                  example: 'Dar es Salaam'
+                image:
+                  type: string
+                  description: 'The image of the event.'
+                  example: image.jpg
+                startDate:
+                  type: string
+                  description: 'The start date of the event.'
+                  example: '2021-01-01'
+                endDate:
+                  type: string
+                  description: 'The end date of the event.'
+                  example: '2021-01-01'
+                hosts:
+                  type: string
+                  description: 'The hosts of the event separated by commas and single whitespaces.'
+                  example: 'John Doe, Jane Doe'
+              required:
+                - name
+                - description
+                - venue
+                - startDate
+                - endDate
+                - hosts
+  '/api/events/{id}':
+    get:
+      summary: 'Get a single event'
+      description: ''
+      parameters:
         -
           in: header
           name: Content-Type
@@ -3396,16 +2947,225 @@ paths:
                     type: integer
                     example: 404
       tags:
-        - Endpoints
+        - 'Event management'
+      security: []
+    put:
+      summary: 'Update an event'
+      description: 'This endpoint updates an event.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Event management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the event.'
+                  example: 'Event 1'
+                description:
+                  type: string
+                  description: 'The description of the event.'
+                  example: 'This is an event'
+                venue:
+                  type: string
+                  description: 'The venue of the event.'
+                  example: 'Dar es Salaam'
+                image:
+                  type: string
+                  description: 'The image of the event.'
+                  example: image.jpg
+                startDate:
+                  type: string
+                  description: 'The start date of the event.'
+                  example: '2021-01-01'
+                endDate:
+                  type: string
+                  description: 'The end date of the event.'
+                  example: '2021-01-01'
+                hosts:
+                  type: string
+                  description: 'The hosts of the event separated by commas and single whitespaces.'
+                  example: 'John Doe, Jane Doe'
+    delete:
+      summary: 'Delete an event'
+      description: "This endpoint deletes an event and all it's relations completely.\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Event management'
     parameters:
       -
         in: path
         name: id
-        description: 'The id of the image.'
-        example: '1'
+        description: 'The ID of the event.'
+        example: 9
         required: true
         schema:
-          type: string
+          type: integer
+  '/api/events/{id}/registration-list':
+    get:
+      summary: 'Get all registered users for an event'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Resource not found'
+                  statusCode: 404
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Resource not found'
+                  statusCode:
+                    type: integer
+                    example: 404
+      tags:
+        - 'Event management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 8
+        required: true
+        schema:
+          type: integer
+  '/api/events/{id}/register':
+    post:
+      summary: 'Register a user for an event'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Event management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: nisi
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: nyah76@example.org
+                phone:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - name
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 19
+        required: true
+        schema:
+          type: integer
   '/api/users/role/{name}':
     get:
       summary: 'Get all members by role'
@@ -3460,14 +3220,14 @@ paths:
         in: path
         name: name
         description: ''
-        example: ad
+        example: voluptatibus
         required: true
         schema:
           type: string
   /api/programs:
     get:
       summary: 'Get all programs'
-      description: 'This endpoint retrieves all programs paginated in chunks of 15.'
+      description: ''
       parameters:
         -
           in: query
@@ -3479,13 +3239,6 @@ paths:
             type: integer
             description: 'The page number to retrieve.'
             example: 1
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -3557,6 +3310,7 @@ paths:
                     example: 200
       tags:
         - 'Program management'
+      security: []
     post:
       summary: 'Create a new program'
       description: 'This endpoint creates a new program.'
@@ -3611,15 +3365,8 @@ paths:
   '/api/programs/{id}':
     get:
       summary: 'Get a program'
-      description: 'This endpoint retrieves a program by its ID.'
+      description: ''
       parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer Token'
-          schema:
-            type: string
         -
           in: header
           name: Content-Type
@@ -3669,6 +3416,7 @@ paths:
                     example: 200
       tags:
         - 'Program management'
+      security: []
     put:
       summary: 'Update a program'
       description: 'This endpoint updates a program.'
@@ -3753,6 +3501,272 @@ paths:
         required: true
         schema:
           type: string
+  /api/projects:
+    get:
+      summary: 'Get all projects'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page
+          description: 'The page number to retrieve.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'The page number to retrieve.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  meta:
+                    current_page: 1
+                    from: null
+                    last_page: 1
+                    path: 'https://api.uiss.patrickmamsery.co.tz/api/projects'
+                    per_page: 15
+                    to: null
+                    total: 0
+                  status: success
+                  message: 'Resource retrieved successfully'
+                  statusCode: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: null
+                      last_page: 1
+                      path: 'https://api.uiss.patrickmamsery.co.tz/api/projects'
+                      per_page: 15
+                      to: null
+                      total: 0
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: 'Resource retrieved successfully'
+                  statusCode:
+                    type: integer
+                    example: 200
+      tags:
+        - 'Project management'
+      security: []
+    post:
+      summary: 'Create a new project'
+      description: 'This endpoint creates a new project.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Project management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'The title of the project.'
+                  example: 'Project 1'
+                description:
+                  type: string
+                  description: 'The description of the project.'
+                  example: 'This is a project'
+                category:
+                  type: string
+                  description: 'The category of the project.'
+                  example: 'Category 1'
+                owner:
+                  type: string
+                  description: 'The owner of the project.'
+                  example: 'John Doe'
+              required:
+                - title
+                - description
+                - category
+                - owner
+  '/api/projects/{id}':
+    get:
+      summary: 'Get a single project'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: error
+                  message: 'Failed to retrieve resource'
+                  statusCode: 404
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: 'Failed to retrieve resource'
+                  statusCode:
+                    type: integer
+                    example: 404
+      tags:
+        - 'Project management'
+      security: []
+    put:
+      summary: 'Update a project'
+      description: 'This endpoint updates a project.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Project management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'The title of the project.'
+                  example: 'Project 1'
+                description:
+                  type: string
+                  description: 'The description of the project.'
+                  example: 'This is a project'
+                category:
+                  type: string
+                  description: 'The category of the project.'
+                  example: 'Category 1'
+                owner:
+                  type: string
+                  description: 'The owner of the project.'
+                  example: 'John Doe'
+                image:
+                  type: string
+                  description: 'The image of the project.'
+                  example: image.png
+    delete:
+      summary: 'Delete a project'
+      description: "This endpoint deletes a project.\n\n<aside class=\"notice\"> <strong>NOTE:</strong> This action is irreversible </aside>"
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer Token'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - 'Project management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the project.'
+        example: 9
+        required: true
+        schema:
+          type: integer
   /api/register:
     post:
       summary: 'CREATE NEW USER BY REGISTRATION (POST api/register)'
@@ -3785,19 +3799,19 @@ paths:
                 name:
                   type: string
                   description: 'The name of user'
-                  example: est
+                  example: eum
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: aut
+                  example: iste
                 password:
                   type: string
                   description: 'Must be at least 6 characters'
-                  example: occaecati
+                  example: voluptate
                 password_confirmation:
                   type: string
                   description: 'Must be same to the password value'
-                  example: est
+                  example: sint
               required:
                 - name
                 - email
@@ -3836,11 +3850,11 @@ paths:
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: consequuntur
+                  example: natus
                 password:
                   type: string
                   description: 'Must be at least 6 characters'
-                  example: non
+                  example: et
               required:
                 - email
                 - password
@@ -4010,23 +4024,23 @@ paths:
                 name:
                   type: string
                   description: 'The name of user'
-                  example: nobis
+                  example: eos
                 email:
                   type: string
                   description: 'Email of the user, should be valid email, unique to the users table'
-                  example: culpa
+                  example: ipsa
                 phone:
                   type: string
                   description: 'Phone number of the user, unique to the users table'
-                  example: sunt
+                  example: id
                 image:
                   type: string
                   description: 'Image of the user, should be a valid url'
-                  example: sit
+                  example: ratione
                 role:
                   type: string
                   description: 'Role of the user, should be either "member", "leader", "developer" or "admin"'
-                  example: tempora
+                  example: rem
                 additionalInfo:
                   type: object
                   description: "Additional information of the user, should be an object with the following keys:\n- position: string, required if role is \"leader\"\n- university: string, required if role is \"member\"\n- college: string, required if role is \"member\"\n- department: string, required if role is \"member\"\n- degreeProgramme: string, required if role is \"member\""
@@ -4197,20 +4211,20 @@ paths:
           type: integer
 tags:
   -
-    name: 'Event management'
-    description: "\nAPIs for managing events"
-  -
-    name: 'Project management'
-    description: "\nAPIs for managing projects"
-  -
     name: Endpoints
     description: ''
+  -
+    name: 'Event management'
+    description: "\nAPIs for managing events"
   -
     name: 'Member management'
     description: "\nAPIs for managing members"
   -
     name: 'Program management'
     description: "\nAPIs for managing programs"
+  -
+    name: 'Project management'
+    description: "\nAPIs for managing projects"
   -
     name: 'User Authentication'
     description: ''

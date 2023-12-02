@@ -228,35 +228,35 @@ endpoints:
         name: name
         description: 'The name of user'
         required: true
-        example: nobis
+        example: eos
         type: string
         custom: []
       email:
         name: email
         description: 'Email of the user, should be valid email, unique to the users table'
         required: true
-        example: culpa
+        example: ipsa
         type: string
         custom: []
       phone:
         name: phone
         description: 'Phone number of the user, unique to the users table'
         required: false
-        example: sunt
+        example: id
         type: string
         custom: []
       image:
         name: image
         description: 'Image of the user, should be a valid url'
         required: false
-        example: sit
+        example: ratione
         type: string
         custom: []
       role:
         name: role
         description: 'Role of the user, should be either "member", "leader", "developer" or "admin"'
         required: false
-        example: tempora
+        example: rem
         type: string
         custom: []
       additionalInfo:

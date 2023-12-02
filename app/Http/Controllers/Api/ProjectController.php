@@ -22,6 +22,8 @@ class ProjectController extends BaseController
     /**
      * Get all projects
      *
+     * @unauthenticated
+     *
      * This endpoint retrieves all projects paginated in chunks of 15.
      *
      * @queryParam page The page number to retrieve. Example: 1
@@ -118,7 +120,9 @@ class ProjectController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * Get a single project
+     *
+     * @unauthenticated
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

@@ -20,6 +20,8 @@ class ProgramController extends BaseController
     /**
      * Get all programs
      *
+     * @unauthenticated
+     *
      * This endpoint retrieves all programs paginated in chunks of 15.
      *
      * @queryParam page The page number to retrieve. Example: 1
@@ -73,6 +75,8 @@ class ProgramController extends BaseController
 
     /**
      * Get a program
+     *
+     * @unauthenticated
      *
      * This endpoint retrieves a program by its ID.
      *

@@ -24,6 +24,8 @@ class EventController extends BaseController
     /**
      * Get all events
      *
+     * @unauthenticated
+     *
      * This endpoint retrieves all events paginated in chunks of 15.
      *
      * @queryParam page The page number to retrieve. Example: 1
@@ -131,7 +133,9 @@ class EventController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * Get a single event
+     *
+     * @unauthenticated
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

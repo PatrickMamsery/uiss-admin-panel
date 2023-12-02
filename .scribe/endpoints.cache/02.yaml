@@ -23,7 +23,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: ad
+        example: voluptatibus
         type: string
         custom: []
     queryParameters: []
