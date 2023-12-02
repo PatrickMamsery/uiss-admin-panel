@@ -1,187 +1,40 @@
-name: 'Program management'
+name: 'Member management'
 description: |-
 
-  APIs for managing programs
+  APIs for managing members
 endpoints:
   -
     httpMethods:
       - GET
-    uri: api/programs
+    uri: 'api/users/role/{name}'
     metadata:
-      title: 'Get all programs'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters:
-      page:
-        name: page
-        description: 'The page number to retrieve.'
-        required: false
-        example: 1
-        type: integer
-        custom: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[{"id":1,"name":"Interactive Web Design","description":"Interactive web design class","category":"Web Design"}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/programs","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/programs
-    metadata:
-      title: 'Create a new program'
-      description: 'This endpoint creates a new program.'
+      title: 'Get all members by role'
+      description: 'This endpoint retrieves all members as organised by their roles whether admin or member.'
       authenticated: true
       custom: []
     headers:
       Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
+    urlParameters:
       name:
         name: name
-        description: 'The name of the program.'
+        description: ''
         required: true
-        example: 'Program 1'
-        type: string
-        custom: []
-      description:
-        name: description
-        description: 'The description of the program.'
-        required: true
-        example: 'This is a program'
-        type: string
-        custom: []
-      category:
-        name: category
-        description: 'The category of the program.'
-        required: true
-        example: 'Category 1'
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/programs/{id}'
-    metadata:
-      title: 'Get a program'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the program.'
-        required: true
-        example: '1'
+        example: blanditiis
         type: string
         custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
-        status: 200
-        content: '{"data":{"id":1,"name":"Interactive Web Design","description":"Interactive web design class","category":"Web Design"},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
+        status: 404
+        content: '{"status":"error","message":"Role provided does not match our records","statusCode":404}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '59'
           access-control-allow-origin: '*'
         description: null
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/programs/{id}'
-    metadata:
-      title: 'Update a program'
-      description: 'This endpoint updates a program.'
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the program.'
-        required: true
-        example: '1'
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: 'The name of the program.'
-        required: false
-        example: 'Program 1'
-        type: string
-        custom: []
-      description:
-        name: description
-        description: 'The description of the program.'
-        required: false
-        example: 'This is a program'
-        type: string
-        custom: []
-      category:
-        name: category
-        description: 'The category of the program.'
-        required: false
-        example: 'Category 1'
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/programs/{id}'
-    metadata:
-      title: 'Delete a program'
-      description: |-
-        This endpoint deletes a program and all it's relations completely.
-
-        <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the program.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
     responseFields: []

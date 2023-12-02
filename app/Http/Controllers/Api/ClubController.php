@@ -15,11 +15,18 @@ use App\Models\ClubLead;
 use App\Models\CustomRole;
 use App\Models\User;
 
+/**
+ * @group Club Management
+ *
+ * APIs for managing clubs
+ */
 class ClubController extends BaseController
 {
     public $per_page = 15;
     /**
-     * Display a listing of the resource.
+     * Get all clubs
+     *
+     * @unauthenticated
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +36,7 @@ class ClubController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new club
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -65,7 +72,9 @@ class ClubController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * Get a single club
+     *
+     * @unauthenticated
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -82,7 +91,7 @@ class ClubController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a specific club
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -110,7 +119,7 @@ class ClubController extends BaseController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a specific club
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

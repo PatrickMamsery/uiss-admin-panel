@@ -78,7 +78,7 @@ Route::middleware(['auth.api'])->group(function () {
     });
 
     // Clubs routes
-    Route::apiResource('clubs', ClubController::class)->middleware('withoutlink');
+    Route::apiResource('clubs', ClubController::class)->middleware('withoutlink')->except(['index', 'show']);
 
     Route::prefix('clubs')->middleware('withoutlink')->group(function () {
         Route::get('/{id}/members', [ClubController::class, 'getClubMembers']);
@@ -111,6 +111,10 @@ Route::middleware('withoutlink')->group(function () {
     // GET Events
     Route::get('/events', [EventController::class, 'index']);
     Route::get('/events/{id}', [EventController::class, 'show']);
+
+    // GET Clubs
+    Route::get('/clubs', [ClubController::class, 'index']);
+    Route::get('/clubs/{id}', [ClubController::class, 'show']);
 
     // Gallery routes
     Route::prefix('gallery')->group(function () {

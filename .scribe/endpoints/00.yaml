@@ -1,45 +1,18 @@
-name: Endpoints
-description: ''
+name: 'Club Management'
+description: |-
+
+  APIs for managing clubs
 endpoints:
-  -
-    httpMethods:
-      - GET
-    uri: api/test
-    metadata:
-      title: ''
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"message":"This is a test route"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
   -
     httpMethods:
       - GET
     uri: api/clubs
     metadata:
-      title: 'Display a listing of the resource.'
+      title: 'Get all clubs'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -53,7 +26,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
+          x-ratelimit-remaining: '48'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -75,7 +48,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 13
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -84,14 +57,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: debitis
+        example: ipsa
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: kevon.casper@example.org
+        example: roob.myrtle@example.org
         type: string
         custom: []
       phone:
@@ -121,7 +94,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 14
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -130,7 +103,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: reprehenderit
+        example: sed
         type: string
         custom: []
     responses: []
@@ -153,7 +126,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 7
+        example: 5
         type: integer
         custom: []
     queryParameters: []
@@ -162,7 +135,7 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: sit
+        example: quisquam
         type: string
         custom: []
       additionalInfo:
@@ -180,497 +153,6 @@ endpoints:
     uri: 'api/clubs/{id}/leaders'
     metadata:
       title: 'Get club leaders'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the club.'
-        required: true
-        example: 12
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Club] 12",
-              "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
-              "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
-              "line": 385,
-              "trace": [
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
-                      "line": 332,
-                      "function": "prepareException",
-                      "class": "Illuminate\\Foundation\\Exceptions\\Handler",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/nunomaduro/collision/src/Adapters/Laravel/ExceptionHandler.php",
-                      "line": 54,
-                      "function": "render",
-                      "class": "Illuminate\\Foundation\\Exceptions\\Handler",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
-                      "line": 51,
-                      "function": "render",
-                      "class": "NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 130,
-                      "function": "handleException",
-                      "class": "Illuminate\\Routing\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/app/Http/Middleware/WithoutLinks.php",
-                      "line": 19,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "App\\Http\\Middleware\\WithoutLinks",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
-                      "line": 50,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
-                      "line": 127,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
-                      "line": 103,
-                      "function": "handleRequest",
-                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
-                      "line": 55,
-                      "function": "handleRequestUsingNamedLimiter",
-                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/app/Http/Middleware/AuthenticateApi.php",
-                      "line": 17,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "App\\Http\\Middleware\\AuthenticateApi",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 103,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
-                      "line": 723,
-                      "function": "then",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
-                      "line": 698,
-                      "function": "runRouteWithinStack",
-                      "class": "Illuminate\\Routing\\Router",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
-                      "line": 662,
-                      "function": "runRoute",
-                      "class": "Illuminate\\Routing\\Router",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
-                      "line": 651,
-                      "function": "dispatchToRoute",
-                      "class": "Illuminate\\Routing\\Router",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
-                      "line": 167,
-                      "function": "dispatch",
-                      "class": "Illuminate\\Routing\\Router",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 128,
-                      "function": "Illuminate\\Foundation\\Http\\{closure}",
-                      "class": "Illuminate\\Foundation\\Http\\Kernel",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
-                      "line": 21,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
-                      "line": 31,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
-                      "line": 21,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
-                      "line": 40,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
-                      "line": 27,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
-                      "line": 86,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/fruitcake/laravel-cors/src/HandleCors.php",
-                      "line": 52,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Fruitcake\\Cors\\HandleCors",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
-                      "line": 39,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 167,
-                      "function": "handle",
-                      "class": "Illuminate\\Http\\Middleware\\TrustProxies",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
-                      "line": 103,
-                      "function": "Illuminate\\Pipeline\\{closure}",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
-                      "line": 142,
-                      "function": "then",
-                      "class": "Illuminate\\Pipeline\\Pipeline",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
-                      "line": 111,
-                      "function": "sendRequestThroughRouter",
-                      "class": "Illuminate\\Foundation\\Http\\Kernel",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
-                      "line": 299,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Http\\Kernel",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
-                      "line": 287,
-                      "function": "callLaravelOrLumenRoute",
-                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
-                      "line": 89,
-                      "function": "makeApiCall",
-                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
-                      "line": 45,
-                      "function": "makeResponseCall",
-                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
-                      "line": 35,
-                      "function": "makeResponseCallIfConditionsPass",
-                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
-                      "line": 222,
-                      "function": "__invoke",
-                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
-                      "line": 179,
-                      "function": "iterateThroughStrategies",
-                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
-                      "line": 116,
-                      "function": "fetchResponses",
-                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
-                      "line": 123,
-                      "function": "processRoute",
-                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
-                      "line": 80,
-                      "function": "extractEndpointsInfoFromLaravelApp",
-                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
-                      "line": 56,
-                      "function": "extractEndpointsInfoAndWriteToDisk",
-                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php",
-                      "line": 55,
-                      "function": "get",
-                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
-                      "line": 36,
-                      "function": "handle",
-                      "class": "Knuckles\\Scribe\\Commands\\GenerateDocumentation",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/Util.php",
-                      "line": 40,
-                      "function": "Illuminate\\Container\\{closure}",
-                      "class": "Illuminate\\Container\\BoundMethod",
-                      "type": "::"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
-                      "line": 93,
-                      "function": "unwrapIfClosure",
-                      "class": "Illuminate\\Container\\Util",
-                      "type": "::"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
-                      "line": 37,
-                      "function": "callBoundMethod",
-                      "class": "Illuminate\\Container\\BoundMethod",
-                      "type": "::"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/Container.php",
-                      "line": 653,
-                      "function": "call",
-                      "class": "Illuminate\\Container\\BoundMethod",
-                      "type": "::"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Command.php",
-                      "line": 136,
-                      "function": "call",
-                      "class": "Illuminate\\Container\\Container",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Command/Command.php",
-                      "line": 298,
-                      "function": "execute",
-                      "class": "Illuminate\\Console\\Command",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Command.php",
-                      "line": 121,
-                      "function": "run",
-                      "class": "Symfony\\Component\\Console\\Command\\Command",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
-                      "line": 1040,
-                      "function": "run",
-                      "class": "Illuminate\\Console\\Command",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
-                      "line": 301,
-                      "function": "doRunCommand",
-                      "class": "Symfony\\Component\\Console\\Application",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
-                      "line": 171,
-                      "function": "doRun",
-                      "class": "Symfony\\Component\\Console\\Application",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Application.php",
-                      "line": 94,
-                      "function": "run",
-                      "class": "Symfony\\Component\\Console\\Application",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
-                      "line": 129,
-                      "function": "run",
-                      "class": "Illuminate\\Console\\Application",
-                      "type": "->"
-                  },
-                  {
-                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/artisan",
-                      "line": 37,
-                      "function": "handle",
-                      "class": "Illuminate\\Foundation\\Console\\Kernel",
-                      "type": "->"
-                  }
-              ]
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/clubs/{id}/members'
-    metadata:
-      title: 'Get members belonging to a club'
       description: ''
       authenticated: true
       custom: []
@@ -1152,16 +634,16 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
   -
     httpMethods:
-      - DELETE
-    uri: 'api/clubs/{id}'
+      - GET
+    uri: 'api/clubs/{id}/members'
     metadata:
-      title: 'Remove the specified resource from storage.'
+      title: 'Get members belonging to a club'
       description: ''
       authenticated: true
       custom: []
@@ -1174,7 +656,498 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 10
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Club] 6",
+              "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
+              "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
+              "line": 385,
+              "trace": [
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php",
+                      "line": 332,
+                      "function": "prepareException",
+                      "class": "Illuminate\\Foundation\\Exceptions\\Handler",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/nunomaduro/collision/src/Adapters/Laravel/ExceptionHandler.php",
+                      "line": 54,
+                      "function": "render",
+                      "class": "Illuminate\\Foundation\\Exceptions\\Handler",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php",
+                      "line": 51,
+                      "function": "render",
+                      "class": "NunoMaduro\\Collision\\Adapters\\Laravel\\ExceptionHandler",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 130,
+                      "function": "handleException",
+                      "class": "Illuminate\\Routing\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/app/Http/Middleware/WithoutLinks.php",
+                      "line": 19,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "App\\Http\\Middleware\\WithoutLinks",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php",
+                      "line": 50,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Routing\\Middleware\\SubstituteBindings",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+                      "line": 127,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+                      "line": 103,
+                      "function": "handleRequest",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php",
+                      "line": 55,
+                      "function": "handleRequestUsingNamedLimiter",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Routing\\Middleware\\ThrottleRequests",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/app/Http/Middleware/AuthenticateApi.php",
+                      "line": 17,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "App\\Http\\Middleware\\AuthenticateApi",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 103,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 723,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 698,
+                      "function": "runRouteWithinStack",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 662,
+                      "function": "runRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Routing/Router.php",
+                      "line": 651,
+                      "function": "dispatchToRoute",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 167,
+                      "function": "dispatch",
+                      "class": "Illuminate\\Routing\\Router",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 128,
+                      "function": "Illuminate\\Foundation\\Http\\{closure}",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php",
+                      "line": 31,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php",
+                      "line": 21,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php",
+                      "line": 40,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php",
+                      "line": 27,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php",
+                      "line": 86,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/fruitcake/laravel-cors/src/HandleCors.php",
+                      "line": 52,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Fruitcake\\Cors\\HandleCors",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php",
+                      "line": 39,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 167,
+                      "function": "handle",
+                      "class": "Illuminate\\Http\\Middleware\\TrustProxies",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php",
+                      "line": 103,
+                      "function": "Illuminate\\Pipeline\\{closure}",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 142,
+                      "function": "then",
+                      "class": "Illuminate\\Pipeline\\Pipeline",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php",
+                      "line": 111,
+                      "function": "sendRequestThroughRouter",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
+                      "line": 299,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Http\\Kernel",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
+                      "line": 287,
+                      "function": "callLaravelOrLumenRoute",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
+                      "line": 89,
+                      "function": "makeApiCall",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
+                      "line": 45,
+                      "function": "makeResponseCall",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php",
+                      "line": 35,
+                      "function": "makeResponseCallIfConditionsPass",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
+                      "line": 222,
+                      "function": "__invoke",
+                      "class": "Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
+                      "line": 179,
+                      "function": "iterateThroughStrategies",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php",
+                      "line": 116,
+                      "function": "fetchResponses",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
+                      "line": 123,
+                      "function": "processRoute",
+                      "class": "Knuckles\\Scribe\\Extracting\\Extractor",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
+                      "line": 80,
+                      "function": "extractEndpointsInfoFromLaravelApp",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php",
+                      "line": 56,
+                      "function": "extractEndpointsInfoAndWriteToDisk",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php",
+                      "line": 55,
+                      "function": "get",
+                      "class": "Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+                      "line": 36,
+                      "function": "handle",
+                      "class": "Knuckles\\Scribe\\Commands\\GenerateDocumentation",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/Util.php",
+                      "line": 40,
+                      "function": "Illuminate\\Container\\{closure}",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+                      "line": 93,
+                      "function": "unwrapIfClosure",
+                      "class": "Illuminate\\Container\\Util",
+                      "type": "::"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php",
+                      "line": 37,
+                      "function": "callBoundMethod",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+                      "line": 653,
+                      "function": "call",
+                      "class": "Illuminate\\Container\\BoundMethod",
+                      "type": "::"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Command.php",
+                      "line": 136,
+                      "function": "call",
+                      "class": "Illuminate\\Container\\Container",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Command/Command.php",
+                      "line": 298,
+                      "function": "execute",
+                      "class": "Illuminate\\Console\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Command.php",
+                      "line": 121,
+                      "function": "run",
+                      "class": "Symfony\\Component\\Console\\Command\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
+                      "line": 1040,
+                      "function": "run",
+                      "class": "Illuminate\\Console\\Command",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
+                      "line": 301,
+                      "function": "doRunCommand",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/symfony/console/Application.php",
+                      "line": 171,
+                      "function": "doRun",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Console/Application.php",
+                      "line": 94,
+                      "function": "run",
+                      "class": "Symfony\\Component\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php",
+                      "line": 129,
+                      "function": "run",
+                      "class": "Illuminate\\Console\\Application",
+                      "type": "->"
+                  },
+                  {
+                      "file": "/Users/patrickmamsery/Sites/PKMaestro/uiss/uiss-api/artisan",
+                      "line": 37,
+                      "function": "handle",
+                      "class": "Illuminate\\Foundation\\Console\\Kernel",
+                      "type": "->"
+                  }
+              ]
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/clubs/{id}'
+    metadata:
+      title: 'Delete a specific club'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer Token'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the club.'
+        required: true
+        example: 11
         type: integer
         custom: []
     queryParameters: []
@@ -1187,7 +1160,7 @@ endpoints:
       - PATCH
     uri: 'api/clubs/{id}'
     metadata:
-      title: 'Update the specified resource in storage.'
+      title: 'Update a specific club'
       description: ''
       authenticated: true
       custom: []
@@ -1200,7 +1173,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 8
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -1226,12 +1199,11 @@ endpoints:
       - GET
     uri: 'api/clubs/{id}'
     metadata:
-      title: 'Display the specified resource.'
+      title: 'Get a single club'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer Token'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -1239,7 +1211,7 @@ endpoints:
         name: id
         description: 'The ID of the club.'
         required: true
-        example: 14
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -1252,7 +1224,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '47'
           access-control-allow-origin: '*'
         description: null
     responseFields: []
@@ -1261,7 +1233,7 @@ endpoints:
       - POST
     uri: api/clubs
     metadata:
-      title: 'Store a newly created resource in storage.'
+      title: 'Create a new club'
       description: ''
       authenticated: true
       custom: []
@@ -1276,401 +1248,14 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: porro
+        example: excepturi
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: illum
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/gallery/albums/{id}'
-    metadata:
-      title: 'Delete an album'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the album.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/gallery/images
-    metadata:
-      title: 'Get all images in the gallery'
-      description: 'This endpoint retrieves all images in the gallery paginated in chunks of 15.'
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters:
-      page:
-        name: page
-        description: 'The page number to retrieve.'
-        required: false
-        example: 1
-        type: integer
-        custom: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1,"album_id":1,"album":"General"}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/images","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '46'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: 'api/gallery/albums/{id}'
-    metadata:
-      title: 'Update an album'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the album.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: aspernatur
-        type: string
-        custom: []
-      visibility:
-        name: visibility
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/gallery/albums
-    metadata:
-      title: 'Create an album'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: doloribus
-        type: string
-        custom: []
-      visibility:
-        name: visibility
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/gallery/albums/{id}/images'
-    metadata:
-      title: 'Get all images in an album'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the album.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[{"album":"General","images":[{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1}]}],"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '42'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/gallery/albums/{id}'
-    metadata:
-      title: 'Get a single album'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the album.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":{"id":1,"name":"General","visibility":"1"},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '43'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: api/gallery/albums
-    metadata:
-      title: 'Get all albums'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":[{"id":1,"name":"General","visibility":"1"}],"meta":{"current_page":1,"from":1,"last_page":1,"path":"https:\/\/api.uiss.patrickmamsery.co.tz\/api\/gallery\/albums","per_page":15,"to":1,"total":1},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '44'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/gallery/images/{id}'
-    metadata:
-      title: 'Delete an image'
-      description: |-
-        This endpoint deletes an image.
-
-        <aside class="notice"> <strong>NOTE:</strong> This action is irreversible </aside>
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The id of the image.'
-        required: true
-        example: '1'
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: 'api/gallery/images/{id}'
-    metadata:
-      title: 'Update an image'
-      description: 'This endpoint updates an image.'
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The id of the image.'
-        required: true
-        example: '1'
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      album:
-        name: album
-        description: 'The name of the album.'
-        required: true
-        example: 'Album 1'
-        type: string
-        custom: []
-      caption:
-        name: caption
-        description: 'The caption of the image.'
-        required: false
-        example: 'This is an image'
-        type: string
-        custom: []
-      visibility:
-        name: visibility
-        description: 'The visibility of the image.'
-        required: false
-        example: 1
-        type: integer
-        custom: []
-      url:
-        name: url
-        description: 'The url of the image.'
-        required: true
-        example: 'https://unsplash.com/photos/1'
-        type: string
-        custom: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/gallery/images/{id}'
-    metadata:
-      title: 'Get a single image'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The id of the image.'
-        required: true
-        example: '1'
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"data":{"id":1,"url":"http:\/\/localhost:8000\/storage\/2023\/12\/02\/b8ce9883d86538b5e2c5a0e08800af4af94e87aa.webp","caption":"no caption","visibility":1,"album_id":1,"album":"General"},"status":"success","message":"Resource retrieved successfully","statusCode":200}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '45'
-          access-control-allow-origin: '*'
-        description: null
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/gallery/images
-    metadata:
-      title: 'Create an image'
-      description: 'This endpoint creates an image.'
-      authenticated: true
-      custom: []
-    headers:
-      Authorization: 'Bearer Token'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      album:
-        name: album
-        description: 'The name of the album.'
-        required: true
-        example: 'Album 1'
-        type: string
-        custom: []
-      caption:
-        name: caption
-        description: 'The caption of the image.'
-        required: false
-        example: 'This is an image'
-        type: string
-        custom: []
-      visibility:
-        name: visibility
-        description: 'The visibility of the image.'
-        required: false
-        example: 1
-        type: integer
-        custom: []
-      url:
-        name: url
-        description: 'The url of the image.'
-        required: true
-        example: 'https://unsplash.com/photos/1'
+        example: qui
         type: string
         custom: []
     responses: []
